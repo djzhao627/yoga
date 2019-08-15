@@ -1,0 +1,975 @@
+2018-10-20 11:45:37 -Starting BootdoApplication on DESKTOP-SB764HS with PID 34844 (D:\workspace\workspace-idea\pufandaproject\bootdo\bootdo\target\classes started by admin in D:\workspace\workspace-idea\pufandaproject\bootdo\bootdo)
+2018-10-20 11:45:37 -Running with Spring Boot v2.0.3.RELEASE, Spring v5.0.7.RELEASE
+2018-10-20 11:45:37 -The following profiles are active: dev
+2018-10-20 11:45:38 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1b11171f: startup date [Sat Oct 20 11:45:38 CST 2018]; root of context hierarchy
+2018-10-20 11:45:43 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-10-20 11:45:44 -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$56ea1e1f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:44 -Bean 'shiroConfig' of type [com.bootdo.system.config.ShiroConfig$$EnhancerBySpringCGLIB$$49434cc6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:46 -Bean 'userRealm' of type [com.bootdo.system.shiro.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:46 -No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/D:/work/maven_repository/net/sf/ehcache/ehcache/2.10.5/ehcache-2.10.5.jar!/ehcache-failsafe.xml
+2018-10-20 11:45:46 -Bean 'cacheManager2' of type [net.sf.ehcache.CacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:46 -Bean 'ehCacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:46 -Cache with name 'com.bootdo.system.shiro.UserRealm.authorizationCache' does not yet exist.  Creating now.
+2018-10-20 11:45:46 -Added EhCache named [com.bootdo.system.shiro.UserRealm.authorizationCache]
+2018-10-20 11:45:46 -Bean 'sessionDAO' of type [org.apache.shiro.session.mgt.eis.MemorySessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:46 -Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:46 -Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:47 -Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-20 11:45:48 -Tomcat initialized with port(s): 8080 (http)
+2018-10-20 11:45:48 -Initializing ProtocolHandler ["http-nio-8080"]
+2018-10-20 11:45:48 -Starting service [Tomcat]
+2018-10-20 11:45:48 -Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-10-20 11:45:48 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Java\jdk1.8.0_171\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Java\jdk1.8.0_171\bin;D:\app\admin\product\11.2.0\dbhome_1\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\System32;C:\Windows;C:\Windows\System32\wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Program Files\Git\cmd;D:\Java\apache-maven-3.5.3\bin;D:\Program Files\TortoiseSVN\bin;D:\MySQL\mysql-5.7.22-winx64\bin;;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\admin\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\admin\AppData\Local\Programs\Python\Python36\;D:\Java\jdk1.8.0_171\bin;D:\Java\jdk1.8.0_171\jre\bin;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;;.]
+2018-10-20 11:45:49 -Initializing Spring embedded WebApplicationContext
+2018-10-20 11:45:49 -Root WebApplicationContext: initialization completed in 10780 ms
+2018-10-20 11:45:49 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-10-20 11:45:49 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-10-20 11:45:49 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-10-20 11:45:49 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-10-20 11:45:49 -Filter xssFilter was not registered (disabled)
+2018-10-20 11:45:49 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-10-20 11:45:49 -Mapping filter: 'shiroFilterFactoryBean' to: [/*]
+2018-10-20 11:45:49 -Servlet statViewServlet mapped to [/druid/*]
+2018-10-20 11:45:49 -Servlet dispatcherServlet mapped to [/]
+2018-10-20 11:45:51 -{dataSource-1} inited
+2018-10-20 11:45:54 -ProcessEngine default created
+2018-10-20 11:45:56 -ApplicationContext registed-->org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1b11171f: startup date [Sat Oct 20 11:45:38 CST 2018]; root of context hierarchy
+2018-10-20 11:45:56 -Initializing ExecutorService  'clientInboundChannelExecutor'
+2018-10-20 11:45:56 -Initializing ExecutorService  'clientOutboundChannelExecutor'
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/{id}],methods=[DELETE]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ModelController.remove(java.lang.String)
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/list],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.activiti.controller.ModelController.list(int,int)
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ModelController.batchRemove(java.lang.String[])
+2018-10-20 11:45:57 -Mapped "{[/activiti/model],methods=[GET]}" onto org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.ModelController.model()
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/edit/{id}],methods=[GET]}" onto public void com.bootdo.activiti.controller.ModelController.edit(javax.servlet.http.HttpServletResponse,java.lang.String)
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/{modelId}/save],methods=[PUT]}" onto public void com.bootdo.activiti.controller.ModelController.saveModel(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-10-20 11:45:57 -Mapped "{[/activiti/editor/stencilset],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.lang.String com.bootdo.activiti.controller.ModelController.getStencilset()
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/{modelId}/json],methods=[GET]}" onto public com.fasterxml.jackson.databind.node.ObjectNode com.bootdo.activiti.controller.ModelController.getEditorJson(java.lang.String)
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/add]}" onto public void com.bootdo.activiti.controller.ModelController.newModel(javax.servlet.http.HttpServletResponse) throws java.io.UnsupportedEncodingException
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/deploy/{id}],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ModelController.deploy(java.lang.String) throws java.lang.Exception
+2018-10-20 11:45:57 -Mapped "{[/activiti/model/export/{id}],methods=[GET]}" onto public void com.bootdo.activiti.controller.ModelController.exportToXml(java.lang.String,javax.servlet.http.HttpServletResponse)
+2018-10-20 11:45:57 -Mapped "{[/activiti/process/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.ProcessController.add()
+2018-10-20 11:45:57 -Mapped "{[/activiti/process/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ProcessController.remove(java.lang.String)
+2018-10-20 11:45:57 -Mapped "{[/activiti/process/list],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.activiti.controller.ProcessController.list(int,int)
+2018-10-20 11:45:57 -Mapped "{[/activiti/process/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ProcessController.batchRemove(java.lang.String[])
+2018-10-20 11:45:57 -Mapped "{[/activiti/process],methods=[GET]}" onto org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.ProcessController.process()
+2018-10-20 11:45:57 -Mapped "{[/activiti/process/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ProcessController.deploy(java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile)
+2018-10-20 11:45:57 -Mapped "{[/activiti/process/convertToModel/{procDefId}]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ProcessController.convertToModel(java.lang.String,org.springframework.web.servlet.mvc.support.RedirectAttributes) throws java.io.UnsupportedEncodingException,javax.xml.stream.XMLStreamException
+2018-10-20 11:45:57 -Mapped "{[/activiti/process/resource/read/{xml}/{id}]}" onto public void com.bootdo.activiti.controller.ProcessController.resourceRead(java.lang.String,java.lang.String,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-10-20 11:45:57 -Mapped "{[/act/salary/form],methods=[GET]}" onto java.lang.String com.bootdo.activiti.controller.SalaryController.add()
+2018-10-20 11:45:57 -Mapped "{[/act/salary/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.SalaryController.remove(java.lang.String)
+2018-10-20 11:45:57 -Mapped "{[/act/salary/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.SalaryController.remove(java.lang.String[])
+2018-10-20 11:45:57 -Mapped "{[/act/salary/update]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.SalaryController.update(com.bootdo.activiti.domain.SalaryDO)
+2018-10-20 11:45:57 -Mapped "{[/act/salary/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.activiti.controller.SalaryController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:57 -Mapped "{[/act/salary/form/{taskId}],methods=[GET]}" onto java.lang.String com.bootdo.activiti.controller.SalaryController.edit(java.lang.String,org.springframework.ui.Model)
+2018-10-20 11:45:57 -Mapped "{[/act/salary],methods=[GET]}" onto java.lang.String com.bootdo.activiti.controller.SalaryController.Salary()
+2018-10-20 11:45:57 -Mapped "{[/act/salary/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.SalaryController.saveOrUpdate(com.bootdo.activiti.domain.SalaryDO)
+2018-10-20 11:45:57 -Mapped "{[/activiti/task/form/{procDefId}/{taskId}],methods=[GET]}" onto public void com.bootdo.activiti.controller.TaskController.form(java.lang.String,java.lang.String,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2018-10-20 11:45:57 -Mapped "{[/activiti/task/gotoList],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.activiti.controller.TaskController.list(int,int)
+2018-10-20 11:45:57 -Mapped "{[/activiti/task/todo],methods=[GET]}" onto org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.TaskController.todo()
+2018-10-20 11:45:57 -Mapped "{[/activiti/task/todoList],methods=[GET]}" onto java.util.List<com.bootdo.activiti.vo.TaskVO> com.bootdo.activiti.controller.TaskController.todoList()
+2018-10-20 11:45:57 -Mapped "{[/activiti/task/trace/photo/{procDefId}/{execId}]}" onto public void com.bootdo.activiti.controller.TaskController.tracePhoto(java.lang.String,java.lang.String,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-10-20 11:45:57 -Mapped "{[/activiti/task/form/{procDefId}],methods=[GET]}" onto public void com.bootdo.activiti.controller.TaskController.startForm(java.lang.String,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2018-10-20 11:45:57 -Mapped "{[/activiti/task/goto],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.TaskController.gotoTask()
+2018-10-20 11:45:57 -Mapped "{[/blog/open/page/{categories}],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.BlogController.about(java.lang.String,org.springframework.ui.Model)
+2018-10-20 11:45:57 -Mapped "{[/blog/open/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.blog.controller.BlogController.opentList(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:57 -Mapped "{[/blog],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.BlogController.blog()
+2018-10-20 11:45:57 -Mapped "{[/blog/open/post/{cid}],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.BlogController.post(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:57 -Mapped "{[/blog/bContent/add],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.ContentController.add()
+2018-10-20 11:45:57 -Mapped "{[/blog/bContent/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.blog.controller.ContentController.remove(java.lang.Long)
+2018-10-20 11:45:57 -Mapped "{[/blog/bContent/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.blog.controller.ContentController.remove(java.lang.Long[])
+2018-10-20 11:45:57 -Mapped "{[/blog/bContent/update]}" onto public com.bootdo.common.utils.R com.bootdo.blog.controller.ContentController.update(com.bootdo.blog.domain.ContentDO)
+2018-10-20 11:45:57 -Mapped "{[/blog/bContent/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.blog.controller.ContentController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:57 -Mapped "{[/blog/bContent/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.blog.controller.ContentController.save(com.bootdo.blog.domain.ContentDO)
+2018-10-20 11:45:57 -Mapped "{[/blog/bContent],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.ContentController.bContent()
+2018-10-20 11:45:57 -Mapped "{[/blog/bContent/edit/{cid}],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.ContentController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:57 -Mapped "{[/common/dict/add],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.add()
+2018-10-20 11:45:57 -Mapped "{[/common/dict/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.remove(java.lang.Long)
+2018-10-20 11:45:57 -Mapped "{[/common/dict/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.remove(java.lang.Long[])
+2018-10-20 11:45:57 -Mapped "{[/common/dict/update]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.update(com.bootdo.common.domain.DictDO)
+2018-10-20 11:45:57 -Mapped "{[/common/dict/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.common.controller.DictController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:57 -Mapped "{[/common/dict/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.save(com.bootdo.common.domain.DictDO)
+2018-10-20 11:45:57 -Mapped "{[/common/dict/type],methods=[GET]}" onto public java.util.List<com.bootdo.common.domain.DictDO> com.bootdo.common.controller.DictController.listType()
+2018-10-20 11:45:57 -Mapped "{[/common/dict/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:57 -Mapped "{[/common/dict/add/{type}/{description}],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.addD(org.springframework.ui.Model,java.lang.String,java.lang.String)
+2018-10-20 11:45:57 -Mapped "{[/common/dict/list/{type}],methods=[GET]}" onto public java.util.List<com.bootdo.common.domain.DictDO> com.bootdo.common.controller.DictController.listByType(java.lang.String)
+2018-10-20 11:45:57 -Mapped "{[/common/dict],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.dict()
+2018-10-20 11:45:57 -Mapped "{[/common/sysFile/add],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.add()
+2018-10-20 11:45:57 -Mapped "{[/common/sysFile/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.remove(java.lang.Long,javax.servlet.http.HttpServletRequest)
+2018-10-20 11:45:57 -Mapped "{[/common/sysFile/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.remove(java.lang.Long[])
+2018-10-20 11:45:57 -Mapped "{[/common/sysFile/update]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.update(com.bootdo.common.domain.FileDO)
+2018-10-20 11:45:57 -Mapped "{[/common/sysFile/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.common.controller.FileController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:57 -Mapped "{[/common/sysFile/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.save(com.bootdo.common.domain.FileDO)
+2018-10-20 11:45:58 -Mapped "{[/common/sysFile/info/{id}]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.info(java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/common/sysFile/edit],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/common/sysFile],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.sysFile(org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/common/sysFile/upload],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.FileController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2018-10-20 11:45:58 -Mapped "{[/common/generator/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.GeneratorController.update(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:58 -Mapped "{[/common/generator/list],methods=[GET]}" onto java.util.List<java.util.Map<java.lang.String, java.lang.Object>> com.bootdo.common.controller.GeneratorController.list()
+2018-10-20 11:45:58 -Mapped "{[/common/generator/code/{tableName}]}" onto public void com.bootdo.common.controller.GeneratorController.code(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.String) throws java.io.IOException
+2018-10-20 11:45:58 -Mapped "{[/common/generator],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.GeneratorController.generator()
+2018-10-20 11:45:58 -Mapped "{[/common/generator/edit],methods=[GET]}" onto public java.lang.String com.bootdo.common.controller.GeneratorController.edit(org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/common/generator/batchCode]}" onto public void com.bootdo.common.controller.GeneratorController.batchCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.String) throws java.io.IOException
+2018-10-20 11:45:58 -Mapped "{[/common/log/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.LogController.remove(java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/common/log],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.LogController.log()
+2018-10-20 11:45:58 -Mapped "{[/common/log/list],methods=[GET]}" onto com.bootdo.common.domain.PageDO<com.bootdo.common.domain.LogDO> com.bootdo.common.controller.LogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:58 -Mapped "{[/common/log/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.LogController.batchRemove(java.lang.Long[])
+2018-10-20 11:45:58 -Mapped "{[/error]}" onto public com.bootdo.common.utils.R com.bootdo.common.exception.MainsiteErrorController.handleError(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-10-20 11:45:58 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.bootdo.common.exception.MainsiteErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/add],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.add()
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.remove(java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.remove(java.lang.Long[])
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/update]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.update(com.bootdo.oa.domain.NotifyDO)
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/read/{id}],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.read(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.save(com.bootdo.oa.domain.NotifyDO)
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/message],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.message()
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/oa/notify],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.oaNotify()
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/selfList],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.selfList(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:58 -Mapped "{[/oa/notify/selfNotify],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.selefNotify()
+2018-10-20 11:45:58 -Mapped "{[/person/person/add],methods=[GET]}" onto java.lang.String com.bootdo.pfd.person.controller.PersonController.add()
+2018-10-20 11:45:58 -Mapped "{[/person/person/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.pfd.person.controller.PersonController.remove(java.lang.String)
+2018-10-20 11:45:58 -Mapped "{[/person/person/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.pfd.person.controller.PersonController.remove(java.lang.String[])
+2018-10-20 11:45:58 -Mapped "{[/person/person/update]}" onto public com.bootdo.common.utils.R com.bootdo.pfd.person.controller.PersonController.update(com.bootdo.pfd.person.domain.PersonDO)
+2018-10-20 11:45:58 -Mapped "{[/person/person/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.pfd.person.controller.PersonController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:58 -Mapped "{[/person/person/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.pfd.person.controller.PersonController.save(com.bootdo.pfd.person.domain.PersonDO)
+2018-10-20 11:45:58 -Mapped "{[/person/person/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.pfd.person.controller.PersonController.edit(java.lang.String,org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/person/person],methods=[GET]}" onto java.lang.String com.bootdo.pfd.person.controller.PersonController.Person()
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/add/{pId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.add(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.remove(java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.remove(java.lang.Long[])
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/update]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.update(com.bootdo.system.domain.DeptDO)
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/list],methods=[GET]}" onto public java.util.List<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.DeptController.list()
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.save(com.bootdo.system.domain.DeptDO)
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/tree],methods=[GET]}" onto public com.bootdo.common.domain.Tree<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.DeptController.tree()
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/edit/{deptId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.dept()
+2018-10-20 11:45:58 -Mapped "{[/system/sysDept/treeView],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.treeView()
+2018-10-20 11:45:58 -Mapped "{[/index],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.index(org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/main],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.main()
+2018-10-20 11:45:58 -Mapped "{[/login],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.login()
+2018-10-20 11:45:58 -Mapped "{[/login],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.LoginController.ajaxLogin(java.lang.String,java.lang.String)
+2018-10-20 11:45:58 -Mapped "{[/logout],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.logout()
+2018-10-20 11:45:58 -Mapped "{[/ || ],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.welcome(org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/sys/menu/add/{pId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.add(org.springframework.ui.Model,java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/sys/menu/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.remove(java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/sys/menu/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.update(com.bootdo.system.domain.MenuDO)
+2018-10-20 11:45:58 -Mapped "{[/sys/menu/list]}" onto java.util.List<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:58 -Mapped "{[/sys/menu/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.save(com.bootdo.system.domain.MenuDO)
+2018-10-20 11:45:58 -Mapped "{[/sys/menu/tree/{roleId}],methods=[GET]}" onto com.bootdo.common.domain.Tree<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.tree(java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/sys/menu/tree],methods=[GET]}" onto com.bootdo.common.domain.Tree<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.tree()
+2018-10-20 11:45:58 -Mapped "{[/sys/menu/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.edit(org.springframework.ui.Model,java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/sys/menu],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.menu(org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/sys/role/add],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.add()
+2018-10-20 11:45:58 -Mapped "{[/sys/role/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.update(com.bootdo.system.domain.RoleDO)
+2018-10-20 11:45:58 -Mapped "{[/sys/role/list],methods=[GET]}" onto java.util.List<com.bootdo.system.domain.RoleDO> com.bootdo.system.controller.RoleController.list()
+2018-10-20 11:45:58 -Mapped "{[/sys/role/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.save(java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/sys/role/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.save(com.bootdo.system.domain.RoleDO)
+2018-10-20 11:45:58 -Mapped "{[/sys/role/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.batchRemove(java.lang.Long[])
+2018-10-20 11:45:58 -Mapped "{[/sys/role],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.role()
+2018-10-20 11:45:58 -Mapped "{[/sys/role/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/sys/online/list]}" onto public java.util.List<com.bootdo.system.domain.UserOnline> com.bootdo.system.controller.SessionController.list()
+2018-10-20 11:45:58 -Mapped "{[/sys/online/forceLogout/{sessionId}]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.SessionController.forceLogout(java.lang.String,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2018-10-20 11:45:58 -Mapped "{[/sys/online],methods=[GET]}" onto public java.lang.String com.bootdo.system.controller.SessionController.online()
+2018-10-20 11:45:58 -Mapped "{[/sys/online/sessionList]}" onto public java.util.Collection<org.apache.shiro.session.Session> com.bootdo.system.controller.SessionController.sessionList()
+2018-10-20 11:45:58 -Mapped "{[/sys/user/exit],methods=[POST]}" onto boolean com.bootdo.system.controller.UserController.exit(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/add],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.add(org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.remove(java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.update(com.bootdo.system.domain.UserDO)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/list],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.system.controller.UserController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.save(com.bootdo.system.domain.UserDO)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.batchRemove(java.lang.Long[])
+2018-10-20 11:45:58 -Mapped "{[/sys/user/tree],methods=[GET]}" onto public com.bootdo.common.domain.Tree<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.UserController.tree()
+2018-10-20 11:45:58 -Mapped "{[/sys/user],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.user(org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.edit(org.springframework.ui.Model,java.lang.Long)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/treeView],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.treeView()
+2018-10-20 11:45:58 -Mapped "{[/sys/user/updatePeronal],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.updatePeronal(com.bootdo.system.domain.UserDO)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/adminResetPwd],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.adminResetPwd(com.bootdo.system.vo.UserVO)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/resetPwd],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.resetPwd(com.bootdo.system.vo.UserVO)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/resetPwd/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.resetPwd(java.lang.Long,org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/uploadImg],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.uploadImg(org.springframework.web.multipart.MultipartFile,java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-10-20 11:45:58 -Mapped "{[/sys/user/personal],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.personal(org.springframework.ui.Model)
+2018-10-20 11:45:58 -Mapped "{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-10-20 11:45:58 -Mapped "{[/swagger-resources/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2018-10-20 11:45:58 -Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2018-10-20 11:45:58 -Mapped "{[/swagger-resources/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2018-10-20 11:45:58 -Initializing ExecutorService  'messageBrokerTaskScheduler'
+2018-10-20 11:45:59 -Mapped URL path [/endpointChat/**] onto handler of type [class org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler]
+2018-10-20 11:45:59 -Initializing ExecutorService  'brokerChannelExecutor'
+2018-10-20 11:45:59 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-20 11:45:59 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1b11171f: startup date [Sat Oct 20 11:45:38 CST 2018]; root of context hierarchy
+2018-10-20 11:46:00 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-20 11:46:00 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-20 11:46:00 -Mapped URL path [/files/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-20 11:46:00 -Detected @ExceptionHandler methods in BDExceptionHandler
+2018-10-20 11:46:00 -[THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2018-10-20 11:46:02 -Using default implementation for ThreadExecutor
+2018-10-20 11:46:02 -Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-10-20 11:46:02 -Quartz Scheduler v.2.2.1 created.
+2018-10-20 11:46:02 -RAMJobStore initialized.
+2018-10-20 11:46:02 -Scheduler meta-data: Quartz Scheduler (v2.2.1) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-10-20 11:46:02 -Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2018-10-20 11:46:02 -Quartz scheduler version: 2.2.1
+2018-10-20 11:46:02 -JobFactory set to: org.springframework.boot.autoconfigure.quartz.AutowireCapableBeanJobFactory@1f547af8
+2018-10-20 11:46:02 -Registering beans for JMX exposure on startup
+2018-10-20 11:46:02 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-10-20 11:46:02 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2018-10-20 11:46:02 -Starting beans in phase 2147483647
+2018-10-20 11:46:02 -Context refreshed
+2018-10-20 11:46:02 -Found 1 custom documentation plugin(s)
+2018-10-20 11:46:02 -Scanning for api listing references
+2018-10-20 11:46:03 -Generating unique operation named: removeUsingPOST_1
+2018-10-20 11:46:03 -Generating unique operation named: addUsingGET_1
+2018-10-20 11:46:03 -Generating unique operation named: editUsingGET_1
+2018-10-20 11:46:03 -Generating unique operation named: listUsingGET_1
+2018-10-20 11:46:03 -Generating unique operation named: removeUsingPOST_2
+2018-10-20 11:46:03 -Generating unique operation named: removeUsingPOST_3
+2018-10-20 11:46:03 -Generating unique operation named: saveUsingPOST_1
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingGET_1
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingHEAD_1
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPOST_1
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPUT_1
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPATCH_1
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingDELETE_1
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingOPTIONS_1
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingTRACE_1
+2018-10-20 11:46:03 -Generating unique operation named: addUsingGET_2
+2018-10-20 11:46:03 -Generating unique operation named: editUsingGET_2
+2018-10-20 11:46:03 -Generating unique operation named: listUsingGET_2
+2018-10-20 11:46:03 -Generating unique operation named: removeUsingPOST_4
+2018-10-20 11:46:03 -Generating unique operation named: removeUsingPOST_5
+2018-10-20 11:46:03 -Generating unique operation named: saveUsingPOST_2
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingGET_2
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingHEAD_2
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPOST_2
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPUT_2
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPATCH_2
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingDELETE_2
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingOPTIONS_2
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingTRACE_2
+2018-10-20 11:46:03 -Generating unique operation named: addUsingGET_3
+2018-10-20 11:46:03 -Generating unique operation named: editUsingGET_3
+2018-10-20 11:46:03 -Generating unique operation named: listUsingGET_3
+2018-10-20 11:46:03 -Generating unique operation named: removeUsingPOST_6
+2018-10-20 11:46:03 -Generating unique operation named: removeUsingPOST_7
+2018-10-20 11:46:03 -Generating unique operation named: saveUsingPOST_3
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingGET_3
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingHEAD_3
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPOST_3
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPUT_3
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPATCH_3
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingDELETE_3
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingOPTIONS_3
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingTRACE_3
+2018-10-20 11:46:03 -Generating unique operation named: editUsingGET_4
+2018-10-20 11:46:03 -Generating unique operation named: listUsingGET_4
+2018-10-20 11:46:03 -Generating unique operation named: updateUsingPOST_4
+2018-10-20 11:46:03 -Generating unique operation named: listUsingGET_5
+2018-10-20 11:46:03 -Generating unique operation named: removeUsingPOST_8
+2018-10-20 11:46:03 -Generating unique operation named: welcomeUsingGET_1
+2018-10-20 11:46:04 -Generating unique operation named: addUsingGET_4
+2018-10-20 11:46:04 -Generating unique operation named: editUsingGET_5
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_6
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_9
+2018-10-20 11:46:04 -Generating unique operation named: saveUsingPOST_4
+2018-10-20 11:46:04 -Generating unique operation named: treeUsingGET_1
+2018-10-20 11:46:04 -Generating unique operation named: treeUsingGET_2
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPOST_5
+2018-10-20 11:46:04 -Generating unique operation named: batchRemoveUsingPOST_1
+2018-10-20 11:46:04 -Generating unique operation named: editUsingGET_6
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_7
+2018-10-20 11:46:04 -Generating unique operation named: addUsingGET_5
+2018-10-20 11:46:04 -Generating unique operation named: editUsingGET_7
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_8
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_10
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_11
+2018-10-20 11:46:04 -Generating unique operation named: saveUsingPOST_5
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingGET_4
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingHEAD_4
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPOST_6
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPUT_4
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPATCH_4
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingDELETE_4
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingOPTIONS_4
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingTRACE_4
+2018-10-20 11:46:04 -Generating unique operation named: addUsingGET_6
+2018-10-20 11:46:04 -Generating unique operation named: editUsingGET_8
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_9
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_12
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_13
+2018-10-20 11:46:04 -Generating unique operation named: saveUsingPOST_6
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingGET_5
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingHEAD_5
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPOST_7
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPUT_5
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPATCH_5
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingDELETE_5
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingOPTIONS_5
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingTRACE_5
+2018-10-20 11:46:04 -Generating unique operation named: addUsingGET_7
+2018-10-20 11:46:04 -Generating unique operation named: batchRemoveUsingPOST_2
+2018-10-20 11:46:04 -Generating unique operation named: deployUsingPOST_1
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_10
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_14
+2018-10-20 11:46:04 -Generating unique operation named: addUsingGET_8
+2018-10-20 11:46:04 -Generating unique operation named: batchRemoveUsingPOST_3
+2018-10-20 11:46:04 -Generating unique operation named: editUsingGET_9
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_11
+2018-10-20 11:46:04 -Generating unique operation named: saveUsingPOST_7
+2018-10-20 11:46:04 -Generating unique operation named: saveUsingPOST_8
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPOST_8
+2018-10-20 11:46:04 -Generating unique operation named: addUsingGET_9
+2018-10-20 11:46:04 -Generating unique operation named: editUsingGET_10
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_12
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_15
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_16
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingGET_6
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingHEAD_6
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPOST_9
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPUT_6
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPATCH_6
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingDELETE_6
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingOPTIONS_6
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingTRACE_6
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_13
+2018-10-20 11:46:04 -Generating unique operation named: listUsingHEAD_1
+2018-10-20 11:46:04 -Generating unique operation named: listUsingPOST_1
+2018-10-20 11:46:04 -Generating unique operation named: listUsingPUT_1
+2018-10-20 11:46:04 -Generating unique operation named: listUsingPATCH_1
+2018-10-20 11:46:04 -Generating unique operation named: listUsingDELETE_1
+2018-10-20 11:46:04 -Generating unique operation named: listUsingOPTIONS_1
+2018-10-20 11:46:04 -Generating unique operation named: listUsingTRACE_1
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_14
+2018-10-20 11:46:04 -Generating unique operation named: addUsingGET_10
+2018-10-20 11:46:04 -Generating unique operation named: batchRemoveUsingPOST_4
+2018-10-20 11:46:04 -Generating unique operation named: editUsingGET_11
+2018-10-20 11:46:04 -Generating unique operation named: listUsingGET_15
+2018-10-20 11:46:04 -Generating unique operation named: removeUsingPOST_17
+2018-10-20 11:46:04 -Generating unique operation named: saveUsingPOST_9
+2018-10-20 11:46:04 -Generating unique operation named: treeUsingGET_3
+2018-10-20 11:46:04 -Generating unique operation named: treeViewUsingGET_1
+2018-10-20 11:46:04 -Generating unique operation named: updateUsingPOST_10
+2018-10-20 11:46:04 -Starting...
+2018-10-20 11:46:04 -BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2018-10-20 11:46:04 -Started.
+2018-10-20 11:46:04 -Starting Quartz Scheduler now
+2018-10-20 11:46:04 -Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2018-10-20 11:46:04 -Starting ProtocolHandler ["http-nio-8080"]
+2018-10-20 11:46:05 -Using a shared selector for servlet write/read
+2018-10-20 11:46:05 -Tomcat started on port(s): 8080 (http) with context path ''
+2018-10-20 11:46:05 -Started BootdoApplication in 30.12 seconds (JVM running for 35.943)
+2018-10-20 11:46:17 -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-10-20 11:46:17 -FrameworkServlet 'dispatcherServlet': initialization started
+2018-10-20 11:46:17 -FrameworkServlet 'dispatcherServlet': initialization completed in 57 ms
+2018-10-20 11:46:17 -Enabling session validation scheduler...
+2018-10-20 11:46:17 -请求地址 : http://127.0.0.1:8080/
+2018-10-20 11:46:17 -HTTP METHOD : GET
+2018-10-20 11:46:17 -CLASS_METHOD : com.bootdo.system.controller.LoginController.welcome
+2018-10-20 11:46:17 -参数 : [{}]
+2018-10-20 11:46:17 -耗时 : 14
+2018-10-20 11:46:17 -返回值 : redirect:/blog
+2018-10-20 11:46:17 -请求地址 : http://127.0.0.1:8080/blog
+2018-10-20 11:46:17 -HTTP METHOD : GET
+2018-10-20 11:46:17 -CLASS_METHOD : com.bootdo.blog.controller.BlogController.blog
+2018-10-20 11:46:17 -参数 : []
+2018-10-20 11:46:17 -耗时 : 1
+2018-10-20 11:46:17 -返回值 : blog/index/main
+2018-10-20 11:46:19 -请求地址 : http://127.0.0.1:8080/blog/open/list
+2018-10-20 11:46:19 -HTTP METHOD : GET
+2018-10-20 11:46:19 -CLASS_METHOD : com.bootdo.blog.controller.BlogController.opentList
+2018-10-20 11:46:19 -参数 : [{type=article, limit=10, offset=0}]
+2018-10-20 11:46:19 -请求地址 : http://127.0.0.1:8080/login;JSESSIONID=9a4c15ec-fd82-4d0f-9a48-4d6d2994013c
+2018-10-20 11:46:19 -HTTP METHOD : GET
+2018-10-20 11:46:19 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2018-10-20 11:46:19 -参数 : []
+2018-10-20 11:46:19 -耗时 : 1
+2018-10-20 11:46:19 -返回值 : login
+2018-10-20 11:46:19 -==>  Preparing: select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from blog_content WHERE type = ? order by cid desc limit 0, 10 
+2018-10-20 11:46:19 -==> Parameters: article(String)
+2018-10-20 11:46:19 -<==      Total: 10
+2018-10-20 11:46:19 -==>  Preparing: select count(*) from blog_content WHERE type = ? 
+2018-10-20 11:46:19 -==> Parameters: article(String)
+2018-10-20 11:46:19 -<==      Total: 1
+2018-10-20 11:46:19 -耗时 : 747
+2018-10-20 11:46:19 -返回值 : com.bootdo.common.utils.PageUtils@10222c59
+2018-10-20 11:46:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2018-10-20 11:47:43 -请求地址 : http://127.0.0.1:8080/login
+2018-10-20 11:47:43 -HTTP METHOD : GET
+2018-10-20 11:47:43 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2018-10-20 11:47:43 -参数 : []
+2018-10-20 11:47:43 -耗时 : 0
+2018-10-20 11:47:43 -返回值 : login
+2018-10-20 11:47:44 -请求地址 : http://127.0.0.1:8080/login
+2018-10-20 11:47:44 -HTTP METHOD : GET
+2018-10-20 11:47:44 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2018-10-20 11:47:44 -参数 : []
+2018-10-20 11:47:44 -耗时 : 1
+2018-10-20 11:47:44 -返回值 : login
+2018-10-20 11:47:45 -请求地址 : http://127.0.0.1:8080/login
+2018-10-20 11:47:45 -HTTP METHOD : POST
+2018-10-20 11:47:45 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2018-10-20 11:47:45 -参数 : [admin, 111111]
+2018-10-20 11:47:45 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2018-10-20 11:47:45 -==> Parameters: admin(String)
+2018-10-20 11:47:45 -<==      Total: 1
+2018-10-20 11:47:45 -耗时 : 98
+2018-10-20 11:47:45 -返回值 : {msg=操作成功, code=0}
+2018-10-20 11:47:45 -More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [clientInboundChannelExecutor, clientOutboundChannelExecutor, brokerChannelExecutor, messageBrokerTaskScheduler]
+2018-10-20 11:47:45 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-20 11:47:46 -请求地址 : http://127.0.0.1:8080/index
+2018-10-20 11:47:46 -HTTP METHOD : GET
+2018-10-20 11:47:46 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2018-10-20 11:47:46 -参数 : [{}]
+2018-10-20 11:47:46 -==> Parameters: 1(Long), admin(String), 登录(String), 98(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2018-10-20 11:47:45.992(Timestamp)
+2018-10-20 11:47:46 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2018-10-20 11:47:46 -==> Parameters: 1(Long)
+2018-10-20 11:47:46 -<==    Updates: 1
+2018-10-20 11:47:46 -<==      Total: 30
+2018-10-20 11:47:46 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2018-10-20 11:47:46 -==> Parameters: 138(Long)
+2018-10-20 11:47:46 -<==      Total: 1
+2018-10-20 11:47:46 -耗时 : 657
+2018-10-20 11:47:46 -返回值 : index_v1
+2018-10-20 11:47:46 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-20 11:47:46 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 658(Integer), com.bootdo.system.controller.LoginController.index()(String), {"menus":[{"attributes":{"icon":"fa fa-cab","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-address-book-o","url":"person/person"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"106","parentId":"105","text":"人员信息"}],"hasChildren":true,"hasParent":false,"id":"105","parentId":"0","text":"普凡达"},{"attributes":{"icon":"fa fa-bars","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-book","url":"/common/dict"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"78","parentId":"1","text":"数据字典"},{"attributes":{"icon":"fa fa-folder-open","url":"/common/sysFile"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"71","parentId":"1","text":"文件管理"}],"hasChildren":true,"hasParent":false,"id":"1","parentId":"0","text":"基础管理"},{"attributes":{"icon":"fa fa-desktop"},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/user/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"6","parentId":"3","text":"用户管理"},{"attributes":{"icon":"fa fa-paw","url":"sys/role"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"3","text":"角色管理"},{"attributes":{"icon":"fa fa-th-list","url":"sys/menu/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"2","parentId":"3","text":"系统菜单"},{"attributes":{"icon":"fa fa-users","url":"/system/sysDept"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"73","parentId":"3","text":"部门管理"}],"hasChildren":true,"hasParent":false,"id":"3","parentId":"0","text":"系统管理"},{"attributes":{"icon":"fa fa-gear","url":""},"checked":false,"children":[{"attributes":{"icon":"","url":"/swagger-ui.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"104","parentId":"77","text":"swagger"},{"attributes":{"icon":"fa fa-code","url":"common/generator"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"48","parentId":"77","text":"代码生成"},{"attributes":{"icon":"fa fa-hourglass-1","url":"common/job"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"72","parentId":"77","text":"计划任务"}],"hasChildren":true,"hasParent":false,"id":"77","parentId":"0","text":"系统工具"},{"attributes":{"icon":"fa fa-video-camera","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/online"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"92","parentId":"91","text":"在线用户"},{"attributes":{"icon":"fa fa-warning","url":"common/log"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"27","parentId":"91","text":"系统日志"},{"attributes":{"icon":"fa fa-caret-square-o-right","url":"/druid/index.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"57","parentId":"91","text":"运行监控"}],"hasChildren":true,"hasParent":false,"id":"91","parentId":"0","text":"系统监控"},{"attributes":{"icon":"fa fa-laptop","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-envelope-square","url":"oa/notify/selfNotify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"90","parentId":"84","text":"我的通知"},{"attributes":{"icon":"fa fa-pencil-square","url":"oa/notify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"85","parentId":"84","text":"通知公告"}],"hasChildren":true,"hasParent":false,"id":"84","parentId":"0","text":"办公管理"},{"attributes":{"icon":"fa fa-rss","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-edit","url":"/blog/bContent/add"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"68","parentId":"49","text":"发布文章"},{"attributes":{"icon":"fa fa-file-image-o","url":"blog/bContent"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"50","parentId":"49","text":"文章列表"}],"hasChildren":true,"hasParent":false,"id":"49","parentId":"0","text":"博客管理"},{"attributes":{"icon":"fa fa-print","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-flag","url":"activiti/process"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"96","parentId":"93","text":"流程管理"},{"attributes":{"icon":"","url":"activiti/task/todo"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"101","parentId":"93","text":"待办任务"},{"attributes":{"icon":"fa fa-sort-amount-asc","url":"activiti/model"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"94","parentId":"93","text":"模型管理"}],"hasChildren":true,"hasParent":false,"id":"93","parentId":"0","text":"工作流程"},{"attributes":{"icon":"fa fa-bar-chart","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-area-chart","url":"/chart/graph_echarts.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"98","parentId":"97","text":"百度chart"}],"hasChildren":true,"hasParent":false,"id":"97","parentId":"0","text":"图表管理"}],"name":"超级管理员","picUrl":"/img/photo_s.jpg","u(String), 127.0.0.1(String), 2018-10-20 11:47:46.961(Timestamp)
+2018-10-20 11:47:47 -<==    Updates: 1
+2018-10-20 11:47:47 -请求地址 : http://127.0.0.1:8080/main
+2018-10-20 11:47:47 -HTTP METHOD : GET
+2018-10-20 11:47:47 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-10-20 11:47:47 -参数 : []
+2018-10-20 11:47:47 -耗时 : 1
+2018-10-20 11:47:47 -返回值 : main
+2018-10-20 11:47:47 -请求地址 : http://127.0.0.1:8080/oa/notify/message
+2018-10-20 11:47:47 -HTTP METHOD : GET
+2018-10-20 11:47:47 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2018-10-20 11:47:47 -参数 : []
+2018-10-20 11:47:47 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2018-10-20 11:47:47 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2018-10-20 11:47:47 -请求地址 : http://127.0.0.1:8080/main
+2018-10-20 11:47:47 -HTTP METHOD : GET
+2018-10-20 11:47:47 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-10-20 11:47:47 -参数 : []
+2018-10-20 11:47:47 -耗时 : 0
+2018-10-20 11:47:47 -返回值 : main
+2018-10-20 11:47:48 -<==      Total: 1
+2018-10-20 11:47:48 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:47:48 -==> Parameters: 1(Long)
+2018-10-20 11:47:48 -<==      Total: 1
+2018-10-20 11:47:48 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2018-10-20 11:47:48 -==> Parameters: 1(Long), 0(String)
+2018-10-20 11:47:48 -<==      Total: 1
+2018-10-20 11:47:48 -耗时 : 701
+2018-10-20 11:47:48 -返回值 : com.bootdo.common.utils.PageUtils@4c7e610c
+2018-10-20 11:47:52 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2018-10-20 11:47:52 -==> Parameters: 1(Long)
+2018-10-20 11:47:52 -<==      Total: 50
+2018-10-20 11:47:52 -请求地址 : http://127.0.0.1:8080/person/person
+2018-10-20 11:47:52 -HTTP METHOD : GET
+2018-10-20 11:47:52 -CLASS_METHOD : com.bootdo.pfd.person.controller.PersonController.Person
+2018-10-20 11:47:52 -参数 : []
+2018-10-20 11:47:52 -耗时 : 0
+2018-10-20 11:47:52 -返回值 : person/person/person
+2018-10-20 11:47:52 -请求地址 : http://127.0.0.1:8080/person/person/list
+2018-10-20 11:47:53 -HTTP METHOD : GET
+2018-10-20 11:47:53 -CLASS_METHOD : com.bootdo.pfd.person.controller.PersonController.list
+2018-10-20 11:47:53 -参数 : [{limit=10, offset=0}]
+2018-10-20 11:47:53 -==>  Preparing: select `ID`,`NAME`,`GX`,`XB` from pfd_person order by ID desc limit ?, ? 
+2018-10-20 11:47:53 -==> Parameters: 0(Integer), 10(Integer)
+2018-10-20 11:47:53 -<==      Total: 1
+2018-10-20 11:47:53 -==>  Preparing: select count(*) from pfd_person 
+2018-10-20 11:47:53 -==> Parameters: 
+2018-10-20 11:47:53 -<==      Total: 1
+2018-10-20 11:47:53 -耗时 : 58
+2018-10-20 11:47:53 -返回值 : com.bootdo.common.utils.PageUtils@5d2b6e8a
+2018-10-20 11:47:57 -请求地址 : http://127.0.0.1:8080/common/dict
+2018-10-20 11:47:57 -HTTP METHOD : GET
+2018-10-20 11:47:57 -CLASS_METHOD : com.bootdo.common.controller.DictController.dict
+2018-10-20 11:47:57 -参数 : []
+2018-10-20 11:47:57 -耗时 : 1
+2018-10-20 11:47:57 -返回值 : common/dict/dict
+2018-10-20 11:47:57 -请求地址 : http://127.0.0.1:8080/common/dict/type
+2018-10-20 11:47:57 -HTTP METHOD : GET
+2018-10-20 11:47:57 -CLASS_METHOD : com.bootdo.common.controller.DictController.listType
+2018-10-20 11:47:57 -参数 : []
+2018-10-20 11:47:57 -==>  Preparing: select distinct `type` , description from sys_dict 
+2018-10-20 11:47:57 -==> Parameters: 
+2018-10-20 11:47:57 -请求地址 : http://127.0.0.1:8080/common/dict/list
+2018-10-20 11:47:57 -HTTP METHOD : GET
+2018-10-20 11:47:57 -CLASS_METHOD : com.bootdo.common.controller.DictController.list
+2018-10-20 11:47:57 -参数 : [{limit=10, offset=0}]
+2018-10-20 11:47:57 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict order by id desc limit ?, ? 
+2018-10-20 11:47:57 -==> Parameters: 0(Integer), 10(Integer)
+2018-10-20 11:47:57 -<==      Total: 31
+2018-10-20 11:47:57 -耗时 : 66
+2018-10-20 11:47:57 -<==      Total: 10
+2018-10-20 11:47:57 -返回值 : [DictDO{id=null, name='null', value='null', type='del_flag', description='删除标记', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='show_hide', description='显示/隐藏', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='yes_no', description='是/否', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='color', description='颜色值', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='theme', description='主题方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_area_type', description='区域类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_type', description='机构类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_common', description='快捷通用部门', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_grade', description='机构等级', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_data_scope', description='数据范围', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_user_type', description='用户类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_theme', description='站点主题', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_module', description='栏目模型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_show_modes', description='展现方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_del_flag', description='内容状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_posid', description='推荐位', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_guestbook', description='留言板分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_leave_type', description='请假类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_log_type', description='日志类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_type', description='流程类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_category', description='流程分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_category', description='代码生成分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_query_type', description='查询方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_show_type', description='字段生成方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_java_type', description='Java类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sex', description='性别', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_type', description='通知通告类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_status', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_read', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='blog_type', description='博客类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='hobby', description='爱好', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}]
+2018-10-20 11:47:57 -==>  Preparing: select count(*) from sys_dict 
+2018-10-20 11:47:57 -==> Parameters: 
+2018-10-20 11:47:57 -<==      Total: 1
+2018-10-20 11:47:57 -耗时 : 80
+2018-10-20 11:47:57 -返回值 : com.bootdo.common.utils.PageUtils@74345ddf
+2018-10-20 11:47:58 -请求地址 : http://127.0.0.1:8080/common/sysFile
+2018-10-20 11:47:58 -HTTP METHOD : GET
+2018-10-20 11:47:58 -CLASS_METHOD : com.bootdo.common.controller.FileController.sysFile
+2018-10-20 11:47:58 -参数 : [{}]
+2018-10-20 11:47:58 -耗时 : 0
+2018-10-20 11:47:58 -返回值 : common/file/file
+2018-10-20 11:47:58 -请求地址 : http://127.0.0.1:8080/common/sysFile/list
+2018-10-20 11:47:58 -HTTP METHOD : GET
+2018-10-20 11:47:58 -CLASS_METHOD : com.bootdo.common.controller.FileController.list
+2018-10-20 11:47:58 -参数 : [{limit=12, offset=0, type=}]
+2018-10-20 11:47:58 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file order by id desc limit ?, ? 
+2018-10-20 11:47:58 -==> Parameters: 0(Integer), 12(Integer)
+2018-10-20 11:47:58 -<==      Total: 8
+2018-10-20 11:47:58 -==>  Preparing: select count(*) from sys_file 
+2018-10-20 11:47:58 -==> Parameters: 
+2018-10-20 11:47:58 -<==      Total: 1
+2018-10-20 11:47:58 -耗时 : 15
+2018-10-20 11:47:58 -返回值 : com.bootdo.common.utils.PageUtils@2a4df77f
+2018-10-20 11:48:48 -请求地址 : http://127.0.0.1:8080/blog/bContent
+2018-10-20 11:48:48 -HTTP METHOD : GET
+2018-10-20 11:48:48 -CLASS_METHOD : com.bootdo.blog.controller.ContentController.bContent
+2018-10-20 11:48:48 -参数 : []
+2018-10-20 11:48:48 -耗时 : 0
+2018-10-20 11:48:48 -返回值 : blog/bContent/bContent
+2018-10-20 11:49:30 -请求地址 : http://127.0.0.1:8080/
+2018-10-20 11:49:30 -HTTP METHOD : GET
+2018-10-20 11:49:30 -CLASS_METHOD : com.bootdo.system.controller.LoginController.welcome
+2018-10-20 11:49:30 -参数 : [{}]
+2018-10-20 11:49:30 -耗时 : 1
+2018-10-20 11:49:30 -返回值 : redirect:/blog
+2018-10-20 11:49:30 -请求地址 : http://127.0.0.1:8080/blog
+2018-10-20 11:49:30 -HTTP METHOD : GET
+2018-10-20 11:49:30 -CLASS_METHOD : com.bootdo.blog.controller.BlogController.blog
+2018-10-20 11:49:30 -参数 : []
+2018-10-20 11:49:30 -耗时 : 0
+2018-10-20 11:49:30 -返回值 : blog/index/main
+2018-10-20 11:49:30 -请求地址 : http://127.0.0.1:8080/blog/open/list
+2018-10-20 11:49:30 -HTTP METHOD : GET
+2018-10-20 11:49:30 -CLASS_METHOD : com.bootdo.blog.controller.BlogController.opentList
+2018-10-20 11:49:30 -参数 : [{type=article, limit=10, offset=0}]
+2018-10-20 11:49:30 -==>  Preparing: select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from blog_content WHERE type = ? order by cid desc limit 0, 10 
+2018-10-20 11:49:30 -==> Parameters: article(String)
+2018-10-20 11:49:30 -<==      Total: 10
+2018-10-20 11:49:30 -==>  Preparing: select count(*) from blog_content WHERE type = ? 
+2018-10-20 11:49:30 -==> Parameters: article(String)
+2018-10-20 11:49:30 -<==      Total: 1
+2018-10-20 11:49:30 -耗时 : 22
+2018-10-20 11:49:30 -返回值 : com.bootdo.common.utils.PageUtils@41738f1f
+2018-10-20 11:49:36 -请求地址 : http://127.0.0.1:8080/blog/open/post/121
+2018-10-20 11:49:36 -HTTP METHOD : GET
+2018-10-20 11:49:36 -CLASS_METHOD : com.bootdo.blog.controller.BlogController.post
+2018-10-20 11:49:36 -参数 : [121, {}]
+2018-10-20 11:49:36 -==>  Preparing: select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from blog_content where cid = ? 
+2018-10-20 11:49:36 -==> Parameters: 121(Long)
+2018-10-20 11:49:36 -<==      Total: 1
+2018-10-20 11:49:36 -耗时 : 7
+2018-10-20 11:49:36 -返回值 : blog/index/post
+2018-10-20 11:50:20 -Failed to invoke @ExceptionHandler method: public java.lang.Object com.bootdo.common.exception.BDExceptionHandler.handleException(java.lang.Exception,javax.servlet.http.HttpServletRequest)
+org.apache.shiro.UnavailableSecurityManagerException: No SecurityManager accessible to the calling code, either bound to the org.apache.shiro.util.ThreadContext or as a vm static singleton.  This is an invalid application configuration.
+	at org.apache.shiro.SecurityUtils.getSecurityManager(SecurityUtils.java:123)
+	at org.apache.shiro.subject.Subject$Builder.<init>(Subject.java:627)
+	at org.apache.shiro.SecurityUtils.getSubject(SecurityUtils.java:56)
+	at com.bootdo.common.utils.ShiroUtils.getSubjct(ShiroUtils.java:23)
+	at com.bootdo.common.utils.ShiroUtils.getUser(ShiroUtils.java:26)
+	at com.bootdo.common.exception.BDExceptionHandler.handleException(BDExceptionHandler.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:404)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:139)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:78)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1255)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1062)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:877)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.doInclude(ApplicationDispatcher.java:591)
+	at org.apache.catalina.core.ApplicationDispatcher.include(ApplicationDispatcher.java:527)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:389)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.AsyncContextImpl.setErrorState(AsyncContextImpl.java:424)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:176)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:232)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2018-10-20 11:55:59 -请求地址 : http://127.0.0.1:8080/login
+2018-10-20 11:55:59 -HTTP METHOD : GET
+2018-10-20 11:55:59 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2018-10-20 11:55:59 -参数 : []
+2018-10-20 11:55:59 -耗时 : 3
+2018-10-20 11:55:59 -返回值 : login
+2018-10-20 11:56:01 -请求地址 : http://127.0.0.1:8080/login
+2018-10-20 11:56:01 -HTTP METHOD : POST
+2018-10-20 11:56:01 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2018-10-20 11:56:01 -参数 : [admin, 111111]
+2018-10-20 11:56:01 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2018-10-20 11:56:01 -==> Parameters: admin(String)
+2018-10-20 11:56:01 -<==      Total: 1
+2018-10-20 11:56:01 -耗时 : 45
+2018-10-20 11:56:01 -返回值 : {msg=操作成功, code=0}
+2018-10-20 11:56:01 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-20 11:56:01 -==> Parameters: 1(Long), admin(String), 登录(String), 45(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2018-10-20 11:56:01.934(Timestamp)
+2018-10-20 11:56:01 -请求地址 : http://127.0.0.1:8080/index
+2018-10-20 11:56:01 -HTTP METHOD : GET
+2018-10-20 11:56:01 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2018-10-20 11:56:01 -参数 : [{}]
+2018-10-20 11:56:01 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2018-10-20 11:56:01 -==> Parameters: 1(Long)
+2018-10-20 11:56:01 -<==      Total: 30
+2018-10-20 11:56:02 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2018-10-20 11:56:02 -==> Parameters: 138(Long)
+2018-10-20 11:56:02 -<==      Total: 1
+2018-10-20 11:56:02 -耗时 : 41
+2018-10-20 11:56:02 -返回值 : index_v1
+2018-10-20 11:56:02 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-20 11:56:02 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 42(Integer), com.bootdo.system.controller.LoginController.index()(String), {"menus":[{"attributes":{"icon":"fa fa-cab","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-address-book-o","url":"person/person"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"106","parentId":"105","text":"人员信息"}],"hasChildren":true,"hasParent":false,"id":"105","parentId":"0","text":"普凡达"},{"attributes":{"icon":"fa fa-bars","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-book","url":"/common/dict"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"78","parentId":"1","text":"数据字典"},{"attributes":{"icon":"fa fa-folder-open","url":"/common/sysFile"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"71","parentId":"1","text":"文件管理"}],"hasChildren":true,"hasParent":false,"id":"1","parentId":"0","text":"基础管理"},{"attributes":{"icon":"fa fa-desktop"},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/user/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"6","parentId":"3","text":"用户管理"},{"attributes":{"icon":"fa fa-paw","url":"sys/role"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"3","text":"角色管理"},{"attributes":{"icon":"fa fa-th-list","url":"sys/menu/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"2","parentId":"3","text":"系统菜单"},{"attributes":{"icon":"fa fa-users","url":"/system/sysDept"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"73","parentId":"3","text":"部门管理"}],"hasChildren":true,"hasParent":false,"id":"3","parentId":"0","text":"系统管理"},{"attributes":{"icon":"fa fa-gear","url":""},"checked":false,"children":[{"attributes":{"icon":"","url":"/swagger-ui.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"104","parentId":"77","text":"swagger"},{"attributes":{"icon":"fa fa-code","url":"common/generator"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"48","parentId":"77","text":"代码生成"},{"attributes":{"icon":"fa fa-hourglass-1","url":"common/job"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"72","parentId":"77","text":"计划任务"}],"hasChildren":true,"hasParent":false,"id":"77","parentId":"0","text":"系统工具"},{"attributes":{"icon":"fa fa-video-camera","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/online"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"92","parentId":"91","text":"在线用户"},{"attributes":{"icon":"fa fa-warning","url":"common/log"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"27","parentId":"91","text":"系统日志"},{"attributes":{"icon":"fa fa-caret-square-o-right","url":"/druid/index.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"57","parentId":"91","text":"运行监控"}],"hasChildren":true,"hasParent":false,"id":"91","parentId":"0","text":"系统监控"},{"attributes":{"icon":"fa fa-laptop","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-envelope-square","url":"oa/notify/selfNotify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"90","parentId":"84","text":"我的通知"},{"attributes":{"icon":"fa fa-pencil-square","url":"oa/notify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"85","parentId":"84","text":"通知公告"}],"hasChildren":true,"hasParent":false,"id":"84","parentId":"0","text":"办公管理"},{"attributes":{"icon":"fa fa-rss","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-edit","url":"/blog/bContent/add"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"68","parentId":"49","text":"发布文章"},{"attributes":{"icon":"fa fa-file-image-o","url":"blog/bContent"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"50","parentId":"49","text":"文章列表"}],"hasChildren":true,"hasParent":false,"id":"49","parentId":"0","text":"博客管理"},{"attributes":{"icon":"fa fa-print","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-flag","url":"activiti/process"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"96","parentId":"93","text":"流程管理"},{"attributes":{"icon":"","url":"activiti/task/todo"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"101","parentId":"93","text":"待办任务"},{"attributes":{"icon":"fa fa-sort-amount-asc","url":"activiti/model"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"94","parentId":"93","text":"模型管理"}],"hasChildren":true,"hasParent":false,"id":"93","parentId":"0","text":"工作流程"},{"attributes":{"icon":"fa fa-bar-chart","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-area-chart","url":"/chart/graph_echarts.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"98","parentId":"97","text":"百度chart"}],"hasChildren":true,"hasParent":false,"id":"97","parentId":"0","text":"图表管理"}],"name":"超级管理员","picUrl":"/img/photo_s.jpg","u(String), 127.0.0.1(String), 2018-10-20 11:56:02.011(Timestamp)
+2018-10-20 11:56:02 -<==    Updates: 1
+2018-10-20 11:56:02 -<==    Updates: 1
+2018-10-20 11:56:02 -请求地址 : http://127.0.0.1:8080/main
+2018-10-20 11:56:02 -HTTP METHOD : GET
+2018-10-20 11:56:02 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-10-20 11:56:02 -参数 : []
+2018-10-20 11:56:02 -耗时 : 0
+2018-10-20 11:56:02 -返回值 : main
+2018-10-20 11:56:02 -请求地址 : http://127.0.0.1:8080/oa/notify/message
+2018-10-20 11:56:02 -HTTP METHOD : GET
+2018-10-20 11:56:02 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2018-10-20 11:56:02 -参数 : []
+2018-10-20 11:56:02 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2018-10-20 11:56:02 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2018-10-20 11:56:02 -<==      Total: 1
+2018-10-20 11:56:02 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:02 -==> Parameters: 1(Long)
+2018-10-20 11:56:02 -<==      Total: 1
+2018-10-20 11:56:02 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2018-10-20 11:56:02 -==> Parameters: 1(Long), 0(String)
+2018-10-20 11:56:02 -<==      Total: 1
+2018-10-20 11:56:02 -耗时 : 33
+2018-10-20 11:56:02 -返回值 : com.bootdo.common.utils.PageUtils@194b65e7
+2018-10-20 11:56:02 -请求地址 : http://127.0.0.1:8080/main
+2018-10-20 11:56:02 -HTTP METHOD : GET
+2018-10-20 11:56:02 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-10-20 11:56:02 -参数 : []
+2018-10-20 11:56:02 -耗时 : 3
+2018-10-20 11:56:02 -返回值 : main
+2018-10-20 11:56:05 -请求地址 : http://127.0.0.1:8080/oa/notify/selfNotify
+2018-10-20 11:56:05 -HTTP METHOD : GET
+2018-10-20 11:56:05 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.selefNotify
+2018-10-20 11:56:05 -参数 : []
+2018-10-20 11:56:05 -耗时 : 0
+2018-10-20 11:56:05 -返回值 : oa/notify/selfNotify
+2018-10-20 11:56:05 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2018-10-20 11:56:05 -==> Parameters: 1(Long)
+2018-10-20 11:56:05 -<==      Total: 50
+2018-10-20 11:56:05 -请求地址 : http://127.0.0.1:8080/oa/notify/selfList
+2018-10-20 11:56:05 -HTTP METHOD : GET
+2018-10-20 11:56:05 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.selfList
+2018-10-20 11:56:05 -参数 : [{limit=10, offset=0}]
+2018-10-20 11:56:05 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2018-10-20 11:56:05 -==> Parameters: 1(Long), 0(Integer), 10(Integer)
+2018-10-20 11:56:05 -<==      Total: 6
+2018-10-20 11:56:05 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:05 -==> Parameters: 1(Long)
+2018-10-20 11:56:05 -<==      Total: 1
+2018-10-20 11:56:05 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:05 -==> Parameters: 1(Long)
+2018-10-20 11:56:05 -<==      Total: 1
+2018-10-20 11:56:05 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:05 -==> Parameters: 1(Long)
+2018-10-20 11:56:05 -<==      Total: 1
+2018-10-20 11:56:05 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:05 -==> Parameters: 1(Long)
+2018-10-20 11:56:05 -<==      Total: 1
+2018-10-20 11:56:05 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:05 -==> Parameters: 1(Long)
+2018-10-20 11:56:06 -<==      Total: 1
+2018-10-20 11:56:06 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:06 -==> Parameters: 1(Long)
+2018-10-20 11:56:06 -<==      Total: 1
+2018-10-20 11:56:06 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2018-10-20 11:56:06 -==> Parameters: 1(Long), null
+2018-10-20 11:56:06 -<==      Total: 1
+2018-10-20 11:56:06 -耗时 : 47
+2018-10-20 11:56:06 -返回值 : com.bootdo.common.utils.PageUtils@6303678
+2018-10-20 11:56:07 -请求地址 : http://127.0.0.1:8080/oa/notify
+2018-10-20 11:56:07 -HTTP METHOD : GET
+2018-10-20 11:56:07 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.oaNotify
+2018-10-20 11:56:07 -参数 : []
+2018-10-20 11:56:07 -耗时 : 0
+2018-10-20 11:56:07 -返回值 : oa/notify/notify
+2018-10-20 11:56:07 -请求地址 : http://127.0.0.1:8080/oa/notify/list
+2018-10-20 11:56:07 -HTTP METHOD : GET
+2018-10-20 11:56:07 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.list
+2018-10-20 11:56:07 -参数 : [{limit=10, offset=0}]
+2018-10-20 11:56:07 -==>  Preparing: select `id`,`type`,`title`,`content`,`files`,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify order by id desc limit ?, ? 
+2018-10-20 11:56:07 -==> Parameters: 0(Integer), 10(Integer)
+2018-10-20 11:56:07 -<==      Total: 6
+2018-10-20 11:56:07 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2018-10-20 11:56:07 -==> Parameters: 3(String), oa_notify_type(String)
+2018-10-20 11:56:07 -<==      Total: 1
+2018-10-20 11:56:07 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2018-10-20 11:56:07 -==> Parameters: 3(String), oa_notify_type(String)
+2018-10-20 11:56:07 -<==      Total: 1
+2018-10-20 11:56:07 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2018-10-20 11:56:07 -==> Parameters: 3(String), oa_notify_type(String)
+2018-10-20 11:56:07 -<==      Total: 1
+2018-10-20 11:56:07 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2018-10-20 11:56:07 -==> Parameters: 3(String), oa_notify_type(String)
+2018-10-20 11:56:07 -<==      Total: 1
+2018-10-20 11:56:07 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2018-10-20 11:56:07 -==> Parameters: 3(String), oa_notify_type(String)
+2018-10-20 11:56:07 -<==      Total: 1
+2018-10-20 11:56:07 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2018-10-20 11:56:07 -==> Parameters: 3(String), oa_notify_type(String)
+2018-10-20 11:56:07 -<==      Total: 1
+2018-10-20 11:56:07 -==>  Preparing: select count(*) from oa_notify 
+2018-10-20 11:56:07 -==> Parameters: 
+2018-10-20 11:56:07 -<==      Total: 1
+2018-10-20 11:56:07 -耗时 : 194
+2018-10-20 11:56:07 -返回值 : com.bootdo.common.utils.PageUtils@64246f75
+2018-10-20 11:56:10 -请求地址 : http://127.0.0.1:8080/blog/bContent/add
+2018-10-20 11:56:10 -HTTP METHOD : GET
+2018-10-20 11:56:10 -CLASS_METHOD : com.bootdo.blog.controller.ContentController.add
+2018-10-20 11:56:10 -参数 : []
+2018-10-20 11:56:10 -耗时 : 0
+2018-10-20 11:56:10 -返回值 : blog/bContent/add
+2018-10-20 11:56:11 -请求地址 : http://127.0.0.1:8080/blog/bContent
+2018-10-20 11:56:11 -HTTP METHOD : GET
+2018-10-20 11:56:11 -CLASS_METHOD : com.bootdo.blog.controller.ContentController.bContent
+2018-10-20 11:56:11 -参数 : []
+2018-10-20 11:56:11 -耗时 : 0
+2018-10-20 11:56:11 -返回值 : blog/bContent/bContent
+2018-10-20 11:56:11 -请求地址 : http://127.0.0.1:8080/blog/bContent/list
+2018-10-20 11:56:11 -HTTP METHOD : GET
+2018-10-20 11:56:11 -CLASS_METHOD : com.bootdo.blog.controller.ContentController.list
+2018-10-20 11:56:11 -参数 : [{limit=10, offset=0}]
+2018-10-20 11:56:11 -==>  Preparing: select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from blog_content order by cid desc limit 0, 10 
+2018-10-20 11:56:11 -==> Parameters: 
+2018-10-20 11:56:11 -<==      Total: 10
+2018-10-20 11:56:11 -==>  Preparing: select count(*) from blog_content 
+2018-10-20 11:56:11 -==> Parameters: 
+2018-10-20 11:56:11 -<==      Total: 1
+2018-10-20 11:56:11 -耗时 : 59
+2018-10-20 11:56:11 -返回值 : com.bootdo.common.utils.PageUtils@4bc29236
+2018-10-20 11:56:15 -请求地址 : http://127.0.0.1:8080/activiti/process
+2018-10-20 11:56:15 -HTTP METHOD : GET
+2018-10-20 11:56:15 -CLASS_METHOD : com.bootdo.activiti.controller.ProcessController.process
+2018-10-20 11:56:15 -参数 : []
+2018-10-20 11:56:15 -耗时 : 1
+2018-10-20 11:56:15 -返回值 : ModelAndView: reference to view with name 'act/process/process'; model is null
+2018-10-20 11:56:15 -请求地址 : http://127.0.0.1:8080/activiti/process/list
+2018-10-20 11:56:15 -HTTP METHOD : GET
+2018-10-20 11:56:15 -CLASS_METHOD : com.bootdo.activiti.controller.ProcessController.list
+2018-10-20 11:56:15 -参数 : [0, 10]
+2018-10-20 11:56:16 -耗时 : 522
+2018-10-20 11:56:16 -返回值 : com.bootdo.common.utils.PageUtils@2ea7ca05
+2018-10-20 11:56:18 -请求地址 : http://127.0.0.1:8080/activiti/task/todo
+2018-10-20 11:56:18 -HTTP METHOD : GET
+2018-10-20 11:56:18 -CLASS_METHOD : com.bootdo.activiti.controller.TaskController.todo
+2018-10-20 11:56:18 -参数 : []
+2018-10-20 11:56:18 -耗时 : 0
+2018-10-20 11:56:18 -返回值 : ModelAndView: reference to view with name 'act/task/todoTask'; model is null
+2018-10-20 11:56:18 -请求地址 : http://127.0.0.1:8080/activiti/task/todoList
+2018-10-20 11:56:18 -HTTP METHOD : GET
+2018-10-20 11:56:18 -CLASS_METHOD : com.bootdo.activiti.controller.TaskController.todoList
+2018-10-20 11:56:18 -参数 : []
+2018-10-20 11:56:18 -请求地址 : http://127.0.0.1:8080/activiti/task/gotoList
+2018-10-20 11:56:18 -HTTP METHOD : GET
+2018-10-20 11:56:18 -CLASS_METHOD : com.bootdo.activiti.controller.TaskController.list
+2018-10-20 11:56:18 -参数 : [0, 10]
+2018-10-20 11:56:18 -耗时 : 37
+2018-10-20 11:56:18 -返回值 : com.bootdo.common.utils.PageUtils@d4c00ad
+2018-10-20 11:56:18 -耗时 : 186
+2018-10-20 11:56:18 -返回值 : []
+2018-10-20 11:56:20 -请求地址 : http://127.0.0.1:8080/activiti/model
+2018-10-20 11:56:20 -HTTP METHOD : GET
+2018-10-20 11:56:20 -CLASS_METHOD : com.bootdo.activiti.controller.ModelController.model
+2018-10-20 11:56:20 -参数 : []
+2018-10-20 11:56:20 -耗时 : 0
+2018-10-20 11:56:20 -返回值 : ModelAndView: reference to view with name 'act/model/model'; model is null
+2018-10-20 11:56:20 -请求地址 : http://127.0.0.1:8080/activiti/model/list
+2018-10-20 11:56:20 -HTTP METHOD : GET
+2018-10-20 11:56:20 -CLASS_METHOD : com.bootdo.activiti.controller.ModelController.list
+2018-10-20 11:56:20 -参数 : [0, 10]
+2018-10-20 11:56:20 -耗时 : 102
+2018-10-20 11:56:20 -返回值 : com.bootdo.common.utils.PageUtils@190e245
+2018-10-20 11:56:35 -请求地址 : http://127.0.0.1:8080/index
+2018-10-20 11:56:35 -HTTP METHOD : GET
+2018-10-20 11:56:35 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2018-10-20 11:56:35 -参数 : [{}]
+2018-10-20 11:56:35 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2018-10-20 11:56:35 -==> Parameters: 1(Long)
+2018-10-20 11:56:35 -<==      Total: 30
+2018-10-20 11:56:35 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2018-10-20 11:56:35 -==> Parameters: 138(Long)
+2018-10-20 11:56:35 -<==      Total: 1
+2018-10-20 11:56:35 -耗时 : 23
+2018-10-20 11:56:35 -返回值 : index_v1
+2018-10-20 11:56:35 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-20 11:56:35 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 23(Integer), com.bootdo.system.controller.LoginController.index()(String), {"menus":[{"attributes":{"icon":"fa fa-cab","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-address-book-o","url":"person/person"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"106","parentId":"105","text":"人员信息"}],"hasChildren":true,"hasParent":false,"id":"105","parentId":"0","text":"普凡达"},{"attributes":{"icon":"fa fa-bars","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-book","url":"/common/dict"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"78","parentId":"1","text":"数据字典"},{"attributes":{"icon":"fa fa-folder-open","url":"/common/sysFile"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"71","parentId":"1","text":"文件管理"}],"hasChildren":true,"hasParent":false,"id":"1","parentId":"0","text":"基础管理"},{"attributes":{"icon":"fa fa-desktop"},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/user/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"6","parentId":"3","text":"用户管理"},{"attributes":{"icon":"fa fa-paw","url":"sys/role"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"3","text":"角色管理"},{"attributes":{"icon":"fa fa-th-list","url":"sys/menu/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"2","parentId":"3","text":"系统菜单"},{"attributes":{"icon":"fa fa-users","url":"/system/sysDept"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"73","parentId":"3","text":"部门管理"}],"hasChildren":true,"hasParent":false,"id":"3","parentId":"0","text":"系统管理"},{"attributes":{"icon":"fa fa-gear","url":""},"checked":false,"children":[{"attributes":{"icon":"","url":"/swagger-ui.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"104","parentId":"77","text":"swagger"},{"attributes":{"icon":"fa fa-code","url":"common/generator"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"48","parentId":"77","text":"代码生成"},{"attributes":{"icon":"fa fa-hourglass-1","url":"common/job"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"72","parentId":"77","text":"计划任务"}],"hasChildren":true,"hasParent":false,"id":"77","parentId":"0","text":"系统工具"},{"attributes":{"icon":"fa fa-laptop","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-pencil-square","url":"oa/notify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"85","parentId":"84","text":"通知公告"},{"attributes":{"icon":"fa fa-envelope-square","url":"oa/notify/selfNotify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"90","parentId":"84","text":"我的通知"}],"hasChildren":true,"hasParent":false,"id":"84","parentId":"0","text":"办公管理"},{"attributes":{"icon":"fa fa-video-camera","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/online"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"92","parentId":"91","text":"在线用户"},{"attributes":{"icon":"fa fa-warning","url":"common/log"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"27","parentId":"91","text":"系统日志"},{"attributes":{"icon":"fa fa-caret-square-o-right","url":"/druid/index.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"57","parentId":"91","text":"运行监控"}],"hasChildren":true,"hasParent":false,"id":"91","parentId":"0","text":"系统监控"},{"attributes":{"icon":"fa fa-rss","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-edit","url":"/blog/bContent/add"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"68","parentId":"49","text":"发布文章"},{"attributes":{"icon":"fa fa-file-image-o","url":"blog/bContent"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"50","parentId":"49","text":"文章列表"}],"hasChildren":true,"hasParent":false,"id":"49","parentId":"0","text":"博客管理"},{"attributes":{"icon":"fa fa-print","url":""},"checked":false,"children":[{"attributes":{"icon":"","url":"activiti/task/todo"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"101","parentId":"93","text":"待办任务"},{"attributes":{"icon":"fa fa-sort-amount-asc","url":"activiti/model"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"94","parentId":"93","text":"模型管理"},{"attributes":{"icon":"fa fa-flag","url":"activiti/process"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"96","parentId":"93","text":"流程管理"}],"hasChildren":true,"hasParent":false,"id":"93","parentId":"0","text":"工作流程"},{"attributes":{"icon":"fa fa-bar-chart","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-area-chart","url":"/chart/graph_echarts.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"98","parentId":"97","text":"百度chart"}],"hasChildren":true,"hasParent":false,"id":"97","parentId":"0","text":"图表管理"}],"name":"超级管理员","picUrl":"/img/photo_s.jpg","u(String), 127.0.0.1(String), 2018-10-20 11:56:35.734(Timestamp)
+2018-10-20 11:56:35 -<==    Updates: 1
+2018-10-20 11:56:35 -请求地址 : http://127.0.0.1:8080/main
+2018-10-20 11:56:35 -HTTP METHOD : GET
+2018-10-20 11:56:35 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-10-20 11:56:35 -参数 : []
+2018-10-20 11:56:35 -耗时 : 0
+2018-10-20 11:56:35 -返回值 : main
+2018-10-20 11:56:35 -请求地址 : http://127.0.0.1:8080/oa/notify/message
+2018-10-20 11:56:35 -HTTP METHOD : GET
+2018-10-20 11:56:35 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2018-10-20 11:56:35 -参数 : []
+2018-10-20 11:56:35 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2018-10-20 11:56:35 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2018-10-20 11:56:35 -<==      Total: 1
+2018-10-20 11:56:35 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:35 -==> Parameters: 1(Long)
+2018-10-20 11:56:35 -<==      Total: 1
+2018-10-20 11:56:35 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2018-10-20 11:56:35 -==> Parameters: 1(Long), 0(String)
+2018-10-20 11:56:35 -<==      Total: 1
+2018-10-20 11:56:35 -耗时 : 14
+2018-10-20 11:56:35 -返回值 : com.bootdo.common.utils.PageUtils@4ff19724
+2018-10-20 11:56:36 -请求地址 : http://127.0.0.1:8080/main
+2018-10-20 11:56:36 -HTTP METHOD : GET
+2018-10-20 11:56:36 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-10-20 11:56:36 -参数 : []
+2018-10-20 11:56:36 -耗时 : 0
+2018-10-20 11:56:36 -返回值 : main
+2018-10-20 11:56:57 -请求地址 : http://127.0.0.1:8080/oa/notify/selfNotify
+2018-10-20 11:56:57 -HTTP METHOD : GET
+2018-10-20 11:56:57 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.selefNotify
+2018-10-20 11:56:57 -参数 : []
+2018-10-20 11:56:57 -耗时 : 1
+2018-10-20 11:56:57 -返回值 : oa/notify/selfNotify
+2018-10-20 11:56:57 -请求地址 : http://127.0.0.1:8080/oa/notify/selfList
+2018-10-20 11:56:57 -HTTP METHOD : GET
+2018-10-20 11:56:57 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.selfList
+2018-10-20 11:56:57 -参数 : [{limit=10, offset=0}]
+2018-10-20 11:56:57 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2018-10-20 11:56:57 -==> Parameters: 1(Long), 0(Integer), 10(Integer)
+2018-10-20 11:56:57 -<==      Total: 6
+2018-10-20 11:56:57 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:57 -==> Parameters: 1(Long)
+2018-10-20 11:56:57 -<==      Total: 1
+2018-10-20 11:56:57 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:57 -==> Parameters: 1(Long)
+2018-10-20 11:56:57 -<==      Total: 1
+2018-10-20 11:56:57 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:57 -==> Parameters: 1(Long)
+2018-10-20 11:56:57 -<==      Total: 1
+2018-10-20 11:56:57 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:57 -==> Parameters: 1(Long)
+2018-10-20 11:56:57 -<==      Total: 1
+2018-10-20 11:56:57 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:57 -==> Parameters: 1(Long)
+2018-10-20 11:56:57 -<==      Total: 1
+2018-10-20 11:56:57 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:56:57 -==> Parameters: 1(Long)
+2018-10-20 11:56:57 -<==      Total: 1
+2018-10-20 11:56:57 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2018-10-20 11:56:57 -==> Parameters: 1(Long), null
+2018-10-20 11:56:57 -<==      Total: 1
+2018-10-20 11:56:57 -耗时 : 57
+2018-10-20 11:56:57 -返回值 : com.bootdo.common.utils.PageUtils@2ffa877f
+2018-10-20 11:57:01 -请求地址 : http://127.0.0.1:8080/oa/notify/read/47
+2018-10-20 11:57:01 -HTTP METHOD : GET
+2018-10-20 11:57:01 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.read
+2018-10-20 11:57:01 -参数 : [47, {}]
+2018-10-20 11:57:01 -==>  Preparing: select `id`,`type`,`title`,`content`,`files`,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify where id = ? 
+2018-10-20 11:57:01 -==> Parameters: 47(Long)
+2018-10-20 11:57:01 -<==      Total: 1
+2018-10-20 11:57:01 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2018-10-20 11:57:01 -==> Parameters: 3(String), oa_notify_type(String)
+2018-10-20 11:57:01 -<==      Total: 1
+2018-10-20 11:57:01 -==>  Preparing: update oa_notify_record SET `is_read` = ?, `read_date` = ? where notify_id = ? and user_id = ? 
+2018-10-20 11:57:01 -==> Parameters: 1(Integer), 2018-10-20 11:57:01.455(Timestamp), 47(Long), 1(Long)
+2018-10-20 11:57:01 -<==    Updates: 1
+2018-10-20 11:57:01 -耗时 : 240
+2018-10-20 11:57:01 -返回值 : oa/notify/read
+2018-10-20 11:57:06 -请求地址 : http://127.0.0.1:8080/index
+2018-10-20 11:57:06 -HTTP METHOD : GET
+2018-10-20 11:57:06 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2018-10-20 11:57:06 -参数 : [{}]
+2018-10-20 11:57:06 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2018-10-20 11:57:06 -==> Parameters: 1(Long)
+2018-10-20 11:57:06 -<==      Total: 30
+2018-10-20 11:57:06 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2018-10-20 11:57:06 -==> Parameters: 138(Long)
+2018-10-20 11:57:06 -<==      Total: 1
+2018-10-20 11:57:06 -耗时 : 20
+2018-10-20 11:57:06 -返回值 : index_v1
+2018-10-20 11:57:06 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-20 11:57:06 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 21(Integer), com.bootdo.system.controller.LoginController.index()(String), {"menus":[{"attributes":{"icon":"fa fa-cab","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-address-book-o","url":"person/person"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"106","parentId":"105","text":"人员信息"}],"hasChildren":true,"hasParent":false,"id":"105","parentId":"0","text":"普凡达"},{"attributes":{"icon":"fa fa-bars","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-book","url":"/common/dict"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"78","parentId":"1","text":"数据字典"},{"attributes":{"icon":"fa fa-folder-open","url":"/common/sysFile"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"71","parentId":"1","text":"文件管理"}],"hasChildren":true,"hasParent":false,"id":"1","parentId":"0","text":"基础管理"},{"attributes":{"icon":"fa fa-desktop"},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/user/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"6","parentId":"3","text":"用户管理"},{"attributes":{"icon":"fa fa-paw","url":"sys/role"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"3","text":"角色管理"},{"attributes":{"icon":"fa fa-th-list","url":"sys/menu/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"2","parentId":"3","text":"系统菜单"},{"attributes":{"icon":"fa fa-users","url":"/system/sysDept"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"73","parentId":"3","text":"部门管理"}],"hasChildren":true,"hasParent":false,"id":"3","parentId":"0","text":"系统管理"},{"attributes":{"icon":"fa fa-gear","url":""},"checked":false,"children":[{"attributes":{"icon":"","url":"/swagger-ui.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"104","parentId":"77","text":"swagger"},{"attributes":{"icon":"fa fa-code","url":"common/generator"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"48","parentId":"77","text":"代码生成"},{"attributes":{"icon":"fa fa-hourglass-1","url":"common/job"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"72","parentId":"77","text":"计划任务"}],"hasChildren":true,"hasParent":false,"id":"77","parentId":"0","text":"系统工具"},{"attributes":{"icon":"fa fa-laptop","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-pencil-square","url":"oa/notify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"85","parentId":"84","text":"通知公告"},{"attributes":{"icon":"fa fa-envelope-square","url":"oa/notify/selfNotify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"90","parentId":"84","text":"我的通知"}],"hasChildren":true,"hasParent":false,"id":"84","parentId":"0","text":"办公管理"},{"attributes":{"icon":"fa fa-video-camera","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/online"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"92","parentId":"91","text":"在线用户"},{"attributes":{"icon":"fa fa-warning","url":"common/log"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"27","parentId":"91","text":"系统日志"},{"attributes":{"icon":"fa fa-caret-square-o-right","url":"/druid/index.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"57","parentId":"91","text":"运行监控"}],"hasChildren":true,"hasParent":false,"id":"91","parentId":"0","text":"系统监控"},{"attributes":{"icon":"fa fa-rss","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-edit","url":"/blog/bContent/add"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"68","parentId":"49","text":"发布文章"},{"attributes":{"icon":"fa fa-file-image-o","url":"blog/bContent"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"50","parentId":"49","text":"文章列表"}],"hasChildren":true,"hasParent":false,"id":"49","parentId":"0","text":"博客管理"},{"attributes":{"icon":"fa fa-print","url":""},"checked":false,"children":[{"attributes":{"icon":"","url":"activiti/task/todo"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"101","parentId":"93","text":"待办任务"},{"attributes":{"icon":"fa fa-sort-amount-asc","url":"activiti/model"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"94","parentId":"93","text":"模型管理"},{"attributes":{"icon":"fa fa-flag","url":"activiti/process"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"96","parentId":"93","text":"流程管理"}],"hasChildren":true,"hasParent":false,"id":"93","parentId":"0","text":"工作流程"},{"attributes":{"icon":"fa fa-bar-chart","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-area-chart","url":"/chart/graph_echarts.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"98","parentId":"97","text":"百度chart"}],"hasChildren":true,"hasParent":false,"id":"97","parentId":"0","text":"图表管理"}],"name":"超级管理员","picUrl":"/img/photo_s.jpg","u(String), 127.0.0.1(String), 2018-10-20 11:57:06.32(Timestamp)
+2018-10-20 11:57:06 -<==    Updates: 1
+2018-10-20 11:57:06 -请求地址 : http://127.0.0.1:8080/main
+2018-10-20 11:57:06 -HTTP METHOD : GET
+2018-10-20 11:57:06 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-10-20 11:57:06 -参数 : []
+2018-10-20 11:57:06 -耗时 : 1
+2018-10-20 11:57:06 -返回值 : main
+2018-10-20 11:57:06 -请求地址 : http://127.0.0.1:8080/oa/notify/message
+2018-10-20 11:57:06 -HTTP METHOD : GET
+2018-10-20 11:57:06 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2018-10-20 11:57:06 -参数 : []
+2018-10-20 11:57:06 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2018-10-20 11:57:06 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2018-10-20 11:57:06 -<==      Total: 0
+2018-10-20 11:57:06 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2018-10-20 11:57:06 -==> Parameters: 1(Long), 0(String)
+2018-10-20 11:57:06 -<==      Total: 1
+2018-10-20 11:57:06 -耗时 : 8
+2018-10-20 11:57:06 -返回值 : com.bootdo.common.utils.PageUtils@3d526b0b
+2018-10-20 11:57:06 -请求地址 : http://127.0.0.1:8080/main
+2018-10-20 11:57:06 -HTTP METHOD : GET
+2018-10-20 11:57:06 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-10-20 11:57:06 -参数 : []
+2018-10-20 11:57:06 -耗时 : 2
+2018-10-20 11:57:06 -返回值 : main
+2018-10-20 11:57:08 -请求地址 : http://127.0.0.1:8080/sys/user/personal
+2018-10-20 11:57:08 -HTTP METHOD : GET
+2018-10-20 11:57:08 -CLASS_METHOD : com.bootdo.system.controller.UserController.personal
+2018-10-20 11:57:08 -参数 : [{}]
+2018-10-20 11:57:08 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2018-10-20 11:57:08 -==> Parameters: 1(Long)
+2018-10-20 11:57:08 -<==      Total: 1
+2018-10-20 11:57:08 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2018-10-20 11:57:08 -==> Parameters: 1(Long)
+2018-10-20 11:57:08 -<==      Total: 1
+2018-10-20 11:57:08 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2018-10-20 11:57:08 -==> Parameters: 6(Long)
+2018-10-20 11:57:08 -<==      Total: 1
+2018-10-20 11:57:08 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE type = ? order by id desc 
+2018-10-20 11:57:08 -==> Parameters: hobby(String)
+2018-10-20 11:57:08 -<==      Total: 2
+2018-10-20 11:57:08 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE type = ? order by id desc 
+2018-10-20 11:57:08 -==> Parameters: sex(String)
+2018-10-20 11:57:08 -<==      Total: 2
+2018-10-20 11:57:08 -耗时 : 168
+2018-10-20 11:57:08 -返回值 : system/user/personal
