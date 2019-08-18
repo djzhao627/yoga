@@ -4,8 +4,7 @@
 <head th:include="blog/index/include_blog::header"></head>
 <body>
 	<nav th:include="blog/index/include_blog::nav"  class="navbar navbar-default navbar-custom navbar-fixed-top" ></nav>
-	<header class="intro-header"
-		style="background-image: url('/img/blog/home-bg.jpg')">
+	<header class="intro-header" th:style="'background-image: url(' + @{/} + 'img/blog/home-bg.jpg);'">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -48,7 +47,7 @@
 		function bindList(offset) {
 			$
 				.ajax({
-					url : 'blog/open/list?type=article&limit=10&offset=' + offset,
+					url : ctx+ 'blog/open/list?type=article&limit=10&offset=' + offset,
 					method : 'get',
 					dataType : 'json',
 					success : function(data) {
@@ -57,7 +56,7 @@
 						var htmlText = "";
 						for (i = 0; i < rows.length; i++) {
 							htmlText += '<div class="post-preview">';
-							htmlText += '<a href="/blog/open/post/' + rows[i].cid + '">';
+							htmlText += '<a href="'+ctx+'blog/open/post/' + rows[i].cid + '">';
 							htmlText += '<h2 class="post-title">';
 							htmlText += rows[i].title;
 							htmlText += '</h2>';

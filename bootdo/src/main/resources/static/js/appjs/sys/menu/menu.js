@@ -1,4 +1,4 @@
-var prefix = "/sys/menu"
+var prefix = ctx+ "/sys/menu"
 $(document).ready(function () {
     load();
 });
@@ -90,7 +90,7 @@ var load = function () {
                                 + s_add_h
                                 + '" href="#" mce_href="#" title="添加下级" onclick="add(\''
                                 + item.menuId
-                                + '\')"><i class="fa fa-plus"></i></a> ';
+                                + '\',\''+item.perms+'\')"><i class="fa fa-plus"></i></a> ';
                             var d = '<a class="btn btn-warning btn-sm '
                                 + s_remove_h
                                 + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
@@ -106,7 +106,8 @@ function reLoad() {
     load();
 }
 
-function add(pId) {
+function add(pId,perms) {
+	setPageValue(JSON.stringify(perms));
     layer.open({
         type: 2,
         title: '增加菜单',

@@ -42,10 +42,13 @@ activitiModeler
           caretHtml: '&nbsp;<i class="icon icon-caret-down"></i>'
       });
         
+      	if(!ctx){
+      		ctx='';
+      	}
         // Initialize angular-translate
         $translateProvider.useStaticFilesLoader({
-            prefix: './editor-app/i18n/',
-            suffix: '.json'
+            prefix: ctx+ '/editor-app/i18n/',
+            suffix: '/json'
         });
 
         $translateProvider.preferredLanguage('en');
@@ -95,6 +98,9 @@ activitiModeler
             /* Helper method to fetch model from server (always needed) */
             function fetchModel(modelId) {
 
+        		if(!modelId && modelIdModel){
+        			modelId = modelIdModel;
+        		}
                 var modelUrl = KISBPM.URL.getModel(modelId);
 
                 $http({method: 'GET', url: modelUrl}).

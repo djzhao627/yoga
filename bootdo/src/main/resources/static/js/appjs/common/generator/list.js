@@ -1,4 +1,4 @@
-var prefix = "/common/generator"
+var prefix = ctx+ "/common/generator"
 $(function() {
 	load();
 });
@@ -72,7 +72,9 @@ function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }
 function code(tableName) {
-	location.href = prefix + "/code/" + tableName;
+	edit();
+	setPageValue(JSON.stringify(tableName));
+	//location.href = prefix + "/code/" + tableName;
 }
 function batchCode() {
 	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组

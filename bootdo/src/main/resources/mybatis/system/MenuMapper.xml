@@ -5,13 +5,13 @@
 
 	<select id="get" resultType="com.bootdo.system.domain.MenuDO">
 		select
-		`menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`
+		menu_id,parent_id,name,url,perms,type,icon,order_num,gmt_create,gmt_modified
 		from sys_menu where menu_id = #{value}
 	</select>
 
 	<select id="list" resultType="com.bootdo.system.domain.MenuDO">
 		select
-		`menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`
+		menu_id,parent_id,name,url,perms,type,icon,order_num,gmt_create,gmt_modified
 		from sys_menu
 		<where>
 			<if test="menuId != null and menuId != ''"> and menu_id = #{menuId} </if>
@@ -33,9 +33,6 @@
 				order by menu_id desc
 			</otherwise>
 		</choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
 	</select>
 
 	<select id="count" resultType="int">
@@ -54,46 +51,50 @@
 		</where>
 	</select>
 
-	<insert id="save" parameterType="com.bootdo.system.domain.MenuDO"
-		useGeneratedKeys="true" keyProperty="menuId">
+	<insert id="save" parameterType="com.bootdo.system.domain.MenuDO">
+		<!-- <selectKey keyProperty="menuId" resultType="Long" order="BEFORE"> 
+            SELECT sys_seq('sys_menu') 
+    	</selectKey> -->
 		insert into sys_menu
 		(
-		`parent_id`,
-		`name`,
-		`url`,
-		`perms`,
-		`type`,
-		`icon`,
-		`order_num`,
-		`gmt_create`,
-		`gmt_modified`
+		menu_id,
+		parent_id,
+		name,
+		url,
+		perms,
+		type,
+		icon,
+		order_num,
+		gmt_create,
+		gmt_modified
 		)
 		values
 		(
-		#{parentId},
-		#{name},
-		#{url},
-		#{perms},
-		#{type},
-		#{icon},
-		#{orderNum},
-		#{gmtCreate},
-		#{gmtModified}
+		sys_seq('SYS_MENU'),
+		#{parentId, jdbcType=VARCHAR},
+		#{name, jdbcType=VARCHAR},
+		#{url, jdbcType=VARCHAR},
+		#{perms, jdbcType=VARCHAR},
+		#{type, jdbcType=VARCHAR},
+		#{icon, jdbcType=VARCHAR},
+		#{orderNum, jdbcType=VARCHAR},
+		#{gmtCreate, jdbcType=VARCHAR},
+		#{gmtModified, jdbcType=VARCHAR}
 		)
 	</insert>
 
 	<update id="update" parameterType="com.bootdo.system.domain.MenuDO">
 		update sys_menu
 		<set>
-			<if test="parentId != null">`parent_id` = #{parentId}, </if>
-			<if test="name != null">`name` = #{name}, </if>
-			<if test="url != null">`url` = #{url}, </if>
-			<if test="perms != null">`perms` = #{perms}, </if>
-			<if test="type != null">`type` = #{type}, </if>
-			<if test="icon != null">`icon` = #{icon}, </if>
-			<if test="orderNum != null">`order_num` = #{orderNum}, </if>
-			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
-			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+			<if test="parentId != null">parent_id = #{parentId}, </if>
+			<if test="name != null">name = #{name}, </if>
+			<if test="url != null">url = #{url}, </if>
+			<if test="perms != null">perms = #{perms}, </if>
+			<if test="type != null">type = #{type}, </if>
+			<if test="icon != null">icon = #{icon}, </if>
+			<if test="orderNum != null">order_num = #{orderNum}, </if>
+			<if test="gmtCreate != null">gmt_create = #{gmtCreate}, </if>
+			<if test="gmtModified != null">gmt_modified = #{gmtModified}</if>
 		</set>
 		where menu_id = #{menuId}
 	</update>
@@ -111,18 +112,15 @@
 	</delete>
 
 	<select id="listMenuByUserId" resultType="com.bootdo.system.domain.MenuDO">
-		select distinct
-		m.menu_id , parent_id, name, url,
-		perms,`type`,icon,order_num,gmt_create, gmt_modified
-		from sys_menu m
-		left
-		join sys_role_menu rm on m.menu_id = rm.menu_id left join
-		sys_user_role ur
-		on rm.role_id =ur.role_id where ur.user_id = #{id}
-		and
-		m.type in(0,1)
-		order by
-		m.order_num
+		SELECT DISTINCT
+			m.menu_id , parent_id, name, url, perms,type,icon,order_num,gmt_create, gmt_modified
+		FROM sys_menu m
+		LEFT JOIN sys_role_menu rm on m.menu_id = rm.menu_id 
+		LEFT JOIN sys_user_role ur on rm.role_id =ur.role_id  
+		WHERE ur.user_id = #{id}
+			and m.type in(0,1)
+		ORDER BY
+		m.order_num ASC 
 	</select>
 
 	<select id="listUserPerms" resultType="string">
@@ -132,5 +130,11 @@
 		left join sys_user_role ur
 		on rm.role_id = ur.role_id where ur.user_id
 		= #{id}
+	</select>
+	
+	<select id="getMenuByPrems" resultType="com.bootdo.system.domain.MenuDO">
+		select
+		menu_id,parent_id,name,url,perms,type,icon,order_num,gmt_create,gmt_modified
+		from sys_menu where perms = #{perms}
 	</select>
 </mapper>

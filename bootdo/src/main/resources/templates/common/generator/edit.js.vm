@@ -1,17 +1,29 @@
-$().ready(function() {
+var prefix = ctx+ "/${pathName}/${classname}"
+$(function() {
+	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
 });
 
 $.validator.setDefaults({
 	submitHandler : function() {
-		update();
+		sbumitData();
 	}
 });
-function update() {
+
+function sbumitData() {
+	//var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
+	var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
+	var url = "";
+	if($("#${pk.attrname}").val()){//修改时
+		url = prefix+ "/update";
+	}else{
+		url = prefix+ "/save";
+	}
+	
 	$.ajax({
 		cache : true,
 		type : "POST",
-		url : "/${pathName}/${classname}/update",
+		url : url,
 		data : $('#signupForm').serialize(),// 你的formid
 		async : false,
 		error : function(request) {
@@ -32,18 +44,35 @@ function update() {
 	});
 
 }
+
 function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({
 		rules : {
-			name : {
-				required : true
-			}
+			#foreach($column in $columns)
+			${column.attrname} : { 
+			#if(${column.isNullable}=="NO" || ${column.isNullable}=="N")
+			required : true,
+			#else
+			#end
+			#if(${column.characterMaximumLength} !="0" && (${column.dataType} =="varchar" || ${column.dataType} =="nvarchar2" || ${column.dataType} =="varchar2"))
+			maxlength:${column.characterMaximumLength}
+			#end
+			},
+			#end
 		},
 		messages : {
-			name : {
-				required : icon + "请输入名字"
-			}
+		 	#foreach($column in $columns)
+			${column.attrname} : { 
+			#if(${column.isNullable}=="NO" || ${column.isNullable}=="N")
+			required : icon  + "${column.comments}不能为空",
+			#else
+			#end
+			#if(${column.characterMaximumLength}!="0" && (${column.dataType} =="varchar" || ${column.dataType} =="nvarchar2" || ${column.dataType} =="varchar2"))
+			maxlength: icon  + "最大长度不超过${column.characterMaximumLength}"
+			#end
+			},
+			#end
 		}
 	})
 }

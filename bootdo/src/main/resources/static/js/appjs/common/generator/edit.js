@@ -5,15 +5,20 @@ $().ready(function() {
 
 $.validator.setDefaults({
 	submitHandler : function() {
-		console.log('提交修改');
+		var tableName = getPageValue();//列表页面传值(row)
 		update();
+		console.log('提交修改');
+		if(tableName){
+			location.href = ctx+ "/common/generator/code/" + tableName;
+		}
+		setInterval('aa();',1000);
 	}
 });
 function update() {
 	$.ajax({
 		cache : true,
 		type : "POST",
-		url : "/common/generator/update",
+		url : ctx+ "/common/generator/update",
 		data : $('#signupForm').serialize(),// 你的formid
 		async : false,
 		error : function(request) {
@@ -22,7 +27,6 @@ function update() {
 		success : function(data) {
 			if (data.code == 0) {
 				parent.layer.msg(data.msg);
-
 			} else {
 				parent.layer.msg(data.msg);
 			}
@@ -38,9 +42,9 @@ function validateRule() {
 			author : {
 				required : true
 			},
-			email : {
+			/*email : {
 				required : true,
-			},
+			},*/
 			package : {
 				required : true,
 			},
@@ -51,12 +55,18 @@ function validateRule() {
 			author : {
 				required : icon + "请输入作者"
 			},
-			email : {
+			/*email : {
 				required : icon + "请输入email",
-			},
+			},*/
 			package : {
 				required : icon + "请输入包名",
 			},
 		}
 	})
+}
+
+//关闭当前页
+function aa() {
+    var index = parent.layer.getFrameIndex(window.name);
+    parent.layer.close(index);
 }

@@ -5,13 +5,13 @@
 
 	<select id="get" resultType="com.bootdo.system.domain.RoleDO">
 		select
-		`role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified`
+		role_id,role_name,role_sign,remark,user_id_create,gmt_create,gmt_modified
 		from sys_role where role_id = #{value}
 	</select>
 
 	<select id="list" resultType="com.bootdo.system.domain.RoleDO">
 		select
-		`role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified`
+		role_id,role_name,role_sign,remark,user_id_create,gmt_create,gmt_modified
 		from sys_role
 		<where>
 			<if test="roleId != null and roleId != ''"> and role_id = #{roleId} </if>
@@ -30,9 +30,6 @@
 				order by role_id desc
 			</otherwise>
 		</choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
 	</select>
 
 	<select id="count" resultType="int">
@@ -49,36 +46,38 @@
 	</select>
 
 	<insert id="save" parameterType="com.bootdo.system.domain.RoleDO"
-		useGeneratedKeys="true" keyProperty="roleId">
+		useGeneratedKeys="true" >
 		insert into sys_role
 		(
-		`role_name`,
-		`role_sign`,
-		`remark`,
-		`user_id_create`,
-		`gmt_create`,
-		`gmt_modified`
+		ROLE_ID,
+		role_name,
+		role_sign,
+		remark,
+		user_id_create,
+		gmt_create,
+		gmt_modified
 		)
 		values
 		(
-		#{roleName},
-		#{roleSign},
-		#{remark},
-		#{userIdCreate},
-		#{gmtCreate},
-		#{gmtModified}
+			sys_seq('SYS_ROLE'),
+		#{roleName, jdbcType=VARCHAR},
+		#{roleSign, jdbcType=VARCHAR},
+		#{remark, jdbcType=VARCHAR},
+		#{userIdCreate, jdbcType=VARCHAR},
+		#{gmtCreate, jdbcType=VARCHAR},
+		#{gmtModified, jdbcType=VARCHAR}
 		)
 	</insert>
 
 	<update id="update" parameterType="com.bootdo.system.domain.RoleDO">
 		update sys_role
 		<set>
-			<if test="roleName != null">`role_name` = #{roleName}, </if>
-			<if test="roleSign != null">`role_sign` = #{roleSign}, </if>
-			<if test="remark != null">`remark` = #{remark}, </if>
-			<if test="userIdCreate != null">`user_id_create` = #{userIdCreate}, </if>
-			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
-			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+			<if test="roleName != null">role_name = #{roleName}, </if>
+			<if test="roleSign != null">role_sign = #{roleSign}, </if>
+			<if test="remark != null">remark = #{remark}, </if>
+			<if test="userIdCreate != null">user_id_create = #{userIdCreate}, </if>
+			<if test="gmtCreate != null">gmt_create = #{gmtCreate}, </if>
+			<if test="gmtModified != null">gmt_modified = #{gmtModified}</if>
 		</set>
 		where role_id = #{roleId}
 	</update>

@@ -5,13 +5,13 @@
 
 	<select id="get" resultType="com.bootdo.common.domain.DictDO">
 		select
-		`id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag`
+		id,name,value,type,description,sort,parent_id,create_by,create_date,update_by,update_date,remarks,del_flag
 		from sys_dict where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.bootdo.common.domain.DictDO">
 		select
-		`id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag`
+		id,name,value,type,description,sort,parent_id,create_by,create_date,update_by,update_date,remarks,del_flag
 		from sys_dict
 		<where>
 			<if test="id != null and id != ''"> and id = #{id} </if>
@@ -36,9 +36,6 @@
 				order by id desc
 			</otherwise>
 		</choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
 	</select>
 
 	<select id="count" resultType="int">
@@ -60,55 +57,56 @@
 		</where>
 	</select>
 
-	<insert id="save" parameterType="com.bootdo.common.domain.DictDO"
-		useGeneratedKeys="true" keyProperty="id">
+	<insert id="save" parameterType="com.bootdo.common.domain.DictDO" >
 		insert into sys_dict
 		(
-		`name`,
-		`value`,
-		`type`,
-		`description`,
-		`sort`,
-		`parent_id`,
-		`create_by`,
-		`create_date`,
-		`update_by`,
-		`update_date`,
-		`remarks`,
-		`del_flag`
+		id,
+		name,
+		value,
+		type,
+		description,
+		sort,
+		parent_id,
+		create_by,
+		create_date,
+		update_by,
+		update_date,
+		remarks,
+		del_flag
 		)
 		values
 		(
-		#{name},
-		#{value},
-		#{type},
-		#{description},
-		#{sort},
-		#{parentId},
-		#{createBy},
-		#{createDate},
-		#{updateBy},
-		#{updateDate},
-		#{remarks},
-		#{delFlag}
+			sys_seq('SYS_DICT'),
+		#{name, jdbcType=VARCHAR},
+		#{value, jdbcType=VARCHAR},
+		#{type, jdbcType=VARCHAR},
+		#{description, jdbcType=VARCHAR},
+		#{sort, jdbcType=VARCHAR},
+		#{parentId, jdbcType=VARCHAR},
+		#{createBy, jdbcType=VARCHAR},
+		#{createDate, jdbcType=VARCHAR},
+		#{updateBy, jdbcType=VARCHAR},
+		#{updateDate, jdbcType=VARCHAR},
+		#{remarks, jdbcType=VARCHAR},
+		#{delFlag, jdbcType=VARCHAR}
 		)
 	</insert>
 
 	<update id="update" parameterType="com.bootdo.common.domain.DictDO">
 		update sys_dict
 		<set>
-			<if test="name != null">`name` = #{name}, </if>
-			<if test="value != null">`value` = #{value}, </if>
-			<if test="type != null">`type` = #{type}, </if>
-			<if test="description != null">`description` = #{description}, </if>
-			<if test="sort != null">`sort` = #{sort}, </if>
-			<if test="parentId != null">`parent_id` = #{parentId}, </if>
-			<if test="createBy != null">`create_by` = #{createBy}, </if>
-			<if test="createDate != null">`create_date` = #{createDate}, </if>
-			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
-			<if test="updateDate != null">`update_date` = #{updateDate}, </if>
-			<if test="remarks != null">`remarks` = #{remarks}, </if>
-			<if test="delFlag != null">`del_flag` = #{delFlag}</if>
+			<if test="name != null">name = #{name, jdbcType=VARCHAR}, </if>
+			<if test="value != null">value = #{value, jdbcType=VARCHAR}, </if>
+			<if test="type != null">type = #{type, jdbcType=VARCHAR}, </if>
+			<if test="description != null">description = #{description, jdbcType=VARCHAR}, </if>
+			<if test="sort != null">sort = #{sort, jdbcType=VARCHAR}, </if>
+			<if test="parentId != null">parent_id = #{parentId, jdbcType=VARCHAR}, </if>
+			<if test="createBy != null">create_by = #{createBy, jdbcType=VARCHAR}, </if>
+			<if test="createDate != null">create_date = #{createDate, jdbcType=VARCHAR}, </if>
+			<if test="updateBy != null">update_by = #{updateBy, jdbcType=VARCHAR}, </if>
+			<if test="updateDate != null">update_date = #{updateDate, jdbcType=VARCHAR}, </if>
+			<if test="remarks != null">remarks = #{remarks, jdbcType=VARCHAR}, </if>
+			<if test="delFlag != null">del_flag = #{delFlag, jdbcType=VARCHAR}</if>
 		</set>
 		where id = #{id}
 	</update>
@@ -126,7 +124,7 @@
 	</delete>
 
 	<select id="listType" resultType="com.bootdo.common.domain.DictDO">
-		select distinct `type` , description from sys_dict
+		select distinct type , description from sys_dict
 	</select>
 
 </mapper>

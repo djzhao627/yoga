@@ -1,5 +1,5 @@
 bootdo:
-  uploadPath: c:/var/uploaded_files/
+  uploadPath: D:/var/uploaded_files/
 logging:
   level:
     root: info
@@ -7,10 +7,19 @@ logging:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
+
+#oracle
+#    driverClassName: oracle.jdbc.OracleDriver
+#    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+#    username: std
+#    password: std
+    
+#mysql 
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/bootdo?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/bootdo?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
+
     initialSize: 1
     minIdle: 3
     maxActive: 20
@@ -20,7 +29,8 @@ spring:
     timeBetweenEvictionRunsMillis: 60000
     # 配置一个连接在池中最小生存的时间，单位是毫秒
     minEvictableIdleTimeMillis: 30000
-    validationQuery: select 'x'
+    #select 'x'
+    validationQuery: select 1 from dual 
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
@@ -34,12 +44,11 @@ spring:
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
   redis:
-    host: localhost
-    port: 6379
-    password:
-    # 连接超时时间（毫秒）
-    timeout: 10000
-    jedis:
+      host: localhost
+      port: 6379
+      password:
+      # 连接超时时间（毫秒）
+      timeout: 10000
       pool:
         # 连接池中的最大空闲连接
         max-idle: 8

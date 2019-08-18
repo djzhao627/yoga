@@ -1,4 +1,4 @@
-var prefix = "/activiti/model"
+var prefix = ctx+ "/activiti/model"
 $(function() {
 	load();
 });
@@ -75,7 +75,7 @@ function load() {
 						title:'导出xml',
 						visible:false,
 						formatter:function(value, row, index){
-							return '<a href="/activiti/model/export/'+row.id+'" target="_blank">xml</a>';
+							return '<a href="'+ctx+'/activiti/model/export/'+row.id+'" target="_blank">xml</a>';
 						}
 					},
 					{

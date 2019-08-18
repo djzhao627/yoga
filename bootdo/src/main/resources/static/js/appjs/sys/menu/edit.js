@@ -1,4 +1,4 @@
-var prefix = "/sys/menu"
+var prefix = ctx+ "/sys/menu"
 $(function() {
 	validateRule();
 
@@ -7,7 +7,8 @@ $(function() {
         layer.open({
             type: 2,
 			title:'图标列表',
-            content: '/FontIcoList.html',
+            //content: ctx+'FontIcoList.html',
+			content: prefix+'/openIcon',
             area: ['480px', '90%'],
             success: function(layero, index){
                 //var body = layer.getChildFrame('.ico-list', index);

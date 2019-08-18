@@ -92,8 +92,11 @@ var KisBpmBooleanPropertyCtrl = ['$scope', function ($scope) {
 
 var KisBpmTextPropertyCtrl = [ '$scope', '$modal', function($scope, $modal) {
 
+	if(!ctx){
+		ctx="";
+	}
     var opts = {
-        template:  'editor-app/configuration/properties/text-popup.html?version=' + Date.now(),
+        template:  ctx+ 'editor-app/configuration/properties/text-popup.html?version=' + Date.now(),
         scope: $scope
     };
 

@@ -32,22 +32,8 @@
 		</div>
 	</div>
 
-
-
 	<!-- 全局js -->
-	<script src="/js/jquery.min.js?v=2.1.4"></script>
-	<script src="/js/bootstrap.min.js?v=3.3.6"></script>
-
-	<!-- 自定义js -->
-	<script src="/js/content.js?v=1.0.0"></script>
-
-	<!-- jQuery Validation plugin javascript-->
-	<script src="/js/plugins/validate/jquery.validate.min.js"></script>
-	<script src="/js/plugins/validate/messages_zh.min.js"></script>
-
-
-	<!-- script src="/js/demo/form-validate-demo.js"></script> -->
-
+	<div th:include="include :: footer"></div>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -63,7 +49,7 @@
 			$.ajax({
 				cache : true,
 				type : "POST",
-				url : "/sys/user/adminResetPwd",
+				url : ctx+ "/sys/user/adminResetPwd",
 				data : $('#signupForm').serialize(),// 你的formid
 				async : false,
 				error : function(request) {

@@ -2,7 +2,8 @@
 <html>
 <meta charset="utf-8">
 
-<head th:include="system/user/include :: header"></head>
+<head th:include="include :: header"></head>
+<!-- <head th:include="system/user/include :: header"></head> -->
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -14,7 +15,7 @@
                     <div class="gg-nav">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#basic_info" data-toggle="tab">基本资料</a></li>
-                            <li><a href="#photo_info" data-toggle="tab">头像修改</a></li>
+                            <!-- <li><a href="#photo_info" data-toggle="tab">头像修改</a></li> -->
                             <li><a href="#pwd_info" data-toggle="tab">修改密码</a></li>
                         </ul>
                     </div>
@@ -123,7 +124,7 @@
                         </div>
                     </div>
                     <!--photo_info-->
-                    <div class="ibox-content tab-pane fade gg" id="photo_info">
+                    <!-- <div class="ibox-content tab-pane fade gg" id="photo_info">
                         <div class="ggcontainer" id="crop-avatar">
                             <form class="avatar-form" action="/sys/user/uploadImg" enctype="multipart/form-data" method="post">
                                 <div class="avatar-body">
@@ -133,7 +134,7 @@
                                         <label for="avatarInput">选取文件</label>
                                         <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
                                     </div>
-                                    <!-- Crop and preview -->
+                                    Crop and preview
                                     <div class="row">
                                         <div class="col-md-9">
                                             <div class="avatar-wrapper"></div>
@@ -166,10 +167,10 @@
                                     </div>
                                 </div>
                             </form>
-                            <!-- Loading state -->
+                            Loading state
                             <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
                         </div>
-                    </div>
+                    </div> -->
                     <!--pwd_info-->
                     <div class="ibox-content tab-pane fade" id="pwd_info">
                         <form class="gg-form" role="form" id="modifyPwd">
@@ -217,7 +218,8 @@
         </div>
     </div>
 </div>
-<div th:include="system/user/include :: footer"></div>
-<script type="text/javascript" src="/js/appjs/sys/user/personal.js"></script>
+<div th:include="include :: footer"></div>
+<!-- <div th:include="system/user/include :: footer"></div> -->
+<script type="text/javascript" th:src="@{/js/appjs/sys/user/personal.js}"></script>
 </body>
 </html>

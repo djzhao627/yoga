@@ -1,4 +1,4 @@
-var prefix = "/activiti/task"
+var prefix = ctx+ "/activiti/task"
 $(function() {
 	load();
 });
@@ -70,7 +70,7 @@ function load() {
                         field : 'executionId',
                         title : '跟踪',
 						formatter:function(value,row,index){
-                        	return '<a href="/activiti/task/trace/photo/'+row.processDefinitionId+'/'+row.executionId+'">跟踪</a>';
+                        	return '<a href="'+ctx+'/activiti/task/trace/photo/'+row.processDefinitionId+'/'+row.executionId+'">跟踪</a>';
 						}
                     },
 					{

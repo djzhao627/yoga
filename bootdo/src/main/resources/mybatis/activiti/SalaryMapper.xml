@@ -4,11 +4,11 @@
 <mapper namespace="com.bootdo.activiti.dao.SalaryDao">
 
 	<select id="get" resultType="com.bootdo.activiti.domain.SalaryDO">
-		select `id`,`PROC_INS_ID`,`USER_ID`,`OFFICE_ID`,`POST`,`AGE`,`EDU`,`CONTENT`,`OLDA`,`OLDB`,`OLDC`,`NEWA`,`NEWB`,`NEWC`,`ADD_NUM`,`EXE_DATE`,`HR_TEXT`,`LEAD_TEXT`,`MAIN_LEAD_TEXT`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from salary where id = #{value}
+		select id,PROC_INS_ID,USER_ID,OFFICE_ID,POST,AGE,EDU,CONTENT,OLDA,OLDB,OLDC,NEWA,NEWB,NEWC,ADD_NUM,EXE_DATE,HR_TEXT,LEAD_TEXT,MAIN_LEAD_TEXT,create_by,create_date,update_by,update_date,remarks,del_flag from salary where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.bootdo.activiti.domain.SalaryDO" >
-		select `id`,`PROC_INS_ID`,`USER_ID`,`OFFICE_ID`,`POST`,`AGE`,`EDU`,`CONTENT`,`OLDA`,`OLDB`,`OLDC`,`NEWA`,`NEWB`,`NEWC`,`ADD_NUM`,`EXE_DATE`,`HR_TEXT`,`LEAD_TEXT`,`MAIN_LEAD_TEXT`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from salary
+	<select id="list" resultType="com.bootdo.activiti.domain.SalaryDO">
+		select id,PROC_INS_ID,USER_ID,OFFICE_ID,POST,AGE,EDU,CONTENT,OLDA,OLDB,OLDC,NEWA,NEWB,NEWC,ADD_NUM,EXE_DATE,HR_TEXT,LEAD_TEXT,MAIN_LEAD_TEXT,create_by,create_date,update_by,update_date,remarks,del_flag from salary
         <where>  
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="procInsId != null and procInsId != ''"> and PROC_INS_ID = #{procInsId} </if>
@@ -44,9 +44,6 @@
                 order by id desc
 			</otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
 	</select>
 	
  	<select id="count" resultType="int">
@@ -83,89 +80,89 @@
 	<insert id="save" parameterType="com.bootdo.activiti.domain.SalaryDO">
 		insert into salary
 		(
-			`id`, 
-			`PROC_INS_ID`, 
-			`USER_ID`, 
-			`OFFICE_ID`, 
-			`POST`, 
-			`AGE`, 
-			`EDU`, 
-			`CONTENT`, 
-			`OLDA`, 
-			`OLDB`, 
-			`OLDC`, 
-			`NEWA`, 
-			`NEWB`, 
-			`NEWC`, 
-			`ADD_NUM`, 
-			`EXE_DATE`, 
-			`HR_TEXT`, 
-			`LEAD_TEXT`, 
-			`MAIN_LEAD_TEXT`, 
-			`create_by`, 
-			`create_date`, 
-			`update_by`, 
-			`update_date`, 
-			`remarks`, 
-			`del_flag`
+			id, 
+			PROC_INS_ID, 
+			USER_ID, 
+			OFFICE_ID, 
+			POST, 
+			AGE, 
+			EDU, 
+			CONTENT, 
+			OLDA, 
+			OLDB, 
+			OLDC, 
+			NEWA, 
+			NEWB, 
+			NEWC, 
+			ADD_NUM, 
+			EXE_DATE, 
+			HR_TEXT, 
+			LEAD_TEXT, 
+			MAIN_LEAD_TEXT, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
 		)
 		values
 		(
 			#{id}, 
-			#{procInsId}, 
-			#{userId}, 
-			#{officeId}, 
-			#{post}, 
-			#{age}, 
-			#{edu}, 
-			#{content}, 
-			#{olda}, 
-			#{oldb}, 
-			#{oldc}, 
-			#{newa}, 
-			#{newb}, 
-			#{newc}, 
-			#{addNum}, 
-			#{exeDate}, 
-			#{hrText}, 
-			#{leadText}, 
-			#{mainLeadText}, 
-			#{createBy}, 
-			#{createDate}, 
-			#{updateBy}, 
-			#{updateDate}, 
-			#{remarks}, 
-			#{delFlag}
+			#{procInsId, jdbcType=VARCHAR}, 
+			#{userId, jdbcType=VARCHAR}, 
+			#{officeId, jdbcType=VARCHAR}, 
+			#{post, jdbcType=VARCHAR}, 
+			#{age, jdbcType=VARCHAR}, 
+			#{edu, jdbcType=VARCHAR}, 
+			#{content, jdbcType=VARCHAR}, 
+			#{olda, jdbcType=VARCHAR}, 
+			#{oldb, jdbcType=VARCHAR}, 
+			#{oldc, jdbcType=VARCHAR}, 
+			#{newa, jdbcType=VARCHAR}, 
+			#{newb, jdbcType=VARCHAR}, 
+			#{newc, jdbcType=VARCHAR}, 
+			#{addNum, jdbcType=VARCHAR}, 
+			#{exeDate, jdbcType=VARCHAR}, 
+			#{hrText, jdbcType=VARCHAR}, 
+			#{leadText, jdbcType=VARCHAR}, 
+			#{mainLeadText, jdbcType=VARCHAR}, 
+			#{createBy, jdbcType=VARCHAR}, 
+			#{createDate, jdbcType=VARCHAR}, 
+			#{updateBy, jdbcType=VARCHAR}, 
+			#{updateDate, jdbcType=VARCHAR}, 
+			#{remarks, jdbcType=VARCHAR}, 
+			#{delFlag, jdbcType=VARCHAR}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="com.bootdo.activiti.domain.SalaryDO">
 		update salary 
 		<set>
-			<if test="procInsId != null">`PROC_INS_ID` = #{procInsId}, </if>
-			<if test="userId != null">`USER_ID` = #{userId}, </if>
-			<if test="officeId != null">`OFFICE_ID` = #{officeId}, </if>
-			<if test="post != null">`POST` = #{post}, </if>
-			<if test="age != null">`AGE` = #{age}, </if>
-			<if test="edu != null">`EDU` = #{edu}, </if>
-			<if test="content != null">`CONTENT` = #{content}, </if>
-			<if test="olda != null">`OLDA` = #{olda}, </if>
-			<if test="oldb != null">`OLDB` = #{oldb}, </if>
-			<if test="oldc != null">`OLDC` = #{oldc}, </if>
-			<if test="newa != null">`NEWA` = #{newa}, </if>
-			<if test="newb != null">`NEWB` = #{newb}, </if>
-			<if test="newc != null">`NEWC` = #{newc}, </if>
-			<if test="addNum != null">`ADD_NUM` = #{addNum}, </if>
-			<if test="exeDate != null">`EXE_DATE` = #{exeDate}, </if>
-			<if test="hrText != null">`HR_TEXT` = #{hrText}, </if>
-			<if test="leadText != null">`LEAD_TEXT` = #{leadText}, </if>
-			<if test="mainLeadText != null">`MAIN_LEAD_TEXT` = #{mainLeadText}, </if>
-			<if test="createBy != null">`create_by` = #{createBy}, </if>
-			<if test="createDate != null">`create_date` = #{createDate}, </if>
-			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
-			<if test="updateDate != null">`update_date` = #{updateDate}, </if>
-			<if test="remarks != null">`remarks` = #{remarks}, </if>
-			<if test="delFlag != null">`del_flag` = #{delFlag}</if>
+			<if test="procInsId != null">PROC_INS_ID = #{procInsId}, </if>
+			<if test="userId != null">USER_ID = #{userId}, </if>
+			<if test="officeId != null">OFFICE_ID = #{officeId}, </if>
+			<if test="post != null">POST = #{post}, </if>
+			<if test="age != null">AGE = #{age}, </if>
+			<if test="edu != null">EDU = #{edu}, </if>
+			<if test="content != null">CONTENT = #{content}, </if>
+			<if test="olda != null">OLDA = #{olda}, </if>
+			<if test="oldb != null">OLDB = #{oldb}, </if>
+			<if test="oldc != null">OLDC = #{oldc}, </if>
+			<if test="newa != null">NEWA = #{newa}, </if>
+			<if test="newb != null">NEWB = #{newb}, </if>
+			<if test="newc != null">NEWC = #{newc}, </if>
+			<if test="addNum != null">ADD_NUM = #{addNum}, </if>
+			<if test="exeDate != null">EXE_DATE = #{exeDate}, </if>
+			<if test="hrText != null">HR_TEXT = #{hrText}, </if>
+			<if test="leadText != null">LEAD_TEXT = #{leadText}, </if>
+			<if test="mainLeadText != null">MAIN_LEAD_TEXT = #{mainLeadText}, </if>
+			<if test="createBy != null">create_by = #{createBy}, </if>
+			<if test="createDate != null">create_date = #{createDate}, </if>
+			<if test="updateBy != null">update_by = #{updateBy}, </if>
+			<if test="updateDate != null">update_date = #{updateDate}, </if>
+			<if test="remarks != null">remarks = #{remarks}, </if>
+			<if test="delFlag != null">del_flag = #{delFlag}</if>
 		</set>
 		where id = #{id}
 	</update>

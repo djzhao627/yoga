@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,57 +18,75 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ${package}.domain.${className}DO;
 import ${package}.service.${className}Service;
 import com.bootdo.common.utils.PageUtils;
+import com.github.pagehelper.PageInfo;
 import com.bootdo.common.utils.Query;
 import com.bootdo.common.utils.R;
+import com.bootdo.common.controller.BaseController;
+import com.bootdo.common.controller.IPageDefine;
 
 /**
  * ${comments}
- * 
  * @author ${author}
- * @email ${email}
  * @date ${datetime}
  */
  
 @Controller
 @RequestMapping("/${pathName}/${classname}")
-public class ${className}Controller {
+public class ${className}Controller extends BaseController {
 	@Autowired
 	private ${className}Service ${classname}Service;
 	
 	@GetMapping()
 	@RequiresPermissions("${pathName}:${classname}:${classname}")
 	String ${className}(){
-	    return "${pathName}/${classname}/${classname}";
-	}
-	
-	@ResponseBody
-	@GetMapping("/list")
-	@RequiresPermissions("${pathName}:${classname}:${classname}")
-	public PageUtils list(@RequestParam Map<String, Object> params){
-		//查询列表数据
-        Query query = new Query(params);
-		List<${className}DO> ${classname}List = ${classname}Service.list(query);
-		int total = ${classname}Service.count(query);
-		PageUtils pageUtils = new PageUtils(${classname}List, total);
-		return pageUtils;
-	}
-	
-	@GetMapping("/add")
-	@RequiresPermissions("${pathName}:${classname}:add")
-	String add(){
-	    return "${pathName}/${classname}/add";
-	}
-
-	@GetMapping("/edit/{${pk.attrname}}")
-	@RequiresPermissions("${pathName}:${classname}:edit")
-	String edit(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname},Model model){
-		${className}DO ${classname} = ${classname}Service.get(${pk.attrname});
-		model.addAttribute("${classname}", ${classname});
-	    return "${pathName}/${classname}/edit";
+	    return "${pathName}/${classname}/${classname}_list";
 	}
 	
 	/**
-	 * 保存
+	 * 分页列表查询
+	 */
+	@ResponseBody
+	@GetMapping("/listPage")
+	@RequiresPermissions("${pathName}:${classname}:${classname}")
+	public PageUtils list(@RequestParam Map<String, Object> params){
+
+		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
+        return getPageList(params, new IPageDefine() {
+			
+			@Override
+			public List<?> getPageRows(Query query){
+				return  ${classname}Service.list(query);
+			}
+        });
+	}
+	
+	/**
+	 * 跳转到新增页面
+	 */
+	@GetMapping("/add")
+	@RequiresPermissions("${pathName}:${classname}:add")
+	ModelAndView add(){
+	    ModelAndView mv = new ModelAndView();
+		mv.addObject("${classname}", new ${className}DO());
+		mv.setViewName("${pathName}/${classname}/${classname}_edit");
+		return mv;
+	}
+	
+	/**
+	 * 跳转到修改页面
+	 */
+	@GetMapping("/edit/{${pk.attrname}}")
+	@RequiresPermissions("${pathName}:${classname}:edit")
+	ModelAndView edit(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}){
+	    ModelAndView mv = new ModelAndView();
+		${className}DO ${classname} = ${classname}Service.get(${pk.attrname});
+		mv.addObject("${classname}", ${classname});
+		mv.setViewName("${pathName}/${classname}/${classname}_edit");
+		return mv;
+	}
+	
+	/**
+	 * 新增方法
 	 */
 	@ResponseBody
 	@PostMapping("/save")
@@ -80,7 +98,7 @@ public class ${className}Controller {
 		return R.error();
 	}
 	/**
-	 * 修改
+	 * 修改方法
 	 */
 	@ResponseBody
 	@RequestMapping("/update")
@@ -91,7 +109,7 @@ public class ${className}Controller {
 	}
 	
 	/**
-	 * 删除
+	 * 单条删除方法
 	 */
 	@PostMapping( "/remove")
 	@ResponseBody
@@ -104,7 +122,7 @@ public class ${className}Controller {
 	}
 	
 	/**
-	 * 删除
+	 * 批量删除方法
 	 */
 	@PostMapping( "/batchRemove")
 	@ResponseBody

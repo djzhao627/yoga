@@ -171,7 +171,11 @@ angular.module('activitiModeler')
 	                    // Add the stencil item to the correct group
 	                    currentGroup.items.push(stencilItem);
 	                    if (ignoreForPaletteDefinition.indexOf(stencilItem.id) < 0) {
+	                    	if(!ctx){
+	                    		ctx="";
+	                    	}
 	                    	currentGroup.paletteItems.push(stencilItem);
+	                    	currentGroup.paletteItems.ctx= ctx;
 	                    }
 
                     } else {
@@ -201,14 +205,17 @@ angular.module('activitiModeler')
                 $scope.containmentRules = containmentRules;
                 
                 // remove quick menu items which are not available anymore due to custom pallette
+                if(!ctx){
+                	ctx="";
+                }
                 var availableQuickMenuItems = [];
                 for (var i = 0; i < quickMenuItems.length; i++) 
                 {
                     if (quickMenuItems[i]) {
+                    	quickMenuItems[i].ctx = ctx;
                         availableQuickMenuItems[availableQuickMenuItems.length] = quickMenuItems[i];
                     }
                 }
-                
                 $scope.quickMenuItems = availableQuickMenuItems;
                 $scope.morphRoles = morphRoles;
             }).
@@ -502,6 +509,9 @@ angular.module('activitiModeler')
         					}
             			}
 
+            			if(!ctx){
+            				ctx="";
+            			}
             			// Method to open shape select dialog (used later on)
                         var showSelectShapeDialog = function()
                         {
@@ -509,7 +519,7 @@ angular.module('activitiModeler')
                             $modal({
                                 backdrop: false,
                                 keyboard: true,
-                                template: 'editor-app/popups/select-shape.html?version=' + Date.now()
+                                template: ctx+ 'editor-app/popups/select-shape.html?version=' + Date.now()
                             });
                         };
 

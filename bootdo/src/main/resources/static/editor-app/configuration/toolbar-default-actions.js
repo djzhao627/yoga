@@ -27,7 +27,7 @@ KISBPM.TOOLBAR = {
             var modal = services.$modal({
                 backdrop: true,
                 keyboard: true,
-                template: 'editor-app/popups/save-model.html?version=' + Date.now(),
+                template:  ctx+ 'editor-app/popups/save-model.html?version=' + Date.now(),
                 scope: services.$scope
             });
         },

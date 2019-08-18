@@ -34,7 +34,10 @@ var KisBpmShapeSelectionCtrl = [ '$rootScope', '$scope', '$timeout', '$translate
     		$scope.availableMorphShapes.push($scope.morphShapes[i]);
     	}
     }
-    	
+
+	if(!ctx){
+		ctx="";
+	}
     // Config for grid
     $scope.gridOptions = {
         data: 'availableMorphShapes',
@@ -43,7 +46,7 @@ var KisBpmShapeSelectionCtrl = [ '$rootScope', '$scope', '$timeout', '$translate
         multiSelect: false,
         keepLastSelected : false,
         selectedItems: $scope.selectedMorphShapes,
-        columnDefs: [{ field: 'objectId', displayName: 'Icon', width: 50, cellTemplate: 'editor-app/popups/icon-template.html?version=' + Date.now() },
+        columnDefs: [{ field: 'objectId', displayName: 'Icon', width: 50, cellTemplate: ctx+ 'editor-app/popups/icon-template.html?version=' + Date.now() },
             { field: 'name', displayName: 'Name'}]
     };
 

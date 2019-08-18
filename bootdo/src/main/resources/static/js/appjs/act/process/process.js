@@ -1,4 +1,4 @@
-var prefix = "/activiti/process"
+var prefix = ctx+ "/activiti/process"
 $(function() {
 	load();
 });
@@ -64,7 +64,7 @@ function load() {
                         field : 'id',
                         title : '流程XML',
 						formatter:function (value,row,index) {
-                            var e = '<a   href="/activiti/process/resource/read/xml/'+row.id+'"  title="xml" target="_blank">xml</a> ';
+                            var e = '<a   href="'+ctx+'/activiti/process/resource/read/xml/'+row.id+'"  title="xml" target="_blank">xml</a> ';
                             return e;
                         }
                     },
@@ -72,7 +72,7 @@ function load() {
                         field : 'id',
                         title : '流程XML',
                         formatter:function (value,row,index) {
-                            var e = '<a   href="/activiti/process/resource/read/image/'+row.id+'"  title="图片" target="_blank">图片</a> ';
+                            var e = '<a   href="'+ctx+'/activiti/process/resource/read/image/'+row.id+'"  title="图片" target="_blank">图片</a> ';
                             return e;
                         }
                     },
@@ -196,7 +196,7 @@ function batchRemove() {
 function getTreeData() {
 	$.ajax({
 		type : "GET",
-		url : "/system/sysDept/tree",
+		url : ctx+ "/system/sysDept/tree",
 		success : function(tree) {
 			loadTree(tree);
 		}

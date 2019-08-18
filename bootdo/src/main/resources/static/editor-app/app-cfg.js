@@ -19,7 +19,10 @@
 'use strict';
 
 var ACTIVITI = ACTIVITI || {};
+if(!ctx){
+	ctx='';
+}
 
 ACTIVITI.CONFIG = {
-	'contextRoot' : '/activiti',
+	'contextRoot' : ctx+ '/activiti',
 };

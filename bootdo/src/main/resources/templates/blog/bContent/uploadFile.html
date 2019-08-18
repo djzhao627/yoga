@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="IE=edge" >
+
+    <link th:href="@{/css/bootstrap.min.css}" media="all" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/font-awesome.min.css}" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/fileinput.min.css}">
+    <link th:href="@{/css/jquery.mloading.css}" rel="stylesheet" />
+    <script th:src="@{/js/common/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/common/sortable.js}" type="text/javascript"></script>
+    <script th:src="@{/js/common/fileinput.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/common/locales/zh.js}"></script>
+    <script th:src="@{/js/common/bootstrap.min.js}"></script>
+    <script th:src="@{/js/plugins/layer/layer.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/common/jquery.mloading.js}" ></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script> -->
+    
+    <!-- <link th:href="@{/css/theme.min.css}" media="all" rel="stylesheet" type="text/css"/> -->
+    <!-- <script th:src="@{/js/common/theme-min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/common/theme.js}" type="text/javascript"></script> -->
+    <title>文件上传</title>
+</head>
+<body>
+<div class="container kv-main">
+    <div class="page-header" style="text-align:right;margin:0px;">
+        <h5>
+            <small>
+                <button class="btn btn-success" onclick="dataImport()">保存</button>
+            </small>
+            <small>
+                <button id="closebtn" class="btn btn-primary btn-check" data-loading-text="提交中..." onclick="close()">关闭</button>
+            </small>
+        </h2>
+    </div>
+    <div id="doing" style="display: none"></div>
+    <form enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="file-loading">
+                <input id="myfile" class="file" name="myfile" type="file" multiple data-preview-file-type="any" data-upload-url="/common/sysFile/uploadFilekkp" />
+                <!-- 此处需要写上传的逻辑，文件存放的路径和名称 -->
+            </div>
+        </div>
+    </form>
+<input type="hidden" id="hidurl"/>
+</div>
+
+</body>
+<script type="text/javascript">
+
+    $("#file-0").fileinput({
+        theme: 'fa',
+        'allowedFileExtensions': ['jpg', 'png', 'gif']
+    });
+    $("#myfile").fileinput({
+        theme: 'fa',
+        language: 'zh', //设置语言
+        uploadUrl: '/common/sysFile/uploadFilekkp', // you must set a valid URL here else you will get an error
+        allowedFileExtensions: ['xlsx', 'docx', 'xls'],
+        overwriteInitial: false,
+        maxFileSize: 10000,
+        maxFilesNum: 2,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+
+    $("#file-4").fileinput({
+        theme: 'fa',
+        uploadExtraData: {kvId: '10'}
+    });
+    $(".btn-warning").on('click', function () {
+        var $el = $("#file-4");
+        if ($el.attr('disabled')) {
+            $el.fileinput('enable');
+        } else {
+            $el.fileinput('disable');
+        }
+    });
+    $(".btn-info").on('click', function () {
+        $("#file-4").fileinput('refresh', {previewClass: 'bg-info'});
+    });
+    var List = new Array();//定义一个全局变量去接受文件名和id
+    $(document).ready(function () {
+        $("#myfile").fileinput({
+            theme: 'fa',
+            language: 'zh', //设置语言
+            uploadUrl: '/common/sysFile/uploadFilekkp', // you must set a valid URL here else you will get an error
+            allowedFileExtensions: ['xlsx', 'docx', 'xls'],
+            overwriteInitial: false,
+            maxFileSize: 10000,
+            maxFilesNum: 2,
+            //allowedFileTypes: ['image', 'video', 'flash'],
+            slugCallback: function (filename) {
+                return filename.replace('(', '_').replace(']', '_');
+            }
+        }).on("fileuploaded", function(event, data, previewId, index) {
+            var res = data.jqXHR.responseJSON;
+            if(res.code = "success"){
+                var kkp = $("#hidurl").val()+","+res.name;
+                $("#hidurl").val(kkp);
+                var datak =res.name;  //文件上传成功返回的文件名，可返回自定义文件名
+                List.push({ FileName: datak, KeyID: previewId })
+            }
+         //   $("#logo").attr("value", res.success);
+        });
+
+
+        $("#myfile").on("filesuccessremove", function (event, data, previewId, index) {
+            for (var i = 0; i < List.length; i++) {
+                if (List[i].KeyID== data) {
+                     List[i].FileName="";
+                }
+            }
+        });
+
+        $("#myfile").on("filecleared",function(event, data, msg){
+            for (var i = 0; i < List.length; i++) {
+                    List[i].FileName="";
+            }
+        });
+    });
+
+    function  dataImport() {
+        /*for (var i = 0; i < List.length; i++) {
+            alert(List[i].FileName);
+        }*/
+        var paraJson = JSON.stringify(List);
+        paraJson = encodeURI(encodeURI(paraJson));
+        var url = "/temptable/bondprice/importCustPrice?paraJson="+paraJson; //数据导入到数据库的逻辑，需要修改
+        $.ajax({
+            type: "get",
+            beforeSend:function(XMLHttpRequest){
+                $("#doing").show();
+                //$("#doing").html("正在处理，请稍后···");
+                $("#doing").mLoading();
+                parent.reLoad();
+            },
+            url: url,
+            datatype: "json",
+            success: function(data) {
+                 if(data.code = 0){
+                     layer.alert("保存成功");
+                     parent.reLoad();
+                     closeWindow();
+                 }else{
+                     layer.alert(data.msg);
+                     parent.reLoad();
+                     closeWindow();
+                 }
+                parent.reLoad();
+                $("#doing").hide();
+            }
+        });
+        parent.reLoad();
+    }
+
+   /* function close() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+        parent.reLoad();
+        $("#closebtn").button('loading');//禁用按钮并显示提交中
+        $("#closebtn").button('reset');//重置按钮
+    }*/
+
+    $("#closebtn").on('click',function(){
+        parent.reLoad();
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    });
+
+    //关闭弹窗
+    function closeWindow() {
+        parent.reLoad();
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+
+
+</script>
+
+
+</html>

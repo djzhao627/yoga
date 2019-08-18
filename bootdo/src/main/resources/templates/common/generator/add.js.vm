@@ -37,12 +37,16 @@ function validateRule() {
 	$("#signupForm").validate({
 		rules : {
 			name : {
-				required : true
+				required : true,
+				minlength:5,  //设置最小长度  
+                maxlength:10, //设置最大长度  
 			}
 		},
 		messages : {
 			name : {
-				required : icon + "请输入姓名"
+				required : icon + "请输入姓名",
+				minlength: icon + "长度不得小于5",
+				maxlength: icon + "长度不得大于10"
 			}
 		}
 	})

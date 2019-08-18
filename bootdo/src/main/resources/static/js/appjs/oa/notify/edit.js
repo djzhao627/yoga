@@ -12,7 +12,7 @@ function update() {
 	$.ajax({
 		cache : true,
 		type : "POST",
-		url : "/oa/notify/update",
+		url : ctx+ "/oa/notify/update",
 		data : $('#signupForm').serialize(),// 你的formid
 		async : false,
 		error : function(request) {
@@ -37,14 +37,20 @@ function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({
 		rules : {
-			name : {
+			title : {
 				required : true
+			},
+			content: {
+				required: function(){
+					return $(content).val() != "" ;
+				}
 			}
 		},
 		messages : {
-			name : {
+			title : {
 				required : icon + "请输入名字"
-			}
+			},
+			content: "请输入内容!"
 		}
 	})
 }
@@ -52,7 +58,7 @@ function validateRule() {
 function loadType(){
 	var html = "";
 	$.ajax({
-		url : '/common/dict/list/oa_notify_type',
+		url : ctx+'/common/dict/list/oa_notify_type',
 		success : function(data) {
 			// 加载数据
 			for (var i = 0; i < data.length; i++) {

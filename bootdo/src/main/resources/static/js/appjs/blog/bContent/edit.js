@@ -28,7 +28,7 @@ function save(status) {
 	$.ajax({
 		cache : true,
 		type : "POST",
-		url : "/blog/bContent/save",
+		url : ctx+ "/blog/bContent/save",
 		data : $('#signupForm').serialize(),// 你的formid
 		async : false,
 		error : function(request) {
@@ -52,14 +52,16 @@ function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({
 		rules : {
-			name : {
+			title : {
 				required : true
-			}
+			},
+			author : "required"
 		},
 		messages : {
-			name : {
-				required : icon + "请输入姓名"
-			}
+			title : {
+				required : icon + "请输入标题"
+			},
+			author: "请输入作者!"
 		}
 	})
 }

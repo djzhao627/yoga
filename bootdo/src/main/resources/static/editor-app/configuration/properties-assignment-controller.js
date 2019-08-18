@@ -21,10 +21,10 @@
  * Assignment
  */
 var KisBpmAssignmentCtrl = [ '$scope', '$modal', function($scope, $modal) {
-
+	
     // Config for the modal window
     var opts = {
-        template:  'editor-app/configuration/properties/assignment-popup.html?version=' + Date.now(),
+        template:  ctx+ 'editor-app/configuration/properties/assignment-popup.html?version=' + Date.now(),
         scope: $scope
     };
 

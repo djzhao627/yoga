@@ -1792,7 +1792,7 @@ ORYX.CONFIG.SERVER_MODEL_HANDLER =			ORYX.CONFIG.SERVER_HANDLER_ROOT + "/model";
 ORYX.CONFIG.STENCILSET_HANDLER = 			ORYX.CONFIG.SERVER_HANDLER_ROOT + "/editor_stencilset?embedsvg=true&url=true&namespace=";    
 ORYX.CONFIG.STENCIL_SETS_URL = 				ORYX.CONFIG.SERVER_HANDLER_ROOT + "/editor_stencilset";
 
-ORYX.CONFIG.PLUGINS_CONFIG =				"editor-app/plugins.xml";
+ORYX.CONFIG.PLUGINS_CONFIG =				ctx+"editor-app/plugins.xml";
 ORYX.CONFIG.SYNTAXCHECKER_URL =				ORYX.CONFIG.SERVER_HANDLER_ROOT + "/syntaxchecker";
 ORYX.CONFIG.DEPLOY_URL = 					ORYX.CONFIG.SERVER_HANDLER_ROOT + "/model/deploy";
 ORYX.CONFIG.MODEL_LIST_URL = 				ORYX.CONFIG.SERVER_HANDLER_ROOT + "/models";
@@ -10840,6 +10840,9 @@ function init() {
     // Else fetch the model from server and display editor
     else {
 		var modelId = window.location.search.substring(4);
+		if(!modelId && modelIdModel){
+			modelId = modelIdModel;
+		}
 		var modelUrl = "./service/model/" + modelId + "/json";
 
         ORYX.Editor.createByUrl(modelUrl);

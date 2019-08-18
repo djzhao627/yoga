@@ -1,6 +1,14 @@
-var prefix = "/blog/bContent"
+var prefix = ctx+ "/blog/bContent"
 $(function() {
 	load();
+	//selectInit(); //初始化下拉列表
+	laydate({
+        elem : '#timeStart'
+    });
+	
+	laydate({
+        elem : '#timeEnd'
+    });
 });
 
 function load() {
@@ -9,8 +17,8 @@ function load() {
 					{
 						method : 'get', // 服务器数据的请求方式 get or post
 						url : prefix + "/list", // 服务器数据的加载地址
-						// showRefresh : true,
-						// showToggle : true,
+						showRefresh : true,
+						showToggle : true,
 						showColumns : true,
 						iconSize : 'outline',
 						toolbar : '#exampleToolbar',
@@ -20,21 +28,39 @@ function load() {
 						// queryParamsType : "limit",
 						// //设置为limit则会发送符合RESTFull格式的参数
 						singleSelect : false, // 设置为true将禁止多选
-						// contentType : "application/x-www-form-urlencoded",
+						contentType : "application/x-www-form-urlencoded",
 						// //发送到服务器的数据编码类型
 						pageSize : 10, // 如果设置了分页，每页数据条数
 						pageNumber : 1, // 如果设置了分布，首页页码
 						// search : true, // 是否显示搜索框
 						//showColumns : false, // 是否显示内容下拉框（选择显示的列）
-						sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者
-						// "server"
-
+						sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者"server"
+						sortStable:true,
+                        sortable: true,                     //是否启用排序
+                        sortOrder: "asc",                   //排序方式
+                        showExport: true,                     //是否显示导出
+						exportDataType: "all",              //basic', 'all', 'selected'.
+                        exportTypes:['excel'],
+                        exportOptions:{
+                            //ignoreColumn: [0,1],  //忽略某一列的索引
+                            fileName: '####',  //文件名称设置
+                            worksheetName: 'sheet1',  //表格工作区名称
+                            tableName: '####'
+                            //excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+                            //onMsoNumberFormat: DoOnMsoNumberFormat
+                        },
 						queryParams : function(params) {
 							return {
 								// 说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 								limit : params.limit,
-								offset : params.offset
-							// name:$('#searchName').val(),
+								offset : params.offset,
+								title : $.trim($('#title').val()),
+								author : $.trim($('#author').val()),
+								allowComment : $('#allowComment').selectpicker('val'),
+								timeStart : $.trim($('#timeStart').val()),
+								timeEnd : $.trim($('#timeEnd').val()),
+							    sort: this.sortName,      //排序列名
+                                order:this.sortOrder //排位命令（desc,asc）
 							// username:$('#searchName').val()
 							};
 						},
@@ -50,8 +76,7 @@ function load() {
 								},
 								{
 									visible : false,
-									field : 'cid',
-									title : ''
+									field : 'cid'
 								},
 								{
 									field : 'title',
@@ -63,7 +88,8 @@ function load() {
                                 },
 								{
 									field : 'author',
-									title : '作者'
+									title : '作者',
+									sortable:true
 								},
 								{
 									visible : false,
@@ -109,7 +135,6 @@ function load() {
 								{
 									visible : false,
 									field : 'hits',
-									title : ''
 								},
 								{
 									field : 'commentsNum',
@@ -232,7 +257,7 @@ function remove(id) {
 }
 
 function preview(id) {
-	window.open("/blog/open/post/"+id);   
+	window.open(ctx+"/blog/open/post/"+id);   
 	//window.location.href="/blog/open/post/"+id;
 }
 function batchRemove() {
@@ -268,4 +293,61 @@ function batchRemove() {
 	}, function() {
 
 	});
+}
+
+//初始化下拉列表
+function selectInit() {
+        var obj = new Object();
+        $.ajax({
+            cache : true,
+            type : "GET",
+            url : ctx+ "common/lov/area/list",
+           /* data : {
+                params:obj
+            },*/
+            async : false,
+            error : function(request) {
+                layer.alert("Connection error");
+            },
+            success : function(data) {
+                var opts ="";
+                for(var i=0; i < data.length; i++){
+                        opts += "<option value='"+data[i].area_id+"'>"+data[i].area_name+"</option>";
+                }
+                $("#allowComment").append(opts);
+            }
+        });
+}
+
+//文件上传
+function upload(){
+	layer.open(
+	        {
+	            type : 2,
+	            title : '模板导入',
+	            maxmin : true,
+	            shadeClose : false, // 点击遮罩关闭层
+	            area : [ '680px', '500px' ],
+	            content : prefix + '/uploadfile' // iframe的url
+	        }
+	    )
+}
+
+//重置输入框
+function reSet(){
+	var inputid=""; 
+	var inputArray=$("input[type='text']");
+	inputArray.each(//使用数组的循环函数 循环这个input数组  
+	         function (){  
+	             var input =$(this);//循环中的每一个input元素  
+	             //inputid+=input.attr("id")+":"+$('#'+input.attr("id")).val()+",";//查看循环中的每一个input的id  
+	             inputid+=input.attr("id")+":"+$('#'+input.attr("id")).val()+",";//查看循环中的每一个input的id  
+	             $('#'+input.attr("id")).val('');
+	             //console.log("id数组为"+inputid);
+	         }  
+	     ); 
+	document.getElementById("allowComment").options.selectedIndex = 0; //回到初始状态
+    $("#allowComment").selectpicker('refresh');//对searchPayState这个下拉框进行重置刷新
+	reLoad();    
+
 }

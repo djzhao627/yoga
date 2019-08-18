@@ -4,11 +4,11 @@
 <mapper namespace="com.bootdo.blog.dao.ContentDao">
 
 	<select id="get" resultType="com.bootdo.blog.domain.ContentDO">
-		select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from blog_content where cid = #{value}
+		select cid,title,slug,created,modified,content,type,tags,categories,hits,comments_num,allow_comment,allow_ping,allow_feed,status,author,gtm_create,gtm_modified from blog_content where cid = #{value}
 	</select>
 
 	<select id="list" resultType="com.bootdo.blog.domain.ContentDO">
-		select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from blog_content
+		select cid,title,slug,created,modified,content,type,tags,categories,hits,comments_num,allow_comment,allow_ping,allow_feed,status,author,gtm_create,gtm_modified from blog_content
         <where>  
 		  		  <if test="cid != null and cid != ''"> and cid = #{cid} </if>
 		  		  <if test="title != null and title != ''"> and title = #{title} </if>
@@ -28,6 +28,8 @@
 		  		  <if test="author != null and author != ''"> and author = #{author} </if>
 		  		  <if test="gtmCreate != null and gtmCreate != ''"> and gtm_create = #{gtmCreate} </if>
 		  		  <if test="gtmModified != null and gtmModified != ''"> and gtm_modified = #{gtmModified} </if>
+		  		  <if test="timeStart != null and timeStart != ''">and gtm_modified  &gt;= #{timeStart}</if>
+                  <if test="timeEnd != null and timeEnd != ''">and gtm_modified  &lt;= CONCAT(#{timeEnd},' 23:59:59')</if>
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -37,9 +39,6 @@
                 order by cid desc
 			</otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit ${offset}, ${limit}
-		</if>
 	</select>
 	
  	<select id="count" resultType="int">
@@ -66,69 +65,71 @@
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.bootdo.blog.domain.ContentDO" useGeneratedKeys="true" keyProperty="cid">
+	<insert id="save" parameterType="com.bootdo.blog.domain.ContentDO" useGeneratedKeys="true" >
 		insert into blog_content
 		(
-			`title`, 
-			`slug`, 
-			`created`, 
-			`modified`, 
-			`content`, 
-			`type`, 
-			`tags`, 
-			`categories`, 
-			`hits`, 
-			`comments_num`, 
-			`allow_comment`, 
-			`allow_ping`, 
-			`allow_feed`, 
-			`status`, 
-			`author`, 
-			`gtm_create`, 
-			`gtm_modified`
+			cid,
+			title, 
+			slug, 
+			created, 
+			modified, 
+			content, 
+			type, 
+			tags, 
+			categories, 
+			hits, 
+			comments_num, 
+			allow_comment, 
+			allow_ping, 
+			allow_feed, 
+			status, 
+			author, 
+			gtm_create, 
+			gtm_modified
 		)
 		values
 		(
-			#{title}, 
-			#{slug}, 
-			#{created}, 
-			#{modified}, 
-			#{content}, 
-			#{type}, 
-			#{tags}, 
-			#{categories}, 
-			#{hits}, 
-			#{commentsNum}, 
-			#{allowComment}, 
-			#{allowPing}, 
-			#{allowFeed}, 
-			#{status}, 
-			#{author}, 
-			#{gtmCreate}, 
-			#{gtmModified}
+			SYS_SEQ('BLOG_CONTENT'),
+			#{title, jdbcType=VARCHAR}, 
+			#{slug, jdbcType=VARCHAR}, 
+			#{created, jdbcType=VARCHAR}, 
+			#{modified, jdbcType=VARCHAR}, 
+			#{content, jdbcType=VARCHAR}, 
+			#{type, jdbcType=VARCHAR}, 
+			#{tags, jdbcType=VARCHAR}, 
+			#{categories, jdbcType=VARCHAR}, 
+			#{hits, jdbcType=VARCHAR}, 
+			#{commentsNum, jdbcType=VARCHAR}, 
+			#{allowComment, jdbcType=VARCHAR}, 
+			#{allowPing, jdbcType=VARCHAR}, 
+			#{allowFeed, jdbcType=VARCHAR}, 
+			#{status, jdbcType=VARCHAR}, 
+			#{author, jdbcType=VARCHAR}, 
+			#{gtmCreate, jdbcType=VARCHAR}, 
+			#{gtmModified, jdbcType=VARCHAR}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="com.bootdo.blog.domain.ContentDO">
 		update blog_content 
 		<set>
-			<if test="title != null">`title` = #{title}, </if>
-			<if test="slug != null">`slug` = #{slug}, </if>
-			<if test="created != null">`created` = #{created}, </if>
-			<if test="modified != null">`modified` = #{modified}, </if>
-			<if test="content != null">`content` = #{content}, </if>
-			<if test="type != null">`type` = #{type}, </if>
-			<if test="tags != null">`tags` = #{tags}, </if>
-			<if test="categories != null">`categories` = #{categories}, </if>
-			<if test="hits != null">`hits` = #{hits}, </if>
-			<if test="commentsNum != null">`comments_num` = #{commentsNum}, </if>
-			<if test="allowComment != null">`allow_comment` = #{allowComment}, </if>
-			<if test="allowPing != null">`allow_ping` = #{allowPing}, </if>
-			<if test="allowFeed != null">`allow_feed` = #{allowFeed}, </if>
-			<if test="status != null">`status` = #{status}, </if>
-			<if test="author != null">`author` = #{author}, </if>
-			<if test="gtmCreate != null">`gtm_create` = #{gtmCreate}, </if>
-			<if test="gtmModified != null">`gtm_modified` = #{gtmModified}</if>
+			<if test="title != null">title = #{title}, </if>
+			<if test="slug != null">slug = #{slug}, </if>
+			<if test="created != null">created = #{created}, </if>
+			<if test="modified != null">modified = #{modified}, </if>
+			<if test="content != null">content = #{content}, </if>
+			<if test="type != null">type = #{type}, </if>
+			<if test="tags != null">tags = #{tags}, </if>
+			<if test="categories != null">categories = #{categories}, </if>
+			<if test="hits != null">hits = #{hits}, </if>
+			<if test="commentsNum != null">comments_num = #{commentsNum}, </if>
+			<if test="allowComment != null">allow_comment = #{allowComment}, </if>
+			<if test="allowPing != null">allow_ping = #{allowPing}, </if>
+			<if test="allowFeed != null">allow_feed = #{allowFeed}, </if>
+			<if test="status != null">status = #{status}, </if>
+			<if test="author != null">author = #{author}, </if>
+			<if test="gtmCreate != null">gtm_create = #{gtmCreate}, </if>
+			<if test="gtmModified != null">gtm_modified = #{gtmModified}</if>
 		</set>
 		where cid = #{cid}
 	</update>
