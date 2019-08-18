@@ -1,23 +1,36 @@
 package com.bootdo.system.controller;
 
-import com.bootdo.common.annotation.Log;
-import com.bootdo.common.config.Constant;
-import com.bootdo.common.controller.BaseController;
-import com.bootdo.common.domain.Tree;
-import com.bootdo.common.utils.R;
-import com.bootdo.system.domain.MenuDO;
-import com.bootdo.system.service.MenuService;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-import java.util.Map;
+import com.bootdo.common.annotation.Log;
+import com.bootdo.common.config.Constant;
+import com.bootdo.common.controller.BaseController;
+import com.bootdo.common.controller.IPageDefine;
+import com.bootdo.common.domain.Tree;
+import com.bootdo.common.utils.PageUtils;
+import com.bootdo.common.utils.Query;
+import com.bootdo.common.utils.R;
+import com.bootdo.system.domain.MenuDO;
+import com.bootdo.system.service.MenuService;
 
 /**
- * @author bootdo 1992lcg@163.com
+ * @author fengchi
  */
 @RequestMapping("/sys/menu")
 @Controller
@@ -35,9 +48,20 @@ public class MenuController extends BaseController {
 	@RequiresPermissions("sys:menu:menu")
 	@RequestMapping("/list")
 	@ResponseBody
-	List<MenuDO> list(@RequestParam Map<String, Object> params) {
-		List<MenuDO> menus = menuService.list(params);
-		return menus;
+	//List<MenuDO> 
+	List<?> list(@RequestParam Map<String, Object> params) {
+		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
+        PageUtils page = getPageList(params, new IPageDefine() {
+			
+			@Override
+			public List<?> getPageRows(Query query){
+				return menuService.list(query);
+			}
+        });
+        if(null==page){
+        	return null;
+        }
+        return page.getRows();
 	}
 
 	@Log("添加菜单")
@@ -77,7 +101,9 @@ public class MenuController extends BaseController {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
 			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
 		}
-		if (menuService.save(menu) > 0) {
+		if(menu.getPerms()!=null && menu.getPerms()!="" && menuService.getMenuByPrems(menu.getPerms()) != null){
+			return R.error(1, "保存失败,权限标识已存在");
+		} else if (menuService.save(menu) > 0) {
 			return R.ok();
 		} else {
 			return R.error(1, "保存失败");
@@ -117,14 +143,26 @@ public class MenuController extends BaseController {
 	@GetMapping("/tree")
 	@ResponseBody
 	Tree<MenuDO> tree() {
-		Tree<MenuDO>  tree = menuService.getTree();
+		Tree<MenuDO> tree = new Tree<MenuDO>();
+		tree = menuService.getTree();
 		return tree;
 	}
 
 	@GetMapping("/tree/{roleId}")
 	@ResponseBody
 	Tree<MenuDO> tree(@PathVariable("roleId") Long roleId) {
-		Tree<MenuDO> tree = menuService.getTree(roleId);
+		Tree<MenuDO> tree = new Tree<MenuDO>();
+		tree = menuService.getTree(roleId);
 		return tree;
+	}
+	
+	/**
+	 * 打开选择图标
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping("/openIcon")
+	public void openIcon(HttpServletResponse response) throws IOException{
+		response.sendRedirect(this.getDomainPath()+"/FontIcoList.html");
 	}
 }

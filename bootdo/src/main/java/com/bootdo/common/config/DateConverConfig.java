@@ -1,5 +1,6 @@
 package com.bootdo.common.config;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -20,6 +21,9 @@ public class DateConverConfig {
         return new Converter<String, Date>() {
             @Override
             public Date convert(String source) {
+            	if(StringUtils.isBlank(source)){
+            		return null;
+            	}
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = null;
                 try {

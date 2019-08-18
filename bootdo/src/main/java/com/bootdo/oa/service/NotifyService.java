@@ -2,6 +2,7 @@ package com.bootdo.oa.service;
 
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.oa.domain.NotifyDO;
+import com.bootdo.oa.domain.NotifyDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -31,5 +32,5 @@ public interface NotifyService {
 
 //	Map<String, Object> message(Long userId);
 
-	PageUtils selfList(Map<String, Object> map);
+	List<NotifyDTO> selfList(Map<String, Object> map);
 }

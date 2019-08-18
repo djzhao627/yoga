@@ -1,9 +1,6 @@
 package com.bootdo.common.redis.shiro;
 
-/**
- * @author bootdo 1992lcg@163.com
- * @version V1.0
- */
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -12,7 +9,10 @@ import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * @author fengchi
+ * @version V1.0
+ */
 public class RedisCacheManager implements CacheManager {
 
     private static final Logger logger = LoggerFactory

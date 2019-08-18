@@ -21,6 +21,10 @@ public class ColumnDO {
 	private String attrType;
 	// auto_increment
 	private String extra;
+	// 列的长度
+	private String characterMaximumLength;
+	//是否必须
+	private String isNullable;
 
 	public String getColumnName() {
 		return columnName;
@@ -77,17 +81,28 @@ public class ColumnDO {
 	public void setExtra(String extra) {
 		this.extra = extra;
 	}
+	
+	public String getCharacterMaximumLength() {
+		return characterMaximumLength;
+	}
+
+	public void setCharacterMaximumLength(String characterMaximumLength) {
+		this.characterMaximumLength = characterMaximumLength;
+	}
+	
+	public String getIsNullable() {
+		return isNullable;
+	}
+
+	public void setIsNullable(String isNullable) {
+		this.isNullable = isNullable;
+	}
 
 	@Override
 	public String toString() {
-		return "ColumnDO{" +
-				"columnName='" + columnName + '\'' +
-				", dataType='" + dataType + '\'' +
-				", comments='" + comments + '\'' +
-				", attrName='" + attrName + '\'' +
-				", attrname='" + attrname + '\'' +
-				", attrType='" + attrType + '\'' +
-				", extra='" + extra + '\'' +
-				'}';
+		return "ColumnDO [columnName=" + columnName + ", dataType=" + dataType + ", comments=" + comments
+				+ ", attrName=" + attrName + ", attrname=" + attrname + ", attrType=" + attrType + ", extra=" + extra
+				+ ", characterMaximumLength=" + characterMaximumLength + ", isNullable=" + isNullable + "]";
 	}
+
 }

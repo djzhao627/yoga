@@ -30,4 +30,6 @@ public interface MenuService {
 	MenuDO get(Long id);
 
 	Set<String> listPerms(Long userId);
+	
+	MenuDO getMenuByPrems(String perms);
 }

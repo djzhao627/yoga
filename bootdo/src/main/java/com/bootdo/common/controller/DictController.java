@@ -6,6 +6,8 @@ import com.bootdo.common.service.DictService;
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.common.utils.Query;
 import com.bootdo.common.utils.R;
+import com.github.pagehelper.PageInfo;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,12 +41,15 @@ public class DictController extends BaseController {
 	@GetMapping("/list")
 	@RequiresPermissions("common:dict:dict")
 	public PageUtils list(@RequestParam Map<String, Object> params) {
-		// 查询列表数据
-		Query query = new Query(params);
-		List<DictDO> dictList = dictService.list(query);
-		int total = dictService.count(query);
-		PageUtils pageUtils = new PageUtils(dictList, total);
-		return pageUtils;
+		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
+        return getPageList(params, new IPageDefine() {
+			
+			@Override
+			public List<?> getPageRows(Query query){
+				List<?> dictList = dictService.list(query);
+				return dictList;
+			}
+        });
 	}
 
 	@GetMapping("/add")

@@ -17,7 +17,7 @@ public interface GeneratorMapper {
 			+ "	where table_schema = (select database()) and table_name = #{tableName}")
 	Map<String, String> get(String tableName);
 
-	@Select("select column_name columnName, data_type dataType, column_comment columnComment, column_key columnKey, extra from information_schema.columns\r\n"
+	@Select("select column_name columnName,character_maximum_length characterMaximumLength,is_nullable isNullable,data_type dataType, column_comment columnComment, column_key columnKey, extra from information_schema.columns\r\n"
 			+ " where table_name = #{tableName} and table_schema = (select database()) order by ordinal_position")
 	List<Map<String, String>> listColumns(String tableName);
 }

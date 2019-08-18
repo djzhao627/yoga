@@ -1,13 +1,13 @@
-/**
- * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
- */
+
 package com.bootdo.common.utils;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 import java.util.Arrays;
 import java.util.Date;
-
+/**
+ * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
+ */
 /**
  * 时间计算工具类
 
@@ -319,5 +319,78 @@ public class TimeUtils {
         }
         return true;
     }
+    
+    
+
+	
+	/**
+	 * 将时间转换为字符串（xx天，xx时，xx分，xx秒，大于360天显示日期时间）
+	 */
+	public static String formatDateAgo(long dateTime) {
+		StringBuilder sb = new StringBuilder();
+		if (dateTime < 1000){
+			sb.append(dateTime).append("毫秒");
+		}else{
+			TimeUtils t = new TimeUtils(dateTime);
+			int day = t.get(TimeUtils.DAY);
+			int hour = t.get(TimeUtils.HOUR);
+			int minute = t.get(TimeUtils.MINUTE);
+			int second = t.get(TimeUtils.SECOND);
+			if (day > 365){
+				return DateUtils.formatDate(new Date(dateTime), "yyyy年MM月dd日 HH时mm分ss秒");
+			}
+			if (day > 0){
+				sb.append(day).append("天");
+			}
+			if (hour > 0){
+				sb.append(hour).append("时");
+			}
+			if (minute > 0){
+				sb.append(minute).append("分");
+			}
+			if (second > 0){
+				sb.append(second).append("秒");
+			}
+		}
+		return sb.toString();
+	}
+	
+	/** 
+	 * 将过去的时间转为为，刚刚，xx秒，xx分钟，xx小时前、xx天前，大于3天的显示日期
+	 */
+	public static String formatTimeAgo(Date dateTime) {
+		String interval = null;
+		// 得出的时间间隔是毫秒
+		long time = System.currentTimeMillis() - dateTime.getTime();
+		// 如果时间间隔小于10秒则显示“刚刚”time/10得出的时间间隔的单位是秒
+		if (time / 1000 < 10 && time / 1000 >= 0) {
+			interval = "刚刚";
+		}
+		// 如果时间间隔大于24小时则显示多少天前
+		else if (time / 3600000 < 24*4 && time / 3600000 >= 24) {
+			int d = (int) (time / (3600000*24));// 得出的时间间隔的单位是天
+			interval = d + "天前";
+		}
+		// 如果时间间隔小于24小时则显示多少小时前
+		else if (time / 3600000 < 24 && time / 3600000 >= 1) {
+			int h = (int) (time / 3600000);// 得出的时间间隔的单位是小时
+			interval = h + "小时前";
+		}
+		// 如果时间间隔小于60分钟则显示多少分钟前
+		else if (time / 60000 < 60 && time / 60000 >=1) {
+			int m = (int) ((time % 3600000) / 60000);// 得出的时间间隔的单位是分钟
+			interval = m + "分钟前";
+		}
+		// 如果时间间隔小于60秒则显示多少秒前
+		else if (time / 1000 < 60 && time / 1000 >=10) {
+			int se = (int) ((time % 60000) / 1000);
+			interval = se + "秒前";
+		}
+		// 大于3天的，则显示正常的时间，但是不显示秒
+		else {
+			interval = DateUtils.formatDate(dateTime,"yyyy-MM-dd");
+		}
+		return interval;
+	}
     
 }

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+@SuppressWarnings("AlibabaRemoveCommentedCode")
 @Service
 @Transactional(readOnly = true,rollbackFor = Exception.class)
 public class MenuServiceImpl implements MenuService {
@@ -158,6 +159,11 @@ public class MenuServiceImpl implements MenuService {
 		// 默认顶级菜单为０，根据数据库实际情况调整
 		List<Tree<MenuDO>> list = BuildTree.buildList(trees, "0");
 		return list;
+	}
+
+	@Override
+	public MenuDO getMenuByPrems(String perms) {
+		return menuMapper.getMenuByPrems(perms);
 	}
 
 }

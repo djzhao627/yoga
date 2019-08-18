@@ -4,6 +4,7 @@ import com.bootdo.blog.domain.ContentDO;
 import com.bootdo.blog.service.ContentService;
 import com.bootdo.common.config.Constant;
 import com.bootdo.common.controller.BaseController;
+import com.bootdo.common.controller.IPageDefine;
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.common.utils.Query;
 import com.bootdo.common.utils.R;
@@ -40,11 +41,14 @@ public class ContentController extends BaseController {
 	@GetMapping("/list")
 	@RequiresPermissions("blog:bContent:bContent")
 	public PageUtils list(@RequestParam Map<String, Object> params) {
-		Query query = new Query(params);
-		List<ContentDO> bContentList = bContentService.list(query);
-		int total = bContentService.count(query);
-		PageUtils pageUtils = new PageUtils(bContentList, total);
-		return pageUtils;
+		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
+        return getPageList(params, new IPageDefine() {
+			
+			@Override
+			public List<?> getPageRows(Query query){
+				return bContentService.list(query);
+			}
+        });
 	}
 
 	@GetMapping("/add")
@@ -137,5 +141,14 @@ public class ContentController extends BaseController {
 		}
 		bContentService.batchRemove(cids);
 		return R.ok();
+	}
+	
+	/**
+	 * 文件上传
+	 * @return
+	 */
+	@GetMapping("/uploadfile")
+	public String uploadFile() {
+		return "blog/bContent/uploadFile";
 	}
 }

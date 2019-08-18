@@ -3,6 +3,7 @@ package com.bootdo.system.controller;
 import com.bootdo.common.annotation.Log;
 import com.bootdo.common.config.Constant;
 import com.bootdo.common.controller.BaseController;
+import com.bootdo.common.controller.IPageDefine;
 import com.bootdo.common.domain.FileDO;
 import com.bootdo.common.domain.Tree;
 import com.bootdo.common.service.DictService;
@@ -49,12 +50,14 @@ public class UserController extends BaseController {
 	@GetMapping("/list")
 	@ResponseBody
 	PageUtils list(@RequestParam Map<String, Object> params) {
-		// 查询列表数据
-		Query query = new Query(params);
-		List<UserDO> sysUserList = userService.list(query);
-		int total = userService.count(query);
-		PageUtils pageUtil = new PageUtils(sysUserList, total);
-		return pageUtil;
+		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
+        return getPageList(params, new IPageDefine() {
+			
+			@Override
+			public List<?> getPageRows(Query query){
+				return userService.list(query);
+			}
+        });
 	}
 
 	@RequiresPermissions("sys:user:add")

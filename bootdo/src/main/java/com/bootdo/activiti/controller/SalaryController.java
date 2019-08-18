@@ -5,6 +5,7 @@ import com.bootdo.activiti.service.SalaryService;
 import com.bootdo.activiti.utils.ActivitiUtils;
 import com.bootdo.common.config.Constant;
 import com.bootdo.common.controller.BaseController;
+import com.bootdo.common.controller.IPageDefine;
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.common.utils.Query;
 import com.bootdo.common.utils.R;
@@ -42,11 +43,14 @@ public class SalaryController extends BaseController{
     @ResponseBody
     @GetMapping("/list")
     public PageUtils list(@RequestParam Map<String, Object> params) {
-        Query query = new Query(params);
-        List<SalaryDO> salaryList = salaryService.list(query);
-        int total = salaryService.count(query);
-        PageUtils pageUtils = new PageUtils(salaryList, total);
-        return pageUtils;
+    	//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
+        return getPageList(params, new IPageDefine() {
+			
+			@Override
+			public List<?> getPageRows(Query query){
+				return salaryService.list(query);
+			}
+        });
     }
 
     @GetMapping("/form")

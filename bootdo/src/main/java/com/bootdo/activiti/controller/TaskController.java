@@ -3,6 +3,7 @@ package com.bootdo.activiti.controller;
 import com.bootdo.activiti.service.ActTaskService;
 import com.bootdo.activiti.vo.ProcessVO;
 import com.bootdo.activiti.vo.TaskVO;
+import com.bootdo.common.controller.BaseController;
 import com.bootdo.common.utils.PageUtils;
 import org.activiti.engine.FormService;
 import org.activiti.engine.RepositoryService;
@@ -27,7 +28,7 @@ import java.util.List;
  */
 @RequestMapping("activiti/task")
 @RestController
-public class TaskController {
+public class TaskController extends BaseController {
     @Autowired
     RepositoryService repositoryService;
     @Autowired
@@ -58,17 +59,14 @@ public class TaskController {
     @GetMapping("/form/{procDefId}")
     public void startForm(@PathVariable("procDefId") String procDefId  ,HttpServletResponse response) throws IOException {
         String formKey = actTaskService.getFormKey(procDefId, null);
-        response.sendRedirect(formKey);
+        response.sendRedirect(this.getDomainPath()+ formKey);
     }
 
     @GetMapping("/form/{procDefId}/{taskId}")
     public void form(@PathVariable("procDefId") String procDefId,@PathVariable("taskId") String taskId ,HttpServletResponse response) throws IOException {
         // 获取流程XML上的表单KEY
-
         String formKey = actTaskService.getFormKey(procDefId, taskId);
-
-
-        response.sendRedirect(formKey+"/"+taskId);
+        response.sendRedirect(this.getDomainPath()+ formKey+"/"+taskId);
     }
 
     @GetMapping("/todo")

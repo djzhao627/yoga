@@ -2,7 +2,10 @@ package com.bootdo.system.controller;
 
 import com.bootdo.common.config.Constant;
 import com.bootdo.common.controller.BaseController;
+import com.bootdo.common.controller.IPageDefine;
 import com.bootdo.common.domain.Tree;
+import com.bootdo.common.utils.PageUtils;
+import com.bootdo.common.utils.Query;
 import com.bootdo.common.utils.R;
 import com.bootdo.system.domain.DeptDO;
 import com.bootdo.system.service.DeptService;
@@ -42,10 +45,18 @@ public class DeptController extends BaseController {
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("system:sysDept:sysDept")
-	public List<DeptDO> list() {
+	public List<?> list() {
+		
 		Map<String, Object> query = new HashMap<>(16);
-		List<DeptDO> sysDeptList = sysDeptService.list(query);
-		return sysDeptList;
+		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
+        PageUtils page = getPageList(query, new IPageDefine() {
+			
+			@Override
+			public List<?> getPageRows(Query query){
+				return sysDeptService.list(query);
+			}
+        });
+		return page.getRows();
 	}
 
 	@GetMapping("/add/{pId}")

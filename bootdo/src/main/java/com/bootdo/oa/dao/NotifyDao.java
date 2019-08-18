@@ -37,4 +37,6 @@ public interface NotifyDao {
 	int countDTO(Map<String, Object> map);
 
 	List<NotifyDTO> listDTO(Map<String, Object> map);
+
+	List<NotifyDTO> listDtoForOrcl(Map<String, Object> map);
 }

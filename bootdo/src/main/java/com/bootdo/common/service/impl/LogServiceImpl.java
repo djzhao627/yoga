@@ -23,13 +23,13 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public PageDO<LogDO> queryList(Query query) {
-		int total = logMapper.count(query);
+	public List<LogDO> queryList(Query query) {
+		//int total = logMapper.count(query);
 		List<LogDO> logs = logMapper.list(query);
-		PageDO<LogDO> page = new PageDO<>();
+		/*PageDO<LogDO> page = new PageDO<>();
 		page.setTotal(total);
-		page.setRows(logs);
-		return page;
+		page.setRows(logs);*/
+		return logs;
 	}
 
 	@Override

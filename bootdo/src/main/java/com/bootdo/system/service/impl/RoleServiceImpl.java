@@ -3,14 +3,18 @@ package com.bootdo.system.service.impl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bootdo.common.config.Constant;
+import com.bootdo.common.utils.PageUtils;
 import com.bootdo.system.dao.RoleDao;
 import com.bootdo.system.dao.RoleMenuDao;
 import com.bootdo.system.dao.UserDao;
@@ -18,6 +22,7 @@ import com.bootdo.system.dao.UserRoleDao;
 import com.bootdo.system.domain.RoleDO;
 import com.bootdo.system.domain.RoleMenuDO;
 import com.bootdo.system.service.RoleService;
+import com.github.pagehelper.PageHelper;
 
 
 @Service
@@ -36,9 +41,18 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     UserRoleDao userRoleMapper;
 
+	//数据库类型
+	@Value("${pagehelper.helperDialect}")
+    private String dbType = "";
+	
     @Override
     public List<RoleDO> list() {
-        List<RoleDO> roles = roleMapper.list(new HashMap<>(16));
+    	Map<String, Object> map = new HashMap<>(16);
+		//分页参数
+		if(map.get(PageUtils.page)!= null && map.get(PageUtils.limit)!= null){
+			PageHelper.startPage((int)map.get(PageUtils.page), (int)map.get(PageUtils.limit));
+		}
+        List<RoleDO> roles = roleMapper.list(map);
         return roles;
     }
 
@@ -73,7 +87,11 @@ public class RoleServiceImpl implements RoleService {
         }
         roleMenuMapper.removeByRoleId(roleId);
         if (rms.size() > 0) {
-            roleMenuMapper.batchSave(rms);
+        	if(Constant.DATA_TYPE_MYSQL.equals(dbType)){
+                roleMenuMapper.batchSave(rms);
+			}else if(Constant.DATA_TYPE_ORACLE.equals(dbType)){
+	            roleMenuMapper.batchSaveOrcl(rms);
+			}
         }
         return count;
     }
@@ -107,7 +125,11 @@ public class RoleServiceImpl implements RoleService {
             rms.add(rmDo);
         }
         if (rms.size() > 0) {
-            roleMenuMapper.batchSave(rms);
+            if(Constant.DATA_TYPE_MYSQL.equals(dbType)){
+                roleMenuMapper.batchSave(rms);
+			}else if(Constant.DATA_TYPE_ORACLE.equals(dbType)){
+	            roleMenuMapper.batchSaveOrcl(rms);
+			}
         }
         return r;
     }

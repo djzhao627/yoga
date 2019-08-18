@@ -1,6 +1,7 @@
 package com.bootdo.system.controller;
 
 import com.bootdo.common.annotation.Log;
+import com.bootdo.common.config.Constant;
 import com.bootdo.common.controller.BaseController;
 import com.bootdo.common.domain.FileDO;
 import com.bootdo.common.domain.Tree;
@@ -34,10 +35,12 @@ public class LoginController extends BaseController {
 	MenuService menuService;
 	@Autowired
 	FileService fileService;
+	
 	@GetMapping({ "/", "" })
 	String welcome(Model model) {
-
-		return "redirect:/blog";
+		model.addAttribute(Constant.PATH_DOMAIN, this.getDomainPath());
+		return "login";
+		//return "redirect:/blog";
 	}
 
 	@Log("请求访问主页")
@@ -57,6 +60,7 @@ public class LoginController extends BaseController {
 			model.addAttribute("picUrl","/img/photo_s.jpg");
 		}
 		model.addAttribute("username", getUser().getUsername());
+		model.addAttribute(Constant.PATH_DOMAIN, this.getDomainPath());
 		return "index_v1";
 	}
 
@@ -88,7 +92,8 @@ public class LoginController extends BaseController {
 	}
 
 	@GetMapping("/main")
-	String main() {
+	String main(Model model) {
+		model.addAttribute(Constant.PATH_DOMAIN, this.getDomainPath());
 		return "main";
 	}
 

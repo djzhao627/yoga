@@ -5,10 +5,14 @@ import com.bootdo.common.domain.FileDO;
 import com.bootdo.common.service.FileService;
 import com.bootdo.common.utils.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,12 +49,13 @@ public class FileController extends BaseController {
 	@GetMapping("/list")
 	@RequiresPermissions("common:sysFile:sysFile")
 	public PageUtils list(@RequestParam Map<String, Object> params) {
-		// 查询列表数据
-		Query query = new Query(params);
-		List<FileDO> sysFileList = sysFileService.list(query);
-		int total = sysFileService.count(query);
-		PageUtils pageUtils = new PageUtils(sysFileList, total);
-		return pageUtils;
+		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
+        return getPageList(params, new IPageDefine() {
+			@Override
+			public List<?> getPageRows(Query query){
+				return sysFileService.list(query);
+			}
+        });
 	}
 
 	@GetMapping("/add")
@@ -157,6 +162,150 @@ public class FileController extends BaseController {
 		}
 		return R.error();
 	}
+	
+	/*@RequestMapping(value="/uploadFilekkp",method = RequestMethod.POST)
+	@ResponseBody
+	public Map uploadFile(ModelMap model, @RequestParam(value="myfile") MultipartFile file, HttpServletRequest request,HttpServletResponse response) throws Exception {
+		Map resultMap = new HashedMap();
+		try {
+            String uploadPath = commonConfig.getBup_path()+File.separator + "upload";
+			//保存文件
+			File dest = null;
+			String newFileName="";
+			if (file != null && !file.isEmpty()) {
+				String fileName = file.getOriginalFilename();
+				 newFileName = generateNewFileName(fileName);
+				// 获取文件的大小
+				String path = uploadPath;
+				dest = new File(path + File.separator +newFileName);
+				if (!dest.getParentFile().exists()) {
+					dest.getParentFile().mkdir();
+				}
+					file.transferTo(dest);
+			}
+			resultMap.put("code",ConstantUtil.SUCCESS);
+			resultMap.put("msg",ConstantUtil.SUCCESS);
+			resultMap.put("url",uploadPath+ File.separator + newFileName);
+			resultMap.put("name",newFileName);
+		}catch (Exception e){
+			e.printStackTrace();
+			resultMap.put("code","fail");
+			resultMap.put("msg",e.getMessage());
+			resultMap.put("url","");
+			resultMap.put("name","");
+		}
+		return resultMap;
+	}
 
+
+	@RequestMapping(value="/uploadPortraitFile",method = RequestMethod.POST)
+	@ResponseBody
+	public Map uploadPortraitFile(ModelMap model, @RequestParam(value="myfile") MultipartFile file, HttpServletRequest request) throws Exception {
+		Map resultMap = new HashedMap();
+		try {
+			String uploadPath = commonConfig.getHead_portrait_path()+File.separator + "upload";
+			//保存文件
+			File dest = null;
+			String newFileName="";
+			if (file != null && !file.isEmpty()) {
+				String fileName = file.getOriginalFilename();
+				newFileName = generateNewFileName(fileName);
+				// 获取文件的大小
+				String path = uploadPath;
+				dest = new File(path + File.separator + newFileName);
+				if (!dest.getParentFile().exists()) {
+					dest.getParentFile().mkdir();
+				}
+				file.transferTo(dest);
+			}
+			resultMap.put("code","success");
+			resultMap.put("msg","success");
+			resultMap.put("url",uploadPath+ File.separator + newFileName);
+			resultMap.put("name",newFileName);
+		}catch (Exception e){
+			e.printStackTrace();
+			resultMap.put("code","fail");
+			resultMap.put("msg",e.getMessage());
+			resultMap.put("url","");
+			resultMap.put("name","");
+		}
+		return resultMap;
+	}
+	
+	*//**
+	 * Excel导出
+	 *//*
+	@RequestMapping(value = "/toDownExcelModel")
+	public void toDownExcelModel(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String str = "attachment;filename=";
+		String filename = request.getParameter("filename") == null ? "" : request.getParameter("filename");
+		String filePath = request.getParameter("filePath") == null ? "" : request.getParameter("filePath");
+		filename =  URLDecoder.decode(filename, ConstantUtil.UTF_8);
+		filePath =  URLDecoder.decode(filePath, ConstantUtil.UTF_8);
+		response.setCharacterEncoding(ConstantUtil.UTF_8);
+		response.setContentType("application/vnd.ms-excel");
+		InputStream fis = null;
+		try {
+			String agent = request.getHeader("USER-AGENT");
+			if(agent.toLowerCase().indexOf("msie 7")>ConstantUtil.INTEGER_ZERO){
+				filename = java.net.URLEncoder.encode(filename, ConstantUtil.UTF_8);
+			}else if(agent.toLowerCase().indexOf("msie 8")>ConstantUtil.INTEGER_ZERO){
+				filename = java.net.URLEncoder.encode(filename, ConstantUtil.UTF_8);
+			}else if(agent.toLowerCase().indexOf("msie 9")>ConstantUtil.INTEGER_ZERO){
+				filename = java.net.URLEncoder.encode(filename, ConstantUtil.UTF_8);
+			}else if(agent.toLowerCase().indexOf("msie 10")>ConstantUtil.INTEGER_ZERO){
+				filename = java.net.URLEncoder.encode(filename, ConstantUtil.UTF_8);
+			}else if(agent.toLowerCase().indexOf("msie")>ConstantUtil.INTEGER_ZERO){
+				filename = java.net.URLEncoder.encode(filename, ConstantUtil.UTF_8);
+			}else if(agent.indexOf("opera")>ConstantUtil.INTEGER_ZERO){
+				filename = new String(filename.getBytes(), ConstantUtil.ISO_8859_1);
+			//}else if(agent.indexOf("opera")>ConstantUtil.INTEGER_ZERO){
+				//filename = new String(filename.getBytes(), ConstantUtil.ISO_8859_1);
+			}else if(agent.indexOf("firefox")>ConstantUtil.INTEGER_ZERO){
+				filename = new String(filename.getBytes(), ConstantUtil.ISO_8859_1);
+			}else if(agent.indexOf("webkit")>ConstantUtil.INTEGER_ZERO){
+				filename = new String(filename.getBytes(), ConstantUtil.ISO_8859_1);
+			}else if(agent.indexOf("ecko")>ConstantUtil.INTEGER_ZERO && agent.indexOf("rv:11")>ConstantUtil.INTEGER_ZERO){
+				filename = java.net.URLEncoder.encode(filename, ConstantUtil.UTF_8);
+			}else{
+				filename = new String(filename.getBytes(), ConstantUtil.ISO_8859_1);
+			}
+			response.addHeader("Content-Disposition", str + filename);
+			File downFile = new File(filePath);
+			response.addHeader("Content-Length",String.valueOf(downFile.length()));
+			fis = new FileInputStream(new File(filePath));
+			request.setCharacterEncoding("UTF-8");
+			byte[] bytes = new byte[1024];
+			while (fis.read(bytes) != -1) {
+				response.getOutputStream().write(bytes);
+			}
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (fis != null) {
+				try {
+					fis.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	*//**
+	 * 生成新的文件名
+	 * 新文件名： yyyyMMddHHmmss + "." + 文件的原始名称
+	 * @param fileName 文件的原始名称 return timestamp + "." + fileName.substring(fileName.lastIndexOf(".") + 1)
+	 *//*
+	private String generateNewFileName(String fileName) {
+		// 为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名
+		String timestamp = new SimpleDateFormat("yyyyMMddHHmmSS").format(new Date());
+		// 上传文件的扩展名
+		String fileExtName = fileName.substring(fileName.lastIndexOf(".".toCharArray()[0]) + 1);
+		return timestamp + "." + fileExtName;
+	}
+*/
 
 }

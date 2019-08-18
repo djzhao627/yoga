@@ -1,31 +1,72 @@
 package com.bootdo;
 
+import java.io.IOException;
+
+import org.beetl.core.resource.WebAppResourceLoader;
+import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
+import org.beetl.ext.spring.BeetlSpringViewResolver;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternUtils;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-@EnableAutoConfiguration(exclude = {
-        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
-})
+
+import com.bootdo.common.io.PropertiesUtils;
 @EnableTransactionManagement
 @ServletComponentScan
-@MapperScan("com.bootdo.**.dao")
+@MapperScan({"com.bootdo.*.dao", "com.ereal.*.dao"})
 @SpringBootApplication
-@EnableCaching
-public class BootdoApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(BootdoApplication.class, args);
-        System.out.println("ヾ(◍°∇°◍)ﾉﾞ    bootdo启动成功      ヾ(◍°∇°◍)ﾉﾞ\n" +
-                " ______                    _   ______            \n" +
-                "|_   _ \\                  / |_|_   _ `.          \n" +
-                "  | |_) |   .--.    .--. `| |-' | | `. \\  .--.   \n" +
-                "  |  __'. / .'`\\ \\/ .'`\\ \\| |   | |  | |/ .'`\\ \\ \n" +
-                " _| |__) || \\__. || \\__. || |, _| |_.' /| \\__. | \n" +
-                "|_______/  '.__.'  '.__.' \\__/|______.'  '.__.'  ");
+@EnableRedisHttpSession 
+public class BootdoApplication extends SpringBootServletInitializer {
+	
+	public static void main(String[] args) {
+		SpringApplication app = new SpringApplication(BootdoApplication.class);
+		app.setDefaultProperties(PropertiesUtils.getInstance().getProperties());
+		app.run(args);
+		System.out.println("Project Startup Success!!!");
+	}
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		this.setRegisterErrorPageFilter(false); // 错误页面有容器来处理，而不是SpringBoot
+		builder.properties(PropertiesUtils.getInstance().getProperties());
+		return builder.sources(BootdoApplication.class);
+	}
 
+	@Bean(initMethod = "init", name = "beetlConfig")
+    public BeetlGroupUtilConfiguration getBeetlGroupUtilConfiguration() {
+        BeetlGroupUtilConfiguration beetlGroupUtilConfiguration = new BeetlGroupUtilConfiguration();
+        ResourcePatternResolver patternResolver = ResourcePatternUtils.getResourcePatternResolver(new DefaultResourceLoader());
+        try {
+            // WebAppResourceLoader 配置root路径是关键
+            WebAppResourceLoader webAppResourceLoader =
+                    new WebAppResourceLoader(patternResolver.getResource("classpath:/templates").getFile().getPath());
+            beetlGroupUtilConfiguration.setResourceLoader(webAppResourceLoader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //读取配置文件信息
+        beetlGroupUtilConfiguration.setConfigFileResource(patternResolver.getResource("classpath:beetl.properties"));
+        return beetlGroupUtilConfiguration;
+    }
+
+    @Bean(name = "beetlViewResolver")
+    public BeetlSpringViewResolver getBeetlSpringViewResolver(@Qualifier("beetlConfig") BeetlGroupUtilConfiguration beetlGroupUtilConfiguration) {
+        BeetlSpringViewResolver beetlSpringViewResolver = new BeetlSpringViewResolver();
+        //模板在templates/test文件下,自定义模板格式"*.html"
+        beetlSpringViewResolver.setPrefix("test/");
+        beetlSpringViewResolver.setSuffix(".html");
+        beetlSpringViewResolver.setContentType("text/html;charset=UTF-8");
+        beetlSpringViewResolver.setOrder(0);
+        beetlSpringViewResolver.setConfig(beetlGroupUtilConfiguration);
+        return beetlSpringViewResolver;
     }
 }

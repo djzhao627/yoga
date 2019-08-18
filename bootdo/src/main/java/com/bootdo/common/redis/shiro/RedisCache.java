@@ -1,9 +1,6 @@
 package com.bootdo.common.redis.shiro;
 
-/**
- * @author bootdo 1992lcg@163.com
- * @version V1.0
- */
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,7 +14,10 @@ import org.apache.shiro.util.CollectionUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * @author fengchi
+ * @version V1.0
+ */
 public class RedisCache<K, V> implements Cache<K, V> {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());

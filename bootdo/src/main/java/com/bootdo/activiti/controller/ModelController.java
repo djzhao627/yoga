@@ -35,7 +35,7 @@ import java.util.List;
 import static org.activiti.editor.constants.ModelDataJsonConstants.*;
 
 /**
- * @author bootdo 1992lcg@163.com
+ * @author fengchi
  */
 @RequestMapping("/activiti")
 @RestController
@@ -63,7 +63,7 @@ public class ModelController extends BaseController{
     }
 
     @RequestMapping("/model/add")
-    public void newModel(HttpServletResponse response) throws UnsupportedEncodingException {
+    ModelAndView newModel(HttpServletResponse response) throws UnsupportedEncodingException {
 
         //初始化一个空模型
         Model model = repositoryService.newModel();
@@ -94,11 +94,18 @@ public class ModelController extends BaseController{
                 "http://b3mn.org/stencilset/bpmn2.0#");
         editorNode.put("stencilset", stencilSetNode);
         repositoryService.addModelEditorSource(id, editorNode.toString().getBytes("utf-8"));
-        try {
-            response.sendRedirect("/modeler.html?modelId=" + id);
+        
+        ModelAndView mv = new ModelAndView();
+		mv.addObject(Constant.PATH_DOMAIN, this.getDomainPath());
+		mv.setViewName("act/model/modeler");
+		mv.addObject("modelId",  id);
+        return mv;
+
+        /*try {
+            response.sendRedirect(this.getDomainPath()+"/act/modeler.html?modelId=" + id);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @GetMapping(value = "/model/{modelId}/json")
@@ -137,12 +144,19 @@ public class ModelController extends BaseController{
     }
 
     @GetMapping("/model/edit/{id}")
-    public void edit(HttpServletResponse response, @PathVariable("id") String id) {
-        try {
-            response.sendRedirect("/modeler.html?modelId=" + id);
+    ModelAndView edit(HttpServletResponse response, @PathVariable("id") String id) {
+    	ModelAndView mv = new ModelAndView();
+		mv.addObject(Constant.PATH_DOMAIN, this.getDomainPath());
+		mv.addObject("modelId",  id);
+		mv.setViewName("act/model/modeler");
+        return mv;
+        /*try {
+        	
+            response.sendRedirect(this.getDomainPath()+"/activiti/goEdit?modelId=" + id);
+            //response.sendRedirect("/modeler.html?modelId=" + id);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @DeleteMapping("/model/{id}")

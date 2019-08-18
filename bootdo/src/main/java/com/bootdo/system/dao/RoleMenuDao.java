@@ -37,4 +37,10 @@ public interface RoleMenuDao {
 	int removeByMenuId(Long menuId);
 	
 	int batchSave(List<RoleMenuDO> list);
+	/**
+	 * 批量新增For Oracle
+	 * @param list
+	 * @return
+	 */
+	int batchSaveOrcl(List<RoleMenuDO> list);
 }

@@ -34,4 +34,17 @@ public class FileUtil {
 	public static String renameToUUID(String fileName) {
 		return UUID.randomUUID() + "." + fileName.substring(fileName.lastIndexOf(".") + 1);
 	}
+
+	/**
+	 * 获取文件扩展名(返回小写)
+	 * @param pathname 文件名
+	 * @return 例如：test.jpg  返回：  jpg
+	 */
+	public static String getFileExtension(String fileName) {
+		if ((fileName == null) || (fileName.lastIndexOf(".") == -1) 
+				|| (fileName.lastIndexOf(".") == fileName.length() - 1)) {
+			return null;
+		}
+		return StringUtils.lowerCase(fileName.substring(fileName.lastIndexOf(".") + 1));
+	}
 }

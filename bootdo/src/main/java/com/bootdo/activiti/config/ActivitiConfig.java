@@ -4,6 +4,7 @@ import org.activiti.engine.*;
 import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.spring.ProcessEngineFactoryBean;
 import org.activiti.spring.SpringProcessEngineConfiguration;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -11,14 +12,18 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 @Configuration
 public class ActivitiConfig {
+	//数据库类型
+	@Value("${pagehelper.helperDialect}")
+    private String dbType = "";
+	
     //流程配置，与spring整合采用SpringProcessEngineConfiguration这个实现
     @Bean
     public ProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, PlatformTransactionManager transactionManager){
         SpringProcessEngineConfiguration processEngineConfiguration = new SpringProcessEngineConfiguration();
         processEngineConfiguration.setDataSource(dataSource);
         processEngineConfiguration.setDatabaseSchemaUpdate("true");
-        processEngineConfiguration.setDatabaseType("mysql");
-
+        //mysql/oracle
+        processEngineConfiguration.setDatabaseType(dbType);
         processEngineConfiguration.setTransactionManager(transactionManager);
 
         //流程图字体
