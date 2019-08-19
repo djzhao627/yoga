@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.business.dao.FcMemberManagementBaseinfoDao">
+
+	<select id="get" resultType="com.bootdo.business.domain.FcMemberManagementBaseinfoDO">
+		SELECT 
+			id,name,type,consultants,wechat,phone,consulting_course,accommodation,advisory_date,address,customer_servic,sfzh,data_source,certificate_number,bz,insert_time,insert_operator,update_time,update_operator			 
+		FROM t_fc_member_management_baseinfo 
+		where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.business.domain.FcMemberManagementBaseinfoDO">
+		SELECT 
+			id, name, type, consultants, wechat, phone, consulting_course, accommodation, advisory_date, address, customer_servic, sfzh, data_source, certificate_number, bz, insert_time, insert_operator, update_time, update_operator 		
+		FROM t_fc_member_management_baseinfo 
+        <where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="name != null and name != ''">
+		  		  	AND name LIKE '%${ name}%'  
+		  		  </if>
+		  		  <if test="type != null and type != ''">
+		  		  	AND type LIKE '%${ type}%'  
+		  		  </if>
+		  		  <if test="consultants != null and consultants != ''">
+		  		  	AND consultants LIKE '%${ consultants}%'  
+		  		  </if>
+		  		  <if test="wechat != null and wechat != ''">
+		  		  	AND wechat LIKE '%${ wechat}%'  
+		  		  </if>
+		  		  <if test="phone != null and phone != ''">
+		  		  	AND phone LIKE '%${ phone}%'  
+		  		  </if>
+		  		  <if test="consultingCourse != null and consultingCourse != ''">
+		  		  	AND consulting_course LIKE '%${ consultingCourse}%'  
+		  		  </if>
+		  		  <if test="accommodation != null and accommodation != ''">
+		  		  	AND accommodation LIKE '%${ accommodation}%'  
+		  		  </if>
+		  		  <if test="advisoryDate != null and advisoryDate != ''">
+		  		  	AND advisory_date = #{advisoryDate}   
+		  		  </if>
+		  		  <if test="address != null and address != ''">
+		  		  	AND address LIKE '%${ address}%'  
+		  		  </if>
+		  		  <if test="customerServic != null and customerServic != ''">
+		  		  	AND customer_servic LIKE '%${ customerServic}%'  
+		  		  </if>
+		  		  <if test="sfzh != null and sfzh != ''">
+		  		  	AND sfzh LIKE '%${ sfzh}%'  
+		  		  </if>
+		  		  <if test="dataSource != null and dataSource != ''">
+		  		  	AND data_source LIKE '%${ dataSource}%'  
+		  		  </if>
+		  		  <if test="certificateNumber != null and certificateNumber != ''">
+		  		  	AND certificate_number LIKE '%${ certificateNumber}%'  
+		  		  </if>
+		  		  <if test="bz != null and bz != ''">
+		  		  	AND bz LIKE '%${ bz}%'  
+		  		  </if>
+		  		  <if test="insertTime != null and insertTime != ''">
+		  		  	AND insert_time = #{insertTime}   
+		  		  </if>
+		  		  <if test="insertOperator != null and insertOperator != ''">
+		  		  	AND insert_operator = #{insertOperator}   
+		  		  </if>
+		  		  <if test="updateTime != null and updateTime != ''">
+		  		  	AND update_time = #{updateTime}   
+		  		  </if>
+		  		  <if test="updateOperator != null and updateOperator != ''">
+		  		  	AND update_operator = #{updateOperator}   
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY id DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_fc_member_management_baseinfo
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="name != null and name != ''">
+		  		  	AND name LIKE '%${ name}%'  
+		  		  </if>
+		  		  <if test="type != null and type != ''">
+		  		  	AND type LIKE '%${ type}%'  
+		  		  </if>
+		  		  <if test="consultants != null and consultants != ''">
+		  		  	AND consultants LIKE '%${ consultants}%'  
+		  		  </if>
+		  		  <if test="wechat != null and wechat != ''">
+		  		  	AND wechat LIKE '%${ wechat}%'  
+		  		  </if>
+		  		  <if test="phone != null and phone != ''">
+		  		  	AND phone LIKE '%${ phone}%'  
+		  		  </if>
+		  		  <if test="consultingCourse != null and consultingCourse != ''">
+		  		  	AND consulting_course LIKE '%${ consultingCourse}%'  
+		  		  </if>
+		  		  <if test="accommodation != null and accommodation != ''">
+		  		  	AND accommodation LIKE '%${ accommodation}%'  
+		  		  </if>
+		  		  <if test="advisoryDate != null and advisoryDate != ''">
+		  		  	AND advisory_date = #{advisoryDate}   
+		  		  </if>
+		  		  <if test="address != null and address != ''">
+		  		  	AND address LIKE '%${ address}%'  
+		  		  </if>
+		  		  <if test="customerServic != null and customerServic != ''">
+		  		  	AND customer_servic LIKE '%${ customerServic}%'  
+		  		  </if>
+		  		  <if test="sfzh != null and sfzh != ''">
+		  		  	AND sfzh LIKE '%${ sfzh}%'  
+		  		  </if>
+		  		  <if test="dataSource != null and dataSource != ''">
+		  		  	AND data_source LIKE '%${ dataSource}%'  
+		  		  </if>
+		  		  <if test="certificateNumber != null and certificateNumber != ''">
+		  		  	AND certificate_number LIKE '%${ certificateNumber}%'  
+		  		  </if>
+		  		  <if test="bz != null and bz != ''">
+		  		  	AND bz LIKE '%${ bz}%'  
+		  		  </if>
+		  		  <if test="insertTime != null and insertTime != ''">
+		  		  	AND insert_time = #{insertTime}   
+		  		  </if>
+		  		  <if test="insertOperator != null and insertOperator != ''">
+		  		  	AND insert_operator = #{insertOperator}   
+		  		  </if>
+		  		  <if test="updateTime != null and updateTime != ''">
+		  		  	AND update_time = #{updateTime}   
+		  		  </if>
+		  		  <if test="updateOperator != null and updateOperator != ''">
+		  		  	AND update_operator = #{updateOperator}   
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.business.domain.FcMemberManagementBaseinfoDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_fc_member_management_baseinfo') 
+    	</selectKey> -->
+    	    	
+		insert into t_fc_member_management_baseinfo 
+		(
+		
+			id, 
+			name, 
+			type, 
+			consultants, 
+			wechat, 
+			phone, 
+			consulting_course, 
+			accommodation, 
+			advisory_date, 
+			address, 
+			customer_servic, 
+			sfzh, 
+			data_source, 
+			certificate_number, 
+			bz, 
+			insert_time, 
+			insert_operator, 
+			update_time, 
+			update_operator
+		)
+		values
+		(
+		
+		    sys_seq('t_fc_member_management_baseinfo')  , 		    
+			#{name, jdbcType=VARCHAR}, 			
+			#{type, jdbcType=VARCHAR}, 			
+			#{consultants, jdbcType=VARCHAR}, 			
+			#{wechat, jdbcType=VARCHAR}, 			
+			#{phone, jdbcType=VARCHAR}, 			
+			#{consultingCourse, jdbcType=VARCHAR}, 			
+			#{accommodation, jdbcType=VARCHAR}, 			
+			#{advisoryDate, jdbcType=VARCHAR}, 			
+			#{address, jdbcType=VARCHAR}, 			
+			#{customerServic, jdbcType=VARCHAR}, 			
+			#{sfzh, jdbcType=VARCHAR}, 			
+			#{dataSource, jdbcType=VARCHAR}, 			
+			#{certificateNumber, jdbcType=VARCHAR}, 			
+			#{bz, jdbcType=VARCHAR}, 			
+			#{insertTime, jdbcType=VARCHAR}, 			
+			#{insertOperator, jdbcType=VARCHAR}, 			
+			#{updateTime, jdbcType=VARCHAR}, 			
+			#{updateOperator, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.business.domain.FcMemberManagementBaseinfoDO">
+		update t_fc_member_management_baseinfo 
+		<set>
+			<if test="name != null">name = #{name}, </if>
+			<if test="type != null">type = #{type}, </if>
+			<if test="consultants != null">consultants = #{consultants}, </if>
+			<if test="wechat != null">wechat = #{wechat}, </if>
+			<if test="phone != null">phone = #{phone}, </if>
+			<if test="consultingCourse != null">consulting_course = #{consultingCourse}, </if>
+			<if test="accommodation != null">accommodation = #{accommodation}, </if>
+			<if test="advisoryDate != null">advisory_date = #{advisoryDate}, </if>
+			<if test="address != null">address = #{address}, </if>
+			<if test="customerServic != null">customer_servic = #{customerServic}, </if>
+			<if test="sfzh != null">sfzh = #{sfzh}, </if>
+			<if test="dataSource != null">data_source = #{dataSource}, </if>
+			<if test="certificateNumber != null">certificate_number = #{certificateNumber}, </if>
+			<if test="bz != null">bz = #{bz}, </if>
+			<if test="insertTime != null">insert_time = #{insertTime}, </if>
+			<if test="insertOperator != null">insert_operator = #{insertOperator}, </if>
+			<if test="updateTime != null">update_time = #{updateTime}, </if>
+			<if test="updateOperator != null">update_operator = #{updateOperator}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_fc_member_management_baseinfo where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_fc_member_management_baseinfo where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
