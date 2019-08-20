@@ -1,5 +1,10 @@
 var prefix = ctx+ "/business/fcMemberManagementBaseinfo"
 $(function() {
+    laydate({
+        elem : '#advisoryDate'
+    });
+});
+$(function() {
 	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
 });
