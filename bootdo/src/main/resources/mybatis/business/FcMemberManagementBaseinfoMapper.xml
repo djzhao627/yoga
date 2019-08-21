@@ -192,7 +192,7 @@
 			#{phone, jdbcType=VARCHAR}, 			
 			#{consultingCourse, jdbcType=VARCHAR}, 			
 			#{accommodation, jdbcType=VARCHAR}, 			
-			#{advisoryDate, jdbcType=VARCHAR}, 			
+			#{advisoryDate, jdbcType=VARCHAR},
 			#{address, jdbcType=VARCHAR}, 			
 			#{customerServic, jdbcType=VARCHAR}, 			
 			#{sfzh, jdbcType=VARCHAR}, 			

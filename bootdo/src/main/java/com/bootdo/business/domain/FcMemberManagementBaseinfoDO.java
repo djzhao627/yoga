@@ -32,7 +32,7 @@ public class FcMemberManagementBaseinfoDO implements Serializable {
 	//是否住宿
 	private String accommodation;
 	//咨询日期
-	private Date advisoryDate;
+	private String advisoryDate;
 	//所在省市
 	private String address;
 	//所属客服
@@ -153,13 +153,13 @@ public class FcMemberManagementBaseinfoDO implements Serializable {
 	/**
 	 * 设置：咨询日期
 	 */
-	public void setAdvisoryDate(Date advisoryDate) {
+	public void setAdvisoryDate(String advisoryDate) {
 		this.advisoryDate = advisoryDate;
 	}
 	/**
 	 * 获取：咨询日期
 	 */
-	public Date getAdvisoryDate() {
+	public String getAdvisoryDate() {
 		return advisoryDate;
 	}
 	/**
