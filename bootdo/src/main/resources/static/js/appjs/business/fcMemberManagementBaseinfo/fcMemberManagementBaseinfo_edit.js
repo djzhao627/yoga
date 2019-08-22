@@ -2,6 +2,8 @@ var prefix = ctx+ "/business/fcMemberManagementBaseinfo"
 $(function() {
 	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
+    loadType();
+    loadType2();
 });
 
 $.validator.setDefaults({
@@ -157,4 +159,76 @@ function validateRule() {
 												},
 					}
 	})
+}
+function loadType(){
+    var html = "";
+    $.ajax({
+        url : ctx+'/common/dict/list/oa_notify_type',
+        success : function(data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $(".chosen-select").append(html);
+            $(".chosen-select").chosen({
+                maxHeight : 200
+            });
+            //点击事件
+            $('.chosen-select').on('change', function(e, params) {
+                console.log(params.selected);
+                var opt = {
+                    query : {
+                        type : params.selected,
+                    }
+                }
+                $('#exampleTable').bootstrapTable('refresh', opt);
+            });
+        }
+    });
+}
+function loadType2(){
+    var html = "";
+    $.ajax({
+        url : ctx+'/common/dict/list/yes_no',
+        success : function(data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $(".chosen-select2").append(html);
+            $(".chosen-select2").chosen({
+                maxHeight : 200
+            });
+            //点击事件
+            $('.chosen-select2').on('change', function(e, params) {
+                console.log(params.selected);
+                var opt = {
+                    query : {
+                        type : params.selected,
+                    }
+                }
+                $('#exampleTable').bootstrapTable('refresh', opt);
+            });
+        }
+    });
+}
+var openUser = function(){
+    layer.open({
+        type:2,
+        title:"选择人员",
+        area : [ '300px', '450px' ],
+        content:ctx+"/sys/user/treeView"
+    })
+}
+var openUser2 = function(){
+    layer.open({
+        type:2,
+        title:"选择人员",
+        area : [ '300px', '450px' ],
+        content:ctx+"/sys/user/treeView"
+    })
+}
+function loadUser(userIds,userNames){
+    $("#consultantsIds").val(userIds);
+    $("#consultants").val(userNames);
 }
