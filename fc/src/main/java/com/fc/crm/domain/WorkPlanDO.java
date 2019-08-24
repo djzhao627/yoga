@@ -1,5 +1,7 @@
 package com.fc.crm.domain;
 
+import com.fc.crm.bases.dao.BaseDao;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +11,7 @@ import java.util.Date;
  * @email
  * @date 2019-08-24 18:23:38
  */
-public class WorkPlanDO implements Serializable {
+public class WorkPlanDO extends BaseDao implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //主键
