@@ -1,0 +1,89 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Maven template
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+.idea/
+
+# User-specific stuff:
+
+
+# Sensitive or high-churn files:
+
+# Gradle:
+
+
+# CMake
+cmake-build-debug/
+cmake-build-release/
+
+# Mongo Explorer plugin:
+.idea/**/mongoSettings.xml
+
+## File-based project format:
+*.iml
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+.idea/replstate.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+/fc.iml
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+applog/
+src/main/java/com/fc/oa/config/Test01Constant.java
+src/main/java/com/fc/oa/controller/Test01Controller.java
+src/main/java/com/fc/oa/dao/Test01Dao.java
+src/main/java/com/fc/oa/domain/Test01DO.java
+src/main/java/com/fc/oa/service/Test01Service.java
+src/main/java/com/fc/oa/service/impl/Test01ServiceImpl.java
+src/main/resources/mybatis/oa/Test01Mapper.xml
+src/main/resources/static/css/.DS_Store
+src/main/resources/static/docs/
+src/main/resources/static/img/.DS_Store
+src/main/resources/static/img/photo_s1.jpg
+src/main/resources/static/js/.DS_Store
+src/main/resources/static/js/appjs/oa/test01/
+src/main/resources/static/js/plugins/.DS_Store
+src/main/resources/static/js/plugins/bootstrap-table/.DS_Store
+src/main/resources/static/js/plugins/echarts/.DS_Store
+src/main/resources/static/js/plugins/layer/.DS_Store
+src/main/resources/static/js/plugins/suggest/.DS_Store
+src/main/resources/static/js/plugins/webuploader/.DS_Store
+src/main/resources/templates/oa/test01/
