@@ -24,7 +24,9 @@
                                 <select data-placeholder="--选择类别--" name="type" id="type"
                                         class="form-control chosen-select" tabindex="2" required>
                                     <option value="">--选择类别--</option>
-                                    <option th:each="customType : ${customTypes}" th:value="${customType.value}" th:text="${customType.name}" th:if="${customType.remarks ==checked}" th:selected="selected">
+                                    <option th:each="customType : ${customTypes}" th:value="${customType.value}"
+                                            th:text="${customType.name}" th:if="${customType.remarks ==checked}"
+                                            th:selected="selected">
                                 </select>
                             </div>
                         </div>
@@ -51,25 +53,31 @@
                                        class="form-control" type="text">
                             </div>
                         </div>
-                        <input id="Ctype" name="Ctype" th:value="${fcMemberManagementBaseinfo.consultingCourse}" type="hidden">
+                        <input id="Ctype" name="Ctype" th:value="${fcMemberManagementBaseinfo.consultingCourse}"
+                               type="hidden">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">咨询课程：</label>
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="consultingCourse" id="consultingCourse"
                                         class="form-control chosen-select2" tabindex="2" required>
                                     <option value="">--选择类别--</option>
-                                    <option th:each="consultingCourse : ${consultingCourseTypes}" th:value="${consultingCourse.value}" th:text="${consultingCourse.name}" th:if="${consultingCourse.remarks ==checked}" th:selected="selected">
+                                    <option th:each="consultingCourse : ${consultingCourseTypes}"
+                                            th:value="${consultingCourse.value}" th:text="${consultingCourse.name}"
+                                            th:if="${consultingCourse.remarks ==checked}" th:selected="selected">
                                 </select>
                             </div>
                         </div>
-                        <input id="Atype" name="Atype" th:value="${fcMemberManagementBaseinfo.accommodation}" type="hidden">
+                        <input id="Atype" name="Atype" th:value="${fcMemberManagementBaseinfo.accommodation}"
+                               type="hidden">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">是否住宿：</label>
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="accommodation" id="accommodation"
                                         class="form-control chosen-select3" tabindex="2" required>
                                     <option value="">--选择类别--</option>
-                                    <option th:each="accommodation : ${YesNoTypes}" th:value="${accommodation.value}" th:text="${accommodation.name}" th:if="${accommodation.remarks ==checked}" th:selected="selected">
+                                    <option th:each="accommodation : ${YesNoTypes}" th:value="${accommodation.value}"
+                                            th:text="${accommodation.name}" th:if="${accommodation.remarks ==checked}"
+                                            th:selected="selected">
                                 </select>
                             </div>
                         </div>
@@ -106,23 +114,18 @@
                                        class="form-control" type="text">
                             </div>
                         </div>
-                        <input id="Dtype" name="Dtype" th:value="${fcMemberManagementBaseinfo.dataSource}" type="hidden">
+                        <input id="Dtype" name="Dtype" th:value="${fcMemberManagementBaseinfo.dataSource}"
+                               type="hidden">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">数据来源：</label>
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="dataSource" id="dataSource"
                                         class="form-control chosen-select4" tabindex="2" required>
                                     <option value="">--选择类别--</option>
-                                    <option th:each="dataSource : ${dataSourceTypes}" th:value="${dataSource.value}" th:text="${dataSource.name}" th:if="${dataSource.remarks ==checked}" th:selected="selected">
+                                    <option th:each="dataSource : ${dataSourceTypes}" th:value="${dataSource.value}"
+                                            th:text="${dataSource.name}" th:if="${dataSource.remarks ==checked}"
+                                            th:selected="selected">
                                 </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">证书编号：</label>
-                            <div class="col-sm-8">
-                                <input id="certificateNumber" name="certificateNumber"
-                                       th:value="${fcMemberManagementBaseinfo.certificateNumber}" class="form-control"
-                                       type="text">
                             </div>
                         </div>
                         <div class="form-group">

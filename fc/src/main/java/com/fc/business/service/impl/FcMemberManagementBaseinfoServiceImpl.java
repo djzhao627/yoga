@@ -1,5 +1,6 @@
 package com.fc.business.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,11 +36,27 @@ public class FcMemberManagementBaseinfoServiceImpl implements FcMemberManagement
 	
 	@Override
 	public int save(FcMemberManagementBaseinfoDO fcMemberManagementBaseinfo){
+		String customerServic = fcMemberManagementBaseinfo.getCustomerServic();
+		String consultants = fcMemberManagementBaseinfo.getConsultants();
+		if (StringUtils.isNotBlank(customerServic)) {
+			fcMemberManagementBaseinfo.setCustomerServic(customerServic.substring(0,customerServic.lastIndexOf(",")));
+		}
+		if (StringUtils.isNotBlank(consultants)) {
+			fcMemberManagementBaseinfo.setConsultants(consultants.substring(0,consultants.lastIndexOf(",")));
+		}
 		return fcMemberManagementBaseinfoDao.save(fcMemberManagementBaseinfo);
 	}
 	
 	@Override
 	public int update(FcMemberManagementBaseinfoDO fcMemberManagementBaseinfo){
+		String customerServic = fcMemberManagementBaseinfo.getCustomerServic();
+		String consultants = fcMemberManagementBaseinfo.getConsultants();
+		if (StringUtils.isNotBlank(customerServic)) {
+			fcMemberManagementBaseinfo.setCustomerServic(customerServic.substring(0,customerServic.lastIndexOf(",")));
+		}
+		if (StringUtils.isNotBlank(consultants)) {
+			fcMemberManagementBaseinfo.setConsultants(consultants.substring(0,consultants.lastIndexOf(",")));
+		}
 		return fcMemberManagementBaseinfoDao.update(fcMemberManagementBaseinfo);
 	}
 	

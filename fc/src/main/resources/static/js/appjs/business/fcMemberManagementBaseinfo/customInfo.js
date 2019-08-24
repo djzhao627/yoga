@@ -1,6 +1,7 @@
 var prefix = ctx+ "/business/fcMemberManagementBaseinfo"
 $(function() {
 	load();
+    loadType();
 });
 
 function load() {
@@ -69,7 +70,18 @@ function load() {
                             },
                             {
                                 field : 'type',
-                                title : '客户类型'
+                                title : '客户类型',
+                                formatter : function(value, row, index){
+                                    if(value==0){
+                                        return '成交客户';
+                                    }else if(value==1){
+                                        return '意向客户';
+                                    }else if(value==2){
+                                        return '潜在客户';
+                                    }else if(value==3){
+                                        return '失效客户';
+                                    }
+                                }
                             },
                             {
                                 field : 'consultants',
@@ -85,11 +97,27 @@ function load() {
                             },
                             {
                                 field : 'consultingCourse',
-                                title : '咨询课程'
+                                title : '咨询课程',
+                                formatter : function(value, row, index){
+                                    if(value==0){
+                                        return '零基础班';
+                                    }else if(value==1){
+                                        return '空中瑜伽';
+                                    }else if(value==2){
+                                        return '舞韵瑜伽';
+                                    }
+                                }
                             },
                             {
                                 field : 'accommodation',
-                                title : '是否住宿'
+                                title : '是否住宿',
+                                formatter : function(value, row, index){
+                                    if(value==0){
+                                        return '否';
+                                    }else if(value==1){
+                                        return '是';
+                                    }
+                                }
                             },
                             {
                                 field : 'advisoryDate',
@@ -109,11 +137,16 @@ function load() {
                             },
                             {
                                 field : 'dataSource',
-                                title : '数据来源'
-                            },
-                            {
-                                field : 'certificateNumber',
-                                title : '证书编号'
+                                title : '数据来源',
+                                formatter : function(value, row, index){
+                                    if(value==0){
+                                        return '商务通';
+                                    }else if(value==1){
+                                        return '微信群';
+                                    }else if(value==2){
+                                        return '400呼入';
+                                    }
+                                }
                             },
                             {
                                 field : 'bz',
@@ -248,5 +281,26 @@ var openCustom = function (id) {
         maxmin : true,
         shadeClose : false, // 点击遮罩关闭层
         content: ctx + "/business/fcCustomFollowPlan/customerList/"+id
+    });
+}
+function loadType() {
+    var html = "";
+    $.ajax({
+        url: ctx + '/common/dict/list/custom_type',
+        success: function (data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $(".chosen-select").append(html);
+            $(".chosen-select").chosen({
+                maxHeight: 200
+            });
+            $(".chosen-select").val($("#Ttype").val());
+            $(".chosen-select").trigger("chosen:updated");
+            //点击事件
+            $('.chosen-select').on('change', function (e, params) {
+            });
+        }
     });
 }
