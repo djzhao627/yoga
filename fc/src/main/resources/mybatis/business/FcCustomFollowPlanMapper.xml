@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fc.business.dao.FcCustomFollowPlanDao">
+
+	<select id="get" resultType="com.fc.business.domain.FcCustomFollowPlanDO">
+		SELECT 
+			id,custom_id,talk_date,record_or_plan,insert_time,insert_operator,update_time,update_operator			 
+		FROM t_fc_custom_follow_plan 
+		where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.fc.business.domain.FcCustomFollowPlanDO">
+		SELECT 
+			id, custom_id, talk_date, record_or_plan, insert_time, insert_operator, update_time, update_operator 		
+		FROM t_fc_custom_follow_plan 
+        <where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="customId != null and customId != ''">
+		  		  	AND custom_id = #{customId}   
+		  		  </if>
+		  		  <if test="talkDate != null and talkDate != ''">
+		  		  	AND talk_date LIKE '%${ talkDate}%'  
+		  		  </if>
+		  		  <if test="recordOrPlan != null and recordOrPlan != ''">
+		  		  	AND record_or_plan LIKE '%${ recordOrPlan}%'  
+		  		  </if>
+		  		  <if test="insertTime != null and insertTime != ''">
+		  		  	AND insert_time = #{insertTime}   
+		  		  </if>
+		  		  <if test="insertOperator != null and insertOperator != ''">
+		  		  	AND insert_operator = #{insertOperator}   
+		  		  </if>
+		  		  <if test="updateTime != null and updateTime != ''">
+		  		  	AND update_time = #{updateTime}   
+		  		  </if>
+		  		  <if test="updateOperator != null and updateOperator != ''">
+		  		  	AND update_operator = #{updateOperator}   
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY id DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_fc_custom_follow_plan
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="customId != null and customId != ''">
+		  		  	AND custom_id = #{customId}   
+		  		  </if>
+		  		  <if test="talkDate != null and talkDate != ''">
+		  		  	AND talk_date LIKE '%${ talkDate}%'  
+		  		  </if>
+		  		  <if test="recordOrPlan != null and recordOrPlan != ''">
+		  		  	AND record_or_plan LIKE '%${ recordOrPlan}%'  
+		  		  </if>
+		  		  <if test="insertTime != null and insertTime != ''">
+		  		  	AND insert_time = #{insertTime}   
+		  		  </if>
+		  		  <if test="insertOperator != null and insertOperator != ''">
+		  		  	AND insert_operator = #{insertOperator}   
+		  		  </if>
+		  		  <if test="updateTime != null and updateTime != ''">
+		  		  	AND update_time = #{updateTime}   
+		  		  </if>
+		  		  <if test="updateOperator != null and updateOperator != ''">
+		  		  	AND update_operator = #{updateOperator}   
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.business.domain.FcCustomFollowPlanDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_fc_custom_follow_plan') 
+    	</selectKey> -->
+    	    	
+		insert into t_fc_custom_follow_plan 
+		(
+		
+			id, 
+			custom_id, 
+			talk_date, 
+			record_or_plan, 
+			insert_time, 
+			insert_operator, 
+			update_time, 
+			update_operator
+		)
+		values
+		(
+		
+		    sys_seq('t_fc_custom_follow_plan')  , 		    
+			#{customId, jdbcType=VARCHAR}, 			
+			#{talkDate, jdbcType=VARCHAR}, 			
+			#{recordOrPlan, jdbcType=VARCHAR}, 			
+			#{insertTime, jdbcType=VARCHAR}, 			
+			#{insertOperator, jdbcType=VARCHAR}, 			
+			#{updateTime, jdbcType=VARCHAR}, 			
+			#{updateOperator, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.business.domain.FcCustomFollowPlanDO">
+		update t_fc_custom_follow_plan 
+		<set>
+			<if test="customId != null">custom_id = #{customId}, </if>
+			<if test="talkDate != null">talk_date = #{talkDate}, </if>
+			<if test="recordOrPlan != null">record_or_plan = #{recordOrPlan}, </if>
+			<if test="insertTime != null">insert_time = #{insertTime}, </if>
+			<if test="insertOperator != null">insert_operator = #{insertOperator}, </if>
+			<if test="updateTime != null">update_time = #{updateTime}, </if>
+			<if test="updateOperator != null">update_operator = #{updateOperator}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_fc_custom_follow_plan where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_fc_custom_follow_plan where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

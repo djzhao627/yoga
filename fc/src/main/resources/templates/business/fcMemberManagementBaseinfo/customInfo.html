@@ -50,37 +50,8 @@
 					<i class="fa fa-trash" aria-hidden="true"></i>删除
 				</button>
 			</div>
-			<!--<div class="columns pull-right">
-				<button id="btnSearch" class="btn btn-success" onclick="reLoad()">查询</button>
-				<button id="btnReset" class="btn btn-danger" onclick="reSet()">重置</button>
-			</div>
-			<div class="columns pull-right col-md-2 nopadding">
-				<input id="searchName" type="text" class="form-control"
-					placeholder="">
-			</div> -->
 		</div>
 		<table id="dataTable" data-mobile-responsive="true">
-			<thead>
-				<tr>
-					<th data-checkbox="true" ></th>
-								<th data-field="id" data-align='center' data-sortable="true" ng-show="false">序列</th>
-								<th data-field="name" data-align='center' data-sortable="true">姓名</th>
-								<th data-field="type" data-align='center' data-sortable="true">客户类型</th>
-								<th data-field="consultants" data-align='center' data-sortable="true">所属顾问</th>
-								<th data-field="wechat" data-align='center' data-sortable="true">微信号</th>
-								<th data-field="phone" data-align='center' data-sortable="true">联系电话</th>
-								<th data-field="consultingCourse" data-align='center' data-sortable="true">咨询课程</th>
-								<th data-field="accommodation" data-align='center' data-sortable="true">是否住宿</th>
-								<th data-field="advisoryDate" data-align='center' data-sortable="true">咨询日期</th>
-								<th data-field="address" data-align='center' data-sortable="true">所在省市</th>
-								<th data-field="customerServic" data-align='center' data-sortable="true">所属客服</th>
-								<th data-field="sfzh" data-align='center' data-sortable="true">身份证号码</th>
-								<th data-field="dataSource" data-align='center' data-sortable="true">数据来源</th>
-								<th data-field="certificateNumber" data-align='center' data-sortable="true">证书编号</th>
-								<th data-field="bz" data-align='center' data-sortable="true">备注</th>
-									<th data-field="operate" data-align='center' data-formatter="operateFormatter" data-events="operateEvent" width="80">操作</th>
-		 		</tr>
-			</thead>
 		</table>
 					
 	</div>
@@ -109,6 +80,6 @@
 		</div>
 	</div>
 	<div th:include="include :: footer"></div>
-	<script type="text/javascript" th:src="@{/js/appjs/business/fcMemberManagementBaseinfo/fcMemberManagementBaseinfo_list.js}"></script>
+	<script type="text/javascript" th:src="@{/js/appjs/business/fcMemberManagementBaseinfo/customInfo.js}"></script>
 </body>
 </html>

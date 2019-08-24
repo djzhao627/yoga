@@ -39,7 +39,7 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	@GetMapping()
 	@RequiresPermissions("business:fcMemberManagementBaseinfo:fcMemberManagementBaseinfo")
 	String FcMemberManagementBaseinfo(){
-	    return "business/fcMemberManagementBaseinfo/fcMemberManagementBaseinfo_list";
+	    return "business/fcMemberManagementBaseinfo/customInfo";
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
 		mv.addObject("fcMemberManagementBaseinfo", new FcMemberManagementBaseinfoDO());
-		mv.setViewName("business/fcMemberManagementBaseinfo/fcMemberManagementBaseinfo_edit");
+		mv.setViewName("business/fcMemberManagementBaseinfo/add");
 		return mv;
 	}
 	
@@ -81,7 +81,7 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	    ModelAndView mv = new ModelAndView();
 		FcMemberManagementBaseinfoDO fcMemberManagementBaseinfo = fcMemberManagementBaseinfoService.get(id);
 		mv.addObject("fcMemberManagementBaseinfo", fcMemberManagementBaseinfo);
-		mv.setViewName("business/fcMemberManagementBaseinfo/fcMemberManagementBaseinfo_edit");
+		mv.setViewName("business/fcMemberManagementBaseinfo/edit");
 		return mv;
 	}
 	

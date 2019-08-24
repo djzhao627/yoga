@@ -216,6 +216,11 @@ public class UserController extends BaseController {
 		return  prefix + "/userTree";
 	}
 
+	@GetMapping("/customerServic")
+	String customerServic() {
+		return  prefix + "/customerServic";
+	}
+
 	@GetMapping("/personal")
 	String personal(Model model) {
 		UserDO userDO  = userService.get(getUserId());
