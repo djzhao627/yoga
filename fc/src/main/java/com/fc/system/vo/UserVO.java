@@ -3,7 +3,7 @@ package com.fc.system.vo;
 import com.fc.system.domain.UserDO;
 
 /**
- * @author gaoyuzhe
+ * @author mdg
  * @date 2017/12/15.
  */
 public class UserVO {

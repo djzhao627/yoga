@@ -14,7 +14,7 @@ import java.io.InputStream;
 import java.util.Iterator;
 
 /**
- * @author gaoyuzhe
+ * @author mdg
  * @date 2017/12/18.
  */
 public class ImageUtils {

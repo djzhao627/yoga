@@ -63,7 +63,7 @@
 		)
 		values
 		(
-			sys_seq('SYS_LOG'),
+			sys_seq('sys_log'),
 			#{userId, jdbcType=NUMERIC},
 			#{username, jdbcType=VARCHAR}, 
 			#{operation, jdbcType=VARCHAR}, 

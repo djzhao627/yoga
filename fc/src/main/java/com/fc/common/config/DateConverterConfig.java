@@ -11,19 +11,19 @@ import java.util.Date;
 import java.util.zip.DataFormatException;
 
 /**
- * @author gaoyuzhe
+ * @author mdg
  * @date 2017/12/14.
  */
 @Configuration
-public class DateConverConfig {
+public class DateConverterConfig {
     @Bean
     public Converter<String, Date> stringDateConvert() {
         return new Converter<String, Date>() {
             @Override
             public Date convert(String source) {
-            	if(StringUtils.isBlank(source)){
-            		return null;
-            	}
+                if (StringUtils.isBlank(source)) {
+                    return null;
+                }
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = null;
                 try {
