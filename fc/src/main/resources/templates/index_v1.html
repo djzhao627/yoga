@@ -74,9 +74,9 @@
                 </a>
                     <ul class="nav nav-second-level">
                         <li th:each="cmenu : ${menu.children}">
-                            <a class="J_menuItem" href="graph_echarts.html"
-                               th:text="${cmenu.text}"
-                               th:href="@{${cmenu.attributes.url}}">系统管理</a>
+                        	<a class="J_menuItem" href="graph_echarts.html"
+                                 th:text="${cmenu.text}"
+                                 th:href="@{${cmenu.attributes.url}}">系统管理</a>
                         </li>
                     </ul>
                 </li>
@@ -104,11 +104,10 @@
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="hidden-xs">
 
-                        <a href="http://203.195.152.121/yoga/index.html" target="_blank"><i
-                                class="fa fa-rss-square"></i>官网</a>
+                        <a href="http://203.195.152.121/yoga/index.html" target="_blank"><i class="fa fa-rss-square"></i>官网</a>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i>
+                    	<i class="fa fa-envelope"></i>
                         <span class="label label-warning">{{total}}</span>通知
                     </a>
                         <ul class="dropdown-menu dropdown-messages">
@@ -135,7 +134,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="hidden-xs"><a @click="personal" href="#"><i class="fa fa-id-card"></i> 个人</a></li>
+                    <li class="hidden-xs"><a @click="personal" href="#" ><i class="fa fa-id-card"></i> 个人</a></li>
                     <li class="dropdown hidden-xs"><a
                             class="right-sidebar-toggle" aria-expanded="false"> <i
                             class="fa fa-tasks"></i> 主题
@@ -171,12 +170,12 @@
                     class="fa fa fa-sign-out"></i> 退出</a>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <!-- 用户tab页签间传值用 -->
-            <form id="mainForm" method="post">
-                <input id="indexMainInput" name="indexMainInput" type="hidden" value="{}"/>
-                <input id="diagIsSubmit" name="diagIsSubmit" type="hidden"/>
-            </form>
-
+			<!-- 用户tab页签间传值用 -->
+			<form id="mainForm" method="post">
+			    <input id="indexMainInput" name="indexMainInput" type="hidden" value="{}"/>
+			    <input id="diagIsSubmit" name="diagIsSubmit" type="hidden" />
+			</form>
+			
             <iframe class="J_iframe" name="iframe0" width="100%" height="100%"
                     src="" th:src="@{/main}" frameborder="0" data-id="index_v1.html"
                     seamless></iframe>
@@ -292,14 +291,14 @@
 </div>
 <script th:inline="javascript"> var projectName = [[@{/}]] ; </script>
 <script type="text/javascript">
-    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
-    var curWwwPath = window.document.location.href;
-    var pathName = window.document.location.pathname;
-    var pos = curWwwPath.indexOf(pathName);
-
-    //获取主机地址，如： http://localhost:8083
-    var urlHost = curWwwPath.substring(0, pos);
-    var ctx = urlHost + projectName;
+	//获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+   var curWwwPath = window.document.location.href;
+   var pathName = window.document.location.pathname;
+   var pos = curWwwPath.indexOf(pathName);
+   
+   //获取主机地址，如： http://localhost:8083
+   var urlHost = curWwwPath.substring(0, pos);
+   var ctx = urlHost + projectName;
 </script>
 <!-- 全局js -->
 <script th:src="@{/js/common/jquery.min.js?v=2.1.4}"></script>
@@ -327,9 +326,9 @@
     });
 
     function connect() {
-        var sock = new SockJS(ctx + "/endpointChat");
+        var sock = new SockJS(ctx+"/endpointChat");
         var stomp = Stomp.over(sock);
-        stomp.connect('guest', 'guest', function (frame) {
+        stomp.connect('guest', 'guest', function(frame) {
 
             /** 订阅了/user/queue/notifications 发送的消息,这里雨在控制器的 convertAndSendToUser 定义的地址保持一致,
              *  这里多用了一个/user,并且这个user 是必须的,使用user 才会发送消息到指定的用户。
@@ -354,7 +353,6 @@
                 toastr.info(JSON.parse(response.body).responseMessage);
             });
         });
-
         function handleNotification(message) {
             wrapper.notify();
             toastr.info(message.body);
@@ -369,7 +367,7 @@
         },
         methods: {
             notify: function () {
-                $.getJSON(ctx + '/oa/notify/message', function (r) {
+                $.getJSON(ctx+'/oa/notify/message', function (r) {
                     wrapper.total = r.total;
                     wrapper.rows = r.rows;
                 });
@@ -381,7 +379,7 @@
                     maxmin: true,
                     shadeClose: false,
                     area: ['800px', '600px'],
-                    content: ctx + '/sys/user/personal'
+                    content: ctx+'/sys/user/personal'
                 });
             }
         },

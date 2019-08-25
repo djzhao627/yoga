@@ -73,7 +73,7 @@ public class BDExceptionHandler {
         logDO.setMethod(request.getRequestURL().toString());
         logDO.setParams(e.toString());
         UserDO current = ShiroUtils.getUser();
-        if (null != current) {
+        if(null!=current){
             logDO.setUserId(current.getUserId());
             logDO.setUsername(current.getUsername());
         }

@@ -20,29 +20,28 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.fc.common.io.PropertiesUtils;
-
 @EnableTransactionManagement
 @ServletComponentScan
 @MapperScan({"com.fc.*.dao", "com.ereal.*.dao"})
 @SpringBootApplication
-@EnableRedisHttpSession
+@EnableRedisHttpSession 
 public class FcApplication extends SpringBootServletInitializer {
+	
+	public static void main(String[] args) {
+		SpringApplication app = new SpringApplication(FcApplication.class);
+		app.setDefaultProperties(PropertiesUtils.getInstance().getProperties());
+		app.run(args);
+		System.out.println("Project Startup Success!!!");
+	}
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		this.setRegisterErrorPageFilter(false); // 错误页面有容器来处理，而不是SpringBoot
+		builder.properties(PropertiesUtils.getInstance().getProperties());
+		return builder.sources(FcApplication.class);
+	}
 
-    public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(FcApplication.class);
-        app.setDefaultProperties(PropertiesUtils.getInstance().getProperties());
-        app.run(args);
-        System.out.println("Project Startup Success!!!");
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        this.setRegisterErrorPageFilter(false); // 错误页面有容器来处理，而不是SpringBoot
-        builder.properties(PropertiesUtils.getInstance().getProperties());
-        return builder.sources(FcApplication.class);
-    }
-
-    @Bean(initMethod = "init", name = "beetlConfig")
+	@Bean(initMethod = "init", name = "beetlConfig")
     public BeetlGroupUtilConfiguration getBeetlGroupUtilConfiguration() {
         BeetlGroupUtilConfiguration beetlGroupUtilConfiguration = new BeetlGroupUtilConfiguration();
         ResourcePatternResolver patternResolver = ResourcePatternUtils.getResourcePatternResolver(new DefaultResourceLoader());

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="col-sm-12" id="formSearch" name="formSearch">
+        <div class="ibox">
+            <div class="ibox-body">
+
+                <div class="form-group col-sm-4">
+                    <input id="customId" name="customId" type="hidden"
+                           th:value="${customId}">
+                    <label class="col-sm-5 control-label" style="margin-top: 6px;">沟通时间</label>
+                    <div class="col-sm-7">
+                        <input id="talkDate" type="text" class="form-control" placeholder="沟通时间">
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <button id="btnSearch" class="btn btn-success" onclick="reLoad()">查询</button>
+                    <button id="btnReset" class="btn btn-danger" onclick="reSet()">重置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-table-toolbar">
+        <div class="pull-left" id="exampleToolbar">
+            <button id="btnAdd" shiro:hasPermission="business:customFollowPlan:add" type="button"
+                    class="btn btn-primary" onclick="add()">
+                <i class="fa fa-plus" aria-hidden="true"></i>添加
+            </button>
+            <button id="btnDel" shiro:hasPermission="business:customFollowPlan:batchRemove" type="button"
+                    class="btn btn-danger"
+                    onclick="batchRemove()">
+                <i class="fa fa-trash" aria-hidden="true"></i>删除
+            </button>
+        </div>
+    </div>
+    <table id="dataTable" data-mobile-responsive="true">
+        <thead>
+        <tr>
+            <th data-checkbox="true"></th>
+            <th data-field="id" data-align='center' data-sortable="true">序列</th>
+            <th data-field="talkDate" data-align='center' data-sortable="true">沟通时间</th>
+            <th data-field="recordOrPlan" data-align='center' data-sortable="true">沟通记录或计划</th>
+            <th data-field="operate" data-align='center' data-formatter="operateFormatter" data-events="operateEvent">
+                操作
+            </th>
+        </tr>
+        </thead>
+    </table>
+
+</div>
+<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+<div>
+    <script type="text/javascript">
+        var s_edit_h = 'hidden';
+        var s_remove_h = 'hidden';
+        var s_resetPwd_h = 'hidden';
+    </script>
+</div>
+<div shiro:hasPermission="business:customFollowPlan:edit">
+    <script type="text/javascript">
+        s_edit_h = '';
+    </script>
+</div>
+<div shiro:hasPermission="business:customFollowPlan:remove">
+    <script type="text/javascript">
+        var s_remove_h = '';
+    </script>
+</div>
+<div shiro:hasPermission="business:customFollowPlan:resetPwd">
+    <script type="text/javascript">
+        var s_resetPwd_h = '';
+    </script>
+</div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" th:src="@{/js/appjs/business/customFollowPlan/customFollowPlan.js}"></script>
+</body>
+</html>

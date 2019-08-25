@@ -2,7 +2,6 @@ package com.fc.activiti.domain;
 
 
 /**
- *
  */
 public class Variable {
 

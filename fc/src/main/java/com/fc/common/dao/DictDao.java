@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 字典表
- *
+ * 
  * @author chglee
  * @email 1992lcg@163.com
  * @date 2017-10-03 15:45:42
@@ -17,19 +17,19 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface DictDao {
 
-    DictDO get(Long id);
+	DictDO get(Long id);
 
-    List<DictDO> list(Map<String, Object> map);
+	List<DictDO> list(Map<String, Object> map);
 
-    int count(Map<String, Object> map);
+	int count(Map<String, Object> map);
 
-    int save(DictDO dict);
+	int save(DictDO dict);
 
-    int update(DictDO dict);
+	int update(DictDO dict);
 
-    int remove(Long id);
+	int remove(Long id);
 
-    int batchRemove(Long[] ids);
+	int batchRemove(Long[] ids);
 
-    List<DictDO> listType();
+	List<DictDO> listType();
 }

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+
  */
 @RequestMapping("activiti/task")
 @RestController
@@ -37,9 +37,8 @@ public class TaskController extends BaseController {
     TaskService taskService;
     @Autowired
     ActTaskService actTaskService;
-
     @GetMapping("goto")
-    public ModelAndView gotoTask() {
+    public ModelAndView gotoTask(){
         return new ModelAndView("act/task/gotoTask");
     }
 
@@ -49,7 +48,7 @@ public class TaskController extends BaseController {
                 .listPage(offset, limit);
         int count = (int) repositoryService.createProcessDefinitionQuery().count();
         List<Object> list = new ArrayList<>();
-        for (ProcessDefinition processDefinition : processDefinitions) {
+        for(ProcessDefinition processDefinition: processDefinitions){
             list.add(new ProcessVO(processDefinition));
         }
 
@@ -58,28 +57,28 @@ public class TaskController extends BaseController {
     }
 
     @GetMapping("/form/{procDefId}")
-    public void startForm(@PathVariable("procDefId") String procDefId, HttpServletResponse response) throws IOException {
+    public void startForm(@PathVariable("procDefId") String procDefId  ,HttpServletResponse response) throws IOException {
         String formKey = actTaskService.getFormKey(procDefId, null);
-        response.sendRedirect(this.getDomainPath() + formKey);
+        response.sendRedirect(this.getDomainPath()+ formKey);
     }
 
     @GetMapping("/form/{procDefId}/{taskId}")
-    public void form(@PathVariable("procDefId") String procDefId, @PathVariable("taskId") String taskId, HttpServletResponse response) throws IOException {
+    public void form(@PathVariable("procDefId") String procDefId,@PathVariable("taskId") String taskId ,HttpServletResponse response) throws IOException {
         // 获取流程XML上的表单KEY
         String formKey = actTaskService.getFormKey(procDefId, taskId);
-        response.sendRedirect(this.getDomainPath() + formKey + "/" + taskId);
+        response.sendRedirect(this.getDomainPath()+ formKey+"/"+taskId);
     }
 
     @GetMapping("/todo")
-    ModelAndView todo() {
+    ModelAndView todo(){
         return new ModelAndView("act/task/todoTask");
     }
 
     @GetMapping("/todoList")
-    List<TaskVO> todoList() {
+    List<TaskVO> todoList(){
         List<Task> tasks = taskService.createTaskQuery().taskAssignee("admin").list();
-        List<TaskVO> taskVOS = new ArrayList<>();
-        for (Task task : tasks) {
+        List<TaskVO> taskVOS =  new ArrayList<>();
+        for(Task task : tasks){
             TaskVO taskVO = new TaskVO(task);
             taskVOS.add(taskVO);
         }

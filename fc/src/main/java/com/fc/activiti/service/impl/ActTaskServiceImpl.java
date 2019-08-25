@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  */
 @Service
 public class ActTaskServiceImpl implements ActTaskService {
@@ -227,7 +226,6 @@ public class ActTaskServiceImpl implements ActTaskService {
 
     /**
      * 获取需要高亮的线
-     *
      * @param processDefinitionEntity
      * @param historicActivityInstances
      * @return

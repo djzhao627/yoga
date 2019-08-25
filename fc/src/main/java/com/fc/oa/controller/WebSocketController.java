@@ -19,10 +19,10 @@ import java.security.Principal;
 
 @Controller
 public class WebSocketController {
-    @Autowired
-    SimpMessagingTemplate template;
+	@Autowired
+	SimpMessagingTemplate template;
 
-    @Autowired
+	@Autowired
     SessionService sessionService;
 
 	/*@Autowired

@@ -1,4 +1,4 @@
-var prefix = ctx + "/common/job"
+var prefix = ctx+ "/common/job"
 $(function () {
     load();
 });

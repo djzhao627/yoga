@@ -22,16 +22,13 @@ public class ShiroUtils {
     public static Subject getSubjct() {
         return SecurityUtils.getSubject();
     }
-
     public static UserDO getUser() {
         Object object = getSubjct().getPrincipal();
-        return (UserDO) object;
+        return (UserDO)object;
     }
-
     public static Long getUserId() {
         return getUser().getUserId();
     }
-
     public static void logout() {
         getSubjct().logout();
     }

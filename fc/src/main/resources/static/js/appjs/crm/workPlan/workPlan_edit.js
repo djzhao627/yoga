@@ -6,11 +6,11 @@ $(function () {
 
 $.validator.setDefaults({
     submitHandler: function () {
-        submitData();
+        sbumitData();
     }
 });
 
-function submitData() {
+function sbumitData() {
     //var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
     var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
     var url = "";

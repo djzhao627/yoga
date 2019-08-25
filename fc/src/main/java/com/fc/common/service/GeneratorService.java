@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface GeneratorService {
-    List<Map<String, Object>> list();
+	List<Map<String, Object>> list();
 
-    byte[] generatorCode(String[] tableNames);
+	byte[] generatorCode(String[] tableNames);
 }

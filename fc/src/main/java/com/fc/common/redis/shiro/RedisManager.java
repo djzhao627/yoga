@@ -19,8 +19,8 @@ import redis.clients.jedis.ScanResult;
 /**
  * Redis操作类
  * 用法：
- *
- * @Autowired private RedisManager redisMgr;
+    @Autowired
+	private RedisManager redisMgr;
  */
 public class RedisManager {
 
@@ -39,9 +39,9 @@ public class RedisManager {
 
     @Value("${spring.redis.password}")
     private String password = "";
-
+    
     //默认db索引
-    private int dbIndex = 1;
+    private int  dbIndex = 1;
 
     private static JedisPool jedisPool = null;
 
@@ -67,6 +67,7 @@ public class RedisManager {
 
     /**
      * get value from redis
+     *
      */
     public byte[] get(byte[] key) {
         byte[] value = null;
@@ -83,6 +84,7 @@ public class RedisManager {
 
     /**
      * set
+     *
      */
     public byte[] set(byte[] key, byte[] value) {
         Jedis jedis = jedisPool.getResource();
@@ -101,6 +103,7 @@ public class RedisManager {
 
     /**
      * set
+     *
      */
     public byte[] set(byte[] key, byte[] value, int expire) {
         Jedis jedis = jedisPool.getResource();
@@ -119,6 +122,7 @@ public class RedisManager {
 
     /**
      * del
+     *
      */
     public void del(byte[] key) {
         Jedis jedis = jedisPool.getResource();
@@ -180,10 +184,10 @@ public class RedisManager {
         return keys;
     }
 
-
+    
     /*新增redis操作 start*/
     public String redisPrefix = "ljf:";
-
+    
     /**
      * 根据key获取缓存数据
      *
@@ -271,7 +275,6 @@ public class RedisManager {
 
     /**
      * 设置集合
-     *
      * @param key
      * @param value
      */
@@ -532,7 +535,6 @@ public class RedisManager {
 
     /**
      * 设置key的过期时间
-     *
      * @param key
      * @param seconds
      */
@@ -549,7 +551,6 @@ public class RedisManager {
 
     /**
      * 检查键是否存在
-     *
      * @param key
      * @return
      */
@@ -567,19 +568,18 @@ public class RedisManager {
     /**
      * 遍历key
      * 用法实例：
-     * ScanResult<String> scanResult = redisHelper.scan(cur, keyPrefix + "*");
-     * List<String> keyList = new ArrayList<>();
-     * scanResult.getResult().forEach(key -> {
-     * //Key最后为日期，删除不是当天的Key
-     * if (!dateString.equals(key.substring(key.length() - DateHelper.DATE_FORMAT.length(), key.length()))) {
-     * logger.debug("StatService deleteExpiredStatRedisKeys key:" + key);
-     * keyList.add(key);
-     * }
-     * });
-     * if (keyList.size() > 0) {
-     * redisHelper.delKeysWithoutPrefix(keyList.stream().toArray(String[]::new));
-     * }
-     *
+     ScanResult<String> scanResult = redisHelper.scan(cur, keyPrefix + "*");
+            List<String> keyList = new ArrayList<>();
+            scanResult.getResult().forEach(key -> {
+                //Key最后为日期，删除不是当天的Key
+                if (!dateString.equals(key.substring(key.length() - DateHelper.DATE_FORMAT.length(), key.length()))) {
+                    logger.debug("StatService deleteExpiredStatRedisKeys key:" + key);
+                    keyList.add(key);
+                }
+            });
+            if (keyList.size() > 0) {
+                redisHelper.delKeysWithoutPrefix(keyList.stream().toArray(String[]::new));
+            }
      * @param cursor
      * @param prefix
      * @return
@@ -631,8 +631,8 @@ public class RedisManager {
         }
     }
     /*新增redis操作 end*/
-
-
+    
+    
     public String getHost() {
         return host;
     }

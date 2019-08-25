@@ -4,11 +4,11 @@ import java.util.Date;
 
 /**
  *
+ *
  */
 public class UserOnline {
 
     /**
-     *
      */
     private String id;
 
@@ -144,6 +144,7 @@ public class UserOnline {
     public void setSystemHost(String systemHost) {
         this.systemHost = systemHost;
     }
+
 
 
 }

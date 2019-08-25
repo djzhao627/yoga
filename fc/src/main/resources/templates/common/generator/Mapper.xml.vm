@@ -3,7 +3,7 @@
 
 <mapper namespace="${package}.dao.${className}Dao">
 
-    <select id="get" resultType="${package}.domain.${className}DO">
+	<select id="get" resultType="${package}.domain.${className}DO">
 		SELECT 
 			#foreach($column in $columns)$column.columnName#if($velocityCount != $columns.size()),#end#end 
 			 
@@ -11,111 +11,107 @@
 		where ${pk.columnName} = #{value}
 	</select>
 
-    <select id="list" resultType="${package}.domain.${className}DO">
-        SELECT
-        #foreach($column in $columns)$column.columnName#if($velocityCount != $columns.size()),#end #end
-
-        FROM ${tableName}
+	<select id="list" resultType="${package}.domain.${className}DO">
+		SELECT 
+			#foreach($column in $columns)$column.columnName#if($velocityCount != $columns.size()),#end #end
+		
+		FROM ${tableName} 
         <where>
-
-            #foreach($column in $columns)
-                <if test="$column.attrname != null and $column.attrname.trim() != ''">
-                    #if(${column.dataType} =="varchar" || ${column.dataType} =="varchar2" || ${column.dataType} ==
-                        "nvarchar2" || ${column.dataType} =="datetime")
-                        AND $column.columnName LIKE '%${ $column.attrname}%'
-                    #else
-                        AND $column.columnName = #{$column.attrname}
-                    #end
-                </if>
-            #end
-
-        </where>
+          
+		  #foreach($column in $columns)
+		  <if test="$column.attrname != null and $column.attrname.trim() != ''">
+		  #if(${column.dataType} =="varchar" || ${column.dataType} =="varchar2" || ${column.dataType} =="nvarchar2" || ${column.dataType} =="datetime")
+		  	AND $column.columnName LIKE '%${ $column.attrname}%'  
+		  #else 
+		  	AND $column.columnName = #{$column.attrname}   
+		  #end 
+		  </if>
+		  #end
+		  
+		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 ORDER BY ${sort} ${order}
             </when>
-            <otherwise>
+			<otherwise>
                 ORDER BY ${pk.columnName} DESC
-            </otherwise>
+			</otherwise>
         </choose>
-    </select>
-
-    <select id="findDatas" resultType="Map">
-        select
-        *
-        from ${tableName}
-        <where>
-
-            #foreach($column in $columns)
-                <if test="$column.attrname != null and $column.attrname.trim() != ''">
-                    #if(${column.dataType} =="varchar" || ${column.dataType} =="varchar2" || ${column.dataType} ==
-                        "nvarchar2" || ${column.dataType} =="datetime")
-                        AND $column.columnName LIKE '%${ $column.attrname}%'
-                    #else
-                        AND $column.columnName = #{$column.attrname}
-                    #end
-                </if>
-            #end
-
-        </where>
-    </select>
-
-    <insert id="save" parameterType="${package}.domain.${className}DO"#if($pk.extra == 'auto_increment')
-            useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
-        #if($pk.extra != 'auto_increment')
-            <!--
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from ${tableName}
+		 <where>  
+		 
+		   #foreach($column in $columns)
+		  <if test="$column.attrname != null and $column.attrname.trim() != ''">
+		  #if(${column.dataType} =="varchar" || ${column.dataType} =="varchar2" || ${column.dataType} =="nvarchar2" || ${column.dataType} =="datetime")
+		  	AND $column.columnName LIKE '%${ $column.attrname}%'  
+		  #else 
+		  	AND $column.columnName = #{$column.attrname}   
+		  #end 
+		  </if>
+		  #end
+		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="${package}.domain.${className}DO"#if($pk.extra == 'auto_increment') useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
+		#if($pk.extra != 'auto_increment')
+		<!-- 
 		<selectKey keyProperty="$pk.attrname" resultType="Integer" order="BEFORE"> 
             SELECT sys_seq('${tableName}') 
     	</selectKey> -->
-        #end
+    	#end
+    	
+		insert into ${tableName} 
+		(
+		
+#foreach($column in $columns)
+#if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
+			$column.columnName#if($velocityCount != $columns.size()), #end
 
-        insert into ${tableName}
-        (
-
-        #foreach($column in $columns)
-            #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
-                $column.columnName#if($velocityCount != $columns.size()), #end
-
-            #end
-        #end
-        )
-        values
-        (
-
-        #foreach($column in $columns)
-            #if($column.columnName != $pk.columnName )
-                #{$column.attrname, jdbcType=VARCHAR}#if($velocityCount != $columns.size()), #end
-
-            #else
-                sys_seq('${tableName}')  #if($velocityCount != $columns.size()), #end
-
-            #end
-        #end
-        )
-    </insert>
-
-    <update id="update" parameterType="${package}.domain.${className}DO">
-        update ${tableName}
-        <set>
-            #foreach($column in $columns)
-                #if($column.columnName != $pk.columnName)
-                    <if test="$column.attrname != null">$column.columnName = #{$column.attrname
-                        }#if($velocityCount != $columns.size()), #end</if>
-                #end
-            #end
-        </set>
-        where ${pk.columnName} = #{${pk.attrname}}
-    </update>
-
-    <delete id="remove">
+#end			
+#end
+		)
+		values
+		(
+		
+#foreach($column in $columns)
+#if($column.columnName != $pk.columnName )
+			#{$column.attrname, jdbcType=VARCHAR}#if($velocityCount != $columns.size()), #end
+			
+#else 
+		    sys_seq('${tableName}')  #if($velocityCount != $columns.size()), #end
+		    
+#end			
+#end
+		)
+	</insert>
+	 
+	<update id="update" parameterType="${package}.domain.${className}DO">
+		update ${tableName} 
+		<set>
+#foreach($column in $columns)
+#if($column.columnName != $pk.columnName)
+			<if test="$column.attrname != null">$column.columnName = #{$column.attrname}#if($velocityCount != $columns.size()), #end</if>
+#end
+#end
+		</set>
+		where ${pk.columnName} = #{${pk.attrname}}
+	</update>
+	
+	<delete id="remove">
 		delete from ${tableName} where ${pk.columnName} = #{value}
 	</delete>
-
-    <delete id="batchRemove">
-        delete from ${tableName} where ${pk.columnName} in
-        <foreach item="${pk.attrname}" collection="array" open="(" separator="," close=")">
-            #{${pk.attrname}}
-        </foreach>
-    </delete>
+	
+	<delete id="batchRemove">
+		delete from ${tableName} where ${pk.columnName} in 
+		<foreach item="${pk.attrname}" collection="array" open="(" separator="," close=")">
+			#{${pk.attrname}}
+		</foreach>
+	</delete>
 
 </mapper>

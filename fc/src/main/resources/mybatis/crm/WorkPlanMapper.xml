@@ -3,153 +3,153 @@
 
 <mapper namespace="com.fc.crm.dao.WorkPlanDao">
 
-    <select id="get" resultType="com.fc.crm.domain.WorkPlanDO">
+	<select id="get" resultType="com.fc.crm.domain.WorkPlanDO">
 		SELECT 
 			ID,dept_id,dept_name,start_time,end_time,person_liable,helper,Remarks,remind_type			 
 		FROM t_work_plan 
 		where ID = #{value}
 	</select>
 
-    <select id="list" resultType="com.fc.crm.domain.WorkPlanDO">
-        SELECT
-        ID, dept_id, dept_name, start_time, end_time, person_liable, helper, Remarks, remind_type
-        FROM t_work_plan
+	<select id="list" resultType="com.fc.crm.domain.WorkPlanDO">
+		SELECT 
+			ID, dept_id, dept_name, start_time, end_time, person_liable, helper, Remarks, remind_type 		
+		FROM t_work_plan 
         <where>
-
-            <if test="id != null and id != ''">
-                AND ID = #{id}
-            </if>
-            <if test="deptId != null and deptId != ''">
-                AND dept_id LIKE '%${ deptId}%'
-            </if>
-            <if test="deptName != null and deptName != ''">
-                AND dept_name LIKE '%${ deptName}%'
-            </if>
-            <if test="startTime != null and startTime != ''">
-                AND start_time LIKE '%${ startTime}%'
-            </if>
-            <if test="endTime != null and endTime != ''">
-                AND end_time LIKE '%${ endTime}%'
-            </if>
-            <if test="personLiable != null and personLiable != ''">
-                AND person_liable LIKE '%${ personLiable}%'
-            </if>
-            <if test="helper != null and helper != ''">
-                AND helper LIKE '%${ helper}%'
-            </if>
-            <if test="remarks != null and remarks != ''">
-                AND Remarks LIKE '%${ remarks}%'
-            </if>
-            <if test="remindType != null and remindType != ''">
-                AND remind_type LIKE '%${ remindType}%'
-            </if>
-
-        </where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND ID = #{id}   
+		  		  </if>
+		  		  <if test="deptId != null and deptId != ''">
+		  		  	AND dept_id LIKE '%${ deptId}%'  
+		  		  </if>
+		  		  <if test="deptName != null and deptName != ''">
+		  		  	AND dept_name LIKE '%${ deptName}%'  
+		  		  </if>
+		  		  <if test="startTime != null and startTime != ''">
+		  		  	AND start_time LIKE '%${ startTime}%'  
+		  		  </if>
+		  		  <if test="endTime != null and endTime != ''">
+		  		  	AND end_time LIKE '%${ endTime}%'  
+		  		  </if>
+		  		  <if test="personLiable != null and personLiable != ''">
+		  		  	AND person_liable LIKE '%${ personLiable}%'  
+		  		  </if>
+		  		  <if test="helper != null and helper != ''">
+		  		  	AND helper LIKE '%${ helper}%'  
+		  		  </if>
+		  		  <if test="remarks != null and remarks != ''">
+		  		  	AND Remarks LIKE '%${ remarks}%'  
+		  		  </if>
+		  		  <if test="remindType != null and remindType != ''">
+		  		  	AND remind_type LIKE '%${ remindType}%'  
+		  		  </if>
+		  		  
+		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 ORDER BY ${sort} ${order}
             </when>
-            <otherwise>
+			<otherwise>
                 ORDER BY ID DESC
-            </otherwise>
+			</otherwise>
         </choose>
-    </select>
-
-    <select id="findDatas" resultType="Map">
-        select
-        *
-        from t_work_plan
-        <where>
-
-            <if test="id != null and id != ''">
-                AND ID = #{id}
-            </if>
-            <if test="deptId != null and deptId != ''">
-                AND dept_id LIKE '%${ deptId}%'
-            </if>
-            <if test="deptName != null and deptName != ''">
-                AND dept_name LIKE '%${ deptName}%'
-            </if>
-            <if test="startTime != null and startTime != ''">
-                AND start_time LIKE '%${ startTime}%'
-            </if>
-            <if test="endTime != null and endTime != ''">
-                AND end_time LIKE '%${ endTime}%'
-            </if>
-            <if test="personLiable != null and personLiable != ''">
-                AND person_liable LIKE '%${ personLiable}%'
-            </if>
-            <if test="helper != null and helper != ''">
-                AND helper LIKE '%${ helper}%'
-            </if>
-            <if test="remarks != null and remarks != ''">
-                AND Remarks LIKE '%${ remarks}%'
-            </if>
-            <if test="remindType != null and remindType != ''">
-                AND remind_type LIKE '%${ remindType}%'
-            </if>
-
-        </where>
-    </select>
-
-    <insert id="save" parameterType="com.fc.crm.domain.WorkPlanDO">
-        <!--
-<selectKey keyProperty="id" resultType="Integer" order="BEFORE">
-    SELECT sys_seq('t_work_plan')
-</selectKey> -->
-
-        insert into t_work_plan
-        (
-
-        ID,
-        dept_id,
-        dept_name,
-        start_time,
-        end_time,
-        person_liable,
-        helper,
-        Remarks,
-        remind_type
-        )
-        values
-        (
-
-        sys_seq('t_work_plan') ,
-        #{deptId, jdbcType=VARCHAR},
-        #{deptName, jdbcType=VARCHAR},
-        #{startTime, jdbcType=VARCHAR},
-        #{endTime, jdbcType=VARCHAR},
-        #{personLiable, jdbcType=VARCHAR},
-        #{helper, jdbcType=VARCHAR},
-        #{remarks, jdbcType=VARCHAR},
-        #{remindType, jdbcType=VARCHAR}
-        )
-    </insert>
-
-    <update id="update" parameterType="com.fc.crm.domain.WorkPlanDO">
-        update t_work_plan
-        <set>
-            <if test="deptId != null">dept_id = #{deptId},</if>
-            <if test="deptName != null">dept_name = #{deptName},</if>
-            <if test="startTime != null">start_time = #{startTime},</if>
-            <if test="endTime != null">end_time = #{endTime},</if>
-            <if test="personLiable != null">person_liable = #{personLiable},</if>
-            <if test="helper != null">helper = #{helper},</if>
-            <if test="remarks != null">Remarks = #{remarks},</if>
-            <if test="remindType != null">remind_type = #{remindType}</if>
-        </set>
-        where ID = #{id}
-    </update>
-
-    <delete id="remove">
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_work_plan
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND ID = #{id}   
+		  		  </if>
+		  		  <if test="deptId != null and deptId != ''">
+		  		  	AND dept_id LIKE '%${ deptId}%'  
+		  		  </if>
+		  		  <if test="deptName != null and deptName != ''">
+		  		  	AND dept_name LIKE '%${ deptName}%'  
+		  		  </if>
+		  		  <if test="startTime != null and startTime != ''">
+		  		  	AND start_time LIKE '%${ startTime}%'  
+		  		  </if>
+		  		  <if test="endTime != null and endTime != ''">
+		  		  	AND end_time LIKE '%${ endTime}%'  
+		  		  </if>
+		  		  <if test="personLiable != null and personLiable != ''">
+		  		  	AND person_liable LIKE '%${ personLiable}%'  
+		  		  </if>
+		  		  <if test="helper != null and helper != ''">
+		  		  	AND helper LIKE '%${ helper}%'  
+		  		  </if>
+		  		  <if test="remarks != null and remarks != ''">
+		  		  	AND Remarks LIKE '%${ remarks}%'  
+		  		  </if>
+		  		  <if test="remindType != null and remindType != ''">
+		  		  	AND remind_type LIKE '%${ remindType}%'  
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.crm.domain.WorkPlanDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_work_plan') 
+    	</selectKey> -->
+    	    	
+		insert into t_work_plan 
+		(
+		
+			ID, 
+			dept_id, 
+			dept_name, 
+			start_time, 
+			end_time, 
+			person_liable, 
+			helper, 
+			Remarks, 
+			remind_type
+		)
+		values
+		(
+		
+		    sys_seq('t_work_plan')  , 		    
+			#{deptId, jdbcType=VARCHAR}, 			
+			#{deptName, jdbcType=VARCHAR}, 			
+			#{startTime, jdbcType=VARCHAR}, 			
+			#{endTime, jdbcType=VARCHAR}, 			
+			#{personLiable, jdbcType=VARCHAR}, 			
+			#{helper, jdbcType=VARCHAR}, 			
+			#{remarks, jdbcType=VARCHAR}, 			
+			#{remindType, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.crm.domain.WorkPlanDO">
+		update t_work_plan 
+		<set>
+			<if test="deptId != null">dept_id = #{deptId}, </if>
+			<if test="deptName != null">dept_name = #{deptName}, </if>
+			<if test="startTime != null">start_time = #{startTime}, </if>
+			<if test="endTime != null">end_time = #{endTime}, </if>
+			<if test="personLiable != null">person_liable = #{personLiable}, </if>
+			<if test="helper != null">helper = #{helper}, </if>
+			<if test="remarks != null">Remarks = #{remarks}, </if>
+			<if test="remindType != null">remind_type = #{remindType}</if>
+		</set>
+		where ID = #{id}
+	</update>
+	
+	<delete id="remove">
 		delete from t_work_plan where ID = #{value}
 	</delete>
-
-    <delete id="batchRemove">
-        delete from t_work_plan where ID in
-        <foreach item="id" collection="array" open="(" separator="," close=")">
-            #{id}
-        </foreach>
-    </delete>
+	
+	<delete id="batchRemove">
+		delete from t_work_plan where ID in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 
 </mapper>
