@@ -18,7 +18,7 @@ public class CustomFollowPlanDO implements Serializable {
 	//
 	private Integer id;
 	//客户id
-	private Integer customId;
+	private String customId;
 	//沟通时间
 	private String talkDate;
 	//沟通记录或计划
@@ -47,13 +47,13 @@ public class CustomFollowPlanDO implements Serializable {
 	/**
 	 * 设置：客户id
 	 */
-	public void setCustomId(Integer customId) {
+	public void setCustomId(String customId) {
 		this.customId = customId;
 	}
 	/**
 	 * 获取：客户id
 	 */
-	public Integer getCustomId() {
+	public String getCustomId() {
 		return customId;
 	}
 	/**
