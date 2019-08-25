@@ -59,9 +59,8 @@ function load() {
                                 checkbox : true
                             },
                             {
-                                visible :false,
                                 field : 'id',
-                                title : '编号'
+                                title : '序号'
                             },
 
                             {
