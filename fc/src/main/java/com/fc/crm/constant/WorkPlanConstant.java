@@ -14,6 +14,10 @@ public class WorkPlanConstant {
      */
     public static final String id = "id";
     /**
+     * 交办事项
+     */
+    public static final String content = "content";
+    /**
      * 部门Id
      */
     public static final String deptId = "deptId";

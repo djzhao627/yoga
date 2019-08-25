@@ -10,7 +10,14 @@
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
                         <input id="id" name="id" th:value="${workPlan.id}" type="hidden"/>
-                        <input id="id" name="id" th:value="${workPlan.deptId}" type="hidden"/>
+                        <input id="deptId" name="deptId" th:value="${workPlan.deptId}" type="hidden"/>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">交办事项：</label>
+                            <div class="col-sm-8">
+                                <textarea id="content" name="content"
+                                          th:text="${workPlan.content}" class="form-control"></textarea>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">部门名称：</label>
                             <div class="col-sm-8">
@@ -33,7 +40,7 @@
                                 <input id="endTime" name="endTime"
                                        class="laydate-icon layer-date form-contro" th:value="${workPlan.endTime}"
                                        type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"
-                                       style="background-color: #fff;" readonly="readonly" placeholder="结束时间">
+                                       style="background-color: #fff;" placeholder="结束时间">
                             </div>
                         </div>
                         <div class="form-group">
@@ -53,8 +60,8 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">跟进情况：</label>
                             <div class="col-sm-8">
-                                <input id="remarks" name="remarks" th:value="${workPlan.remarks}" class="form-control"
-                                       type="text">
+                                <textarea id="remarks" name="remarks"
+                                          th:text="${workPlan.remarks}" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

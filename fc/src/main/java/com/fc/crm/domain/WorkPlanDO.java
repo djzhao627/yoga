@@ -16,6 +16,8 @@ public class WorkPlanDO extends BaseDao implements Serializable {
 
     //主键
     private Integer id;
+    //交办事项
+    private String content;
     //部门Id
     private String deptId;
     //部门名称
@@ -45,6 +47,18 @@ public class WorkPlanDO extends BaseDao implements Serializable {
      */
     public Integer getId() {
         return id;
+    }
+
+    /**
+     * 交办事项
+     * @return
+     */
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     /**

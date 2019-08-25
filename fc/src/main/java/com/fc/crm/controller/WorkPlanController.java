@@ -62,11 +62,14 @@ public class WorkPlanController extends BaseController {
     /**
      * 跳转到新增页面
      */
-    @GetMapping("/add")
+    @GetMapping("/add/{deptId}/{deptName}")
     @RequiresPermissions("crm:workPlan:add")
-    ModelAndView add() {
+    ModelAndView add(@PathVariable("deptId") String deptId, @PathVariable("deptName") String deptName) {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("workPlan", new WorkPlanDO());
+        WorkPlanDO workPlanDO = new WorkPlanDO();
+        workPlanDO.setDeptId(deptId);
+        workPlanDO.setDeptName(deptName);
+        mv.addObject("workPlan", workPlanDO);
         mv.setViewName("crm/workPlan/workPlan_edit");
         return mv;
     }

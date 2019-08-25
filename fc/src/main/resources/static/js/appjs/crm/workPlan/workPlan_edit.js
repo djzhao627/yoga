@@ -81,6 +81,9 @@ function validateRule() {
             id: {
                 required: icon + "主键不能为空",
             },
+            content: {
+                maxlength: icon + "最大长度不超过1000"
+            },
             deptId: {
                 maxlength: icon + "最大长度不超过255"
             },

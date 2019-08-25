@@ -5,22 +5,25 @@
 
 	<select id="get" resultType="com.fc.crm.domain.WorkPlanDO">
 		SELECT 
-			ID,dept_id,dept_name,start_time,end_time,person_liable,helper,Remarks,remind_type			 
+			ID,content,dept_id,dept_name,start_time,end_time,person_liable,helper,Remarks,remind_type
 		FROM t_work_plan 
 		where ID = #{value}
 	</select>
 
 	<select id="list" resultType="com.fc.crm.domain.WorkPlanDO">
 		SELECT 
-			ID, dept_id, dept_name, start_time, end_time, person_liable, helper, Remarks, remind_type 		
+			ID,content, dept_id, dept_name, start_time, end_time, person_liable, helper, Remarks, remind_type
 		FROM t_work_plan 
         <where>
           
 		  		  <if test="id != null and id != ''">
 		  		  	AND ID = #{id}   
 		  		  </if>
+			      <if test="content != null and content != ''">
+					AND content LIKE '%${ content}%'
+				  </if>
 		  		  <if test="deptId != null and deptId != ''">
-		  		  	AND dept_id LIKE '%${ deptId}%'  
+		  		  	AND dept_id = #{deptId}
 		  		  </if>
 		  		  <if test="deptName != null and deptName != ''">
 		  		  	AND dept_name LIKE '%${ deptName}%'  
@@ -64,6 +67,9 @@
 		   		  <if test="id != null and id != ''">
 		  		  	AND ID = #{id}   
 		  		  </if>
+			 	  <if test="content != null and content != ''">
+					AND content LIKE '%${ content}%'
+				  </if>
 		  		  <if test="deptId != null and deptId != ''">
 		  		  	AND dept_id LIKE '%${ deptId}%'  
 		  		  </if>
@@ -101,7 +107,8 @@
 		insert into t_work_plan 
 		(
 		
-			ID, 
+			ID,
+		    content,
 			dept_id, 
 			dept_name, 
 			start_time, 
@@ -114,7 +121,8 @@
 		values
 		(
 		
-		    sys_seq('t_work_plan')  , 		    
+		    sys_seq('t_work_plan')  ,
+		    #{content, jdbcType=VARCHAR},
 			#{deptId, jdbcType=VARCHAR}, 			
 			#{deptName, jdbcType=VARCHAR}, 			
 			#{startTime, jdbcType=VARCHAR}, 			
@@ -130,6 +138,7 @@
 		update t_work_plan 
 		<set>
 			<if test="deptId != null">dept_id = #{deptId}, </if>
+			<if test="content != null">content = #{content}, </if>
 			<if test="deptName != null">dept_name = #{deptName}, </if>
 			<if test="startTime != null">start_time = #{startTime}, </if>
 			<if test="endTime != null">end_time = #{endTime}, </if>
