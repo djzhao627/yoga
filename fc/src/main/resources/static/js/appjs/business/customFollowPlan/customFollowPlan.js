@@ -1,4 +1,5 @@
 var prefix = ctx + "/business/customFollowPlan"
+
 $(function () {
     var customId=$("#customId").val();
     load(customId);
@@ -74,33 +75,33 @@ function load(customId) {
 
 /*格式化"操作"按钮列*/
 function operateFormatter(value, row, index) {
-    /**var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
+    var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
      + row.id
      + '\' , '+ index +')"><i class="fa fa-edit"></i></a> ';
      var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
      + row.id
      + '\')"><i class="fa fa-remove"></i></a> ';
-     var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-     + row.id
-     + '\')"><i class="fa fa-key"></i></a> ';*/
-    var e = "";
-    if (s_edit_h != "hidden") {
-        e = createTableEditHtml();
-    }
-    var d = "";
-    if (s_remove_h != "hidden") {
-        d = createTableDelHtml();
-    }
+     // var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
+     // + row.id
+     // + '\')"><i class="fa fa-key"></i></a> ';
+    // var e = "";
+    // if (s_edit_h != "hidden") {
+    //     e = createTableEditHtml();
+    // }
+    // var d = "";
+    // if (s_remove_h != "hidden") {
+    //     d = createTableDelHtml();
+    // }
     return e + d;
 }
 
 //操作列事件
 var operateEvent = {
     'click .check': function (e, value, row, index) {
-        edit(row, 'check');
+        edit(row.id, 'check');
     },
     'click .edit': function (e, value, row, index) {
-        edit(row, 'edit');
+        edit(row.id, 'edit');
     },
     'click .remove': function (e, value, row, index) {
         remove(row.id);
@@ -112,13 +113,14 @@ function reLoad() {
 }
 
 function add() {
+    var customId=$("#customId").val();
     layer.open({
         type: 2,
         title: '增加',
         maxmin: true,
         shadeClose: false, // 点击遮罩关闭层
-        area: ['300px', 'auto'],
-        content: prefix + '/add', // iframe的url
+        area: ['400px', '400px'],
+        content: prefix + '/add/'+customId, // iframe的url
         success: function (layero, index) {
             //获取当前弹出窗口的索引及初始大小
             layerIndex = index;
@@ -129,21 +131,21 @@ function add() {
     });
 }
 
-function edit(row, type) {
+function edit(id, type) {
     /*var row = $('#dataTable').bootstrapTable('getData')[index];*/
-    if (!row || !row.id) {
+    if (!id) {
         alertMsg("请选择一条记录!");
         return;
     }
-    setPageValue(JSON.stringify(row));
+    // setPageValue(JSON.stringify(row));
 
     layer.open({
         type: 2,
         title: '编辑',
         maxmin: true,
         shadeClose: false, // 点击遮罩关闭层
-        area: ['300px', 'auto'],
-        content: prefix + '/edit/' + row.id,// iframe的url
+        area: ['400px', '400px'],
+        content: prefix + '/edit/' + id,// iframe的url
         success: function (layero, index) {
             //获取当前弹出窗口的索引及初始大小
             layerIndex = index;

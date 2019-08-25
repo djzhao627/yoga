@@ -6,14 +6,14 @@
 	<select id="get" resultType="com.fc.business.domain.MemberBaseInfoDO">
 		SELECT 
 			id,name,type,consultants,wechat,phone,consulting_course,accommodation,advisory_date,address,customer_servic,sfzh,data_source,certificate_number,bz,insert_time,insert_operator,update_time,update_operator			 
-		FROM t_fc_member_management_baseinfo 
+		FROM t_member_baseInfo 
 		where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.fc.business.domain.MemberBaseInfoDO">
 		SELECT 
 			id, name, type, consultants, wechat, phone, consulting_course, accommodation, advisory_date, address, customer_servic, sfzh, data_source, certificate_number, bz, insert_time, insert_operator, update_time, update_operator 		
-		FROM t_fc_member_management_baseinfo 
+		FROM t_member_baseInfo 
         <where>
           
 		  		  <if test="id != null and id != ''">
@@ -88,7 +88,7 @@
  	<select id="findDatas" resultType="Map">
 		select 
 			*  
-		from t_fc_member_management_baseinfo
+		from t_member_baseInfo
 		 <where>  
 		 
 		   		  <if test="id != null and id != ''">
@@ -155,10 +155,10 @@
 	<insert id="save" parameterType="com.fc.business.domain.MemberBaseInfoDO">
 				<!-- 
 		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
-            SELECT sys_seq('t_fc_member_management_baseinfo') 
+            SELECT sys_seq('t_member_baseInfo') 
     	</selectKey> -->
     	    	
-		insert into t_fc_member_management_baseinfo 
+		insert into t_member_baseInfo 
 		(
 		
 			id, 
@@ -184,7 +184,7 @@
 		values
 		(
 		
-		    sys_seq('t_fc_member_management_baseinfo')  , 		    
+		    sys_seq('t_member_baseInfo')  , 		    
 			#{name, jdbcType=VARCHAR}, 			
 			#{type, jdbcType=VARCHAR}, 			
 			#{consultants, jdbcType=VARCHAR}, 			
@@ -207,7 +207,7 @@
 	</insert>
 	 
 	<update id="update" parameterType="com.fc.business.domain.MemberBaseInfoDO">
-		update t_fc_member_management_baseinfo 
+		update t_member_baseInfo 
 		<set>
 			<if test="name != null">name = #{name}, </if>
 			<if test="type != null">type = #{type}, </if>
@@ -232,11 +232,11 @@
 	</update>
 	
 	<delete id="remove">
-		delete from t_fc_member_management_baseinfo where id = #{value}
+		delete from t_member_baseInfo where id = #{value}
 	</delete>
 	
 	<delete id="batchRemove">
-		delete from t_fc_member_management_baseinfo where id in 
+		delete from t_member_baseInfo where id in 
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>

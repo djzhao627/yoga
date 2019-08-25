@@ -166,8 +166,8 @@ function loadType() {
             $(".chosen-select").chosen({
                 maxHeight: 200
             });
-            $(".chosen-select").val($("#Ttype").val());
-            $(".chosen-select").trigger("chosen:updated");
+            // $(".chosen-select").val($("#Ttype").val());
+            // $(".chosen-select").trigger("chosen:updated");
             //点击事件
             $('.chosen-select').on('change', function (e, params) {
                 // console.log(params.selected);
@@ -176,7 +176,7 @@ function loadType() {
                 //         type: params.selected,
                 //     }
                 // }
-                // $('#exampleTable').bootstrapTable('refresh', opt);
+                $('#exampleTable').bootstrapTable('refresh', opt);
             });
         }
     });

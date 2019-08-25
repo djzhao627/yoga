@@ -1,16 +1,18 @@
 var prefix = ctx + "/business/customFollowPlan"
 $(function () {
     var editROW = getPageValue();//列表页面传值(row)
+    var customId=$("#customId").val();
     validateRule();
 });
 
 $.validator.setDefaults({
     submitHandler: function () {
-        submitData();
+        submitData(customId);
     }
 });
 
-function submitData() {
+function submitData(customId) {
+    layer.alert('customId:'+customId);
     //var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
     var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
     var url = "";
@@ -19,7 +21,7 @@ function submitData() {
     } else {
         url = prefix + "/save";
     }
-
+    formData.customId=customId;
     $.ajax({
         cache: true,
         type: "POST",

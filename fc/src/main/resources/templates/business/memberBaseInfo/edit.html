@@ -22,8 +22,7 @@
                             <label class="col-sm-3 control-label">客户类型：</label>
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="type" id="type"
-                                        class="form-control chosen-select" tabindex="2" required>
-                                    <option value="">--选择类别--</option>
+                                        class="form-control chosen-select" tabindex="2" multiple="multiple" required>
                                     <option th:each="customType : ${customTypes}" th:value="${customType.value}"
                                             th:text="${customType.name}" th:if="${customType.remarks ==checked}"
                                             th:selected="selected">
@@ -59,8 +58,7 @@
                             <label class="col-sm-3 control-label">咨询课程：</label>
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="consultingCourse" id="consultingCourse"
-                                        class="form-control chosen-select2" tabindex="2" required>
-                                    <option value="">--选择类别--</option>
+                                        class="form-control chosen-select2" tabindex="2" multiple="multiple" required>
                                     <option th:each="consultingCourse : ${consultingCourseTypes}"
                                             th:value="${consultingCourse.value}" th:text="${consultingCourse.name}"
                                             th:if="${consultingCourse.remarks ==checked}" th:selected="selected">
@@ -73,8 +71,7 @@
                             <label class="col-sm-3 control-label">是否住宿：</label>
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="accommodation" id="accommodation"
-                                        class="form-control chosen-select3" tabindex="2" multiple="multiple" required>
-                                    <option value="">--选择类别--</option>
+                                        class="form-control chosen-select3" tabindex="2"  required>
                                     <option th:each="accommodation : ${YesNoTypes}" th:value="${accommodation.value}"
                                             th:text="${accommodation.name}" th:if="${accommodation.remarks ==checked}"
                                             th:selected="selected">

@@ -61,11 +61,11 @@ public class CustomFollowPlanController extends BaseController {
     /**
      * 跳转到新增页面
      */
-    @GetMapping("/add")
+    @GetMapping("/add/{customId}")
     @RequiresPermissions("business:customFollowPlan:add")
-    ModelAndView add() {
+    ModelAndView add(@PathVariable("customId")String customId) {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("customFollowPlan", new CustomFollowPlanDO());
+        mv.addObject("customId",customId);
         mv.setViewName("business/customFollowPlan/add");
         return mv;
     }

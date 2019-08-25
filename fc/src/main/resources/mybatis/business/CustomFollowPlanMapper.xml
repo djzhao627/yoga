@@ -6,14 +6,14 @@
 	<select id="get" resultType="com.fc.business.domain.CustomFollowPlanDO">
 		SELECT 
 			id,custom_id,talk_date,record_or_plan,insert_time,insert_operator,update_time,update_operator			 
-		FROM t_fc_custom_follow_plan 
+		FROM t_custom_follow_plan 
 		where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.fc.business.domain.CustomFollowPlanDO">
 		SELECT 
 			id, custom_id, talk_date, record_or_plan, insert_time, insert_operator, update_time, update_operator 		
-		FROM t_fc_custom_follow_plan 
+		FROM t_custom_follow_plan 
         <where>
           
 		  		  <if test="id != null and id != ''">
@@ -55,7 +55,7 @@
  	<select id="findDatas" resultType="Map">
 		select 
 			*  
-		from t_fc_custom_follow_plan
+		from t_custom_follow_plan
 		 <where>  
 		 
 		   		  <if test="id != null and id != ''">
@@ -89,10 +89,10 @@
 	<insert id="save" parameterType="com.fc.business.domain.CustomFollowPlanDO">
 				<!-- 
 		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
-            SELECT sys_seq('t_fc_custom_follow_plan') 
+            SELECT sys_seq('t_custom_follow_plan') 
     	</selectKey> -->
     	    	
-		insert into t_fc_custom_follow_plan 
+		insert into t_custom_follow_plan 
 		(
 		
 			id, 
@@ -107,7 +107,7 @@
 		values
 		(
 		
-		    sys_seq('t_fc_custom_follow_plan')  , 		    
+		    sys_seq('t_custom_follow_plan')  , 		    
 			#{customId, jdbcType=VARCHAR}, 			
 			#{talkDate, jdbcType=VARCHAR}, 			
 			#{recordOrPlan, jdbcType=VARCHAR}, 			
@@ -119,7 +119,7 @@
 	</insert>
 	 
 	<update id="update" parameterType="com.fc.business.domain.CustomFollowPlanDO">
-		update t_fc_custom_follow_plan 
+		update t_custom_follow_plan 
 		<set>
 			<if test="customId != null">custom_id = #{customId}, </if>
 			<if test="talkDate != null">talk_date = #{talkDate}, </if>
@@ -133,11 +133,11 @@
 	</update>
 	
 	<delete id="remove">
-		delete from t_fc_custom_follow_plan where id = #{value}
+		delete from t_custom_follow_plan where id = #{value}
 	</delete>
 	
 	<delete id="batchRemove">
-		delete from t_fc_custom_follow_plan where id in 
+		delete from t_custom_follow_plan where id in 
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>
