@@ -25,11 +25,11 @@
 
     <div class="fixed-table-toolbar">
         <div class="pull-left" id="exampleToolbar">
-            <button id="btnAdd" shiro:hasPermission="business:fcCustomFollowPlan:add" type="button"
+            <button id="btnAdd" shiro:hasPermission="business:customFollowPlan:add" type="button"
                     class="btn btn-primary" onclick="add()">
                 <i class="fa fa-plus" aria-hidden="true"></i>添加
             </button>
-            <button id="btnDel" shiro:hasPermission="business:fcCustomFollowPlan:batchRemove" type="button"
+            <button id="btnDel" shiro:hasPermission="business:customFollowPlan:batchRemove" type="button"
                     class="btn btn-danger"
                     onclick="batchRemove()">
                 <i class="fa fa-trash" aria-hidden="true"></i>删除
@@ -59,23 +59,23 @@
         var s_resetPwd_h = 'hidden';
     </script>
 </div>
-<div shiro:hasPermission="business:fcCustomFollowPlan:edit">
+<div shiro:hasPermission="business:customFollowPlan:edit">
     <script type="text/javascript">
         s_edit_h = '';
     </script>
 </div>
-<div shiro:hasPermission="business:fcCustomFollowPlan:remove">
+<div shiro:hasPermission="business:customFollowPlan:remove">
     <script type="text/javascript">
         var s_remove_h = '';
     </script>
 </div>
-<div shiro:hasPermission="business:fcCustomFollowPlan:resetPwd">
+<div shiro:hasPermission="business:customFollowPlan:resetPwd">
     <script type="text/javascript">
         var s_resetPwd_h = '';
     </script>
 </div>
 </div>
 <div th:include="include :: footer"></div>
-<script type="text/javascript" th:src="@{/js/appjs/business/fcCustomFollowPlan/customFollowPlan.js}"></script>
+<script type="text/javascript" th:src="@{/js/appjs/business/customFollowPlan/customFollowPlan.js}"></script>
 </body>
 </html>

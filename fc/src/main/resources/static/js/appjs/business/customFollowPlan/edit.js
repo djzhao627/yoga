@@ -1,4 +1,4 @@
-var prefix = ctx + "/business/fcCustomFollowPlan"
+var prefix = ctx + "/business/customFollowPlan"
 $(function () {
     var editROW = getPageValue();//列表页面传值(row)
     validateRule();

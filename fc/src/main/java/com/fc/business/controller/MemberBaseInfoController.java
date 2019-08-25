@@ -10,15 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fc.business.domain.FcMemberManagementBaseinfoDO;
-import com.fc.business.service.FcMemberManagementBaseinfoService;
+import com.fc.business.domain.MemberBaseInfoDO;
+import com.fc.business.service.MemberBaseInfoService;
 import com.fc.common.utils.PageUtils;
-import com.github.pagehelper.PageInfo;
 import com.fc.common.utils.Query;
 import com.fc.common.utils.R;
 import com.fc.common.controller.BaseController;
@@ -31,15 +29,15 @@ import com.fc.common.controller.IPageDefine;
  */
  
 @Controller
-@RequestMapping("/business/fcMemberManagementBaseinfo")
-public class FcMemberManagementBaseinfoController extends BaseController {
+@RequestMapping("/business/memberBaseInfo")
+public class MemberBaseInfoController extends BaseController {
 	@Autowired
-	private FcMemberManagementBaseinfoService fcMemberManagementBaseinfoService;
+	private MemberBaseInfoService memberBaseInfoService;
 	
 	@GetMapping()
-	@RequiresPermissions("business:fcMemberManagementBaseinfo:fcMemberManagementBaseinfo")
-	String FcMemberManagementBaseinfo(){
-	    return "business/fcMemberManagementBaseinfo/customInfo";
+	@RequiresPermissions("business:memberBaseInfo:memberBaseInfo")
+	String memberBaseInfo(){
+	    return "business/memberBaseInfo/customInfo";
 	}
 	
 	/**
@@ -47,7 +45,7 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	 */
 	@ResponseBody
 	@GetMapping("/listPage")
-	@RequiresPermissions("business:fcMemberManagementBaseinfo:fcMemberManagementBaseinfo")
+	@RequiresPermissions("business:memberBaseInfo:memberBaseInfo")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 
 		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
@@ -55,7 +53,7 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 			
 			@Override
 			public List<?> getPageRows(Query query){
-				return  fcMemberManagementBaseinfoService.list(query);
+				return  memberBaseInfoService.list(query);
 			}
         });
 	}
@@ -64,11 +62,11 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	 * 跳转到新增页面
 	 */
 	@GetMapping("/add")
-	@RequiresPermissions("business:fcMemberManagementBaseinfo:add")
+	@RequiresPermissions("business:memberBaseInfo:add")
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
-		mv.addObject("fcMemberManagementBaseinfo", new FcMemberManagementBaseinfoDO());
-		mv.setViewName("business/fcMemberManagementBaseinfo/add");
+		mv.addObject("memberBaseInfo", new MemberBaseInfoDO());
+		mv.setViewName("business/memberBaseInfo/add");
 		return mv;
 	}
 	
@@ -76,12 +74,12 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	 * 跳转到修改页面
 	 */
 	@GetMapping("/edit/{id}")
-	@RequiresPermissions("business:fcMemberManagementBaseinfo:edit")
+	@RequiresPermissions("business:memberBaseInfo:edit")
 	ModelAndView edit(@PathVariable("id") Integer id){
 	    ModelAndView mv = new ModelAndView();
-		FcMemberManagementBaseinfoDO fcMemberManagementBaseinfo = fcMemberManagementBaseinfoService.get(id);
-		mv.addObject("fcMemberManagementBaseinfo", fcMemberManagementBaseinfo);
-		mv.setViewName("business/fcMemberManagementBaseinfo/edit");
+		MemberBaseInfoDO memberBaseInfo = memberBaseInfoService.get(id);
+		mv.addObject("memberBaseInfo", memberBaseInfo);
+		mv.setViewName("business/memberBaseInfo/edit");
 		return mv;
 	}
 	
@@ -90,9 +88,9 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	 */
 	@ResponseBody
 	@PostMapping("/save")
-	@RequiresPermissions("business:fcMemberManagementBaseinfo:add")
-	public R save( FcMemberManagementBaseinfoDO fcMemberManagementBaseinfo){
-		if(fcMemberManagementBaseinfoService.save(fcMemberManagementBaseinfo)>0){
+	@RequiresPermissions("business:memberBaseInfo:add")
+	public R save( MemberBaseInfoDO memberBaseInfo){
+		if(memberBaseInfoService.save(memberBaseInfo)>0){
 			return R.ok();
 		}
 		return R.error();
@@ -102,9 +100,9 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/update")
-	@RequiresPermissions("business:fcMemberManagementBaseinfo:edit")
-	public R update( FcMemberManagementBaseinfoDO fcMemberManagementBaseinfo){
-		fcMemberManagementBaseinfoService.update(fcMemberManagementBaseinfo);
+	@RequiresPermissions("business:memberBaseInfo:edit")
+	public R update( MemberBaseInfoDO memberBaseInfo){
+		memberBaseInfoService.update(memberBaseInfo);
 		return R.ok();
 	}
 	
@@ -113,9 +111,9 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	 */
 	@PostMapping( "/remove")
 	@ResponseBody
-	@RequiresPermissions("business:fcMemberManagementBaseinfo:remove")
+	@RequiresPermissions("business:memberBaseInfo:remove")
 	public R remove( Integer id){
-		if(fcMemberManagementBaseinfoService.remove(id)>0){
+		if(memberBaseInfoService.remove(id)>0){
 		return R.ok();
 		}
 		return R.error();
@@ -126,9 +124,9 @@ public class FcMemberManagementBaseinfoController extends BaseController {
 	 */
 	@PostMapping( "/batchRemove")
 	@ResponseBody
-	@RequiresPermissions("business:fcMemberManagementBaseinfo:batchRemove")
+	@RequiresPermissions("business:memberBaseInfo:batchRemove")
 	public R remove(@RequestParam("ids[]") Integer[] ids){
-		fcMemberManagementBaseinfoService.batchRemove(ids);
+		memberBaseInfoService.batchRemove(ids);
 		return R.ok();
 	}
 	

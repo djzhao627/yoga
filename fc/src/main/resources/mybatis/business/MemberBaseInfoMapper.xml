@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.fc.business.dao.FcMemberManagementBaseinfoDao">
+<mapper namespace="com.fc.business.dao.MemberBaseInfoDao">
 
-	<select id="get" resultType="com.fc.business.domain.FcMemberManagementBaseinfoDO">
+	<select id="get" resultType="com.fc.business.domain.MemberBaseInfoDO">
 		SELECT 
 			id,name,type,consultants,wechat,phone,consulting_course,accommodation,advisory_date,address,customer_servic,sfzh,data_source,certificate_number,bz,insert_time,insert_operator,update_time,update_operator			 
 		FROM t_fc_member_management_baseinfo 
 		where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.fc.business.domain.FcMemberManagementBaseinfoDO">
+	<select id="list" resultType="com.fc.business.domain.MemberBaseInfoDO">
 		SELECT 
 			id, name, type, consultants, wechat, phone, consulting_course, accommodation, advisory_date, address, customer_servic, sfzh, data_source, certificate_number, bz, insert_time, insert_operator, update_time, update_operator 		
 		FROM t_fc_member_management_baseinfo 
@@ -152,7 +152,7 @@
 		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.fc.business.domain.FcMemberManagementBaseinfoDO">
+	<insert id="save" parameterType="com.fc.business.domain.MemberBaseInfoDO">
 				<!-- 
 		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
             SELECT sys_seq('t_fc_member_management_baseinfo') 
@@ -206,7 +206,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.fc.business.domain.FcMemberManagementBaseinfoDO">
+	<update id="update" parameterType="com.fc.business.domain.MemberBaseInfoDO">
 		update t_fc_member_management_baseinfo 
 		<set>
 			<if test="name != null">name = #{name}, </if>
@@ -241,5 +241,10 @@
 			#{id}
 		</foreach>
 	</delete>
+	<select id="queryNameByCode" resultType="java.util.Map" parameterType="java.lang.String">
+		select value,name
+		from sys_dict
+		where type = #{code}
+	</select>
 
 </mapper>

@@ -12,7 +12,7 @@ import java.util.Date;
  * @email 
  * @date 2019-08-23 22:38:51
  */
-public class FcCustomFollowPlanDO implements Serializable {
+public class CustomFollowPlanDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//

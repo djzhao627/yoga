@@ -17,7 +17,7 @@
                     <label class="col-sm-4 control-label" style="margin-top: 6px;">客户类型：</label>
                     <div class="col-sm-8">
                         <select data-placeholder="--选择类别--" name="type" id="type"
-                                class="form-control chosen-select" tabindex="2" required>
+                                class="form-control chosen-select" tabindex="2"  required >
                             <option value="">--选择类别--</option>
                         </select>
                     </div>
@@ -45,11 +45,11 @@
 
     <div class="fixed-table-toolbar">
         <div class="pull-left" id="exampleToolbar">
-            <button id="btnAdd" shiro:hasPermission="business:fcMemberManagementBaseinfo:add" type="button"
+            <button id="btnAdd" shiro:hasPermission="business:memberBaseInfo:add" type="button"
                     class="btn btn-primary" onclick="add()">
                 <i class="fa fa-plus" aria-hidden="true"></i>添加
             </button>
-            <button id="btnDel" shiro:hasPermission="business:fcMemberManagementBaseinfo:batchRemove" type="button"
+            <button id="btnDel" shiro:hasPermission="business:memberBaseInfo:batchRemove" type="button"
                     class="btn btn-danger"
                     onclick="batchRemove()">
                 <i class="fa fa-trash" aria-hidden="true"></i>删除
@@ -68,23 +68,23 @@
         var s_resetPwd_h = 'hidden';
     </script>
 </div>
-<div shiro:hasPermission="business:fcMemberManagementBaseinfo:edit">
+<div shiro:hasPermission="business:memberBaseInfo:edit">
     <script type="text/javascript">
         s_edit_h = '';
     </script>
 </div>
-<div shiro:hasPermission="business:fcMemberManagementBaseinfo:remove">
+<div shiro:hasPermission="business:memberBaseInfo:remove">
     <script type="text/javascript">
         var s_remove_h = '';
     </script>
 </div>
-<div shiro:hasPermission="business:fcMemberManagementBaseinfo:resetPwd">
+<div shiro:hasPermission="business:memberBaseInfo:resetPwd">
     <script type="text/javascript">
         var s_resetPwd_h = '';
     </script>
 </div>
 </div>
 <div th:include="include :: footer"></div>
-<script type="text/javascript" th:src="@{/js/appjs/business/fcMemberManagementBaseinfo/customInfo.js}"></script>
+<script type="text/javascript" th:src="@{/js/appjs/business/memberBaseInfo/customInfo.js}"></script>
 </body>
 </html>

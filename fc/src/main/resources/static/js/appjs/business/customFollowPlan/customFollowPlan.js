@@ -1,5 +1,5 @@
 
-var prefix = ctx+ "/business/fcCustomFollowPlan"
+var prefix = ctx+ "/business/customFollowPlan"
 /*$(function() {
 	load();
 });*/

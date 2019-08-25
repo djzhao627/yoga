@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fc.business.domain.FcCustomFollowPlanDO;
-import com.fc.business.service.FcCustomFollowPlanService;
+import com.fc.business.domain.CustomFollowPlanDO;
+import com.fc.business.service.CustomFollowPlanService;
 import com.fc.common.controller.BaseController;
 import com.fc.common.controller.IPageDefine;
 import com.fc.common.utils.PageUtils;
@@ -28,16 +28,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
  
 @Controller
-@RequestMapping("/business/fcCustomFollowPlan")
-public class FcCustomFollowPlanController extends BaseController {
-	private String prefix="business/fcCustomFollowPlan"  ;
+@RequestMapping("/business/customFollowPlan")
+public class CustomFollowPlanController extends BaseController {
+	private String prefix="business/customFollowPlan"  ;
 	@Autowired
-	private FcCustomFollowPlanService fcCustomFollowPlanService;
+	private CustomFollowPlanService customFollowPlanService;
 	
 	@GetMapping()
-	@RequiresPermissions("business:fcCustomFollowPlan:fcCustomFollowPlan")
-	String FcCustomFollowPlan(){
-	    return "business/fcCustomFollowPlan/customFollowPlan";
+	@RequiresPermissions("business:customFollowPlan:customFollowPlan")
+	String customFollowPlanDO(){
+	    return "business/customFollowPlan/customFollowPlan";
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class FcCustomFollowPlanController extends BaseController {
 	 */
 	@ResponseBody
 	@GetMapping("/listPage")
-	@RequiresPermissions("business:fcCustomFollowPlan:fcCustomFollowPlan")
+	@RequiresPermissions("business:customFollowPlan:customFollowPlan")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 
 		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
@@ -53,7 +53,7 @@ public class FcCustomFollowPlanController extends BaseController {
 			
 			@Override
 			public List<?> getPageRows(Query query){
-				return  fcCustomFollowPlanService.list(query);
+				return  customFollowPlanService.list(query);
 			}
         });
 	}
@@ -62,11 +62,11 @@ public class FcCustomFollowPlanController extends BaseController {
 	 * 跳转到新增页面
 	 */
 	@GetMapping("/add")
-	@RequiresPermissions("business:fcCustomFollowPlan:add")
+	@RequiresPermissions("business:customFollowPlan:add")
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
-		mv.addObject("fcCustomFollowPlan", new FcCustomFollowPlanDO());
-		mv.setViewName("business/fcCustomFollowPlan/add");
+		mv.addObject("customFollowPlan", new CustomFollowPlanDO());
+		mv.setViewName("business/customFollowPlan/add");
 		return mv;
 	}
 	
@@ -74,12 +74,12 @@ public class FcCustomFollowPlanController extends BaseController {
 	 * 跳转到修改页面
 	 */
 	@GetMapping("/edit/{id}")
-	@RequiresPermissions("business:fcCustomFollowPlan:edit")
+	@RequiresPermissions("business:customFollowPlan:edit")
 	ModelAndView edit(@PathVariable("id") Integer id){
 	    ModelAndView mv = new ModelAndView();
-		FcCustomFollowPlanDO fcCustomFollowPlan = fcCustomFollowPlanService.get(id);
-		mv.addObject("fcCustomFollowPlan", fcCustomFollowPlan);
-		mv.setViewName("business/fcCustomFollowPlan/edit");
+		CustomFollowPlanDO customFollowPlanDO = customFollowPlanService.get(id);
+		mv.addObject("customFollowPlan", customFollowPlanDO);
+		mv.setViewName("business/customFollowPlan/edit");
 		return mv;
 	}
 	
@@ -88,9 +88,9 @@ public class FcCustomFollowPlanController extends BaseController {
 	 */
 	@ResponseBody
 	@PostMapping("/save")
-	@RequiresPermissions("business:fcCustomFollowPlan:add")
-	public R save(FcCustomFollowPlanDO fcCustomFollowPlan){
-		if(fcCustomFollowPlanService.save(fcCustomFollowPlan)>0){
+	@RequiresPermissions("business:customFollowPlan:add")
+	public R save(CustomFollowPlanDO customFollowPlanDO){
+		if(customFollowPlanService.save(customFollowPlanDO)>0){
 			return R.ok();
 		}
 		return R.error();
@@ -100,9 +100,9 @@ public class FcCustomFollowPlanController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/update")
-	@RequiresPermissions("business:fcCustomFollowPlan:edit")
-	public R update( FcCustomFollowPlanDO fcCustomFollowPlan){
-		fcCustomFollowPlanService.update(fcCustomFollowPlan);
+	@RequiresPermissions("business:customFollowPlan:edit")
+	public R update( CustomFollowPlanDO customFollowPlanDO){
+		customFollowPlanService.update(customFollowPlanDO);
 		return R.ok();
 	}
 	
@@ -111,9 +111,9 @@ public class FcCustomFollowPlanController extends BaseController {
 	 */
 	@PostMapping( "/remove")
 	@ResponseBody
-	@RequiresPermissions("business:fcCustomFollowPlan:remove")
+	@RequiresPermissions("business:customFollowPlan:remove")
 	public R remove( Integer id){
-		if(fcCustomFollowPlanService.remove(id)>0){
+		if(customFollowPlanService.remove(id)>0){
 		return R.ok();
 		}
 		return R.error();
@@ -124,9 +124,9 @@ public class FcCustomFollowPlanController extends BaseController {
 	 */
 	@PostMapping( "/batchRemove")
 	@ResponseBody
-	@RequiresPermissions("business:fcCustomFollowPlan:batchRemove")
+	@RequiresPermissions("business:customFollowPlan:batchRemove")
 	public R remove(@RequestParam("ids[]") Integer[] ids){
-		fcCustomFollowPlanService.batchRemove(ids);
+		customFollowPlanService.batchRemove(ids);
 		return R.ok();
 	}
 	@GetMapping("/customerList/{id}")
@@ -136,13 +136,13 @@ public class FcCustomFollowPlanController extends BaseController {
 		PageUtils pageList = getPageList(params, new IPageDefine() {
 			@Override
 			public List<?> getPageRows(Query query) {
-				return fcCustomFollowPlanService.list(query);
+				return customFollowPlanService.list(query);
 			}
 		});
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("fcCustomFollowPlan", pageList);
-		mv.setViewName("business/fcCustomFollowPlan/customFollowPlan");
-//		return  prefix + "/fcCustomFollowPlan_list";
+		mv.addObject("customFollowPlan", pageList);
+		mv.setViewName("business/customFollowPlan/customFollowPlan");
+//		return  prefix + "/customFollowPlanDO_list";
 		return mv;
 	}
 }

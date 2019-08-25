@@ -1,4 +1,4 @@
-var prefix = ctx + "/business/fcMemberManagementBaseinfo"
+var prefix = ctx + "/business/memberBaseInfo"
 $(function () {
     var editROW = getPageValue();//列表页面传值(row)
     validateRule();

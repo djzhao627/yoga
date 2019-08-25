@@ -1,4 +1,4 @@
-var prefix = ctx+ "/business/fcMemberManagementBaseinfo"
+var prefix = ctx+ "/business/memberBaseInfo"
 $(function() {
 	load();
     loadType();
@@ -70,18 +70,7 @@ function load() {
                             },
                             {
                                 field : 'type',
-                                title : '客户类型',
-                                formatter : function(value, row, index){
-                                    if(value==0){
-                                        return '成交客户';
-                                    }else if(value==1){
-                                        return '意向客户';
-                                    }else if(value==2){
-                                        return '潜在客户';
-                                    }else if(value==3){
-                                        return '失效客户';
-                                    }
-                                }
+                                title : '客户类型'
                             },
                             {
                                 field : 'consultants',
@@ -280,7 +269,7 @@ var openCustom = function (id) {
         scrollbar: true,
         maxmin : true,
         shadeClose : false, // 点击遮罩关闭层
-        content: ctx + "/business/fcCustomFollowPlan/customerList/"+id
+        content: ctx + "/business/customFollowPlan/customerList/"+id
     });
 }
 function loadType() {

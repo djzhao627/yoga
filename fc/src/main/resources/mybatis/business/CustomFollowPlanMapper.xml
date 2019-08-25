@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.fc.business.dao.FcCustomFollowPlanDao">
+<mapper namespace="com.fc.business.dao.CustomFollowPlanDao">
 
-	<select id="get" resultType="com.fc.business.domain.FcCustomFollowPlanDO">
+	<select id="get" resultType="com.fc.business.domain.CustomFollowPlanDO">
 		SELECT 
 			id,custom_id,talk_date,record_or_plan,insert_time,insert_operator,update_time,update_operator			 
 		FROM t_fc_custom_follow_plan 
 		where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.fc.business.domain.FcCustomFollowPlanDO">
+	<select id="list" resultType="com.fc.business.domain.CustomFollowPlanDO">
 		SELECT 
 			id, custom_id, talk_date, record_or_plan, insert_time, insert_operator, update_time, update_operator 		
 		FROM t_fc_custom_follow_plan 
@@ -86,7 +86,7 @@
 		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.fc.business.domain.FcCustomFollowPlanDO">
+	<insert id="save" parameterType="com.fc.business.domain.CustomFollowPlanDO">
 				<!-- 
 		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
             SELECT sys_seq('t_fc_custom_follow_plan') 
@@ -118,7 +118,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.fc.business.domain.FcCustomFollowPlanDO">
+	<update id="update" parameterType="com.fc.business.domain.CustomFollowPlanDO">
 		update t_fc_custom_follow_plan 
 		<set>
 			<if test="customId != null">custom_id = #{customId}, </if>
