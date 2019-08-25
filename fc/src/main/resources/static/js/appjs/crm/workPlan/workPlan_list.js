@@ -1,10 +1,12 @@
 var prefix = ctx + "/crm/workPlan"
 $(function () {
-    load();
+    var deptId = '';
+    getTreeData();
+    load(deptId);
 });
 
-function load() {
-    $('#dataTable')
+function load(deptId) {
+    $('#exampleTable')
         .bootstrapTable(
             {
                 method: 'get', // 服务器数据的请求方式 get or post
@@ -51,6 +53,7 @@ function load() {
                     formData.offset = params.offset;
                     formData.sort = this.sortName;
                     formData.order = this.sortOrder;
+                    formData.deptId = deptId;
                     return formData;
                 }
 
@@ -105,7 +108,7 @@ var operateEvent = {
 };
 
 function reLoad() {
-    $('#dataTable').bootstrapTable('refresh');
+    $('#exampleTable').bootstrapTable('refresh');
 }
 
 function add() {
@@ -120,7 +123,7 @@ function add() {
 }
 
 function edit(row, type) {
-    /*var row = $('#dataTable').bootstrapTable('getData')[index];*/
+    /*var row = $('#exampleTable').bootstrapTable('getData')[index];*/
     if (!row || !row.id) {
         alertMsg("请选择一条记录!");
         return;
@@ -163,7 +166,7 @@ function resetPwd(id) {
 }
 
 function batchRemove() {
-    var rows = $('#dataTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
+    var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
     if (rows.length == 0) {
         alertMsg("请选择要删除的数据");
         return;

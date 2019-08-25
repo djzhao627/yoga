@@ -191,6 +191,7 @@ function batchRemove() {
     });
 }
 
+/*
 function getTreeData() {
     $.ajax({
         type: "GET",
@@ -228,4 +229,4 @@ $('#jstree').on("changed.jstree", function (e, data) {
         $('#exampleTable').bootstrapTable('refresh', opt);
     }
 
-});
+});*/
