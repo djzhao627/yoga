@@ -7,11 +7,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Component
 class WebConfigurer extends WebMvcConfigurerAdapter {
-	@Autowired
+    @Autowired
     FcConfig fcConfig;
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/files/**").addResourceLocations("file:///"+fcConfig.getUploadPath());
-	}
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/files/**").addResourceLocations("file:///" + fcConfig.getUploadPath());
+    }
 
 }

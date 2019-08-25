@@ -16,65 +16,67 @@ import com.fc.system.domain.UserDO;
 
 @Controller
 public class BaseController {
-	public UserDO getUser() {
-		return ShiroUtils.getUser();
-	}
+    public UserDO getUser() {
+        return ShiroUtils.getUser();
+    }
 
-	public Long getUserId() {
-		return getUser().getUserId();
-	}
+    public Long getUserId() {
+        return getUser().getUserId();
+    }
 
-	public String getUsername() {
-		return getUser().getUsername();
-	}
+    public String getUsername() {
+        return getUser().getUsername();
+    }
 
 
-	/**
-	 * 获取域名url(http://...:.../)
-	 * @return
-	 */
-	public String getDomainUrl() {
-		HttpServletRequest request = this.getRequest();
-		String domainUrl = request.getRequestURL().toString();
-		String contextName = request.getContextPath();
-		int index = domainUrl.indexOf(contextName);
-		domainUrl=domainUrl.substring(0, index);
-		return domainUrl;
-	}
-	
-	/**
-	 * 获取域名url(http://...:.../ProjectName)
-	 * @return
-	 */
-	public String getDomainPath(){
-		HttpServletRequest request = this.getRequest();
-		return this.getDomainUrl() + request.getContextPath();
-	}
-	
-	/**
-	 * 得到request对象
-	 */
-	public HttpServletRequest getRequest() {
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-		return request;
-	}
-	
-	public PageUtils getPageList(Map<String, Object> params , IPageDefine pageDefine){
-		PageUtils pageUtils = null;
+    /**
+     * 获取域名url(http://...:.../)
+     *
+     * @return
+     */
+    public String getDomainUrl() {
+        HttpServletRequest request = this.getRequest();
+        String domainUrl = request.getRequestURL().toString();
+        String contextName = request.getContextPath();
+        int index = domainUrl.indexOf(contextName);
+        domainUrl = domainUrl.substring(0, index);
+        return domainUrl;
+    }
+
+    /**
+     * 获取域名url(http://...:.../ProjectName)
+     *
+     * @return
+     */
+    public String getDomainPath() {
+        HttpServletRequest request = this.getRequest();
+        return this.getDomainUrl() + request.getContextPath();
+    }
+
+    /**
+     * 得到request对象
+     */
+    public HttpServletRequest getRequest() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        return request;
+    }
+
+    public PageUtils getPageList(Map<String, Object> params, IPageDefine pageDefine) {
+        PageUtils pageUtils = null;
         try {
-        	//获取分页参数(格式：{limit=10, offset=0} )
-			Query query = Query.getPageParams(params);
+            //获取分页参数(格式：{limit=10, offset=0} )
+            Query query = Query.getPageParams(params);
 
-			//查询分页列表数据
-			List<?> dictList = pageDefine.getPageRows(query);
-			
-			//获取页码参数
-			pageUtils = new PageUtils(dictList, query);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-	
+            //查询分页列表数据
+            List<?> dictList = pageDefine.getPageRows(query);
+
+            //获取页码参数
+            pageUtils = new PageUtils(dictList, query);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return pageUtils;
-	}
+    }
 }

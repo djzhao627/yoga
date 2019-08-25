@@ -41,17 +41,17 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     UserRoleDao userRoleMapper;
 
-	//数据库类型
-	@Value("${pagehelper.helperDialect}")
+    //数据库类型
+    @Value("${pagehelper.helperDialect}")
     private String dbType = "";
-	
+
     @Override
     public List<RoleDO> list() {
-    	Map<String, Object> map = new HashMap<>(16);
-		//分页参数
-		if(map.get(PageUtils.page)!= null && map.get(PageUtils.limit)!= null){
-			PageHelper.startPage((int)map.get(PageUtils.page), (int)map.get(PageUtils.limit));
-		}
+        Map<String, Object> map = new HashMap<>(16);
+        //分页参数
+        if (map.get(PageUtils.page) != null && map.get(PageUtils.limit) != null) {
+            PageHelper.startPage((int) map.get(PageUtils.page), (int) map.get(PageUtils.limit));
+        }
         List<RoleDO> roles = roleMapper.list(map);
         return roles;
     }
@@ -72,6 +72,7 @@ public class RoleServiceImpl implements RoleService {
         }
         return roles;
     }
+
     @Transactional
     @Override
     public int save(RoleDO role) {
@@ -87,11 +88,11 @@ public class RoleServiceImpl implements RoleService {
         }
         roleMenuMapper.removeByRoleId(roleId);
         if (rms.size() > 0) {
-        	if(Constant.DATA_TYPE_MYSQL.equals(dbType)){
+            if (Constant.DATA_TYPE_MYSQL.equals(dbType)) {
                 roleMenuMapper.batchSave(rms);
-			}else if(Constant.DATA_TYPE_ORACLE.equals(dbType)){
-	            roleMenuMapper.batchSaveOrcl(rms);
-			}
+            } else if (Constant.DATA_TYPE_ORACLE.equals(dbType)) {
+                roleMenuMapper.batchSaveOrcl(rms);
+            }
         }
         return count;
     }
@@ -125,11 +126,11 @@ public class RoleServiceImpl implements RoleService {
             rms.add(rmDo);
         }
         if (rms.size() > 0) {
-            if(Constant.DATA_TYPE_MYSQL.equals(dbType)){
+            if (Constant.DATA_TYPE_MYSQL.equals(dbType)) {
                 roleMenuMapper.batchSave(rms);
-			}else if(Constant.DATA_TYPE_ORACLE.equals(dbType)){
-	            roleMenuMapper.batchSaveOrcl(rms);
-			}
+            } else if (Constant.DATA_TYPE_ORACLE.equals(dbType)) {
+                roleMenuMapper.batchSaveOrcl(rms);
+            }
         }
         return r;
     }

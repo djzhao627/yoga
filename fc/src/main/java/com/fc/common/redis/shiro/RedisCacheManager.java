@@ -9,6 +9,7 @@ import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * @author fengchi
  * @version V1.0
@@ -31,6 +32,7 @@ public class RedisCacheManager implements CacheManager {
     /**
      * Returns the Redis session keys
      * prefix.
+     *
      * @return The prefix
      */
     public String getKeyPrefix() {
@@ -40,6 +42,7 @@ public class RedisCacheManager implements CacheManager {
     /**
      * Sets the Redis sessions key
      * prefix.
+     *
      * @param keyPrefix The prefix
      */
     public void setKeyPrefix(String keyPrefix) {

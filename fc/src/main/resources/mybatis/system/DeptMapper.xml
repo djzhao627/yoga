@@ -3,45 +3,45 @@
 
 <mapper namespace="com.fc.system.dao.DeptDao">
 
-	<select id="get" resultType="com.fc.system.domain.DeptDO">
+    <select id="get" resultType="com.fc.system.domain.DeptDO">
 		select
 		dept_id,parent_id,name,order_num,del_flag from sys_dept
 		where dept_id = #{value, jdbcType=VARCHAR}
 	</select>
 
-	<select id="list" resultType="com.fc.system.domain.DeptDO">
-		select dept_id,parent_id,name,order_num,del_flag from
-		sys_dept
-		<where>
-			<if test="deptId != null and deptId != ''"> and dept_id = #{deptId, jdbcType=VARCHAR} </if>
-			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId, jdbcType=VARCHAR} </if>
-			<if test="name != null and name != ''"> and name = #{name, jdbcType=VARCHAR} </if>
-			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum, jdbcType=VARCHAR} </if>
-			<if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag, jdbcType=VARCHAR} </if>
-		</where>
-		<choose>
-			<when test="sort != null and sort.trim() != ''">
-				order by ${sort, jdbcType=VARCHAR} ${order, jdbcType=VARCHAR}
-			</when>
-			<otherwise>
-				order by dept_id desc
-			</otherwise>
-		</choose>
-	</select>
+    <select id="list" resultType="com.fc.system.domain.DeptDO">
+        select dept_id,parent_id,name,order_num,del_flag from
+        sys_dept
+        <where>
+            <if test="deptId != null and deptId != ''">and dept_id = #{deptId, jdbcType=VARCHAR}</if>
+            <if test="parentId != null and parentId != ''">and parent_id = #{parentId, jdbcType=VARCHAR}</if>
+            <if test="name != null and name != ''">and name = #{name, jdbcType=VARCHAR}</if>
+            <if test="orderNum != null and orderNum != ''">and order_num = #{orderNum, jdbcType=VARCHAR}</if>
+            <if test="delFlag != null and delFlag != ''">and del_flag = #{delFlag, jdbcType=VARCHAR}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort, jdbcType=VARCHAR} ${order, jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                order by dept_id desc
+            </otherwise>
+        </choose>
+    </select>
 
-	<select id="count" resultType="int">
-		select count(*) from sys_dept
-		<where>
-			<if test="deptId != null and deptId != ''"> and dept_id = #{deptId, jdbcType=VARCHAR} </if>
-			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId, jdbcType=VARCHAR} </if>
-			<if test="name != null and name != ''"> and name = #{name, jdbcType=VARCHAR} </if>
-			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum, jdbcType=VARCHAR} </if>
-			<if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag, jdbcType=VARCHAR} </if>
-		</where>
-	</select>
+    <select id="count" resultType="int">
+        select count(*) from sys_dept
+        <where>
+            <if test="deptId != null and deptId != ''">and dept_id = #{deptId, jdbcType=VARCHAR}</if>
+            <if test="parentId != null and parentId != ''">and parent_id = #{parentId, jdbcType=VARCHAR}</if>
+            <if test="name != null and name != ''">and name = #{name, jdbcType=VARCHAR}</if>
+            <if test="orderNum != null and orderNum != ''">and order_num = #{orderNum, jdbcType=VARCHAR}</if>
+            <if test="delFlag != null and delFlag != ''">and del_flag = #{delFlag, jdbcType=VARCHAR}</if>
+        </where>
+    </select>
 
-	<insert id="save" parameterType="com.fc.system.domain.DeptDO"
-		useGeneratedKeys="true" >
+    <insert id="save" parameterType="com.fc.system.domain.DeptDO"
+            useGeneratedKeys="true">
 		insert into sys_dept
 		(
 		dept_id,
@@ -60,30 +60,30 @@
 		)
 	</insert>
 
-	<update id="update" parameterType="com.fc.system.domain.DeptDO">
-		update sys_dept
-		<set>
-			<if test="parentId != null">parent_id = #{parentId, jdbcType=VARCHAR}, </if>
-			<if test="name != null">name = #{name, jdbcType=VARCHAR}, </if>
-			<if test="orderNum != null">order_num = #{orderNum, jdbcType=VARCHAR}, </if>
-			<if test="delFlag != null">del_flag = #{delFlag, jdbcType=VARCHAR}</if>
-		</set>
-		where dept_id = #{deptId, jdbcType=VARCHAR}
-	</update>
+    <update id="update" parameterType="com.fc.system.domain.DeptDO">
+        update sys_dept
+        <set>
+            <if test="parentId != null">parent_id = #{parentId, jdbcType=VARCHAR},</if>
+            <if test="name != null">name = #{name, jdbcType=VARCHAR},</if>
+            <if test="orderNum != null">order_num = #{orderNum, jdbcType=VARCHAR},</if>
+            <if test="delFlag != null">del_flag = #{delFlag, jdbcType=VARCHAR}</if>
+        </set>
+        where dept_id = #{deptId, jdbcType=VARCHAR}
+    </update>
 
-	<delete id="remove">
+    <delete id="remove">
 		delete from sys_dept where dept_id = #{value, jdbcType=VARCHAR}
 	</delete>
 
-	<delete id="batchRemove">
-		delete from sys_dept where dept_id in
-		<foreach item="deptId" collection="array" open="(" separator=","
-			close=")">
-			#{deptId, jdbcType=VARCHAR}
-		</foreach>
-	</delete>
-	
-	<select id="listParentDept" resultType="long">
+    <delete id="batchRemove">
+        delete from sys_dept where dept_id in
+        <foreach item="deptId" collection="array" open="(" separator=","
+                 close=")">
+            #{deptId, jdbcType=VARCHAR}
+        </foreach>
+    </delete>
+
+    <select id="listParentDept" resultType="long">
 		select DISTINCT parent_id from sys_dept
 	</select>
 

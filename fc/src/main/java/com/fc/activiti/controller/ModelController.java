@@ -39,7 +39,7 @@ import static org.activiti.editor.constants.ModelDataJsonConstants.*;
  */
 @RequestMapping("/activiti")
 @RestController
-public class ModelController extends BaseController{
+public class ModelController extends BaseController {
     protected static final Logger LOGGER = LoggerFactory.getLogger(ModelEditorJsonRestResource.class);
 
     @Autowired
@@ -94,11 +94,11 @@ public class ModelController extends BaseController{
                 "http://b3mn.org/stencilset/bpmn2.0#");
         editorNode.put("stencilset", stencilSetNode);
         repositoryService.addModelEditorSource(id, editorNode.toString().getBytes("utf-8"));
-        
+
         ModelAndView mv = new ModelAndView();
-		mv.addObject(Constant.PATH_DOMAIN, this.getDomainPath());
-		mv.setViewName("act/model/modeler");
-		mv.addObject("modelId",  id);
+        mv.addObject(Constant.PATH_DOMAIN, this.getDomainPath());
+        mv.setViewName("act/model/modeler");
+        mv.addObject("modelId", id);
         return mv;
 
         /*try {
@@ -145,10 +145,10 @@ public class ModelController extends BaseController{
 
     @GetMapping("/model/edit/{id}")
     ModelAndView edit(HttpServletResponse response, @PathVariable("id") String id) {
-    	ModelAndView mv = new ModelAndView();
-		mv.addObject(Constant.PATH_DOMAIN, this.getDomainPath());
-		mv.addObject("modelId",  id);
-		mv.setViewName("act/model/modeler");
+        ModelAndView mv = new ModelAndView();
+        mv.addObject(Constant.PATH_DOMAIN, this.getDomainPath());
+        mv.addObject("modelId", id);
+        mv.setViewName("act/model/modeler");
         return mv;
         /*try {
         	

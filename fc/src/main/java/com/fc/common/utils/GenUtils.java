@@ -72,7 +72,7 @@ public class GenUtils {
             columnDO.setComments(column.get("columnComment"));
             columnDO.setExtra(column.get("extra"));
             columnDO.setIsNullable(column.get("isNullable"));
-            columnDO.setCharacterMaximumLength(column.get("characterMaximumLength")==null?"0":String.valueOf(column.get("characterMaximumLength")));
+            columnDO.setCharacterMaximumLength(column.get("characterMaximumLength") == null ? "0" : String.valueOf(column.get("characterMaximumLength")));
 
             //列名转换成Java属性名
             String attrName = columnToJava(columnDO.getColumnName());
@@ -183,7 +183,7 @@ public class GenUtils {
         if (template.contains("domain.java.vm")) {
             return packagePath + "domain" + File.separator + className + "DO.java";
         }
-        
+
         if (template.contains("Constant.java.vm")) {
             return packagePath + "constant" + File.separator + className + "Constant.java";
         }
@@ -219,11 +219,11 @@ public class GenUtils {
         }
         if (template.contains("add.html.vm")) {
             return "main" + File.separator + "resources" + File.separator + "templates" + File.separator
-                    + packageName + File.separator + classname + File.separator + classname +"_add.html";
+                    + packageName + File.separator + classname + File.separator + classname + "_add.html";
         }
         if (template.contains("edit.html.vm")) {
             return "main" + File.separator + "resources" + File.separator + "templates" + File.separator
-                    + packageName + File.separator + classname + File.separator + classname +"_edit.html";
+                    + packageName + File.separator + classname + File.separator + classname + "_edit.html";
         }
 
         if (template.contains("list.js.vm")) {
@@ -233,11 +233,11 @@ public class GenUtils {
         }
         if (template.contains("add.js.vm")) {
             return "main" + File.separator + "resources" + File.separator + "static" + File.separator + "js" + File.separator
-                    + "appjs" + File.separator + packageName + File.separator + classname + File.separator  + classname +"_add.js";
+                    + "appjs" + File.separator + packageName + File.separator + classname + File.separator + classname + "_add.js";
         }
         if (template.contains("edit.js.vm")) {
             return "main" + File.separator + "resources" + File.separator + "static" + File.separator + "js" + File.separator
-                    + "appjs" + File.separator + packageName + File.separator + classname + File.separator + classname +"_edit.js";
+                    + "appjs" + File.separator + packageName + File.separator + classname + File.separator + classname + "_edit.js";
         }
 
 //		if(template.contains("menu.sql.vm")){

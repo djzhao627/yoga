@@ -2,18 +2,18 @@ package ${package}.constant;
 
 /**
  * ${comments}常量
- * 
+ *
  * @author ${author}
  * @email ${email}
  * @date ${datetime}
  */
 public class ${className}Constant {
-	
-#foreach ($column in $columns)
-	/**
-	 * ${column.comments}
-	 */
-	public static final String ${column.attrname} = "${column.attrname}";
-#end
+
+    #foreach ($column in $columns)
+        /**
+         * ${column.comments}
+         */
+        public static final String ${column.attrname} ="${column.attrname}";
+    #end
 
 }

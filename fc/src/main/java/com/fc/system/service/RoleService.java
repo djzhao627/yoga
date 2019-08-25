@@ -9,17 +9,17 @@ import com.fc.system.domain.RoleDO;
 @Service
 public interface RoleService {
 
-	RoleDO get(Long id);
+    RoleDO get(Long id);
 
-	List<RoleDO> list();
+    List<RoleDO> list();
 
-	int save(RoleDO role);
+    int save(RoleDO role);
 
-	int update(RoleDO role);
+    int update(RoleDO role);
 
-	int remove(Long id);
+    int remove(Long id);
 
-	List<RoleDO> list(Long userId);
+    List<RoleDO> list(Long userId);
 
-	int batchremove(Long[] ids);
+    int batchremove(Long[] ids);
 }

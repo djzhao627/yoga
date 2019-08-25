@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<base th:href="${path}">
+    <base th:href="${path}">
     <title>静波瑜伽后台管理系统</title>
     <meta name="keywords" content="静波瑜伽后台管理系统">
     <meta name="description" content="静波瑜伽后台管理系统">
@@ -70,7 +70,7 @@
     </div>
     <div class="signup-footer">
         <div class="pull-left">
-        &copy; 2017 All Rights Reserved. EReal
+            &copy; 2017 All Rights Reserved. EReal
         </div>
     </div>
 </div>
@@ -89,7 +89,9 @@
 <script th:src="@{/js/plugins/layer/layer.min.js}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#login").on('click',function(){$("#signupForm").submit();});
+        $("#login").on('click', function () {
+            $("#signupForm").submit();
+        });
         validateRule();
     });
 
@@ -102,12 +104,12 @@
     function login() {
         $.ajax({
             type: "POST",
-            url: ctx+"login",
+            url: ctx + "login",
             data: $('#signupForm').serialize(),
             success: function (r) {
-                 if (r.code == 0) {
+                if (r.code == 0) {
                     var index = layer.load(1, {
-                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                        shade: [0.1, '#fff'] //0.1透明度的白色背景
                     });
                     parent.location.href = ctx + 'index';
                 } else {
@@ -134,7 +136,7 @@
                 },
                 password: {
                     required: icon + "请输入您的密码",
-                   
+
                 }
             }
         })

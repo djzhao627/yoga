@@ -16,21 +16,21 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
-  profiles: 
+  profiles:
     active: dev
   http:
     multipart:
       max-file-size: 30Mb
       max-request-size: 30Mb
-  devtools: 
+  devtools:
     restart:
-      enabled: true    
+      enabled: true
 #默认redis,可选ehcache
-  cache: 
-    type: redis 
+  cache:
+    type: redis
     ehcache:
       config: classpath:config/ehcache.xml
-      
+
 ####################### 配置分页(helperDialect=mysql/oracle，作为数据库标记)###########################
 pagehelper:
     helperDialect: mysql
@@ -38,13 +38,13 @@ pagehelper:
     supportMethodsArguments: true
     pageSizeZero: true
     params: count=countSql
-    
+
 #mybatis配置
-mybatis: 
+mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: mybatis/**/*Mapper.xml
   typeAliasesPackage: com.fc.**.domain, com.ereal.**.domain
- 
+
 #[弃用]调整至 spring cache type【shiro.用户，权限，session，spring.cache通用】
 #cacheType: ehcache

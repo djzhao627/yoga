@@ -5,6 +5,6 @@ import java.util.List;
 import com.fc.common.utils.Query;
 
 public interface IPageDefine {
-	
-	List<?> getPageRows(Query query);
+
+    List<?> getPageRows(Query query);
 }

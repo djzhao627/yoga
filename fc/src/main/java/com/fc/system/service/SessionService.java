@@ -13,11 +13,11 @@ import com.fc.system.domain.UserOnline;
 
 @Service
 public interface SessionService {
-	List<UserOnline> list();
+    List<UserOnline> list();
 
-	List<UserDO> listOnlineUser();
+    List<UserDO> listOnlineUser();
 
-	Collection<Session> sessionList();
-	
-	boolean forceLogout(String sessionId);
+    Collection<Session> sessionList();
+
+    boolean forceLogout(String sessionId);
 }
