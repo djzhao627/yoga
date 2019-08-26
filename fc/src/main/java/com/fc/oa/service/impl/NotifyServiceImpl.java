@@ -44,10 +44,10 @@ public class NotifyServiceImpl implements NotifyService {
     @Autowired
     private SimpMessagingTemplate template;
 
-	//数据库类型
-	@Value("${pagehelper.helperDialect}")
+    //数据库类型
+    @Value("${pagehelper.helperDialect}")
     private String dbType = "";
-	
+
     @Override
     public NotifyDO get(Long id) {
         NotifyDO rDO = notifyDao.get(id);
@@ -87,7 +87,7 @@ public class NotifyServiceImpl implements NotifyService {
         }
         recordDao.batchSave(records);
         //给在线用户发送通知
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(1,1,0, TimeUnit.MILLISECONDS,new LinkedBlockingDeque<>());
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(1, 1, 0, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>());
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -126,17 +126,17 @@ public class NotifyServiceImpl implements NotifyService {
 
     @Override
     public List<NotifyDTO> selfList(Map<String, Object> map) {
-		//分页参数
-		if(map.get(PageUtils.page)!= null && map.get(PageUtils.limit)!= null){
-			PageHelper.startPage((int)map.get(PageUtils.page), (int)map.get(PageUtils.limit));
-		}
-		
-		List<NotifyDTO> rows = new ArrayList<>();
-		if(Constant.DATA_TYPE_MYSQL.equals(dbType)){
-	        rows = notifyDao.listDTO(map);
-		}else if(Constant.DATA_TYPE_ORACLE.equals(dbType)){
-	        rows = notifyDao.listDtoForOrcl(map);
-		}
+        //分页参数
+        if (map.get(PageUtils.page) != null && map.get(PageUtils.limit) != null) {
+            PageHelper.startPage((int) map.get(PageUtils.page), (int) map.get(PageUtils.limit));
+        }
+
+        List<NotifyDTO> rows = new ArrayList<>();
+        if (Constant.DATA_TYPE_MYSQL.equals(dbType)) {
+            rows = notifyDao.listDTO(map);
+        } else if (Constant.DATA_TYPE_ORACLE.equals(dbType)) {
+            rows = notifyDao.listDtoForOrcl(map);
+        }
         for (NotifyDTO notifyDTO : rows) {
             notifyDTO.setBefore(DateUtils.getTimeBefore(notifyDTO.getUpdateDate()));
             notifyDTO.setSender(userDao.get(notifyDTO.getCreateBy()).getName());

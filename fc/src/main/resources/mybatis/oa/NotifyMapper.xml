@@ -55,7 +55,7 @@
 		</where>
 	</select>
 
-	<insert id="save" parameterType="com.fc.oa.domain.NotifyDO"
+	<insert id="save" parameterType="com.fc.oa.domain.NotifyDO" keyProperty="id"
 		useGeneratedKeys="true" >
 		insert into oa_notify
 		(
