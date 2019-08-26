@@ -8,14 +8,16 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
+ * 工作计划
+ *
  * @author fengchi
  * @email
- * @date 2019-08-24 18:23:38
+ * @date 2019-08-26 22:59:56
  */
 @Mapper
 public interface WorkPlanDao {
 
-    WorkPlanDO get(Integer id);
+    WorkPlanDO get(String id);
 
     List<WorkPlanDO> list(Map<String, Object> map);
 
@@ -25,7 +27,7 @@ public interface WorkPlanDao {
 
     int update(WorkPlanDO workPlan);
 
-    int remove(Integer id);
+    int remove(String id);
 
-    int batchRemove(Integer[] ids);
+    int batchRemove(String[] ids);
 }

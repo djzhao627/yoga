@@ -3,162 +3,226 @@
 
 <mapper namespace="com.fc.crm.dao.WorkPlanDao">
 
-	<select id="get" resultType="com.fc.crm.domain.WorkPlanDO">
+    <select id="get" resultType="com.fc.crm.domain.WorkPlanDO">
 		SELECT 
-			ID,content,dept_id,dept_name,start_time,end_time,person_liable,helper,Remarks,remind_type
-		FROM t_work_plan 
+			ID,content,dept_Id,dept_Name,start_Time,end_Time,schedule,person_Liable,helper,remarks,remind_Type,state,Level,Task_Annex,Task_Annex_path,execute_Annex,execute_Annex_path
+		FROM t_work_plan
 		where ID = #{value}
 	</select>
 
-	<select id="list" resultType="com.fc.crm.domain.WorkPlanDO">
-		SELECT 
-			ID,content, dept_id, dept_name, start_time, end_time, person_liable, helper, Remarks, remind_type
-		FROM t_work_plan 
+    <select id="list" resultType="com.fc.crm.domain.WorkPlanDO">
+        SELECT
+        ID, content, dept_Id, dept_Name, start_Time, end_Time, schedule, person_Liable, helper, remarks, remind_Type,
+        state, Level, Task_Annex, Task_Annex_path, execute_Annex, execute_Annex_path
+        FROM t_work_plan
         <where>
-          
-		  		  <if test="id != null and id != ''">
-		  		  	AND ID = #{id}   
-		  		  </if>
-			      <if test="content != null and content != ''">
-					AND content LIKE '%${ content}%'
-				  </if>
-		  		  <if test="deptId != null and deptId != ''">
-		  		  	AND dept_id = #{deptId}
-		  		  </if>
-		  		  <if test="deptName != null and deptName != ''">
-		  		  	AND dept_name LIKE '%${ deptName}%'  
-		  		  </if>
-		  		  <if test="startTime != null and startTime != ''">
-		  		  	AND start_time LIKE '%${ startTime}%'  
-		  		  </if>
-		  		  <if test="endTime != null and endTime != ''">
-		  		  	AND end_time LIKE '%${ endTime}%'  
-		  		  </if>
-		  		  <if test="personLiable != null and personLiable != ''">
-		  		  	AND person_liable LIKE '%${ personLiable}%'  
-		  		  </if>
-		  		  <if test="helper != null and helper != ''">
-		  		  	AND helper LIKE '%${ helper}%'  
-		  		  </if>
-		  		  <if test="remarks != null and remarks != ''">
-		  		  	AND Remarks LIKE '%${ remarks}%'  
-		  		  </if>
-		  		  <if test="remindType != null and remindType != ''">
-		  		  	AND remind_type LIKE '%${ remindType}%'  
-		  		  </if>
-		  		  
-		</where>
+
+            <if test="id != null and id != ''">
+                AND ID LIKE '%${ id}%'
+            </if>
+            <if test="content != null and content != ''">
+                AND content LIKE '%${ content}%'
+            </if>
+            <if test="deptId != null and deptId != ''">
+                AND dept_Id LIKE '%${ deptId}%'
+            </if>
+            <if test="deptName != null and deptName != ''">
+                AND dept_Name LIKE '%${ deptName}%'
+            </if>
+            <if test="startTime != null and startTime != ''">
+                AND start_Time LIKE '%${ startTime}%'
+            </if>
+            <if test="endTime != null and endTime != ''">
+                AND end_Time LIKE '%${ endTime}%'
+            </if>
+            <if test="schedule != null and schedule != ''">
+                AND schedule LIKE '%${ schedule}%'
+            </if>
+            <if test="personLiable != null and personLiable != ''">
+                AND person_Liable LIKE '%${ personLiable}%'
+            </if>
+            <if test="helper != null and helper != ''">
+                AND helper LIKE '%${ helper}%'
+            </if>
+            <if test="remarks != null and remarks != ''">
+                AND remarks LIKE '%${ remarks}%'
+            </if>
+            <if test="remindType != null and remindType != ''">
+                AND remind_Type LIKE '%${ remindType}%'
+            </if>
+            <if test="state != null and state != ''">
+                AND state LIKE '%${ state}%'
+            </if>
+            <if test="level != null and level != ''">
+                AND Level LIKE '%${ level}%'
+            </if>
+            <if test="taskAnnex != null and taskAnnex != ''">
+                AND Task_Annex LIKE '%${ taskAnnex}%'
+            </if>
+            <if test="taskAnnexPath != null and taskAnnexPath != ''">
+                AND Task_Annex_path LIKE '%${ taskAnnexPath}%'
+            </if>
+            <if test="executeAnnex != null and executeAnnex != ''">
+                AND execute_Annex LIKE '%${ executeAnnex}%'
+            </if>
+            <if test="executeAnnexPath != null and executeAnnexPath != ''">
+                AND execute_Annex_path LIKE '%${ executeAnnexPath}%'
+            </if>
+
+        </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 ORDER BY ${sort} ${order}
             </when>
-			<otherwise>
+            <otherwise>
                 ORDER BY ID DESC
-			</otherwise>
+            </otherwise>
         </choose>
-	</select>
-	
- 	<select id="findDatas" resultType="Map">
-		select 
-			*  
-		from t_work_plan
-		 <where>  
-		 
-		   		  <if test="id != null and id != ''">
-		  		  	AND ID = #{id}   
-		  		  </if>
-			 	  <if test="content != null and content != ''">
-					AND content LIKE '%${ content}%'
-				  </if>
-		  		  <if test="deptId != null and deptId != ''">
-		  		  	AND dept_id LIKE '%${ deptId}%'  
-		  		  </if>
-		  		  <if test="deptName != null and deptName != ''">
-		  		  	AND dept_name LIKE '%${ deptName}%'  
-		  		  </if>
-		  		  <if test="startTime != null and startTime != ''">
-		  		  	AND start_time LIKE '%${ startTime}%'  
-		  		  </if>
-		  		  <if test="endTime != null and endTime != ''">
-		  		  	AND end_time LIKE '%${ endTime}%'  
-		  		  </if>
-		  		  <if test="personLiable != null and personLiable != ''">
-		  		  	AND person_liable LIKE '%${ personLiable}%'  
-		  		  </if>
-		  		  <if test="helper != null and helper != ''">
-		  		  	AND helper LIKE '%${ helper}%'  
-		  		  </if>
-		  		  <if test="remarks != null and remarks != ''">
-		  		  	AND Remarks LIKE '%${ remarks}%'  
-		  		  </if>
-		  		  <if test="remindType != null and remindType != ''">
-		  		  	AND remind_type LIKE '%${ remindType}%'  
-		  		  </if>
-		  		  
-		</where>
-	</select>
-	 
-	<insert id="save" parameterType="com.fc.crm.domain.WorkPlanDO">
-				<!-- 
-		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
-            SELECT sys_seq('t_work_plan') 
-    	</selectKey> -->
-    	    	
-		insert into t_work_plan 
-		(
-		
-			ID,
-		    content,
-			dept_id, 
-			dept_name, 
-			start_time, 
-			end_time, 
-			person_liable, 
-			helper, 
-			Remarks, 
-			remind_type
-		)
-		values
-		(
-		
-		    sys_seq('t_work_plan')  ,
-		    #{content, jdbcType=VARCHAR},
-			#{deptId, jdbcType=VARCHAR}, 			
-			#{deptName, jdbcType=VARCHAR}, 			
-			#{startTime, jdbcType=VARCHAR}, 			
-			#{endTime, jdbcType=VARCHAR}, 			
-			#{personLiable, jdbcType=VARCHAR}, 			
-			#{helper, jdbcType=VARCHAR}, 			
-			#{remarks, jdbcType=VARCHAR}, 			
-			#{remindType, jdbcType=VARCHAR}			
-		)
-	</insert>
-	 
-	<update id="update" parameterType="com.fc.crm.domain.WorkPlanDO">
-		update t_work_plan 
-		<set>
-			<if test="deptId != null">dept_id = #{deptId}, </if>
-			<if test="content != null">content = #{content}, </if>
-			<if test="deptName != null">dept_name = #{deptName}, </if>
-			<if test="startTime != null">start_time = #{startTime}, </if>
-			<if test="endTime != null">end_time = #{endTime}, </if>
-			<if test="personLiable != null">person_liable = #{personLiable}, </if>
-			<if test="helper != null">helper = #{helper}, </if>
-			<if test="remarks != null">Remarks = #{remarks}, </if>
-			<if test="remindType != null">remind_type = #{remindType}</if>
-		</set>
-		where ID = #{id}
-	</update>
-	
-	<delete id="remove">
+    </select>
+
+    <select id="findDatas" resultType="Map">
+        select
+        *
+        from t_work_plan
+        <where>
+
+            <if test="id != null and id != ''">
+                AND ID LIKE '%${ id}%'
+            </if>
+            <if test="content != null and content != ''">
+                AND content LIKE '%${ content}%'
+            </if>
+            <if test="deptId != null and deptId != ''">
+                AND dept_Id LIKE '%${ deptId}%'
+            </if>
+            <if test="deptName != null and deptName != ''">
+                AND dept_Name LIKE '%${ deptName}%'
+            </if>
+            <if test="startTime != null and startTime != ''">
+                AND start_Time LIKE '%${ startTime}%'
+            </if>
+            <if test="endTime != null and endTime != ''">
+                AND end_Time LIKE '%${ endTime}%'
+            </if>
+            <if test="schedule != null and schedule != ''">
+                AND schedule LIKE '%${ schedule}%'
+            </if>
+            <if test="personLiable != null and personLiable != ''">
+                AND person_Liable LIKE '%${ personLiable}%'
+            </if>
+            <if test="helper != null and helper != ''">
+                AND helper LIKE '%${ helper}%'
+            </if>
+            <if test="remarks != null and remarks != ''">
+                AND remarks LIKE '%${ remarks}%'
+            </if>
+            <if test="remindType != null and remindType != ''">
+                AND remind_Type LIKE '%${ remindType}%'
+            </if>
+            <if test="state != null and state != ''">
+                AND state LIKE '%${ state}%'
+            </if>
+            <if test="level != null and level != ''">
+                AND Level LIKE '%${ level}%'
+            </if>
+            <if test="taskAnnex != null and taskAnnex != ''">
+                AND Task_Annex LIKE '%${ taskAnnex}%'
+            </if>
+            <if test="taskAnnexPath != null and taskAnnexPath != ''">
+                AND Task_Annex_path LIKE '%${ taskAnnexPath}%'
+            </if>
+            <if test="executeAnnex != null and executeAnnex != ''">
+                AND execute_Annex LIKE '%${ executeAnnex}%'
+            </if>
+            <if test="executeAnnexPath != null and executeAnnexPath != ''">
+                AND execute_Annex_path LIKE '%${ executeAnnexPath}%'
+            </if>
+
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.fc.crm.domain.WorkPlanDO">
+        <!--
+<selectKey keyProperty="id" resultType="Integer" order="BEFORE">
+    SELECT sys_seq('t_work_plan')
+</selectKey> -->
+
+        insert into t_work_plan
+        (
+
+        ID,
+        content,
+        dept_Id,
+        dept_Name,
+        start_Time,
+        end_Time,
+        schedule,
+        person_Liable,
+        helper,
+        remarks,
+        remind_Type,
+        state,
+        Level,
+        Task_Annex,
+        Task_Annex_path,
+        execute_Annex,
+        execute_Annex_path
+        )
+        values
+        (
+
+        sys_seq('t_work_plan') ,
+        #{content, jdbcType=VARCHAR},
+        #{deptId, jdbcType=VARCHAR},
+        #{deptName, jdbcType=VARCHAR},
+        #{startTime, jdbcType=VARCHAR},
+        #{endTime, jdbcType=VARCHAR},
+        #{schedule, jdbcType=VARCHAR},
+        #{personLiable, jdbcType=VARCHAR},
+        #{helper, jdbcType=VARCHAR},
+        #{remarks, jdbcType=VARCHAR},
+        #{remindType, jdbcType=VARCHAR},
+        #{state, jdbcType=VARCHAR},
+        #{level, jdbcType=VARCHAR},
+        #{taskAnnex, jdbcType=VARCHAR},
+        #{taskAnnexPath, jdbcType=VARCHAR},
+        #{executeAnnex, jdbcType=VARCHAR},
+        #{executeAnnexPath, jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.fc.crm.domain.WorkPlanDO">
+        update t_work_plan
+        <set>
+            <if test="content != null">content = #{content},</if>
+            <if test="deptId != null">dept_Id = #{deptId},</if>
+            <if test="deptName != null">dept_Name = #{deptName},</if>
+            <if test="startTime != null">start_Time = #{startTime},</if>
+            <if test="endTime != null">end_Time = #{endTime},</if>
+            <if test="schedule != null">schedule = #{schedule},</if>
+            <if test="personLiable != null">person_Liable = #{personLiable},</if>
+            <if test="helper != null">helper = #{helper},</if>
+            <if test="remarks != null">remarks = #{remarks},</if>
+            <if test="remindType != null">remind_Type = #{remindType},</if>
+            <if test="state != null">state = #{state},</if>
+            <if test="level != null">Level = #{level},</if>
+            <if test="taskAnnex != null">Task_Annex = #{taskAnnex},</if>
+            <if test="taskAnnexPath != null">Task_Annex_path = #{taskAnnexPath},</if>
+            <if test="executeAnnex != null">execute_Annex = #{executeAnnex},</if>
+            <if test="executeAnnexPath != null">execute_Annex_path = #{executeAnnexPath}</if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <delete id="remove">
 		delete from t_work_plan where ID = #{value}
 	</delete>
-	
-	<delete id="batchRemove">
-		delete from t_work_plan where ID in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+
+    <delete id="batchRemove">
+        delete from t_work_plan where ID in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>

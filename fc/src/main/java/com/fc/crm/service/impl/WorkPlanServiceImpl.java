@@ -18,7 +18,7 @@ public class WorkPlanServiceImpl implements WorkPlanService {
     private WorkPlanDao workPlanDao;
 
     @Override
-    public WorkPlanDO get(Integer id) {
+    public WorkPlanDO get(String id) {
         return workPlanDao.get(id);
     }
 
@@ -44,12 +44,12 @@ public class WorkPlanServiceImpl implements WorkPlanService {
     }
 
     @Override
-    public int remove(Integer id) {
+    public int remove(String id) {
         return workPlanDao.remove(id);
     }
 
     @Override
-    public int batchRemove(Integer[] ids) {
+    public int batchRemove(String[] ids) {
         return workPlanDao.batchRemove(ids);
     }
 

@@ -25,8 +25,10 @@ import com.fc.common.controller.BaseController;
 import com.fc.common.controller.IPageDefine;
 
 /**
+ * 工作计划
+ *
  * @author fengchi
- * @date 2019-08-24 18:23:38
+ * @date 2019-08-26 22:59:56
  */
 
 @Controller
@@ -79,7 +81,7 @@ public class WorkPlanController extends BaseController {
      */
     @GetMapping("/edit/{id}")
     @RequiresPermissions("crm:workPlan:edit")
-    ModelAndView edit(@PathVariable("id") Integer id) {
+    ModelAndView edit(@PathVariable("id") String id) {
         ModelAndView mv = new ModelAndView();
         WorkPlanDO workPlan = workPlanService.get(id);
         mv.addObject("workPlan", workPlan);
@@ -117,7 +119,7 @@ public class WorkPlanController extends BaseController {
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("crm:workPlan:remove")
-    public R remove(Integer id) {
+    public R remove(String id) {
         if (workPlanService.remove(id) > 0) {
             return R.ok();
         }
@@ -130,7 +132,7 @@ public class WorkPlanController extends BaseController {
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("crm:workPlan:batchRemove")
-    public R remove(@RequestParam("ids[]") Integer[] ids) {
+    public R remove(@RequestParam("ids[]") String[] ids) {
         workPlanService.batchRemove(ids);
         return R.ok();
     }

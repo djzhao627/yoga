@@ -51,62 +51,124 @@ function validateRule() {
         rules: {
             id: {
                 required: true,
+                maxlength: 10
+            },
+            content: {
+                required: true,
+                maxlength: 1000
             },
             deptId: {
-                maxlength: 255
+                required: true,
+                maxlength: 100
             },
             deptName: {
-                maxlength: 255
+                required: true,
+                maxlength: 100
             },
             startTime: {
                 required: true,
+                maxlength: 23
             },
             endTime: {
                 required: true,
+                maxlength: 23
+            },
+            schedule: {
+                maxlength: 255
             },
             personLiable: {
-                maxlength: 50
+                required: true,
+                maxlength: 100
             },
             helper: {
-                maxlength: 50
+                maxlength: 100
             },
             remarks: {
-                maxlength: 2000
+                maxlength: 1000
             },
             remindType: {
-                maxlength: 20
+                maxlength: 2
+            },
+            state: {
+                required: true,
+                maxlength: 2
+            },
+            level: {
+                maxlength: 2
+            },
+            taskAnnex: {
+                maxlength: 500
+            },
+            taskAnnexPath: {
+                maxlength: 500
+            },
+            executeAnnex: {
+                maxlength: 500
+            },
+            executeAnnexPath: {
+                maxlength: 500
             },
         },
         messages: {
+
             id: {
-                required: icon + "主键不能为空",
+                required: icon + "不能为空",
+                maxlength: icon + "最大长度不超过10"
             },
             content: {
+                required: icon + "交办事项不能为空",
                 maxlength: icon + "最大长度不超过1000"
             },
             deptId: {
-                maxlength: icon + "最大长度不超过255"
+                required: icon + "部门Id不能为空",
+                maxlength: icon + "最大长度不超过100"
             },
             deptName: {
-                maxlength: icon + "最大长度不超过255"
+                required: icon + "部门名称不能为空",
+                maxlength: icon + "最大长度不超过100"
             },
             startTime: {
                 required: icon + "开始时间不能为空",
+                maxlength: icon + "最大长度不超过23"
             },
             endTime: {
                 required: icon + "结束时间不能为空",
+                maxlength: icon + "最大长度不超过23"
+            },
+            schedule: {
+                maxlength: icon + "最大长度不超过255"
             },
             personLiable: {
-                maxlength: icon + "最大长度不超过50"
+                required: icon + "责任人不能为空",
+                maxlength: icon + "最大长度不超过100"
             },
             helper: {
-                maxlength: icon + "最大长度不超过50"
+                maxlength: icon + "最大长度不超过100"
             },
             remarks: {
-                maxlength: icon + "最大长度不超过2000"
+                maxlength: icon + "最大长度不超过1000"
             },
             remindType: {
-                maxlength: icon + "最大长度不超过20"
+                maxlength: icon + "最大长度不超过2"
+            },
+            state: {
+                required: icon + "状态：0：草稿，1：发布，2：删除不能为空",
+                maxlength: icon + "最大长度不超过2"
+            },
+            level: {
+                maxlength: icon + "最大长度不超过2"
+            },
+            taskAnnex: {
+                maxlength: icon + "最大长度不超过500"
+            },
+            taskAnnexPath: {
+                maxlength: icon + "最大长度不超过500"
+            },
+            executeAnnex: {
+                maxlength: icon + "最大长度不超过500"
+            },
+            executeAnnexPath: {
+                maxlength: icon + "最大长度不超过500"
             },
         }
     })
