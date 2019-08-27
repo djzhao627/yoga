@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">客户类型：</label>
                             <div class="col-sm-8">
-                                <select data-placeholder="--选择类别--" name="type" id="type"
+                                <select data-placeholder="--选择类别--" name="type" id="type" th:value="${memberBaseInfo.type}"
                                         class="form-control chosen-select" tabindex="2" multiple="multiple" required>
                                     <option th:each="customType : ${customTypes}" th:value="${customType.value}"
                                             th:text="${customType.name}" th:if="${customType.remarks ==checked}"
@@ -33,7 +33,7 @@
                             <label class="col-sm-3 control-label">所属顾问：</label>
                             <div class="col-sm-8">
                                 <input id="consultantsIds" name="consultantsIds" class="hidden">
-                                <input id="consultants" name="consultants" class="form-control"
+                                <input id="consultants" name="consultants" th:value="${memberBaseInfo.consultants}" class="form-control"
                                        type="text" onclick="openUser()"
                                        readonly="readonly" placeholder="所属顾问">
                             </div>
@@ -99,7 +99,7 @@
                             <label class="col-sm-3 control-label">所属客服：</label>
                             <div class="col-sm-8">
                                 <input id="customerServicIds" name="customerServicIds" class="hidden">
-                                <input id="customerServic" name="customerServic" class="form-control"
+                                <input id="customerServic" name="customerServic" th:value="${memberBaseInfo.customerServic}"class="form-control"
                                        type="text" onclick="openCustomer()"
                                        readonly="readonly" placeholder="所属客服">
                             </div>

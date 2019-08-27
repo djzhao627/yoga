@@ -1,5 +1,7 @@
 package com.fc.business.service.impl;
 
+import com.fc.common.utils.ShiroUtils;
+import com.fc.system.domain.UserDO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,18 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 	
 	@Override
 	public MemberBaseInfoDO get(Integer id){
-		return memberBaseInfoDao.get(id);
+		MemberBaseInfoDO memberBaseInfoDO = memberBaseInfoDao.get(id);
+		String type = memberBaseInfoDO.getType();
+		Map<String,String> mapCode=queryNameByCode("custom_type");
+		if (type.contains(",")) {
+			String[] types = type.split(",");
+			String temp="";
+			for (int i = 0; i < types.length; i++) {
+				temp+=mapCode.get(types[i])+",";
+			}
+			memberBaseInfoDO.setType(temp.substring(0,temp.lastIndexOf(",")));
+		}
+		return memberBaseInfoDO;
 	}
 	
 	@Override
@@ -55,6 +68,8 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 		if (StringUtils.isNotBlank(consultants)) {
 			fcMemberManagementBaseinfo.setConsultants(consultants.substring(0,consultants.lastIndexOf(",")));
 		}
+		UserDO user = ShiroUtils.getUser();
+		Long userId = ShiroUtils.getUserId();
 		return memberBaseInfoDao.save(fcMemberManagementBaseinfo);
 	}
 	
