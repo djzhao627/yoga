@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fc.crm.dao.OrderDao">
+
+	<select id="get" resultType="com.fc.crm.domain.OrderDO">
+		SELECT 
+			id,sfzh,Initial_training,payment_date,payment_type,payment_mode,payment_account,book,clothes,schedule_date,schedule_campus,other_fees,enrollment_course,insert_time,insert_operator,update_time,update_operator
+		FROM t_order 
+		where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.fc.crm.domain.OrderDO">
+		SELECT 
+			id, sfzh, Initial_training, payment_date, payment_type, payment_mode, payment_account, book, clothes, schedule_date, schedule_campus, other_fees, enrollment_course, insert_time, insert_operator, update_time, update_operator
+		FROM t_order 
+        <where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="sfzh != null and sfzh != ''">
+		  		  	AND custom_id = #{customId}   
+		  		  </if>
+		  		  <if test="initialTraining != null and initialTraining != ''">
+		  		  	AND Initial_training LIKE '%${ initialTraining}%'  
+		  		  </if>
+		  		  <if test="paymentDate != null and paymentDate != ''">
+		  		  	AND payment_date = #{paymentDate}   
+		  		  </if>
+		  		  <if test="paymentType != null and paymentType != ''">
+		  		  	AND payment_type LIKE '%${ paymentType}%'  
+		  		  </if>
+		  		  <if test="paymentMode != null and paymentMode != ''">
+		  		  	AND payment_mode LIKE '%${ paymentMode}%'  
+		  		  </if>
+		  		  <if test="paymentAccount != null and paymentAccount != ''">
+		  		  	AND payment_account = #{paymentAccount}   
+		  		  </if>
+		  		  <if test="book != null and book != ''">
+		  		  	AND book LIKE '%${ book}%'  
+		  		  </if>
+		  		  <if test="clothes != null and clothes != ''">
+		  		  	AND clothes LIKE '%${ clothes}%'  
+		  		  </if>
+		  		  <if test="scheduleDate != null and scheduleDate != ''">
+		  		  	AND schedule_date = #{scheduleDate}   
+		  		  </if>
+		  		  <if test="scheduleCampus != null and scheduleCampus != ''">
+		  		  	AND schedule_campus LIKE '%${ scheduleCampus}%'  
+		  		  </if>
+		  		  <if test="otherFees != null and otherFees != ''">
+		  		  	AND other_fees = #{otherFees}   
+		  		  </if>
+		  		  <if test="enrollmentCourse != null and enrollmentCourse != ''">
+		  		  	AND enrollment_course LIKE '%${ enrollmentCourse}%'  
+		  		  </if>
+		  		  <if test="insertTime != null and insertTime != ''">
+		  		  	AND insert_time = #{insertTime}   
+		  		  </if>
+		  		  <if test="insertOperator != null and insertOperator != ''">
+		  		  	AND insert_operator = #{insertOperator}   
+		  		  </if>
+		  		  <if test="updateTime != null and updateTime != ''">
+		  		  	AND update_time = #{updateTime}   
+		  		  </if>
+		  		  <if test="updateOperator != null and updateOperator != ''">
+		  		  	AND update_operator = #{updateOperator}   
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY id DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_order
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="sfzh != null and sfzh != ''">
+		  		  	AND sfzh = #{sfzh}
+		  		  </if>
+		  		  <if test="initialTraining != null and initialTraining != ''">
+		  		  	AND Initial_training LIKE '%${ initialTraining}%'  
+		  		  </if>
+		  		  <if test="paymentDate != null and paymentDate != ''">
+		  		  	AND payment_date = #{paymentDate}   
+		  		  </if>
+		  		  <if test="paymentType != null and paymentType != ''">
+		  		  	AND payment_type LIKE '%${ paymentType}%'  
+		  		  </if>
+		  		  <if test="paymentMode != null and paymentMode != ''">
+		  		  	AND payment_mode LIKE '%${ paymentMode}%'  
+		  		  </if>
+		  		  <if test="paymentAccount != null and paymentAccount != ''">
+		  		  	AND payment_account = #{paymentAccount}   
+		  		  </if>
+		  		  <if test="book != null and book != ''">
+		  		  	AND book LIKE '%${ book}%'  
+		  		  </if>
+		  		  <if test="clothes != null and clothes != ''">
+		  		  	AND clothes LIKE '%${ clothes}%'  
+		  		  </if>
+		  		  <if test="scheduleDate != null and scheduleDate != ''">
+		  		  	AND schedule_date = #{scheduleDate}   
+		  		  </if>
+		  		  <if test="scheduleCampus != null and scheduleCampus != ''">
+		  		  	AND schedule_campus LIKE '%${ scheduleCampus}%'  
+		  		  </if>
+		  		  <if test="otherFees != null and otherFees != ''">
+		  		  	AND other_fees = #{otherFees}   
+		  		  </if>
+		  		  <if test="enrollmentCourse != null and enrollmentCourse != ''">
+		  		  	AND enrollment_course LIKE '%${ enrollmentCourse}%'  
+		  		  </if>
+		  		  <if test="insertTime != null and insertTime != ''">
+		  		  	AND insert_time = #{insertTime}   
+		  		  </if>
+		  		  <if test="insertOperator != null and insertOperator != ''">
+		  		  	AND insert_operator = #{insertOperator}   
+		  		  </if>
+		  		  <if test="updateTime != null and updateTime != ''">
+		  		  	AND update_time = #{updateTime}   
+		  		  </if>
+		  		  <if test="updateOperator != null and updateOperator != ''">
+		  		  	AND update_operator = #{updateOperator}   
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.crm.domain.OrderDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_order') 
+    	</selectKey> -->
+    	    	
+		insert into t_order 
+		(
+		
+			id,
+		sfzh,
+			Initial_training, 
+			payment_date, 
+			payment_type, 
+			payment_mode, 
+			payment_account, 
+			book, 
+			clothes, 
+			schedule_date, 
+			schedule_campus, 
+			other_fees, 
+			enrollment_course, 
+			insert_time, 
+			insert_operator, 
+			update_time, 
+			update_operator
+		)
+		values
+		(
+		
+		    sys_seq('t_order')  , 		    
+			#{sfzh, jdbcType=VARCHAR},
+			#{initialTraining, jdbcType=VARCHAR}, 			
+			#{paymentDate, jdbcType=VARCHAR}, 			
+			#{paymentType, jdbcType=VARCHAR}, 			
+			#{paymentMode, jdbcType=VARCHAR}, 			
+			#{paymentAccount, jdbcType=VARCHAR}, 			
+			#{book, jdbcType=VARCHAR}, 			
+			#{clothes, jdbcType=VARCHAR}, 			
+			#{scheduleDate, jdbcType=VARCHAR}, 			
+			#{scheduleCampus, jdbcType=VARCHAR}, 			
+			#{otherFees, jdbcType=VARCHAR}, 			
+			#{enrollmentCourse, jdbcType=VARCHAR}, 			
+			#{insertTime, jdbcType=VARCHAR}, 			
+			#{insertOperator, jdbcType=VARCHAR}, 			
+			#{updateTime, jdbcType=VARCHAR}, 			
+			#{updateOperator, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.crm.domain.OrderDO">
+		update t_order 
+		<set>
+			<if test="sfzh != null">sfzh = #{sfzh}, </if>
+			<if test="initialTraining != null">Initial_training = #{initialTraining}, </if>
+			<if test="paymentDate != null">payment_date = #{paymentDate}, </if>
+			<if test="paymentType != null">payment_type = #{paymentType}, </if>
+			<if test="paymentMode != null">payment_mode = #{paymentMode}, </if>
+			<if test="paymentAccount != null">payment_account = #{paymentAccount}, </if>
+			<if test="book != null">book = #{book}, </if>
+			<if test="clothes != null">clothes = #{clothes}, </if>
+			<if test="scheduleDate != null">schedule_date = #{scheduleDate}, </if>
+			<if test="scheduleCampus != null">schedule_campus = #{scheduleCampus}, </if>
+			<if test="otherFees != null">other_fees = #{otherFees}, </if>
+			<if test="enrollmentCourse != null">enrollment_course = #{enrollmentCourse}, </if>
+			<if test="insertTime != null">insert_time = #{insertTime}, </if>
+			<if test="insertOperator != null">insert_operator = #{insertOperator}, </if>
+			<if test="updateTime != null">update_time = #{updateTime}, </if>
+			<if test="updateOperator != null">update_operator = #{updateOperator}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_order where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_order where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
