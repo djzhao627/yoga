@@ -39,15 +39,21 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 	public List<MemberBaseInfoDO> list(Map<String, Object> map){
 		List<MemberBaseInfoDO> list = memberBaseInfoDao.list(map);
 		Map<String,String> mapCode=queryNameByCode("custom_type");
+        Map<String, String> courseMap = queryNameByCode("consultingCourse_type");
+        Map<String, String> accMap = queryNameByCode("yes_no");
+        Map<String, String> dataMap = queryNameByCode("dataSource_type");
 		list.forEach(p->{
-			String type = p.getType();
+			String type = p.getConsultingCourse();
 			if (StringUtils.isNotBlank(type)) {
 				String temp="";
 				for (int i = 0; i <type.split(",").length ; i++) {
-					temp+=mapCode.get(type.split(",")[i])+",";
+					temp+=courseMap.get(type.split(",")[i])+",";
 				}
-				p.setType(temp.substring(0,temp.lastIndexOf(",")));
+                p.setConsultingCourse(temp.substring(0,temp.lastIndexOf(",")));
 			}
+			p.setAccommodation(p.getAccommodation()==null?p.getAccommodation():accMap.get(p.getAccommodation()));
+			p.setType(p.getType()==null?p.getType():mapCode.get(p.getType()));
+			p.setDataSource(p.getDataSource()==null?p.getDataSource():dataMap.get(p.getDataSource()));
 		});
 		return list;
 	}
@@ -75,7 +81,7 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 	
 	@Override
 	public int update(MemberBaseInfoDO fcMemberManagementBaseinfo){
-		String customerServic = fcMemberManagementBaseinfo.getCustomerServic();
+        String customerServic = fcMemberManagementBaseinfo.getCustomerServic();
 		String consultants = fcMemberManagementBaseinfo.getConsultants();
 		if (StringUtils.isNotBlank(customerServic)) {
 			fcMemberManagementBaseinfo.setCustomerServic(customerServic.substring(0,customerServic.lastIndexOf(",")));

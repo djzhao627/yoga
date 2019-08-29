@@ -88,27 +88,11 @@ function load(dept) {
                             },
                             {
                                 field : 'consultingCourse',
-                                title : '咨询课程',
-                                formatter : function(value, row, index){
-                                    if(value==0){
-                                        return '零基础班';
-                                    }else if(value==1){
-                                        return '空中瑜伽';
-                                    }else if(value==2){
-                                        return '舞韵瑜伽';
-                                    }
-                                }
+                                title : '咨询课程'
                             },
                             {
                                 field : 'accommodation',
-                                title : '是否住宿',
-                                formatter : function(value, row, index){
-                                    if(value==0){
-                                        return '否';
-                                    }else if(value==1){
-                                        return '是';
-                                    }
-                                }
+                                title : '是否住宿'
                             },
                             {
                                 field : 'advisoryDate',
@@ -128,16 +112,7 @@ function load(dept) {
                             },
                             {
                                 field : 'dataSource',
-                                title : '数据来源',
-                                formatter : function(value, row, index){
-                                    if(value==0){
-                                        return '商务通';
-                                    }else if(value==1){
-                                        return '微信群';
-                                    }else if(value==2){
-                                        return '400呼入';
-                                    }
-                                }
+                                title : '数据来源'
                             },
                             {
                                 field : 'bz',
