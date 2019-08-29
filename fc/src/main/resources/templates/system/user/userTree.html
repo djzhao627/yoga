@@ -51,6 +51,9 @@
 					txt=txt+users[user].text+",";
 				}
 			}
+			if (txt.concat(",")) {
+				txt = txt.charAt(txt.length - 1);
+			}
 			parent.loadUser(userIds,txt);
 			var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
 			parent.layer.close(index);
