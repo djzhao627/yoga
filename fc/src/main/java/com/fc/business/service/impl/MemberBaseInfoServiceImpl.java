@@ -60,30 +60,16 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 	
 	@Override
 	public int save(MemberBaseInfoDO fcMemberManagementBaseinfo){
-		String customerServic = fcMemberManagementBaseinfo.getCustomerServic();
-		String consultants = fcMemberManagementBaseinfo.getConsultants();
-		if (StringUtils.isNotBlank(customerServic)) {
-			fcMemberManagementBaseinfo.setCustomerServic(customerServic.substring(0,customerServic.lastIndexOf(",")));
-		}
-		if (StringUtils.isNotBlank(consultants)) {
-			fcMemberManagementBaseinfo.setConsultants(consultants.substring(0,consultants.lastIndexOf(",")));
-		}
+
 		UserDO user = ShiroUtils.getUser();
 		Long userId = ShiroUtils.getUserId();
 		return memberBaseInfoDao.save(fcMemberManagementBaseinfo);
 	}
 	
 	@Override
-	public int update(MemberBaseInfoDO fcMemberManagementBaseinfo){
-		String customerServic = fcMemberManagementBaseinfo.getCustomerServic();
-		String consultants = fcMemberManagementBaseinfo.getConsultants();
-		if (StringUtils.isNotBlank(customerServic)) {
-			fcMemberManagementBaseinfo.setCustomerServic(customerServic.substring(0,customerServic.lastIndexOf(",")));
-		}
-		if (StringUtils.isNotBlank(consultants)) {
-			fcMemberManagementBaseinfo.setConsultants(consultants.substring(0,consultants.lastIndexOf(",")));
-		}
-		return memberBaseInfoDao.update(fcMemberManagementBaseinfo);
+	public int update(MemberBaseInfoDO memberBaseInfo){
+
+		return memberBaseInfoDao.update(memberBaseInfo);
 	}
 	
 	@Override
