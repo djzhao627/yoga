@@ -15,8 +15,10 @@ $.validator.setDefaults({
 });
 
 function submitData() {
+    var deptId = $("#deptId").val();
     //var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
     var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
+    formData.deptId = deptId;
     var url = "";
     if ($("#id").val()) {//修改时
         url = prefix + "/update";
@@ -28,7 +30,7 @@ function submitData() {
         cache: true,
         type: "POST",
         url: url,
-        data: $('#signupForm').serialize(),// 你的formid
+        data: formData,// 你的formid
         async: false,
         error: function (request) {
             parent.layer.alert("Connection error");

@@ -76,6 +76,7 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 		}
 		UserDO user = ShiroUtils.getUser();
 		Long userId = ShiroUtils.getUserId();
+		fcMemberManagementBaseinfo.setDeptId(fcMemberManagementBaseinfo.getDeptId().split(",")[0]);
 		return memberBaseInfoDao.save(fcMemberManagementBaseinfo);
 	}
 	

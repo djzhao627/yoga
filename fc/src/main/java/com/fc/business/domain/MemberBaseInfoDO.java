@@ -25,6 +25,8 @@ public class MemberBaseInfoDO implements Serializable {
 	private String consultants;
 	//微信号
 	private String wechat;
+	//门店id
+	private String deptId;
 	//联系电话
 	private String phone;
 	//咨询课程
@@ -114,6 +116,15 @@ public class MemberBaseInfoDO implements Serializable {
 	public String getWechat() {
 		return wechat;
 	}
+
+	public String getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(String deptId) {
+		this.deptId = deptId;
+	}
+
 	/**
 	 * 设置：联系电话
 	 */

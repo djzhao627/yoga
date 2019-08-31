@@ -3,6 +3,7 @@ $(function () {
     var editROW = getPageValue();//列表页面传值(row)
     var customId=$("#customId").val();
     validateRule();
+    load(customId);
 });
 
 $.validator.setDefaults({
@@ -10,7 +11,43 @@ $.validator.setDefaults({
         submitData(customId);
     }
 });
+function load(customId) {
+    $('#exampleTable')
+        .bootstrapTable(
+            {
+                method: 'get', // 服务器数据的请求方式 get or post
+                url: prefix + "/listPage", // 服务器数据的加载地址
+                // showRefresh : true,
+                // showToggle : true,
+                // showColumns : true,
+                clickToSelect: true,
+                iconSize: 'outline',
+                toolbar: '#exampleToolbar',
+                pagination: true, // 设置为true会在底部显示分页条
+                striped: true, // 设置为true会有隔行变色效果
+                dataType: "json", // 服务器返回的数据类型
+                pagination: true, // 设置为true会在底部显示分页条
+                singleSelect: false, // 设置为true将禁止多选
+                pageNumber: 1, // 如果设置了分布，首页页码
+                pageSize: 10, // 如果设置了分页，每页数据条数
+                pageList: [5, 10, 50, 100, 500],  //记录数可选列表
+                sortStable: true,
+                sortable: true,                     //是否启用排序
+                sortOrder: "asc",                   //排序方式
+                search: false,
+                sidePagination: "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
+                queryParams: function (params) {
+                    var formData ={};
+                    formData.limit = params.limit;
+                    formData.offset = params.offset;
+                    formData.sort = this.sortName;
+                    formData.order = this.sortOrder;
+                    formData.customId=customId;
+                    return formData;
+                }
 
+            });
+}
 function submitData(customId) {
     layer.alert('customId:'+customId);
     //var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象

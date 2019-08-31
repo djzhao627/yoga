@@ -61,11 +61,11 @@ public class MemberBaseInfoController extends BaseController {
 	/**
 	 * 跳转到新增页面
 	 */
-	@GetMapping("/add")
+	@GetMapping("/add/{idName}")
 	@RequiresPermissions("business:memberBaseInfo:add")
-	ModelAndView add(){
+	ModelAndView add(@PathVariable("idName")String idName){
 	    ModelAndView mv = new ModelAndView();
-		mv.addObject("memberBaseInfo", new MemberBaseInfoDO());
+		mv.addObject("deptId", idName);
 		mv.setViewName("business/memberBaseInfo/add");
 		return mv;
 	}
