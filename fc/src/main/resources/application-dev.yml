@@ -16,7 +16,7 @@ spring:
     
 #mysql 
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bootdo?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://localhost:3306/jumbo?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
 

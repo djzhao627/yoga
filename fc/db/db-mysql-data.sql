@@ -8,6 +8,7 @@ INSERT INTO `system_sequence` VALUES ('OA_NOTIFY_RECORD', 62, 1);
 INSERT INTO `system_sequence` VALUES ('t_custom_follow_plan', 0, 1);
 INSERT INTO `system_sequence` VALUES ('t_member_baseinfo', 5, 1);
 INSERT INTO `system_sequence` VALUES ('t_work_plan', 1, 1);
+INSERT INTO `system_sequence` VALUES ('t_order', '2', '1');
 
 -- ----------------------------
 -- Records of sys_menu
@@ -75,6 +76,15 @@ INSERT INTO `sys_menu` VALUES (99, 96, '所有权限', '', 'act:process', 2, '',
 INSERT INTO `sys_menu` VALUES (101, 93, '待办任务', 'activiti/task/todo', '', 1, '', NULL, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (102, 77, '测试菜单', 'business/mytest', 'business:mytest', 1, '', 3, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (103, 102, '新增', NULL, 'business:mytest:add', 2, '', 1, NULL, NULL);
+INSERT INTO `sys_menu` VALUES ('119', '107', '订单信息', '/crm/order', 'crm:order:order', '1', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('120', '119', '新增', null, 'crm:order:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('121', '119', '修改', null, 'crm:order:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('122', '119', '删除', null, 'crm:order:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('123', '119', '批量删除', null, 'crm:order:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('124', '107', '新增', '/business/customFollowPlan', 'business:customFollowPlan:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('125', '107', '修改', '/business/customFollowPlan', 'business:customFollowPlan:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('126', '107', '删除', '/business/customFollowPlan', 'business:customFollowPlan:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('127', '107', '批量删除', '/business/customFollowPlan', 'business:customFollowPlan:batchRemove', '2', '', null, null, null);
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -359,6 +369,16 @@ INSERT INTO `sys_role_menu` VALUES (3344, 1, 102);
 INSERT INTO `sys_role_menu` VALUES (3345, 1, 103);
 INSERT INTO `sys_role_menu` VALUES (3346, 1, 77);
 INSERT INTO `sys_role_menu` VALUES (3347, 1, -1);
+INSERT INTO `sys_role_menu` VALUES ('4126', '1', '123');
+INSERT INTO `sys_role_menu` VALUES ('4127', '1', '122');
+INSERT INTO `sys_role_menu` VALUES ('4128', '1', '121');
+INSERT INTO `sys_role_menu` VALUES ('4129', '1', '120');
+INSERT INTO `sys_role_menu` VALUES ('4180', '1', '119');
+INSERT INTO `sys_role_menu` VALUES ('4203', '1', '127');
+INSERT INTO `sys_role_menu` VALUES ('4204', '1', '126');
+INSERT INTO `sys_role_menu` VALUES ('4205', '1', '125');
+INSERT INTO `sys_role_menu` VALUES ('4206', '1', '124');
+
 
 -- ----------------------------
 -- Records of sys_user_role
@@ -722,3 +742,23 @@ INSERT INTO `act_hi_identitylink` VALUES ('147503', NULL, 'starter', 'admin', NU
 -- Records of act_hi_procinst
 -- ----------------------------
 INSERT INTO `act_hi_procinst` VALUES ('147501', '147501', '7beea6723bcb48fbbf7c1684fa2152d5', 'salary:3:135067', '2018-11-09 15:48:10', NULL, NULL, 'admin', 'start', NULL, NULL, NULL, '', NULL);
+
+-- ----------------------------
+-- Records of t_order
+-- ----------------------------
+INSERT INTO `t_order` VALUES ('0', '12312321421', '0', '2019-08-27', '0', '1', '211', '1', '1', '2019-08-28', '2', '12', '1', '2019-08-27 23:56:57', null, '2019-08-27 23:56:57', null);
+
+-- ----------------------------
+-- Records of t_custom_follow_plan
+-- ----------------------------
+INSERT INTO `t_custom_follow_plan` VALUES ('0', '3', '2019-08-21', '收到公司的规定符合', '2019-08-24 18:25:33', null, null, null);
+
+-- ----------------------------
+-- Records of t_member_baseinfo
+-- ----------------------------
+INSERT INTO `t_member_baseinfo` VALUES ('0', '人员信息', '1', '1', '1', null, '1', '', '', '2019-08-21', '', '', '', '', '', '', '2019-08-21 21:32:13', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('1', '人员信息', '1', '', '', null, '', '', '', '2019-08-21', '', '', '', '', '', '', '2019-08-21 21:31:42', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('2', '水电费', '2', '都是', '123123', null, '1232121', '2', '1', '2019-08-20', '1212', '12', '1232131', '1', '', '123第三方', '2019-08-24 17:40:27', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('3', '会员基本信息', '1', '都是', '123', null, '1232121', '', '', '2019-08-21', '', '', '', '', '', '', '2019-08-21 21:17:04', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('4', '坎坎坷坷', '2', '鹿晗', '2342478w', null, '123213', '2', '0', '2019-08-14', '江苏南京', '吴亦凡', '12312321421', '1', '', '123第三方', '2019-08-24 22:17:05', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('5', '快快快', '2', '李彦宏', '123', null, '1232121', '2,1', '0', '2019-08-30', '', '郭德纲', '', '1', null, '', '2019-08-29 21:25:19', null, null, null);

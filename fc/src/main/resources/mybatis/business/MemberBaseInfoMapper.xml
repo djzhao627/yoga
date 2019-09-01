@@ -16,7 +16,7 @@
             accommodation,
             advisory_date,
             address,
-            customer_servic,
+            customer_service,
             sfzh,
             data_source,
             certificate_number,
@@ -32,7 +32,7 @@
     <select id="list" resultType="com.fc.business.domain.MemberBaseInfoDO">
         SELECT
         id, name, type, consultants,deptId, wechat, phone, consulting_course, accommodation, advisory_date, address,
-        customer_servic, sfzh, data_source, certificate_number, bz, insert_time, insert_operator, update_time,
+        customer_service, sfzh, data_source, certificate_number, bz, insert_time, insert_operator, update_time,
         update_operator
         FROM t_member_baseInfo
         <where>
@@ -71,7 +71,7 @@
                 AND address LIKE '%${ address}%'
             </if>
             <if test="customerServic != null and customerServic != ''">
-                AND customer_servic LIKE '%${ customerServic}%'
+                AND customer_service LIKE '%${ customerServic}%'
             </if>
             <if test="sfzh != null and sfzh != ''">
                 AND sfzh LIKE '%${ sfzh}%'
@@ -149,7 +149,7 @@
                 AND address LIKE '%${ address}%'
             </if>
             <if test="customerServic != null and customerServic != ''">
-                AND customer_servic LIKE '%${ customerServic}%'
+                AND customer_service LIKE '%${ customerServic}%'
             </if>
             <if test="sfzh != null and sfzh != ''">
                 AND sfzh LIKE '%${ sfzh}%'
@@ -199,7 +199,7 @@
         accommodation,
         advisory_date,
         address,
-        customer_servic,
+        customer_service,
         sfzh,
         data_source,
         certificate_number,
@@ -248,7 +248,7 @@
             <if test="accommodation != null">accommodation = #{accommodation},</if>
             <if test="advisoryDate != null">advisory_date = #{advisoryDate},</if>
             <if test="address != null">address = #{address},</if>
-            <if test="customerServic != null">customer_servic = #{customerServic},</if>
+            <if test="customerServic != null">customer_service = #{customerServic},</if>
             <if test="sfzh != null">sfzh = #{sfzh},</if>
             <if test="dataSource != null">data_source = #{dataSource},</if>
             <if test="certificateNumber != null">certificate_number = #{certificateNumber},</if>
