@@ -54,8 +54,8 @@
                 txt = txt + users[user].text + ",";
             }
         }
-        if (txt.concat(",")) {
-            txt = txt.charAt(txt.length - 1);
+        if (txt.concat(",") && txt.charAt(txt.length - 1) == ',') {
+            txt = txt.substring(0, txt.length - 1);
         }
         parent.loadCustomer(userIds, txt);
         var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
