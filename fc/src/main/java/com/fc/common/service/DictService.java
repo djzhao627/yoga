@@ -1,6 +1,7 @@
 package com.fc.common.service;
 
 import com.fc.common.domain.DictDO;
+import com.fc.common.domain.Tree;
 import com.fc.system.domain.UserDO;
 
 import java.util.List;
@@ -53,4 +54,5 @@ public interface DictService {
 	 */
 	List<DictDO> listByType(String type);
 
+    Tree<DictDO> dictTree();
 }

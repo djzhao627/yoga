@@ -1,5 +1,7 @@
 package com.fc.common.service.impl;
 
+import com.fc.common.domain.Tree;
+import com.fc.common.utils.BuildTree;
 import com.fc.common.utils.PageUtils;
 import com.fc.common.utils.StringUtils;
 import com.fc.system.domain.UserDO;
@@ -8,10 +10,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import com.fc.common.dao.DictDao;
 import com.fc.common.domain.DictDO;
@@ -109,4 +108,22 @@ public class DictServiceImpl implements DictService {
         return dictDao.list(param);
     }
 
+    @Override
+    public Tree<DictDO> dictTree() {
+        List<Tree<DictDO>> trees = new ArrayList<>();
+        List<DictDO> dictList = dictDao.dictTypeList();
+        for (DictDO dictDO : dictList) {
+            Tree<DictDO> tree = new Tree<>();
+            tree.setId(dictDO.getValue());
+            tree.setId(dictDO.getType());
+            tree.setText(dictDO.getDescription());
+            Map<String, Object> state = new HashMap<>(16);
+            state.put("opened", true);
+            tree.setState(state);
+            trees.add(tree);
+        }
+        // 默认顶级菜单为０，根据数据库实际情况调整
+        Tree<DictDO> t = BuildTree.build(trees);
+        return t;
+    }
 }

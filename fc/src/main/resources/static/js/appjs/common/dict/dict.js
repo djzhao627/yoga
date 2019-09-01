@@ -20,6 +20,7 @@ $(function() {
 	//	for (var selector in config) {
 	//		$(selector).chosen(config[selector]);
 	//	}
+	getTreeData();
 	load();
 });
 function selectLoad() {

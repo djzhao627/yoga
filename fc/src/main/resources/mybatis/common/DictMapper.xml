@@ -38,6 +38,10 @@
 		</choose>
 	</select>
 
+	<select id="dictTypeList" resultType="com.fc.common.domain.DictDO">
+		select type, description from sys_dict GROUP BY type
+	</select>
+
 	<select id="count" resultType="int">
 		select count(*) from sys_dict
 		<where>
