@@ -88,6 +88,13 @@ INSERT INTO `sys_menu` VALUES ('125', '107', '修改', '/business/customFollowPl
 INSERT INTO `sys_menu` VALUES ('126', '107', '删除', '/business/customFollowPlan', 'business:customFollowPlan:remove', '2', '', null, null, null);
 INSERT INTO `sys_menu` VALUES ('127', '107', '批量删除', '/business/customFollowPlan', 'business:customFollowPlan:batchRemove', '2', '', null, null, null);
 
+INSERT INTO `sys_menu` VALUES ('128', '84', '工作计划', 'crm/workPlan', 'crm:workPlan:workPlan', '1', 'fa fa-keyboard-o', '1', null, null);
+INSERT INTO `sys_menu` VALUES ('129', '128', '新增', null, 'crm:workPlan:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('130', '128', '修改', null, 'crm:workPlan:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('131', '128', '删除', null, 'crm:workPlan:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('132', '128', '批量删除', null, 'crm:workPlan:batchRemove', '2', '', null, null, null);
+
+
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------

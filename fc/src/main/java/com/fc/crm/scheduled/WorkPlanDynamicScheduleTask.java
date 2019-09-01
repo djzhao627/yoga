@@ -7,6 +7,7 @@ import com.fc.oa.domain.NotifyRecordDO;
 import com.fc.oa.service.NotifyService;
 import com.fc.system.domain.UserDO;
 import com.fc.system.service.SessionService;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -52,7 +53,9 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
                 () -> {
 
                     List<WorkPlanDO> WorkPlanDOList = workPlanService.list(null);
-                    addRecordOfWorkPlan(WorkPlanDOList);
+                    if (CollectionUtils.isNotEmpty(WorkPlanDOList)) {
+                        addRecordOfWorkPlan(WorkPlanDOList);
+                    }
                     ThreadPoolExecutor executor = new ThreadPoolExecutor(1, 1, 0, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>());
                     executor.execute(new Runnable() {
                         @Override
