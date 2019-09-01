@@ -75,17 +75,9 @@ public class NotifyServiceImpl implements NotifyService {
         notify.setUpdateDate(new Date());
         int r = notifyDao.save(notify);
         // 保存到接受者列表中
-        Long[] userIds = notify.getUserIds();
+        List<Long> userIds = notify.getUserIds();
         Long notifyId = notify.getId();
-        List<NotifyRecordDO> records = new ArrayList<>();
-        for (Long userId : userIds) {
-            NotifyRecordDO record = new NotifyRecordDO();
-            record.setNotifyId(notifyId);
-            record.setUserId(userId);
-            record.setIsRead(0);
-            records.add(record);
-        }
-        recordDao.batchSave(records);
+        saveNotify(userIds, notifyId);
         //给在线用户发送通知
         ThreadPoolExecutor executor = new ThreadPoolExecutor(1, 1, 0, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>());
         executor.execute(new Runnable() {
@@ -102,6 +94,19 @@ public class NotifyServiceImpl implements NotifyService {
         });
         executor.shutdown();
         return r;
+    }
+
+    @Override
+    public void saveNotify(List<Long> userIds, Long notifyId) {
+        List<NotifyRecordDO> records = new ArrayList<>();
+        for (Long userId : userIds) {
+            NotifyRecordDO record = new NotifyRecordDO();
+            record.setNotifyId(notifyId);
+            record.setUserId(userId);
+            record.setIsRead(0);
+            records.add(record);
+        }
+        recordDao.batchSave(records);
     }
 
     @Override

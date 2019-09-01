@@ -33,4 +33,6 @@ public interface NotifyService {
 //	Map<String, Object> message(Long userId);
 
 	List<NotifyDTO> selfList(Map<String, Object> map);
+
+	void saveNotify(List<Long> userIds, Long notifyId);
 }

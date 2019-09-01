@@ -3,7 +3,7 @@ package com.fc.oa.domain;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
-
+import java.util.List;
 
 
 /**
@@ -41,7 +41,7 @@ public class NotifyDO implements Serializable {
 	//删除标记
 	private String delFlag;
 	
-	private Long[] userIds;
+	private List<Long> userIds;
 
 	/**
 	 * 设置：编号
@@ -187,10 +187,10 @@ public class NotifyDO implements Serializable {
 	public String getDelFlag() {
 		return delFlag;
 	}
-	public Long[] getUserIds() {
+	public List<Long> getUserIds() {
 		return userIds;
 	}
-	public void setUserIds(Long[] userIds) {
+	public void setUserIds(List<Long> userIds) {
 		this.userIds = userIds;
 	}
 
@@ -209,7 +209,7 @@ public class NotifyDO implements Serializable {
 				", updateDate=" + updateDate +
 				", remarks='" + remarks + '\'' +
 				", delFlag='" + delFlag + '\'' +
-				", userIds=" + Arrays.toString(userIds) +
+				", userIds=" + Arrays.toString(userIds.toArray()) +
 				'}';
 	}
 }
