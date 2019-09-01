@@ -38,13 +38,21 @@ public class WorkPlanConstant {
      */
     public static final String schedule = "schedule";
     /**
-     * 责任人
+     * 责任人ID
      */
     public static final String personLiable = "personLiable";
     /**
-     * 协助人
+     * 责任人名称
+     */
+    public static final String personLiableName = "personLiableName";
+    /**
+     * 协助人ID
      */
     public static final String helper = "helper";
+    /**
+     * 协助人名称
+     */
+    public static final String helperName = "helperName";
     /**
      * 备注
      */

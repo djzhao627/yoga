@@ -14,7 +14,7 @@ import java.util.Date;
 public class WorkPlanDO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    //
+    // ID
     private String id;
 
     //交办事项
@@ -31,16 +31,28 @@ public class WorkPlanDO implements Serializable {
 
     //结束时间
     private String endTime;
+
     //完成进度
     private String schedule;
+
     //责任人
     private String personLiable;
+
+    //责任人名称
+    private String personLiableName;
+
     //协助人
     private String helper;
+
+    //协助人名称
+    private String helperName;
+
     //备注
     private String remarks;
+
     //提醒方式，任务开始后，每天提醒？还是如何提醒
     private String remindType;
+
     //状态：0：草稿，1：发布，2：删除
     private String state;
     /**
@@ -79,6 +91,22 @@ public class WorkPlanDO implements Serializable {
      */
     public String getId() {
         return id;
+    }
+
+    public String getPersonLiableName() {
+        return personLiableName;
+    }
+
+    public void setPersonLiableName(String personLiableName) {
+        this.personLiableName = personLiableName;
+    }
+
+    public String getHelperName() {
+        return helperName;
+    }
+
+    public void setHelperName(String helperName) {
+        this.helperName = helperName;
     }
 
     /**

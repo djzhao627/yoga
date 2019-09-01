@@ -11,6 +11,8 @@
                     <form class="form-horizontal m-t" id="signupForm">
                         <input id="id" name="id" th:value="${workPlan.id}" type="hidden"/>
                         <input id="deptId" name="deptId" th:value="${workPlan.deptId}" type="hidden"/>
+                        <input id="helper" name="helper" th:value="${workPlan.helper}" type="hidden">
+                        <input id="personLiable" name="personLiable" th:value="${workPlan.personLiable}" type="hidden">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">交办事项：</label>
                             <div class="col-sm-8">
@@ -53,14 +55,14 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">责任人：</label>
                             <div class="col-sm-8">
-                                <input id="personLiable" name="personLiable" th:value="${workPlan.personLiable}"
+                                <input id="personLiableName" name="personLiableName" th:value="${workPlan.personLiableName}"
                                        class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">协助人：</label>
                             <div class="col-sm-8">
-                                <input id="helper" name="helper" th:value="${workPlan.helper}" class="form-control"
+                                <input id="helperName" name="helperName" th:value="${workPlan.helperName}" class="form-control"
                                        type="text">
                             </div>
                         </div>
