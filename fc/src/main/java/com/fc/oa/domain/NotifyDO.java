@@ -13,7 +13,7 @@ import java.util.List;
  * @email 1992lcg@163.com
  * @date 2017-10-05 17:11:16
  */
-public class NotifyDO implements Serializable {
+public class NotifyDO {
 	private static final long serialVersionUID = 1L;
 	
 	//编号
@@ -187,29 +187,13 @@ public class NotifyDO implements Serializable {
 	public String getDelFlag() {
 		return delFlag;
 	}
+
 	public List<Long> getUserIds() {
 		return userIds;
 	}
+
 	public void setUserIds(List<Long> userIds) {
 		this.userIds = userIds;
 	}
 
-	@Override
-	public String toString() {
-		return "NotifyDO{" +
-				"id=" + id +
-				", type='" + type + '\'' +
-				", title='" + title + '\'' +
-				", content='" + content + '\'' +
-				", files='" + files + '\'' +
-				", status='" + status + '\'' +
-				", createBy=" + createBy +
-				", createDate=" + createDate +
-				", updateBy='" + updateBy + '\'' +
-				", updateDate=" + updateDate +
-				", remarks='" + remarks + '\'' +
-				", delFlag='" + delFlag + '\'' +
-				", userIds=" + Arrays.toString(userIds.toArray()) +
-				'}';
-	}
 }

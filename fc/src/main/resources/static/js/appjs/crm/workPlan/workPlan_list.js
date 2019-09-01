@@ -84,11 +84,11 @@ function load(deptId) {
                         title : '结束时间',
                         width : 50
                     },{
-                        field : 'personLiable',
+                        field : 'personLiableName',
                         title : '责任人',
                         width : 50
                     },{
-                        field : 'helper',
+                        field : 'helperName',
                         title : '协助人',
                         width : 50
                     },{
@@ -111,10 +111,7 @@ function load(deptId) {
                             var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
                                 + row.id
                                 + '\')"><i class="fa fa-remove"></i></a> ';
-                            var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-                                + row.id
-                                + '\')"><i class="fa fa-key"></i></a> ';
-                            return e + d + f;
+                            return e + d;
                         }
                     }
                  ]

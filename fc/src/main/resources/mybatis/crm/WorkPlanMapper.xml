@@ -5,14 +5,14 @@
 
     <select id="get" resultType="com.fc.crm.domain.WorkPlanDO">
 		SELECT 
-			ID,content,dept_Id,dept_Name,start_Time,end_Time,schedule,person_Liable,helper,remarks,remind_Type,state,Level,Task_Annex,Task_Annex_path,execute_Annex,execute_Annex_path
+			ID,content,dept_Id,dept_Name,start_Time,end_Time,schedule,person_Liable,person_Liable_Name,helper,helper_Name,remarks,remind_Type,state,Level,Task_Annex,Task_Annex_path,execute_Annex,execute_Annex_path
 		FROM t_work_plan
 		where ID = #{value}
 	</select>
 
     <select id="list" resultType="com.fc.crm.domain.WorkPlanDO">
         SELECT
-        ID, content, dept_Id, dept_Name, start_Time, end_Time, schedule, person_Liable, helper, remarks, remind_Type,
+        ID, content, dept_Id, dept_Name, start_Time, end_Time, schedule, person_Liable, person_Liable_Name, helper, helper_Name, remarks, remind_Type,
         state, Level, Task_Annex, Task_Annex_path, execute_Annex, execute_Annex_path
         FROM t_work_plan
         <where>
@@ -41,8 +41,14 @@
             <if test="personLiable != null and personLiable != ''">
                 AND person_Liable LIKE '%${ personLiable}%'
             </if>
+            <if test="personLiableName != null and personLiableName != ''">
+                AND personLiableName LIKE '%${ personLiableName}%'
+            </if>
             <if test="helper != null and helper != ''">
                 AND helper LIKE '%${ helper}%'
+            </if>
+            <if test="helperName != null and helperName != ''">
+                AND helperName LIKE '%${ helperName}%'
             </if>
             <if test="remarks != null and remarks != ''">
                 AND remarks LIKE '%${ remarks}%'
@@ -110,8 +116,14 @@
             <if test="personLiable != null and personLiable != ''">
                 AND person_Liable LIKE '%${ personLiable}%'
             </if>
+            <if test="personLiableName != null and personLiableName != ''">
+                AND person_LiableName LIKE '%${ personLiableName}%'
+            </if>
             <if test="helper != null and helper != ''">
                 AND helper LIKE '%${ helper}%'
+            </if>
+            <if test="helperName != null and helperName != ''">
+                AND helperName LIKE '%${ helperName}%'
             </if>
             <if test="remarks != null and remarks != ''">
                 AND remarks LIKE '%${ remarks}%'
@@ -158,7 +170,9 @@
         end_Time,
         schedule,
         person_Liable,
+        person_Liable_Name,
         helper,
+        helper_Name,
         remarks,
         remind_Type,
         state,
@@ -179,7 +193,9 @@
         #{endTime, jdbcType=VARCHAR},
         #{schedule, jdbcType=VARCHAR},
         #{personLiable, jdbcType=VARCHAR},
+        #{personLiableName, jdbcType=VARCHAR},
         #{helper, jdbcType=VARCHAR},
+        #{helperName, jdbcType=VARCHAR},
         #{remarks, jdbcType=VARCHAR},
         #{remindType, jdbcType=VARCHAR},
         #{state, jdbcType=VARCHAR},
@@ -201,7 +217,9 @@
             <if test="endTime != null">end_Time = #{endTime},</if>
             <if test="schedule != null">schedule = #{schedule},</if>
             <if test="personLiable != null">person_Liable = #{personLiable},</if>
+            <if test="personLiableName != null">personLiableName = #{personLiableName},</if>
             <if test="helper != null">helper = #{helper},</if>
+            <if test="helperName != null">helperName = #{helperName},</if>
             <if test="remarks != null">remarks = #{remarks},</if>
             <if test="remindType != null">remind_Type = #{remindType},</if>
             <if test="state != null">state = #{state},</if>

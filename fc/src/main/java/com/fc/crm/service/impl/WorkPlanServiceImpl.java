@@ -1,8 +1,15 @@
 package com.fc.crm.service.impl;
 
+import com.fc.common.utils.ShiroUtils;
+import com.fc.oa.domain.NotifyDO;
+import com.fc.oa.service.NotifyService;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,8 +21,12 @@ import com.fc.common.utils.PageUtils;
 
 @Service
 public class WorkPlanServiceImpl implements WorkPlanService {
+
     @Autowired
     private WorkPlanDao workPlanDao;
+
+    @Autowired
+    private NotifyService notifyService;
 
     @Override
     public WorkPlanDO get(String id) {
@@ -35,6 +46,22 @@ public class WorkPlanServiceImpl implements WorkPlanService {
 
     @Override
     public int save(WorkPlanDO workPlan) {
+        if (workPlan != null) {
+            NotifyDO notify = new NotifyDO();
+            notify.setType("1");
+            notify.setContent(workPlan.getContent());
+            notify.setTitle("工作计划");
+            List<Long> userIdList = new ArrayList<>();
+            if (StringUtils.isNotEmpty(workPlan.getPersonLiable())) {
+                userIdList.add(Long.parseLong(workPlan.getPersonLiable()));
+            }
+            if (StringUtils.isNotEmpty(workPlan.getHelper())) {
+                userIdList.add(Long.parseLong(workPlan.getHelper()));
+            }
+            notify.setUserIds(userIdList);
+            notify.setCreateBy(ShiroUtils.getUserId());
+            notifyService.save(notify);
+        }
         return workPlanDao.save(workPlan);
     }
 

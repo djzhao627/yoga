@@ -79,8 +79,8 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
                 triggerContext -> {
                     //2.1 从数据库获取执行周期
                     //String cron = "0/5 * 1 * * ?";
-//                    String cron = "0 0/1 * * * ?";
-                    String cron = "0/10 * * * * ?";
+                    String cron = "0 0/1 * * * ?";
+//                    String cron = "0/10 * * * * ?";
                     //2.2 合法性校验.
                     if (StringUtils.isEmpty(cron)) {
                         // Omitted Code ..

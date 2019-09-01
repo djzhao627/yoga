@@ -28,7 +28,7 @@ public class ${className}ServiceImpl implements ${className}Service {
 	}
 	
 	@Override
-	public List<Map<String, Object>> findDatas(Map<String, Object> map){
+	public List<Map<String, Object>> findDataList(Map<String, Object> map){
 		List<Map<String, Object>> list = ${classname}Dao.findDatas(map);
 		return list;
 	}

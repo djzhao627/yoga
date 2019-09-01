@@ -214,7 +214,7 @@ public class NotifyController extends BaseController {
 		notifyRecordDO.setIsRead(Constant.OA_NOTIFY_READ_YES);
 		notifyRecordService.changeRead(notifyRecordDO);
 		model.addAttribute("notify", notify);
-		return "oa/notify/read";
+		return "crm/workPlan/workPlan_list";
 	}
 
 
