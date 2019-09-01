@@ -2,6 +2,7 @@ package com.fc.common.controller;
 
 import com.fc.common.config.Constant;
 import com.fc.common.domain.DictDO;
+import com.fc.common.domain.Tree;
 import com.fc.common.service.DictService;
 import com.fc.common.utils.PageUtils;
 import com.fc.common.utils.Query;
@@ -149,5 +150,13 @@ public class DictController extends BaseController {
 		map.put("type", type);
 		List<DictDO> dictList = dictService.list(map);
 		return dictList;
+	}
+
+	@PostMapping("/dictTree")
+	@ResponseBody
+	public Tree<DictDO> dictTree() {
+		Tree<DictDO> tree = new Tree<DictDO>();
+		tree = dictService.dictTree();
+		return tree;
 	}
 }

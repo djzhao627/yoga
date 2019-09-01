@@ -2,6 +2,7 @@ package com.fc.common.dao;
 
 import com.fc.common.domain.DictDO;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,4 +33,6 @@ public interface DictDao {
 	int batchRemove(Long[] ids);
 
 	List<DictDO> listType();
+
+    List<DictDO> dictTypeList();
 }
