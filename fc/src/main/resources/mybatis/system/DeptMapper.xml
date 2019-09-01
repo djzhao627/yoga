@@ -24,7 +24,7 @@
 				order by ${sort, jdbcType=VARCHAR} ${order, jdbcType=VARCHAR}
 			</when>
 			<otherwise>
-				order by dept_id desc
+				order by order_num
 			</otherwise>
 		</choose>
 	</select>

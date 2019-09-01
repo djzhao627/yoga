@@ -561,16 +561,23 @@ INSERT INTO `sys_dict` VALUES (122, '绘画', 'painting', 'hobby', '爱好', NUL
 -- Records of sys_dept
 -- ----------------------------
 DELETE FROM `sys_dept`;
-INSERT INTO `sys_dept` VALUES (6, 0, '研发部', 1, 1);
-INSERT INTO `sys_dept` VALUES (7, 6, '研發一部', 1, 1);
-INSERT INTO `sys_dept` VALUES (8, 6, '研发二部', 2, 1);
-INSERT INTO `sys_dept` VALUES (9, 0, '销售部', 2, 1);
-INSERT INTO `sys_dept` VALUES (10, 9, '销售一部', 1, 1);
-INSERT INTO `sys_dept` VALUES (11, 0, '产品部', 3, 1);
-INSERT INTO `sys_dept` VALUES (12, 11, '产品一部', 1, 1);
-INSERT INTO `sys_dept` VALUES (13, 0, '测试部', 5, 1);
-INSERT INTO `sys_dept` VALUES (14, 13, '测试一部', 1, 1);
-INSERT INTO `sys_dept` VALUES (15, 13, '测试二部', 2, 1);
+INSERT INTO `sys_dept` VALUES ('1', '0', '总经办', '1', '1');
+INSERT INTO `sys_dept` VALUES ('2', '0', '营销部', '2', '1');
+INSERT INTO `sys_dept` VALUES ('3', '2', '营销一部', '1', '1');
+INSERT INTO `sys_dept` VALUES ('4', '0', '教培', '4', '1');
+INSERT INTO `sys_dept` VALUES ('5', '0', '老门店', '5', '1');
+INSERT INTO `sys_dept` VALUES ('6', '0', '后勤部', '5', '1');
+INSERT INTO `sys_dept` VALUES ('7', '0', '新门店', '7', '1');
+INSERT INTO `sys_dept` VALUES ('8', '7', '静波瑜伽【河西CBD店】', '1', '1');
+INSERT INTO `sys_dept` VALUES ('9', '7', '河西二店', '2', '1');
+INSERT INTO `sys_dept` VALUES ('18', '5', '静波瑜伽【太阳城店】', '1', '1');
+INSERT INTO `sys_dept` VALUES ('19', '5', '静波瑜伽【金盛路店】', '2', '1');
+INSERT INTO `sys_dept` VALUES ('20', '5', '静波瑜伽【河定桥店】', '3', '1');
+INSERT INTO `sys_dept` VALUES ('21', '5', '静波瑜伽【扬州文体店】', '4', '1');
+INSERT INTO `sys_dept` VALUES ('22', '4', '静波瑜伽【教培基地】', '1', '1');
+INSERT INTO `sys_dept` VALUES ('23', '5', '静波瑜伽【扬州世贸店】', '5', '1');
+INSERT INTO `sys_dept` VALUES ('24', '0', '人事部', '8', '1');
+INSERT INTO `sys_dept` VALUES ('25', '0', '财务部', '9', '1');
 
 -- ----------------------------
 -- Records of sys_user
