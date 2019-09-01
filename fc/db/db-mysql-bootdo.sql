@@ -1673,3 +1673,169 @@ END
 delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
+//2019.08.31
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : mysql
+Source Server Version : 50560
+Source Host           : localhost:3306
+Source Database       : bootdo
+
+Target Server Type    : MYSQL
+Target Server Version : 50560
+File Encoding         : 65001
+
+Date: 2019-08-31 21:20:16
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for t_order
+-- ----------------------------
+DROP TABLE IF EXISTS `t_order`;
+CREATE TABLE `t_order` (
+                         `id` int(8) NOT NULL,
+                         `sfzh` varchar(20) DEFAULT NULL COMMENT '身份证号码',
+                         `Initial_training` varchar(3) DEFAULT NULL,
+                         `payment_date` varchar(20) DEFAULT NULL,
+                         `payment_type` varchar(3) DEFAULT NULL,
+                         `payment_mode` varchar(3) DEFAULT NULL,
+                         `payment_account` float DEFAULT NULL,
+                         `book` varchar(2) DEFAULT NULL,
+                         `clothes` varchar(2) DEFAULT NULL,
+                         `schedule_date` varchar(20) DEFAULT NULL,
+                         `schedule_campus` varchar(255) DEFAULT NULL,
+                         `other_fees` float DEFAULT NULL,
+                         `enrollment_course` varchar(255) DEFAULT NULL,
+                         `insert_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                         `insert_operator` int(8) DEFAULT NULL,
+                         `update_time` timestamp NULL DEFAULT NULL,
+                         `update_operator` int(8) DEFAULT NULL,
+                         PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_order
+-- ----------------------------
+INSERT INTO `t_order` VALUES ('0', '12312321421', '0', '2019-08-27', '0', '1', '211', '1', '1', '2019-08-28', '2', '12', '1', '2019-08-27 23:56:57', null, '2019-08-27 23:56:57', null);
+
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : mysql
+Source Server Version : 50560
+Source Host           : localhost:3306
+Source Database       : bootdo
+
+Target Server Type    : MYSQL
+Target Server Version : 50560
+File Encoding         : 65001
+
+Date: 2019-08-31 21:20:27
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for t_member_baseinfo
+-- ----------------------------
+DROP TABLE IF EXISTS `t_member_baseinfo`;
+CREATE TABLE `t_member_baseinfo` (
+                                   `id` int(4) NOT NULL,
+                                   `name` varchar(255) DEFAULT NULL COMMENT '姓名',
+                                   `type` varchar(3) DEFAULT NULL COMMENT '客户类型',
+                                   `consultants` varchar(255) DEFAULT NULL COMMENT '所属顾问',
+                                   `wechat` varchar(255) DEFAULT NULL COMMENT '微信号',
+                                   `deptId` varchar(255) DEFAULT NULL COMMENT '门店Id',
+                                   `phone` varchar(255) DEFAULT NULL COMMENT '联系电话',
+                                   `consulting_course` varchar(255) DEFAULT NULL COMMENT '咨询课程',
+                                   `accommodation` varchar(3) DEFAULT NULL COMMENT '是否住宿',
+                                   `advisory_date` varchar(40) DEFAULT NULL COMMENT '咨询日期',
+                                   `address` varchar(255) DEFAULT NULL COMMENT '所在省市',
+                                   `customer_servic` varchar(255) DEFAULT NULL COMMENT '所属客服',
+                                   `sfzh` varchar(255) DEFAULT NULL COMMENT '身份证号码',
+                                   `data_source` varchar(3) DEFAULT NULL COMMENT '数据来源',
+                                   `certificate_number` varchar(255) DEFAULT NULL COMMENT '证书编号',
+                                   `bz` varchar(255) DEFAULT NULL COMMENT '备注',
+                                   `insert_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+                                   `insert_operator` int(4) DEFAULT NULL COMMENT '插入操作人id',
+                                   `update_time` timestamp NULL DEFAULT NULL COMMENT '更新时间',
+                                   `update_operator` int(4) DEFAULT NULL COMMENT '更新操作人id',
+                                   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员信息表';
+
+-- ----------------------------
+-- Records of t_member_baseinfo
+-- ----------------------------
+INSERT INTO `t_member_baseinfo` VALUES ('0', '人员信息', '1', '1', '1', null, '1', '', '', '2019-08-21', '', '', '', '', '', '', '2019-08-21 21:32:13', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('1', '人员信息', '1', '', '', null, '', '', '', '2019-08-21', '', '', '', '', '', '', '2019-08-21 21:31:42', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('2', '水电费', '2', '都是', '123123', null, '1232121', '2', '1', '2019-08-20', '1212', '12', '1232131', '1', '', '123第三方', '2019-08-24 17:40:27', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('3', '会员基本信息', '1', '都是', '123', null, '1232121', '', '', '2019-08-21', '', '', '', '', '', '', '2019-08-21 21:17:04', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('4', '坎坎坷坷', '2', '鹿晗', '2342478w', null, '123213', '2', '0', '2019-08-14', '江苏南京', '吴亦凡', '12312321421', '1', '', '123第三方', '2019-08-24 22:17:05', null, null, null);
+INSERT INTO `t_member_baseinfo` VALUES ('5', '快快快', '2', '李彦宏', '123', null, '1232121', '2,1', '0', '2019-08-30', '', '郭德纲', '', '1', null, '', '2019-08-29 21:25:19', null, null, null);
+
+
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : mysql
+Source Server Version : 50560
+Source Host           : localhost:3306
+Source Database       : bootdo
+
+Target Server Type    : MYSQL
+Target Server Version : 50560
+File Encoding         : 65001
+
+Date: 2019-08-31 21:20:38
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for t_custom_follow_plan
+-- ----------------------------
+DROP TABLE IF EXISTS `t_custom_follow_plan`;
+CREATE TABLE `t_custom_follow_plan` (
+                                      `id` int(11) NOT NULL,
+                                      `custom_id` int(11) DEFAULT NULL COMMENT '客户id',
+                                      `talk_date` varchar(40) DEFAULT NULL COMMENT '沟通时间',
+                                      `record_or_plan` varchar(255) DEFAULT NULL COMMENT '沟通记录或计划',
+                                      `insert_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+                                      `insert_operator` int(11) DEFAULT NULL COMMENT '插入操作人',
+                                      `update_time` timestamp NULL DEFAULT NULL COMMENT '更新时间',
+                                      `update_operator` int(11) DEFAULT NULL COMMENT '更新操作人',
+                                      PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_custom_follow_plan
+-- ----------------------------
+INSERT INTO `t_custom_follow_plan` VALUES ('0', '3', '2019-08-21', '收到公司的规定符合', '2019-08-24 18:25:33', null, null, null);
+
+
+
+INSERT INTO `sys_menu` VALUES ('119', '107', '订单信息', '/crm/order', 'crm:order:order', '1', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('120', '119', '新增', null, 'crm:order:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('121', '119', '修改', null, 'crm:order:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('122', '119', '删除', null, 'crm:order:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('123', '119', '批量删除', null, 'crm:order:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('124', '107', '新增', '/business/customFollowPlan', 'business:customFollowPlan:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('125', '107', '修改', '/business/customFollowPlan', 'business:customFollowPlan:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('126', '107', '删除', '/business/customFollowPlan', 'business:customFollowPlan:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('127', '107', '批量删除', '/business/customFollowPlan', 'business:customFollowPlan:batchRemove', '2', '', null, null, null);
+
+
+INSERT INTO `sys_role_menu` VALUES ('4126', '1', '123');
+INSERT INTO `sys_role_menu` VALUES ('4127', '1', '122');
+INSERT INTO `sys_role_menu` VALUES ('4128', '1', '121');
+INSERT INTO `sys_role_menu` VALUES ('4129', '1', '120');
+INSERT INTO `sys_role_menu` VALUES ('4180', '1', '119');
+INSERT INTO `sys_role_menu` VALUES ('4203', '1', '127');
+INSERT INTO `sys_role_menu` VALUES ('4204', '1', '126');
+INSERT INTO `sys_role_menu` VALUES ('4205', '1', '125');
+INSERT INTO `sys_role_menu` VALUES ('4206', '1', '124');
+
+INSERT INTO `system_sequence` VALUES ('t_order', '2', '1');

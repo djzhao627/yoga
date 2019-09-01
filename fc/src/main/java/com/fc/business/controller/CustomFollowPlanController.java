@@ -65,7 +65,12 @@ public class CustomFollowPlanController extends BaseController {
     @RequiresPermissions("business:customFollowPlan:add")
     ModelAndView add(@PathVariable("customId")String customId) {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("customId",customId);
+        CustomFollowPlanDO customFollowPlanDO =customFollowPlanService.getPlanData(customId);
+        if (customFollowPlanDO == null) {
+            customFollowPlanDO =new CustomFollowPlanDO();
+            customFollowPlanDO.setCustomId(customId);
+        }
+        mv.addObject("custom",customFollowPlanDO);
         mv.setViewName("business/customFollowPlan/add");
         return mv;
     }

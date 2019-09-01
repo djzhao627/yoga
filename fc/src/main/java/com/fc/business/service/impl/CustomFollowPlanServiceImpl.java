@@ -50,5 +50,10 @@ public class CustomFollowPlanServiceImpl implements CustomFollowPlanService {
 	public int batchRemove(Integer[] ids){
 		return customFollowPlanDao.batchRemove(ids);
 	}
-	
+
+    @Override
+    public CustomFollowPlanDO getPlanData(String customId) {
+        return customFollowPlanDao.getPlanData(customId);
+    }
+
 }

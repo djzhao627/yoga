@@ -4,16 +4,16 @@
 <head th:include="include :: header"></head>
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
-    <div class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
-                        <input id="customId" name="customId" type="hidden" th:value="${customId}">
+                        <input id="customId" name="customId" type="hidden" th:value="${custom.customId}">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">沟通时间：</label>
                             <div class="col-sm-8">
                                 <input id="talkDate" name="talkDate"
+                                       th:value="${custom.talkDate}"
                                        class="laydate-icon layer-date form-contro"
                                        type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"
                                        style="background-color: #fff;" readonly="readonly">
@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">沟通记录或计划：</label>
                             <div class="col-sm-8">
-                                <input id="recordOrPlan" name="recordOrPlan"
+                                <input id="recordOrPlan" name="recordOrPlan" th:value="${custom.recordOrPlan}"
                                        class="form-control" type="text">
                             </div>
                         </div>
@@ -35,10 +35,70 @@
                 </div>
             </div>
         </div>
-    </div>
+    <table id="exampleTable" data-mobile-responsive="true">
+        <thead>
+        <tr>
+            <th data-field="id" data-align='center' data-sortable="true">序列</th>
+            <th data-field="talkDate" data-align='center' data-sortable="true">沟通时间</th>
+            <th data-field="recordOrPlan" data-align='center' data-sortable="true">沟通记录或计划</th>
+        </tr>
+        </thead>
+    </table>
 </div>
 <div th:include="include::footer"></div>
 <script type="text/javascript" th:src="@{/js/appjs/business/customFollowPlan/add.js}">
+    var customId=$("#customId").val();
+    function load(customId) {
+        $('#exampleTable')
+            .bootstrapTable(
+                {
+                    method: 'get', // 服务器数据的请求方式 get or post
+                    url: prefix + "/listPage", // 服务器数据的加载地址
+                    // showRefresh : true,
+                    // showToggle : true,
+                    // showColumns : true,
+                    clickToSelect: true,
+                    iconSize: 'outline',
+                    toolbar: '#exampleToolbar',
+                    pagination: true, // 设置为true会在底部显示分页条
+                    striped: true, // 设置为true会有隔行变色效果
+                    dataType: "json", // 服务器返回的数据类型
+                    pagination: true, // 设置为true会在底部显示分页条
+                    singleSelect: false, // 设置为true将禁止多选
+                    pageNumber: 1, // 如果设置了分布，首页页码
+                    pageSize: 10, // 如果设置了分页，每页数据条数
+                    pageList: [5, 10, 50, 100, 500],  //记录数可选列表
+                    sortStable: true,
+                    sortable: true,                     //是否启用排序
+                    sortOrder: "asc",                   //排序方式
+                    showColumns: true, // 是否显示内容下拉框（选择显示的列）
+                    showRefresh: true,
+                    showToggle: true,
+                    search: false,
+                    showExport: true,                     //是否显示导出
+                    exportDataType: "all",              //basic', 'all', 'selected'.
+                    exportTypes: ['excel'],
+                    exportOptions: {
+                        ignoreColumn: [0],  //忽略某一列的索引
+                        fileName: '报表',  //文件名称设置
+                        worksheetName: 'sheet1',  //表格工作区名称
+                        tableName: '报表'
+                        //excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+                        //onMsoNumberFormat: DoOnMsoNumberFormat
+                    },
+                    sidePagination: "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
+                    queryParams: function (params) {
+                        var formData ={};
+                        formData.limit = params.limit;
+                        formData.offset = params.offset;
+                        formData.sort = this.sortName;
+                        formData.order = this.sortOrder;
+                        formData.customId=customId;
+                        return formData;
+                    }
+
+                });
+    }
 </script>
 </body>
 </html>

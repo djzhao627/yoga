@@ -9,7 +9,12 @@
 		FROM t_custom_follow_plan 
 		where id = #{value}
 	</select>
-
+	<select id="getPlanData" resultType="com.fc.business.domain.CustomFollowPlanDO">
+		SELECT
+			id,custom_id,talk_date,record_or_plan,insert_time,insert_operator,update_time,update_operator
+		FROM t_custom_follow_plan
+		where custom_id = #{customId} order by talk_date desc limit 1
+	</select>
 	<select id="list" resultType="com.fc.business.domain.CustomFollowPlanDO">
 		SELECT 
 			id, custom_id, talk_date, record_or_plan, insert_time, insert_operator, update_time, update_operator 		

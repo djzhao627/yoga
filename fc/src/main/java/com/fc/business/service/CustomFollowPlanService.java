@@ -28,4 +28,6 @@ public interface CustomFollowPlanService {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+    CustomFollowPlanDO getPlanData(String customId);
 }
