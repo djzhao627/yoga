@@ -189,6 +189,7 @@ public class NotifyController extends BaseController {
         try {
 			//查询列表数据
 	        Query query = new Query(params);
+			query.put("userId", getUserId());
 			List<NotifyDTO> list = notifyService.selfList(query);
 			
 			//获取页码参数
