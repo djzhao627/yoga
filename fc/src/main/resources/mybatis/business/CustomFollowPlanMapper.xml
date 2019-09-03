@@ -3,149 +3,217 @@
 
 <mapper namespace="com.fc.business.dao.CustomFollowPlanDao">
 
-	<select id="get" resultType="com.fc.business.domain.CustomFollowPlanDO">
-		SELECT 
-			id,custom_id,talk_date,record_or_plan,insert_time,insert_operator,update_time,update_operator			 
-		FROM t_custom_follow_plan 
-		where id = #{value}
-	</select>
-	<select id="getPlanData" resultType="com.fc.business.domain.CustomFollowPlanDO">
-		SELECT
-			id,custom_id,talk_date,record_or_plan,insert_time,insert_operator,update_time,update_operator
-		FROM t_custom_follow_plan
-		where custom_id = #{customId} order by talk_date desc limit 1
-	</select>
-	<select id="list" resultType="com.fc.business.domain.CustomFollowPlanDO">
-		SELECT 
-			id, custom_id, talk_date, record_or_plan, insert_time, insert_operator, update_time, update_operator 		
-		FROM t_custom_follow_plan 
+    <select id="get" resultType="com.fc.business.domain.CustomFollowPlanDO">
+        SELECT
+            id,
+            custom_id,
+            talk_date,
+            record_or_plan,
+            talk_date_next,
+            consulting_course,
+            area,
+            start_time,
+            end_time,
+            insert_time,
+            insert_operator,
+            update_time,
+            update_operator
+        FROM t_custom_follow_plan
+        where id = #{value}
+    </select>
+    <select id="getPlanData" resultType="com.fc.business.domain.CustomFollowPlanDO">
+        SELECT
+            id,
+            custom_id,
+            talk_date,
+            record_or_plan,
+            talk_date_next,
+            consulting_course,
+            area,
+            start_time,
+            end_time,
+            insert_time,
+            insert_operator,
+            update_time,
+            update_operator
+        FROM t_custom_follow_plan
+        where custom_id = #{customId}
+        order by talk_date desc limit 1
+    </select>
+    <select id="list" resultType="com.fc.business.domain.CustomFollowPlanDO">
+        SELECT
+        id, custom_id, talk_date, record_or_plan, talk_date_next,consulting_course,area,start_time,end_time,insert_time,
+        insert_operator, update_time, update_operator
+        FROM t_custom_follow_plan
         <where>
-          
-		  		  <if test="id != null and id != ''">
-		  		  	AND id = #{id}   
-		  		  </if>
-		  		  <if test="customId != null and customId != ''">
-		  		  	AND custom_id = #{customId}   
-		  		  </if>
-		  		  <if test="talkDate != null and talkDate != ''">
-		  		  	AND talk_date LIKE '%${ talkDate}%'  
-		  		  </if>
-		  		  <if test="recordOrPlan != null and recordOrPlan != ''">
-		  		  	AND record_or_plan LIKE '%${ recordOrPlan}%'  
-		  		  </if>
-		  		  <if test="insertTime != null and insertTime != ''">
-		  		  	AND insert_time = #{insertTime}   
-		  		  </if>
-		  		  <if test="insertOperator != null and insertOperator != ''">
-		  		  	AND insert_operator = #{insertOperator}   
-		  		  </if>
-		  		  <if test="updateTime != null and updateTime != ''">
-		  		  	AND update_time = #{updateTime}   
-		  		  </if>
-		  		  <if test="updateOperator != null and updateOperator != ''">
-		  		  	AND update_operator = #{updateOperator}   
-		  		  </if>
-		  		  
-		</where>
+
+            <if test="id != null and id != ''">
+                AND id = #{id}
+            </if>
+            <if test="customId != null and customId != ''">
+                AND custom_id = #{customId}
+            </if>
+            <if test="talkDate != null and talkDate != ''">
+                AND talk_date LIKE '%${ talkDate}%'
+            </if>
+            <if test="recordOrPlan != null and recordOrPlan != ''">
+                AND record_or_plan LIKE '%${ recordOrPlan}%'
+            </if>
+            <if test="talkDateNext != null and talkDateNext != ''">
+                AND talk_date_next  LIKE '%${ talkDateNext}%'
+            </if>
+            <if test="consultingCourse != null and consultingCourse != ''">
+                AND consulting_course = #{consultingCourse}
+            </if>
+            <if test="area != null and area != ''">
+                AND area like '%${area}%'
+            </if>
+            <if test="startTime != null and startTime != ''">
+                AND start_time  LIKE '%${ startTime}%'
+            </if>
+            <if test="endTime != null and endTime != ''">
+                AND end_time LIKE '%${ endTime}%'
+            </if>
+            <if test="insertTime != null and insertTime != ''">
+                AND insert_time = #{insertTime}
+            </if>
+            <if test="insertOperator != null and insertOperator != ''">
+                AND insert_operator = #{insertOperator}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="updateOperator != null and updateOperator != ''">
+                AND update_operator = #{updateOperator}
+            </if>
+
+        </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 ORDER BY ${sort} ${order}
             </when>
-			<otherwise>
+            <otherwise>
                 ORDER BY id DESC
-			</otherwise>
+            </otherwise>
         </choose>
-	</select>
-	
- 	<select id="findDatas" resultType="Map">
-		select 
-			*  
-		from t_custom_follow_plan
-		 <where>  
-		 
-		   		  <if test="id != null and id != ''">
-		  		  	AND id = #{id}   
-		  		  </if>
-		  		  <if test="customId != null and customId != ''">
-		  		  	AND custom_id = #{customId}   
-		  		  </if>
-		  		  <if test="talkDate != null and talkDate != ''">
-		  		  	AND talk_date LIKE '%${ talkDate}%'  
-		  		  </if>
-		  		  <if test="recordOrPlan != null and recordOrPlan != ''">
-		  		  	AND record_or_plan LIKE '%${ recordOrPlan}%'  
-		  		  </if>
-		  		  <if test="insertTime != null and insertTime != ''">
-		  		  	AND insert_time = #{insertTime}   
-		  		  </if>
-		  		  <if test="insertOperator != null and insertOperator != ''">
-		  		  	AND insert_operator = #{insertOperator}   
-		  		  </if>
-		  		  <if test="updateTime != null and updateTime != ''">
-		  		  	AND update_time = #{updateTime}   
-		  		  </if>
-		  		  <if test="updateOperator != null and updateOperator != ''">
-		  		  	AND update_operator = #{updateOperator}   
-		  		  </if>
-		  		  
-		</where>
-	</select>
-	 
-	<insert id="save" parameterType="com.fc.business.domain.CustomFollowPlanDO">
-				<!-- 
-		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
-            SELECT sys_seq('t_custom_follow_plan') 
-    	</selectKey> -->
-    	    	
-		insert into t_custom_follow_plan 
-		(
-		
-			id, 
-			custom_id, 
-			talk_date, 
-			record_or_plan, 
-			insert_time, 
-			insert_operator, 
-			update_time, 
-			update_operator
-		)
-		values
-		(
-		
-		    sys_seq('t_custom_follow_plan')  , 		    
-			#{customId, jdbcType=VARCHAR}, 			
-			#{talkDate, jdbcType=VARCHAR}, 			
-			#{recordOrPlan, jdbcType=VARCHAR}, 			
-			#{insertTime, jdbcType=VARCHAR}, 			
-			#{insertOperator, jdbcType=VARCHAR}, 			
-			#{updateTime, jdbcType=VARCHAR}, 			
-			#{updateOperator, jdbcType=VARCHAR}			
-		)
-	</insert>
-	 
-	<update id="update" parameterType="com.fc.business.domain.CustomFollowPlanDO">
-		update t_custom_follow_plan 
-		<set>
-			<if test="customId != null">custom_id = #{customId}, </if>
-			<if test="talkDate != null">talk_date = #{talkDate}, </if>
-			<if test="recordOrPlan != null">record_or_plan = #{recordOrPlan}, </if>
-			<if test="insertTime != null">insert_time = #{insertTime}, </if>
-			<if test="insertOperator != null">insert_operator = #{insertOperator}, </if>
-			<if test="updateTime != null">update_time = #{updateTime}, </if>
-			<if test="updateOperator != null">update_operator = #{updateOperator}</if>
-		</set>
-		where id = #{id}
-	</update>
-	
-	<delete id="remove">
-		delete from t_custom_follow_plan where id = #{value}
-	</delete>
-	
-	<delete id="batchRemove">
-		delete from t_custom_follow_plan where id in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+    </select>
+
+    <select id="findDatas" resultType="Map">
+        select
+        *
+        from t_custom_follow_plan
+        <where>
+
+            <if test="id != null and id != ''">
+                AND id = #{id}
+            </if>
+            <if test="customId != null and customId != ''">
+                AND custom_id = #{customId}
+            </if>
+            <if test="talkDate != null and talkDate != ''">
+                AND talk_date LIKE '%${ talkDate}%'
+            </if>
+            <if test="recordOrPlan != null and recordOrPlan != ''">
+                AND record_or_plan LIKE '%${ recordOrPlan}%'
+            </if>
+            <if test="talkDateNext != null and talkDateNext != ''">
+                AND talk_date_next  LIKE '%${ talkDateNext}%'
+            </if>
+            <if test="consultingCourse != null and consultingCourse != ''">
+                AND consulting_course = #{consultingCourse}
+            </if>
+            <if test="area != null and area != ''">
+                AND area like '%${area}%'
+            </if>
+            <if test="startTime != null and startTime != ''">
+                AND start_time  LIKE '%${ startTime}%'
+            </if>
+            <if test="endTime != null and endTime != ''">
+                AND end_time LIKE '%${ endTime}%'
+            </if>
+            <if test="insertTime != null and insertTime != ''">
+                AND insert_time = #{insertTime}
+            </if>
+            <if test="insertOperator != null and insertOperator != ''">
+                AND insert_operator = #{insertOperator}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="updateOperator != null and updateOperator != ''">
+                AND update_operator = #{updateOperator}
+            </if>
+
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.fc.business.domain.CustomFollowPlanDO">
+        <!--
+<selectKey keyProperty="id" resultType="Integer" order="BEFORE">
+    SELECT sys_seq('t_custom_follow_plan')
+</selectKey> -->
+
+        insert into t_custom_follow_plan
+        (
+
+        id,
+        custom_id,
+        talk_date,
+        record_or_plan,talk_date_next,consulting_course,area,start_time,end_time,
+        insert_time,
+        insert_operator,
+        update_time,
+        update_operator
+        )
+        values
+        (
+
+        sys_seq('t_custom_follow_plan') ,
+        #{customId, jdbcType=VARCHAR},
+        #{talkDate, jdbcType=VARCHAR},
+        #{recordOrPlan, jdbcType=VARCHAR},
+        #{talkDateNext, jdbcType=VARCHAR},
+        #{consultingCourse, jdbcType=VARCHAR},
+        #{area, jdbcType=VARCHAR},
+        #{startTime, jdbcType=VARCHAR},
+        #{endTime, jdbcType=VARCHAR},
+        #{insertTime, jdbcType=VARCHAR},
+        #{insertOperator, jdbcType=VARCHAR},
+        #{updateTime, jdbcType=VARCHAR},
+        #{updateOperator, jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.fc.business.domain.CustomFollowPlanDO">
+        update t_custom_follow_plan
+        <set>
+            <if test="customId != null">custom_id = #{customId},</if>
+            <if test="talkDate != null">talk_date = #{talkDate},</if>
+            <if test="recordOrPlan != null">record_or_plan = #{recordOrPlan},</if>
+            <if test="talkDateNext != null">talk_date_next = #{talkDateNext},</if>
+            <if test="consultingCourse != null">consulting_course = #{consultingCourse},</if>
+            <if test="area != null">area = #{area},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="insertTime != null">insert_time = #{insertTime},</if>
+            <if test="insertOperator != null">insert_operator = #{insertOperator},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateOperator != null">update_operator = #{updateOperator}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
+        delete
+        from t_custom_follow_plan
+        where id = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from t_custom_follow_plan where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>

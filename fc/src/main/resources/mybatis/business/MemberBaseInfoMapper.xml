@@ -26,7 +26,7 @@
             update_time,
             update_operator
         FROM t_member_baseInfo
-        where id = #{value}
+        where id = #{value} AND custom_type_flag='0'
     </select>
 
     <select id="list" resultType="com.fc.business.domain.MemberBaseInfoDO">
@@ -36,7 +36,7 @@
         update_operator
         FROM t_member_baseInfo
         <where>
-
+            custom_type_flag='0'
             <if test="id != null and id != ''">
                 AND id = #{id}
             </if>
@@ -114,7 +114,7 @@
         *
         from t_member_baseInfo
         <where>
-
+            custom_type_flag='0'
             <if test="id != null and id != ''">
                 AND id = #{id}
             </if>
@@ -204,6 +204,7 @@
         data_source,
         certificate_number,
         bz,
+        custom_type_flag,
         insert_time,
         insert_operator,
         update_time,
@@ -228,6 +229,7 @@
         #{dataSource, jdbcType=VARCHAR},
         #{certificateNumber, jdbcType=VARCHAR},
         #{bz, jdbcType=VARCHAR},
+        '0',
         #{insertTime, jdbcType=VARCHAR},
         #{insertOperator, jdbcType=VARCHAR},
         #{updateTime, jdbcType=VARCHAR},

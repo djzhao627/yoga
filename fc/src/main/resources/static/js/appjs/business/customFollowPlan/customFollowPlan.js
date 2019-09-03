@@ -56,19 +56,6 @@ function load(customId) {
                     formData.customId=customId;
                     return formData;
                 }
-
-                // //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
-                // queryParamsType = 'limit' ,返回参数必须包含
-                // limit, offset, search, sort, order 否则, 需要包含:
-                // pageSize, pageNumber, searchText, sortName, sortOrder.
-                // 返回false将会终止请求
-
-                // 设置为limit则会发送符合RESTFull格式的参数
-                // queryParamsType : "limit",
-                // 发送到服务器的数据编码类型
-                // contentType : "application/x-www-form-urlencoded",
-                //search : true, // 是否显示搜索框
-                //showPaginationSwitch:true, //是否显示 分页控件
             });
 }
 
@@ -119,7 +106,7 @@ function add() {
         title: '增加',
         maxmin: true,
         shadeClose: false, // 点击遮罩关闭层
-        area: ['400px', '400px'],
+        area: ['600px', '400px'],
         content: prefix + '/add/'+customId, // iframe的url
         success: function (layero, index) {
             //获取当前弹出窗口的索引及初始大小
@@ -144,7 +131,7 @@ function edit(id, type) {
         title: '编辑',
         maxmin: true,
         shadeClose: false, // 点击遮罩关闭层
-        area: ['400px', '400px'],
+        area: ['600px', '400px'],
         content: prefix + '/edit/' + id,// iframe的url
         success: function (layero, index) {
             //获取当前弹出窗口的索引及初始大小
