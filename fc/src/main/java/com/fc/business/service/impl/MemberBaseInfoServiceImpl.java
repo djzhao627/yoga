@@ -39,15 +39,21 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 	public List<MemberBaseInfoDO> list(Map<String, Object> map){
 		List<MemberBaseInfoDO> list = memberBaseInfoDao.list(map);
 		Map<String,String> mapCode=queryNameByCode("custom_type");
+		Map<String,String> courseMap=queryNameByCode("consultingCourse_type");
+		Map<String,String> yesMap=queryNameByCode("yes_no");
+		Map<String,String> dataMap=queryNameByCode("dataSource_type");
 		list.forEach(p->{
-			String type = p.getType();
-			if (StringUtils.isNotBlank(type)) {
+			p.setType(mapCode.get(p.getType()));
+			String course = p.getConsultingCourse();
+			if (StringUtils.isNotBlank(course)) {
 				String temp="";
-				for (int i = 0; i <type.split(",").length ; i++) {
-					temp+=mapCode.get(type.split(",")[i])+",";
+				for (int i = 0; i <course.split(",").length ; i++) {
+					temp+=courseMap.get(course.split(",")[i])+",";
 				}
-				p.setType(temp.substring(0,temp.lastIndexOf(",")));
+				p.setConsultingCourse(temp.substring(0,temp.lastIndexOf(",")));
 			}
+			p.setAccommodation(yesMap.get(p.getAccommodation()));
+			p.setDataSource(dataMap.get(p.getDataSource()));
 		});
 		return list;
 	}
@@ -91,5 +97,4 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 		});
 		return map;
 	}
-	
 }

@@ -28,4 +28,5 @@ public interface MemberBaseInfoService {
 	
 	int batchRemove(Integer[] ids);
 	Map<String,String> queryNameByCode(String code);
+
 }
