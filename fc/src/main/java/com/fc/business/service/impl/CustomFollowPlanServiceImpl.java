@@ -5,6 +5,7 @@ import com.fc.business.domain.CustomFollowPlanDO;
 import com.fc.business.service.CustomFollowPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,13 @@ public class CustomFollowPlanServiceImpl implements CustomFollowPlanService {
 	
 	@Override
 	public List<CustomFollowPlanDO> list(Map<String, Object> map){
-		return customFollowPlanDao.list(map);
+		List<CustomFollowPlanDO> list = customFollowPlanDao.list(map);
+		if (!CollectionUtils.isEmpty(list)) {
+			list.forEach(p->{
+				p.setStartTime(p.getStartTime()+"至"+p.getEndTime());
+			});
+		}
+		return list;
 	}
 	
 	@Override

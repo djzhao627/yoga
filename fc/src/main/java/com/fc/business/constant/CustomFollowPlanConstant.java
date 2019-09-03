@@ -25,6 +25,12 @@ public class CustomFollowPlanConstant {
      * 沟通记录或计划
      */
     public static final String recordOrPlan = "recordOrPlan";
+    public static final String talkDateNext = "talkDateNext";
+    public static final String consultingCourse = "consultingCourse";
+    public static final String area = "area";
+    public static final String startTime = "startTime";
+    public static final String endTime = "endTime";
+
     /**
      * 插入时间
      */

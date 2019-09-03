@@ -2,6 +2,7 @@ var prefix = ctx + "/business/customFollowPlan"
 $(function () {
     var editROW = getPageValue();//列表页面传值(row)
     validateRule();
+    loadType();
 });
 
 $.validator.setDefaults({
@@ -81,4 +82,32 @@ function validateRule() {
             updateOperator: {},
         }
     })
+}
+function loadType() {
+    var html = "";
+    $.ajax({
+        url: ctx + '/common/dict/list/custom_type',
+        success: function (data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $(".chosen-select").append(html);
+            $(".chosen-select").chosen({
+                maxHeight: 200
+            });
+            $(".chosen-select").val($("#Ttype").val());
+            $(".chosen-select").trigger("chosen:updated");
+            //点击事件
+            $('.chosen-select').on('change', function (e, params) {
+                // console.log(params.selected);
+                // var opt = {
+                //     query: {
+                //         type: params.selected,
+                //     }
+                // }
+                $('#exampleTable').bootstrapTable('refresh', opt);
+            });
+        }
+    });
 }
