@@ -15,15 +15,58 @@
                                 <input id="talkDate" name="talkDate"
                                        th:value="${custom.talkDate}"
                                        class="laydate-icon layer-date form-contro"
-                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"
+                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
                                        style="background-color: #fff;" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">沟通记录或计划：</label>
+                        <label class="col-sm-3 control-label">学习目的：</label>
+                        <div class="col-sm-8">
+                            <input id="recordOrPlan" name="recordOrPlan" th:value="${custom.recordOrPlan}"
+                                   class="form-control" type="text">
+                        </div>
+                    </div>
+                        <input id="Ttype" name="Ttype" th:value="${custom.consultingCourse}"
+                               type="hidden">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">咨询课程：</label>
                             <div class="col-sm-8">
-                                <input id="recordOrPlan" name="recordOrPlan" th:value="${custom.recordOrPlan}"
+                                <select data-placeholder="--选择类别--" name="consultingCourse" id="consultingCourse"
+                                        class="form-control chosen-select" tabindex="2"  multiple="multiple" required>
+                                    <option th:each="consultingCourse : ${consultingCourseTypes}"
+                                            th:value="${consultingCourse.value}" th:text="${consultingCourse.name}"
+                                            th:if="${consultingCourse.remarks ==checked}" th:selected="selected">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">所属地区：</label>
+                            <div class="col-sm-8">
+                                <input id="area" name="area" th:value="${custom.area}"
                                        class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">意向学习时间：</label>
+                            <div class="col-sm-4">
+                                <input id="startTime" name="startTime" th:value="${custom.startTime}"
+                                       class="laydate-icon layer-date form-contro"
+                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                       style="background-color: #fff;" readonly="readonly"> 至:
+                                <input id="endTime" name="endTime" th:value="${custom.endTime}"
+                                       class="laydate-icon layer-date form-contro"
+                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                       style="background-color: #fff;" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">下次预约沟通时间：</label>
+                            <div class="col-sm-8">
+                                <input id="talkDateNext" name="talkDateNext"
+                                       th:value="${custom.talkDateNext}"
+                                       class="laydate-icon layer-date form-contro"
+                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                       style="background-color: #fff;" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
@@ -38,9 +81,12 @@
     <table id="exampleTable" data-mobile-responsive="true">
         <thead>
         <tr>
-            <th data-field="id" data-align='center' data-sortable="true">序列</th>
             <th data-field="talkDate" data-align='center' data-sortable="true">沟通时间</th>
-            <th data-field="recordOrPlan" data-align='center' data-sortable="true">沟通记录或计划</th>
+            <th data-field="recordOrPlan" data-align='center' data-sortable="true">学习目的</th>
+            <th data-field="consultingCourse" data-align='center' data-sortable="true">咨询课程</th>
+            <th data-field="area" data-align='center' data-sortable="true">所属地区</th>
+            <th data-field="startTime" data-align='center' data-sortable="true">意向学习时间</th>
+            <th data-field="talkDateNext" data-align='center' data-sortable="true">下次预约沟通时间</th>
         </tr>
         </thead>
     </table>

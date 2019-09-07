@@ -23,6 +23,11 @@ public class CustomFollowPlanDO implements Serializable {
 	private String talkDate;
 	//沟通记录或计划
 	private String recordOrPlan;
+	private String talkDateNext;
+	private String consultingCourse;
+	private String area;
+	private String startTime;
+	private String endTime;
 	//插入时间
 	private Date insertTime;
 	//插入操作人
@@ -31,6 +36,46 @@ public class CustomFollowPlanDO implements Serializable {
 	private Date updateTime;
 	//更新操作人
 	private Integer updateOperator;
+
+	public String getTalkDateNext() {
+		return talkDateNext;
+	}
+
+	public void setTalkDateNext(String talkDateNext) {
+		this.talkDateNext = talkDateNext;
+	}
+
+	public String getConsultingCourse() {
+		return consultingCourse;
+	}
+
+	public void setConsultingCourse(String consultingCourse) {
+		this.consultingCourse = consultingCourse;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
 
 	/**
 	 * 设置：

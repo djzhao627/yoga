@@ -32,4 +32,6 @@ public interface MemberBaseInfoDao {
 	int batchRemove(Integer[] ids);
 
     List<Map<String, String>> queryNameByCode(@Param("code") String code);
+
+    void updateData(MemberBaseInfoDO memberBaseInfoDO);
 }

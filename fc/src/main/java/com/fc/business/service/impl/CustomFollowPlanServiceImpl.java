@@ -2,9 +2,12 @@ package com.fc.business.service.impl;
 
 import com.fc.business.dao.CustomFollowPlanDao;
 import com.fc.business.domain.CustomFollowPlanDO;
+import com.fc.business.domain.MemberBaseInfoDO;
 import com.fc.business.service.CustomFollowPlanService;
+import com.fc.business.service.MemberBaseInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +17,8 @@ import java.util.Map;
 public class CustomFollowPlanServiceImpl implements CustomFollowPlanService {
 	@Autowired
 	private CustomFollowPlanDao customFollowPlanDao;
+	@Autowired
+	private MemberBaseInfoService memberBaseInfoService;
 	
 	@Override
 	public CustomFollowPlanDO get(Integer id){
@@ -22,7 +27,15 @@ public class CustomFollowPlanServiceImpl implements CustomFollowPlanService {
 	
 	@Override
 	public List<CustomFollowPlanDO> list(Map<String, Object> map){
-		return customFollowPlanDao.list(map);
+		List<CustomFollowPlanDO> list = customFollowPlanDao.list(map);
+		Map<String,String> courseMap=memberBaseInfoService.queryNameByCode("consultingCourse_type");
+		if (!CollectionUtils.isEmpty(list)) {
+			list.forEach(p->{
+				p.setConsultingCourse(courseMap.get(p.getConsultingCourse()));
+				p.setStartTime(p.getStartTime()+"至"+p.getEndTime());
+			});
+		}
+		return list;
 	}
 	
 	@Override
@@ -33,7 +46,14 @@ public class CustomFollowPlanServiceImpl implements CustomFollowPlanService {
 	
 	@Override
 	public int save(CustomFollowPlanDO customFollowPlan){
-		return customFollowPlanDao.save(customFollowPlan);
+		int i = customFollowPlanDao.save(customFollowPlan);
+		if (i == 1) {
+			MemberBaseInfoDO memberBaseInfoDO = new MemberBaseInfoDO();
+			memberBaseInfoDO.setId(Integer.parseInt(customFollowPlan.getCustomId()));
+			memberBaseInfoDO.setConsultingCourse(customFollowPlan.getConsultingCourse());
+			memberBaseInfoService.update(memberBaseInfoDO);
+		}
+		return i;
 	}
 	
 	@Override

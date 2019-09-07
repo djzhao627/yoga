@@ -12,9 +12,6 @@
                     <input id="customId" name="customId" type="hidden"
                            th:value="${customId}">
                     <label class="col-sm-3 control-label" style="margin-top: 6px;">沟通时间</label>
-                    <!--<div class="col-sm-7">-->
-                        <!--<input id="talkDate" type="text" class="form-control" placeholder="沟通时间">-->
-                    <!--</div>-->
                     <div class="col-sm-7">
                         <input id="talkDate" name="talkDate"
                                class="laydate-icon layer-date form-contro"
@@ -50,7 +47,11 @@
             <th data-checkbox="true"></th>
             <th data-field="id" data-align='center' data-sortable="true">序列</th>
             <th data-field="talkDate" data-align='center' data-sortable="true">沟通时间</th>
-            <th data-field="recordOrPlan" data-align='center' data-sortable="true">沟通记录或计划</th>
+            <th data-field="recordOrPlan" data-align='center' data-sortable="true">学习目的</th>
+            <th data-field="consultingCourse" data-align='center' data-sortable="true">咨询课程</th>
+            <th data-field="area" data-align='center' data-sortable="true">所属地区</th>
+            <th data-field="startTime" data-align='center' data-sortable="true">意向学习时间</th>
+            <th data-field="talkDateNext" data-align='center' data-sortable="true">下次预约沟通时间</th>
             <th data-field="operate" data-align='center' data-formatter="operateFormatter" data-events="operateEvent">
                 操作
             </th>
