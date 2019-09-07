@@ -1,134 +1,273 @@
 var prefix = ctx + "/crm/workPlan"
-$(function () {
-    var deptId = '';
+
+$(function() {
     getTreeData();
-    load(deptId);
-});
+    var deptId = '';
+    initTable(deptId);
+    $('#locale').change(initTable);
+})
 
-function load(deptId) {
-    $('#exampleTable')
-        .bootstrapTable(
-            {
-                method: 'get', // 服务器数据的请求方式 get or post
-                url: prefix + "/listPage", // 服务器数据的加载地址
-                // clickToSelect: true,   //是否启用点击选中行
-                // height: 50,       //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                // showRefresh : true,
-                // showToggle : true,
-                // showColumns : true,
-                clickToSelect: true,
-                iconSize: 'outline',
-                toolbar: '#exampleToolbar',
-                pagination: true, // 设置为true会在底部显示分页条
-                striped: true, // 设置为true会有隔行变色效果
-                dataType: "json", // 服务器返回的数据类型
-                pagination: true, // 设置为true会在底部显示分页条
-                singleSelect: false, // 设置为true将禁止多选
-                pageNumber: 1, // 如果设置了分布，首页页码
-                pageSize: 10, // 如果设置了分页，每页数据条数
-                pageList: [5, 10, 50, 100, 500],  //记录数可选列表
-                sortStable: true,
-                sortable: true,                     //是否启用排序
-                sortOrder: "asc",                   //排序方式
-                showColumns: true, // 是否显示内容下拉框（选择显示的列）
-                showRefresh: true,
-                showToggle: true,
-                search: false,
-                showExport: true,                     //是否显示导出
-                exportDataType: "all",              //basic', 'all', 'selected'.
-                exportTypes: ['excel'],
-                exportOptions: {
-                    ignoreColumn: [0],  //忽略某一列的索引
-                    fileName: '报表',  //文件名称设置
-                    worksheetName: 'sheet1',  //表格工作区名称
-                    tableName: '报表'
-                    //excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
-                    //onMsoNumberFormat: DoOnMsoNumberFormat
-                },
-                sidePagination: "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
-                queryParams: function (params) {
-                    var formData = $('#formSearch').serializeObject();
-                    if (!formData) {
-                        formData = {};
-                    }
-                    formData.limit = params.limit;
-                    formData.offset = params.offset;
-                    formData.sort = this.sortName;
-                    formData.order = this.sortOrder;
-                    formData.deptId = deptId;
-                    return formData;
-                },
-                columns : [
-                    {
-                        checkbox : true
-                    }, {
-                        field : 'id',
-                        visible: false,
-                    },{
-                        field : 'deptId',
-                        visible: false,
-                    },{
-                        field : 'deptName',
-                        title : '部门名称',
-                        width : 50
-                    },{
-                        field : 'content',
-                        title : '交办事项',
-                        width : 50
-                    },{
-                        field : 'startTime',
-                        title : '开始时间',
-                        width : 50
-                    },{
-                        field : 'endTime',
-                        title : '结束时间',
-                        width : 50
-                    },{
-                        field : 'personLiableName',
-                        title : '责任人',
-                        width : 50
-                    },{
-                        field : 'helperName',
-                        title : '协助人',
-                        width : 50
-                    },{
-                        field : 'remarks',
-                        title : '跟进情况',
-                        width : 50
-                    },{
-                        field : 'remindType',
-                        title : '提醒方式',
-                        width : 50
-                    },{
-                        field : 'operate',
-                        title : '操作',
-                        width : 50,
-                        align : 'center',
-                        formatter : function(value, row, index) {
-                            var e = '<a class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="编辑" onclick="edit(\''
-                                + row.id
-                                + '\')"><i class="fa fa-edit"></i></a> ';
-                            var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
-                                + row.id
-                                + '\')"><i class="fa fa-remove"></i></a> ';
-                            return e + d;
-                        }
-                    }
-                 ]
-                // //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
-                // queryParamsType = 'limit' ,返回参数必须包含
-                // limit, offset, search, sort, order 否则, 需要包含:
-                // pageSize, pageNumber, searchText, sortName, sortOrder.
-                // 返回false将会终止请求
 
-                // 设置为limit则会发送符合RESTFull格式的参数
-                // queryParamsType : "limit",
-                // 发送到服务器的数据编码类型
-                // contentType : "application/x-www-form-urlencoded",
-                //search : true, // 是否显示搜索框
-                //showPaginationSwitch:true, //是否显示 分页控件
-            });
+var $table = $('#exampleTable')
+var $remove = $('#remove')
+var selections = []
+
+function getIdSelections() {
+    return $.map($table.bootstrapTable('getSelections'), function (row) {
+        return row.id
+    })
 }
+
+function responseHandler(res) {
+    $.each(res.rows, function (i, row) {
+        row.state = $.inArray(row.id, selections) !== -1
+    })
+    return res
+}
+
+function detailFormatter(index, row) {
+
+    var params = {
+        workPlanId: row.id
+    };
+    var html = [];
+    var str = "";
+    $.ajax({
+        url: ctx + "/crm/workPlanFollowUp/listPage",
+        method: 'post',                      //请求方式（*）
+//            contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        async : false,
+        data: params,
+        beforeSend: function () {
+            close = layer.load(2);
+        },
+        success: function (data) {
+            layer.close(close);
+            var rowData = data.rows;
+
+            for (var i=0; i<rowData.length; i++) {
+                str += "<tr id=" + "'" + ondblclick + "'" + " class='detail-view'>";
+                str += "<td style='width: 50px' align='center'></td>";
+                str += "<td style='width: 50px' align='center'>" + (i+1) + "</td>";
+                str += "<td class='colStyle' align='center'>" + rowData[i].followUp + "</td>";
+                str += "<td class='colStyle' align='center'>" + rowData[i].followUp + "</td>";
+                str += "</tr>";
+            }
+
+        }
+    })
+    return str;
+}
+
+function operateFormatter(value, row, index) {
+    return [
+        '<a class="like" href="javascript:void(0)" title="Like">',
+        '<i class="fa fa-heart"></i>',
+        '</a>  ',
+        '<a class="remove" href="javascript:void(0)" title="Remove">',
+        '<i class="fa fa-trash"></i>',
+        '</a>'
+    ].join('')
+}
+
+window.operateEvents = {
+    'click .like': function (e, value, row, index) {
+        alert('You click like action, row: ' + JSON.stringify(row))
+    },
+    'click .remove': function (e, value, row, index) {
+        $table.bootstrapTable('remove', {
+            field: 'id',
+            values: [row.id]
+        })
+    }
+}
+
+function totalTextFormatter(data) {
+    return 'Total'
+}
+
+function totalNameFormatter(data) {
+    return data.length
+}
+
+function totalPriceFormatter(data) {
+    var field = this.field
+    return '$' + data.map(function (row) {
+        return +row[field].substring(1)
+    }).reduce(function (sum, i) {
+        return sum + i
+    }, 0)
+}
+
+function initTable(deptId) {
+    $table.bootstrapTable('destroy').bootstrapTable({
+
+        method: 'get', // 服务器数据的请求方式 get or post
+        url: prefix + "/listPage", // 服务器数据的加载地址
+        clickToSelect: true,
+        iconSize: 'outline',
+        toolbar: '#exampleToolbar',
+        pagination: true, // 设置为true会在底部显示分页条
+        striped: true, // 设置为true会有隔行变色效果
+        dataType: "json", // 服务器返回的数据类型
+        pagination: true, // 设置为true会在底部显示分页条
+        singleSelect: false, // 设置为true将禁止多选
+        pageNumber: 1, // 如果设置了分布，首页页码
+        pageSize: 10, // 如果设置了分页，每页数据条数
+        pageList: [5, 10, 50, 100, 500],  //记录数可选列表
+        sortStable: true,
+        sortable: true,                     //是否启用排序
+        sortOrder: "asc",                   //排序方式
+        showColumns: true, // 是否显示内容下拉框（选择显示的列）
+        showRefresh: true,
+        showToggle: true,
+        search: false,
+        showExport: true,                     //是否显示导出
+        exportDataType: "all",              //basic', 'all', 'selected'.
+        exportTypes: ['excel'],
+        height: $(window).height()-160,
+        rowHeight: "35px",
+        exportOptions: {
+            ignoreColumn: [0],  //忽略某一列的索引
+            fileName: '报表',  //文件名称设置
+            worksheetName: 'sheet1',  //表格工作区名称
+            tableName: '报表'
+            //excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+            //onMsoNumberFormat: DoOnMsoNumberFormat
+        },
+        sidePagination: "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
+        queryParams: function (params) {
+            var formData = $('#formSearch').serializeObject();
+            if (!formData) {
+                formData = {};
+            }
+            formData.limit = params.limit;
+            formData.offset = params.offset;
+            formData.sort = this.sortName;
+            formData.order = this.sortOrder;
+            formData.deptId = deptId;
+            return formData;
+        },
+
+        columns: [
+            {
+                checkbox : true,
+                height: "35px"
+            }, {
+                field : 'id',
+                visible: false,
+            },{
+                field : 'deptId',
+                visible: false,
+            },{
+                field : 'deptName',
+                title : '部门名称',
+                width : 50,
+                height: "35px"
+            },{
+                field : 'content',
+                title : '交办事项',
+                width : 50
+            },{
+                field : 'startTime',
+                title : '开始时间',
+                width : 50
+            },{
+                field : 'endTime',
+                title : '结束时间',
+                width : 50
+            },{
+                field : 'personLiableName',
+                title : '责任人',
+                width : 50
+            },{
+                field : 'helperName',
+                title : '协助人',
+                width : 50
+            },{
+                field : 'remarks',
+                title : '跟进情况',
+                width : 50
+            },{
+                field : 'remindType',
+                title : '提醒方式',
+                width : 50
+            },{
+                field : 'operate',
+                title : '操作',
+                width : 50,
+                align : 'center',
+                formatter : function(value, row, index) {
+                    var e = '<a class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="编辑" onclick="edit(\''
+                        + row.id
+                        + '\')"><i class="fa fa-edit"></i></a> ';
+                    var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
+                        + row.id
+                        + '\')"><i class="fa fa-remove"></i></a> ';
+                    return e + d;
+                }
+            }
+        ],
+        rowStyle:function(row,index) {
+            return row.height = "35px";
+        }
+    })
+    $table.on('check.bs.table uncheck.bs.table ' +
+        'check-all.bs.table uncheck-all.bs.table',
+        function () {
+            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+
+            // save your data, here just save the current page
+            selections = getIdSelections()
+            // push or splice the selections if you want to save all data selections
+        })
+    $table.on('all.bs.table', function (e, name, args) {
+        console.log(name, args)
+    })
+    $remove.click(function () {
+        var ids = getIdSelections()
+        $table.bootstrapTable('remove', {
+            field: 'id',
+            values: ids
+        })
+        $remove.prop('disabled', true)
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*格式化"操作"按钮列*/
 function operateFormatter(value, row, index) {

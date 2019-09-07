@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 <html>
+
+
+<style>
+    .select,
+    #locale {
+        width: 100%;
+    }
+    .like {
+        margin-right: 10px;
+    }
+
+    #exampleTable > tr  {
+        height: 30px;
+        max-height: 30px;
+    }
+</style>
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="gray-bg">
@@ -80,30 +96,29 @@
         </div>
     </div>
     <div class="col-sm-9">
-        <table id="exampleTable" data-mobile-responsive="true">
-            <!--<thead>
-				<tr>
-					<th data-checkbox="true" ></th>
-								<th data-field="id" data-align='center' data-sortable="true"></th>
-								<th data-field="content" data-align='center' data-sortable="true">交办事项</th>
-								<th data-field="deptId" data-align='center' data-sortable="true">部门Id</th>
-								<th data-field="deptName" data-align='center' data-sortable="true">部门名称</th>
-								<th data-field="startTime" data-align='center' data-sortable="true">开始时间</th>
-								<th data-field="endTime" data-align='center' data-sortable="true">结束时间</th>
-								<th data-field="schedule" data-align='center' data-sortable="true">完成进度</th>
-								<th data-field="personLiableName" data-align='center' data-sortable="true">责任人</th>
-								<th data-field="helperName" data-align='center' data-sortable="true">协助人</th>
-								<th data-field="remarks" data-align='center' data-sortable="true">备注</th>
-								<th data-field="remindType" data-align='center' data-sortable="true">提醒方式，任务开始后，每天提醒？还是如何提醒</th>
-								<th data-field="state" data-align='center' data-sortable="true">状态</th>
-								<th data-field="level" data-align='center' data-sortable="true">级别</th>
-								<th data-field="taskAnnex" data-align='center' data-sortable="true">任务附件名，使用“??”（两个英文的问号）隔开</th>
-								<th data-field="taskAnnexPath" data-align='center' data-sortable="true">任务附件名</th>
-								<th data-field="executeAnnex" data-align='center' data-sortable="true">任务附件名</th>
-								<th data-field="executeAnnexPath" data-align='center' data-sortable="true">任务附件名</th>
-									<th data-field="operate" data-align='center' data-formatter="operateFormatter" data-events="operateEvent">操作</th>
-		 		</tr>
-			</thead>-->
+
+        <!--<table id="exampleTable" data-mobile-responsive="true">
+
+        </table>-->
+        <table
+                id="exampleTable"
+                data-toolbar="#toolbar"
+                data-search="false"
+                data-show-refresh="true"
+                data-show-toggle="true"
+                data-show-fullscreen="true"
+                data-show-columns="true"
+                data-detail-view="true"
+                data-show-export="true"
+                data-click-to-select="true"
+                data-detail-formatter="detailFormatter"
+                data-show-pagination-switch="true"
+                data-pagination="true"
+                data-id-field="id"
+                data-page-list="[1, 25, 50, 100, all]"
+                data-show-footer="true"
+                data-side-pagination="server"
+                data-url="/crm/workPlan/listPage">
         </table>
     </div>
 </div>
@@ -134,5 +149,9 @@
 <div th:include="include :: footer"></div>
 <script type="text/javascript" th:src="@{/js/appjs/common/utils/ijstree.js}"></script>
 <script type="text/javascript" th:src="@{/js/appjs/crm/workPlan/workPlan_list.js}"></script>
+
+<script type="text/javascript"  src="@{/js/common/tableExport.min.js}"></script>
+<script type="text/javascript" src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+
 </body>
 </html>

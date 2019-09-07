@@ -52,11 +52,11 @@ public class WorkPlanServiceImpl implements WorkPlanService {
             notify.setContent(workPlan.getContent());
             notify.setTitle("工作计划");
             List<Long> userIdList = new ArrayList<>();
-            if (StringUtils.isNotEmpty(workPlan.getPersonLiable())) {
-                userIdList.add(Long.parseLong(workPlan.getPersonLiable()));
+            if (workPlan.getPersonLiable() != null) {
+                userIdList.add(workPlan.getPersonLiable());
             }
-            if (StringUtils.isNotEmpty(workPlan.getHelper())) {
-                userIdList.add(Long.parseLong(workPlan.getHelper()));
+            if (workPlan.getHelper()!= null) {
+                userIdList.add(workPlan.getHelper());
             }
             notify.setUserIds(userIdList);
             notify.setCreateBy(ShiroUtils.getUserId());

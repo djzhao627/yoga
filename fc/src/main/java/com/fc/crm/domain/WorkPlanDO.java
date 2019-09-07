@@ -1,5 +1,7 @@
 package com.fc.crm.domain;
 
+import com.fc.crm.bases.dao.BaseDao;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,7 +13,7 @@ import java.util.Date;
  * @email
  * @date 2019-08-26 22:59:56
  */
-public class WorkPlanDO implements Serializable {
+public class WorkPlanDO extends BaseDao implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // ID
@@ -36,13 +38,13 @@ public class WorkPlanDO implements Serializable {
     private String schedule;
 
     //责任人
-    private String personLiable;
+    private Long personLiable;
 
     //责任人名称
     private String personLiableName;
 
     //协助人
-    private String helper;
+    private Long helper;
 
     //协助人名称
     private String helperName;
@@ -196,28 +198,28 @@ public class WorkPlanDO implements Serializable {
     /**
      * 设置：责任人
      */
-    public void setPersonLiable(String personLiable) {
+    public void setPersonLiable(Long personLiable) {
         this.personLiable = personLiable;
     }
 
     /**
      * 获取：责任人
      */
-    public String getPersonLiable() {
+    public Long getPersonLiable() {
         return personLiable;
     }
 
     /**
      * 设置：协助人
      */
-    public void setHelper(String helper) {
+    public void setHelper(Long helper) {
         this.helper = helper;
     }
 
     /**
      * 获取：协助人
      */
-    public String getHelper() {
+    public Long getHelper() {
         return helper;
     }
 

@@ -1879,13 +1879,17 @@
             var $this = $(this),
                 $tr = $this.parent().parent(),
                 index = $tr.data('index'),
+                end = null,
                 row = data[index]; // Fix #980 Detail view, when searching, returns wrong row
 
             // remove and update
             if ($tr.next().is('tr.detail-view')) {
                 $this.find('i').attr('class', sprintf('%s %s', that.options.iconsPrefix, that.options.icons.detailOpen));
                 that.trigger('collapse-row', index, row);
-                $tr.next().remove();
+
+                end = $(".detail-icon").eq(index+1).parent().parent();
+                $tr.nextUntil(end).remove();
+                // $tr.next().remove();
             } else {
                 $this.find('i').attr('class', sprintf('%s %s', that.options.iconsPrefix, that.options.icons.detailClose));
                 $tr.after(sprintf('<tr class="detail-view"><td colspan="%s"></td></tr>', $tr.find('td').length));

@@ -10,6 +10,7 @@ INSERT INTO `system_sequence` VALUES ('t_custom_follow_plan', 0, 1);
 INSERT INTO `system_sequence` VALUES ('t_member_baseinfo', 5, 1);
 INSERT INTO `system_sequence` VALUES ('t_work_plan', 1, 1);
 INSERT INTO `system_sequence` VALUES ('t_order', '2', '1');
+INSERT INTO `system_sequence` VALUES ('t_work_plan_follow_up', '2', '1');
 
 -- ----------------------------
 -- Records of sys_menu

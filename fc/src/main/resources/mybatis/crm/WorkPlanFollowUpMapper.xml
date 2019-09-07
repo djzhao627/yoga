@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fc.crm.dao.WorkPlanFollowUpDao">
+
+	<select id="get" resultType="com.fc.crm.domain.WorkPlanFollowUpDO">
+		SELECT 
+			ID,WORK_PLAN_ID,FOLLOW_UP,Task_Annex,Task_Annex_path,execute_Annex,execute_Annex_path,create_Time,create_Author,last_Modify_Time,last_Modify_Author			 
+		FROM t_work_plan_follow_up 
+		where ID = #{value}
+	</select>
+
+	<select id="list" resultType="com.fc.crm.domain.WorkPlanFollowUpDO">
+		SELECT 
+			ID, WORK_PLAN_ID, FOLLOW_UP, Task_Annex, Task_Annex_path, execute_Annex, execute_Annex_path, create_Time, create_Author, last_Modify_Time, last_Modify_Author 		
+		FROM t_work_plan_follow_up 
+        <where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND ID = #{id}   
+		  		  </if>
+		  		  <if test="workPlanId != null and workPlanId != ''">
+		  		  	AND WORK_PLAN_ID LIKE '%${ workPlanId}%'  
+		  		  </if>
+		  		  <if test="followUp != null and followUp != ''">
+		  		  	AND FOLLOW_UP LIKE '%${ followUp}%'  
+		  		  </if>
+		  		  <if test="taskAnnex != null and taskAnnex != ''">
+		  		  	AND Task_Annex LIKE '%${ taskAnnex}%'  
+		  		  </if>
+		  		  <if test="taskAnnexPath != null and taskAnnexPath != ''">
+		  		  	AND Task_Annex_path LIKE '%${ taskAnnexPath}%'  
+		  		  </if>
+		  		  <if test="executeAnnex != null and executeAnnex != ''">
+		  		  	AND execute_Annex LIKE '%${ executeAnnex}%'  
+		  		  </if>
+		  		  <if test="executeAnnexPath != null and executeAnnexPath != ''">
+		  		  	AND execute_Annex_path LIKE '%${ executeAnnexPath}%'  
+		  		  </if>
+		  		  <if test="createTime != null and createTime != ''">
+		  		  	AND create_Time LIKE '%${ createTime}%'  
+		  		  </if>
+		  		  <if test="createAuthor != null and createAuthor != ''">
+		  		  	AND create_Author = #{createAuthor}   
+		  		  </if>
+		  		  <if test="lastModifyTime != null and lastModifyTime != ''">
+		  		  	AND last_Modify_Time LIKE '%${ lastModifyTime}%'  
+		  		  </if>
+		  		  <if test="lastModifyAuthor != null and lastModifyAuthor != ''">
+		  		  	AND last_Modify_Author = #{lastModifyAuthor}   
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY ID DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_work_plan_follow_up
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND ID = #{id}   
+		  		  </if>
+		  		  <if test="workPlanId != null and workPlanId != ''">
+		  		  	AND WORK_PLAN_ID LIKE '%${ workPlanId}%'  
+		  		  </if>
+		  		  <if test="followUp != null and followUp != ''">
+		  		  	AND FOLLOW_UP LIKE '%${ followUp}%'  
+		  		  </if>
+		  		  <if test="taskAnnex != null and taskAnnex != ''">
+		  		  	AND Task_Annex LIKE '%${ taskAnnex}%'  
+		  		  </if>
+		  		  <if test="taskAnnexPath != null and taskAnnexPath != ''">
+		  		  	AND Task_Annex_path LIKE '%${ taskAnnexPath}%'  
+		  		  </if>
+		  		  <if test="executeAnnex != null and executeAnnex != ''">
+		  		  	AND execute_Annex LIKE '%${ executeAnnex}%'  
+		  		  </if>
+		  		  <if test="executeAnnexPath != null and executeAnnexPath != ''">
+		  		  	AND execute_Annex_path LIKE '%${ executeAnnexPath}%'  
+		  		  </if>
+		  		  <if test="createTime != null and createTime != ''">
+		  		  	AND create_Time LIKE '%${ createTime}%'  
+		  		  </if>
+		  		  <if test="createAuthor != null and createAuthor != ''">
+		  		  	AND create_Author = #{createAuthor}   
+		  		  </if>
+		  		  <if test="lastModifyTime != null and lastModifyTime != ''">
+		  		  	AND last_Modify_Time LIKE '%${ lastModifyTime}%'  
+		  		  </if>
+		  		  <if test="lastModifyAuthor != null and lastModifyAuthor != ''">
+		  		  	AND last_Modify_Author = #{lastModifyAuthor}   
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.crm.domain.WorkPlanFollowUpDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_work_plan_follow_up') 
+    	</selectKey> -->
+    	    	
+		insert into t_work_plan_follow_up 
+		(
+		
+			ID, 
+			WORK_PLAN_ID, 
+			FOLLOW_UP, 
+			Task_Annex, 
+			Task_Annex_path, 
+			execute_Annex, 
+			execute_Annex_path, 
+			create_Time, 
+			create_Author, 
+			last_Modify_Time, 
+			last_Modify_Author
+		)
+		values
+		(
+		
+		    sys_seq('t_work_plan_follow_up')  , 		    
+			#{workPlanId, jdbcType=VARCHAR}, 			
+			#{followUp, jdbcType=VARCHAR}, 			
+			#{taskAnnex, jdbcType=VARCHAR}, 			
+			#{taskAnnexPath, jdbcType=VARCHAR}, 			
+			#{executeAnnex, jdbcType=VARCHAR}, 			
+			#{executeAnnexPath, jdbcType=VARCHAR}, 			
+			#{createTime, jdbcType=VARCHAR}, 			
+			#{createAuthor, jdbcType=VARCHAR}, 			
+			#{lastModifyTime, jdbcType=VARCHAR}, 			
+			#{lastModifyAuthor, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.crm.domain.WorkPlanFollowUpDO">
+		update t_work_plan_follow_up 
+		<set>
+			<if test="workPlanId != null">WORK_PLAN_ID = #{workPlanId}, </if>
+			<if test="followUp != null">FOLLOW_UP = #{followUp}, </if>
+			<if test="taskAnnex != null">Task_Annex = #{taskAnnex}, </if>
+			<if test="taskAnnexPath != null">Task_Annex_path = #{taskAnnexPath}, </if>
+			<if test="executeAnnex != null">execute_Annex = #{executeAnnex}, </if>
+			<if test="executeAnnexPath != null">execute_Annex_path = #{executeAnnexPath}, </if>
+			<if test="createTime != null">create_Time = #{createTime}, </if>
+			<if test="createAuthor != null">create_Author = #{createAuthor}, </if>
+			<if test="lastModifyTime != null">last_Modify_Time = #{lastModifyTime}, </if>
+			<if test="lastModifyAuthor != null">last_Modify_Author = #{lastModifyAuthor}</if>
+		</set>
+		where ID = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_work_plan_follow_up where ID = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_work_plan_follow_up where ID in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

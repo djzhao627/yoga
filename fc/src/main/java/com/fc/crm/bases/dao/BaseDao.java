@@ -12,14 +12,14 @@ import javax.xml.crypto.Data;
 public class BaseDao {
 
     private String createTime;
-    private String createAuthor;
+    private Long createAuthor;
     private String lastModifyTime;
-    private String lastModifyAuthor;
+    private Long lastModifyAuthor;
 
     public BaseDao() {
     }
 
-    public BaseDao(String createTime, String createAuthor, String lastModifyTime, String lastModifyAuthor) {
+    public BaseDao(String createTime, Long createAuthor, String lastModifyTime, Long lastModifyAuthor) {
         this.createTime = createTime;
         this.createAuthor = createAuthor;
         this.lastModifyTime = lastModifyTime;
@@ -34,11 +34,11 @@ public class BaseDao {
         this.createTime = createTime;
     }
 
-    public String getCreateAuthor() {
+    public Long getCreateAuthor() {
         return createAuthor;
     }
 
-    public void setCreateAuthor(String createAuthor) {
+    public void setCreateAuthor(Long createAuthor) {
         this.createAuthor = createAuthor;
     }
 
@@ -50,11 +50,11 @@ public class BaseDao {
         this.lastModifyTime = lastModifyTime;
     }
 
-    public String getLastModifyAuthor() {
+    public Long getLastModifyAuthor() {
         return lastModifyAuthor;
     }
 
-    public void setLastModifyAuthor(String lastModifyAuthor) {
+    public void setLastModifyAuthor(Long lastModifyAuthor) {
         this.lastModifyAuthor = lastModifyAuthor;
     }
 }
