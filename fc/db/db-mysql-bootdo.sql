@@ -1183,7 +1183,25 @@ CREATE TABLE `t_custom_follow_plan`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-
+-- ----------------------------
+-- Table structure for t_work_plan_follow_up
+-- ----------------------------
+DROP TABLE IF EXISTS `t_work_plan_follow_up`;
+CREATE TABLE `t_work_plan_follow_up`
+(
+    `ID`                 int(11)       NOT NULL,
+    `WORK_PLAN_ID`       varchar(255)  NOT NULL COMMENT '工作计划ID',
+    `FOLLOW_UP`          varchar(1000) NOT NULL COMMENT '根据情况内容',
+    `Task_Annex`         varchar(500) DEFAULT NULL COMMENT '任务附件名，使用“??”（两个英文的问号）隔开',
+    `Task_Annex_path`    varchar(500) DEFAULT NULL COMMENT '任务附件名，使用“??”（两个英文的问号）隔开,\r\n使用相对路径\r\n~~/a/b/c.txt',
+    `execute_Annex`      varchar(500) DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开',
+    `execute_Annex_path` varchar(500) DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开,',
+    `create_Time`        varchar(23)  DEFAULT NULL COMMENT '创建时间',
+    `create_Author`      int(11)      DEFAULT NULL COMMENT '创建人ID',
+    `last_Modify_Time`   varchar(23)  DEFAULT NULL COMMENT '最后更改时间',
+    `last_Modify_Author` int(11)      DEFAULT NULL COMMENT '最后更改人ID'
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 
 

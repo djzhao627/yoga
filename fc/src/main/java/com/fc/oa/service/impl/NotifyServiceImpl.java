@@ -4,6 +4,7 @@ import com.fc.system.domain.UserDO;
 import com.fc.system.service.SessionService;
 import com.github.pagehelper.PageHelper;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,6 +99,9 @@ public class NotifyServiceImpl implements NotifyService {
 
     @Override
     public void saveNotify(List<Long> userIds, Long notifyId) {
+        if (CollectionUtils.isEmpty(userIds)) {
+            return;
+        }
         List<NotifyRecordDO> records = new ArrayList<>();
         for (Long userId : userIds) {
             NotifyRecordDO record = new NotifyRecordDO();

@@ -62,10 +62,10 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
                         public void run() {
                             for (UserDO userDO : sessionService.listOnlineUser()) {
                                 for (WorkPlanDO workPlanDO : WorkPlanDOList) {
-                                    if (workPlanDO.getPersonLiable().equals(userDO.getUserId()+"")) {
+                                    if (workPlanDO.getPersonLiable() != null && workPlanDO.getPersonLiable().equals(userDO.getUserId())) {
                                         template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（责任人）");
                                     }
-                                    /*if (workPlanDO.getHelper().equals(userDO.getUserId()+"")) {
+                                    /*if (workPlanDO.getHelper() != null && workPlanDO.getHelper().equals(userDO.getUserId())) {
                                         template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（协助人）");
                                     }*/
                                 }
@@ -94,8 +94,8 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
     private void addRecordOfWorkPlan(List<WorkPlanDO> WorkPlanDOList) {
         List<Long> userList = new ArrayList<>();
         for (WorkPlanDO workPlanDO : WorkPlanDOList) {
-            userList.add(Long.parseLong(workPlanDO.getPersonLiable()));
+            userList.add(workPlanDO.getPersonLiable());
         }
-        notifyService.saveNotify(userList,1L);
+        notifyService.saveNotify(userList, 1L);
     }
 }
