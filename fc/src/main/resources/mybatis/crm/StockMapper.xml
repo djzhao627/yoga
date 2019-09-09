@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fc.crm.dao.StockDao">
+
+	<select id="get" resultType="com.fc.crm.domain.StockDO">
+		SELECT 
+			goods_id,stock			 
+		FROM t_stock 
+		where goods_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.fc.crm.domain.StockDO">
+		SELECT 
+			goods_id, stock 		
+		FROM t_stock 
+        <where>
+          
+		  		  <if test="goodsId != null and goodsId != ''">
+		  		  	AND goods_id = #{goodsId}   
+		  		  </if>
+		  		  <if test="stock != null and stock != ''">
+		  		  	AND stock = #{stock}   
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY goods_id DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_stock
+		 <where>  
+		 
+		   		  <if test="goodsId != null and goodsId != ''">
+		  		  	AND goods_id = #{goodsId}   
+		  		  </if>
+		  		  <if test="stock != null and stock != ''">
+		  		  	AND stock = #{stock}   
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.crm.domain.StockDO">
+				<!-- 
+		<selectKey keyProperty="goodsId" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_stock') 
+    	</selectKey> -->
+    	    	
+		insert into t_stock 
+		(
+		
+			goods_id, 
+			stock
+		)
+		values
+		(
+
+		#{goodsId, jdbcType=VARCHAR},
+			#{stock, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.crm.domain.StockDO">
+		update t_stock 
+		<set>
+			<if test="stock != null">stock = #{stock}</if>
+		</set>
+		where goods_id = #{goodsId}
+	</update>
+	
+	<delete id="remove">
+		delete from t_stock where goods_id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_stock where goods_id in 
+		<foreach item="goodsId" collection="array" open="(" separator="," close=")">
+			#{goodsId}
+		</foreach>
+	</delete>
+
+</mapper>
