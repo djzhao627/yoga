@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public interface GoodsService {
 	
-	GoodsDO get(Integer id);
+	GoodsVO get(Integer id);
 	
 	List<GoodsVO> list(Map<String, Object> map);
 	

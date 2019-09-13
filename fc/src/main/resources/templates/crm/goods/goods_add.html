@@ -5,7 +5,7 @@
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-22">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
@@ -39,9 +39,10 @@
                                        type="text">
                             </div>
                         </div>
+                        <input id="ip" name="ip" class="form-control" type="hidden">
+                        <input id="agent" name="agent" class="form-control" type="hidden">
                         <div class="form-group">
-                            <input id="detail" name="detail" type="hidden"
-                                   th:value="${goods.detail}"> <label
+                            <input id="detail" name="detail" type="hidden"> <label
                                 class="col-sm-2 control-label">商品详情：</label>
                             <div class="col-sm-10">
                                 <div class="ibox-content no-padding">
@@ -75,7 +76,7 @@
     </div>
 </div>
 <div th:include="include::footer"></div>
-<script type="text/javascript" th:src="@{/js/appjs/crm/goods/goods_edit.js}">
+<script type="text/javascript" th:src="@{/js/appjs/crm/goods/goods_add.js}">
 </script>
 </body>
 </html>

@@ -25,8 +25,15 @@ public class GoodsServiceImpl implements GoodsService {
 	private StockDao stockDao;
 	
 	@Override
-	public GoodsDO get(Integer id){
-		return goodsDao.get(id);
+	public GoodsVO get(Integer id){
+        GoodsDO goodsDO = goodsDao.get(id);
+        GoodsVO goodsVO = new GoodsVO();
+        BeanUtils.copyProperties(goodsDO,goodsVO);
+        StockDO stockDO = stockDao.get(goodsDO.getId());
+		if (stockDO != null) {
+			goodsVO.setStock(stockDO.getStock());
+		}
+        return goodsVO;
 	}
 	
 	@Override

@@ -67,7 +67,7 @@ public class GoodsController extends BaseController {
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
 		mv.addObject("goods", new GoodsVO());
-		mv.setViewName("crm/goods/goods_edit");
+		mv.setViewName("crm/goods/goods_add");
 		return mv;
 	}
 	
@@ -78,7 +78,7 @@ public class GoodsController extends BaseController {
 	@RequiresPermissions("crm:goods:edit")
 	ModelAndView edit(@PathVariable("id") Integer id){
 	    ModelAndView mv = new ModelAndView();
-		GoodsDO goods = goodsService.get(id);
+		GoodsVO goods = goodsService.get(id);
 		mv.addObject("goods", goods);
 		mv.setViewName("crm/goods/goods_edit");
 		return mv;

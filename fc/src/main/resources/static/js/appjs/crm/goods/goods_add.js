@@ -5,18 +5,9 @@ $(function() {
 });
 $().ready(function() {
     $('.summernote').summernote({
-        height : '220px',
-        lang : 'zh-CN',
-        callbacks: {
-            onImageUpload: function(files, editor, $editable) {
-                console.log("onImageUpload");
-                sendFile(files);
-            }
-        }
+        height:'220px',
+        lang : 'zh-CN'
     });
-    var content = $("#detail").val();
-
-    $('#content_sn').summernote('code', content);
     validateRule();
 });
 $.validator.setDefaults({

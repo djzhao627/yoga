@@ -39,8 +39,6 @@ function load() {
                             fileName: '报表',  //文件名称设置
                             worksheetName: 'sheet1',  //表格工作区名称
                             tableName: '报表'
-                            //excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
-                            //onMsoNumberFormat: DoOnMsoNumberFormat
                         },
 						sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
 						queryParams : function(params) {
@@ -55,50 +53,23 @@ function load() {
 							return formData;
 						}
 						
-						// //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
-						// queryParamsType = 'limit' ,返回参数必须包含
-						// limit, offset, search, sort, order 否则, 需要包含:
-						// pageSize, pageNumber, searchText, sortName, sortOrder.
-						// 返回false将会终止请求
-                        
-						// 设置为limit则会发送符合RESTFull格式的参数
-						// queryParamsType : "limit",
-						// 发送到服务器的数据编码类型
-						// contentType : "application/x-www-form-urlencoded",
-						//search : true, // 是否显示搜索框
-						//showPaginationSwitch:true, //是否显示 分页控件
 					});
 }
 
 /*格式化"操作"按钮列*/
 function operateFormatter(value, row, index){
 	var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
-		+ row.id
-		+ '\' , '+ index +')"><i class="fa fa-edit"></i></a> ';
+		+ row.id + '\')"><i class="fa fa-edit"></i></a> ';
 	var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
 		+ row.id
 		+ '\')"><i class="fa fa-remove"></i></a> ';
-    /**	var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-		+ row.id
-		+ '\')"><i class="fa fa-key"></i></a> ';*/
-	// var e = "";
-	// if(s_edit_h !="hidden"){
-	// 	e = createTableEditHtml();
-	// }
-	// var d = "";
-	// if(s_remove_h !="hidden"){
-	// 	d = createTableDelHtml();
-	// }
 	return e + d ;
 }
 
 //操作列事件
 var operateEvent={
-            	   'click .check': function (e, value, row, index) {
-            		   edit(row, 'check');
-                   },
             	   'click .edit': function (e, value, row, index) {
-            		   edit(row, 'edit');
+            		   edit(row.id);
                    },
                    'click .remove': function (e, value, row, index) {
                 	   remove(row.id);
@@ -118,21 +89,19 @@ function add() {
 		content : prefix + '/add' // iframe的url
 	});
 }
-function edit(row, type) {
+function edit(id, type) {
 	/*var row = $('#dataTable').bootstrapTable('getData')[index];*/
-	if(!row || !row.id){
-		alertMsg("请选择一条记录!");
-		return;
-	}
-	setPageValue(JSON.stringify(row));
-	
+	// if(!id){
+	// 	alertMsg("请选择一条记录!");
+	// 	return;
+	// }
 	layer.open({
 		type : 2,
 		title : '编辑',
 		maxmin : true,
 		shadeClose : false, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/edit/' + row.id // iframe的url
+		content : prefix + '/edit/' + id // iframe的url
 	});
 }
 function remove(id) {
