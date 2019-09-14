@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fc.crm.dao.SomatometricRecordDao">
+
+	<select id="get" resultType="com.fc.crm.domain.SomatometricRecordDO">
+		SELECT 
+			id,member_id, measure_time,weight,body_fat_rate,moisture_datio,muscle_rate,body_shape_judgment,metabolic_age,bone_content,lactone_content,somatometric_comparison			 
+		FROM t_somatometric_record 
+		where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.fc.crm.domain.SomatometricRecordDO">
+		SELECT 
+			id, member_id,  measure_time, weight, body_fat_rate, moisture_datio, muscle_rate, body_shape_judgment, metabolic_age, bone_content, lactone_content, somatometric_comparison 		
+		FROM t_somatometric_record 
+        <where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="memberId != null and memberId != ''">
+		  		  	AND member_id = #{memberId}   
+		  		  </if>
+		  		  <if test=" measureTime != null and measureTime != ''">
+		  		  	AND  measure_time LIKE '%${  measureTime}%'  
+		  		  </if>
+		  		  <if test="weight != null and weight != ''">
+		  		  	AND weight = #{weight}   
+		  		  </if>
+		  		  <if test="bodyFatRate != null and bodyFatRate != ''">
+		  		  	AND body_fat_rate = #{bodyFatRate}   
+		  		  </if>
+		  		  <if test="moistureDatio != null and moistureDatio != ''">
+		  		  	AND moisture_datio = #{moistureDatio}   
+		  		  </if>
+		  		  <if test="muscleRate != null and muscleRate != ''">
+		  		  	AND muscle_rate = #{muscleRate}   
+		  		  </if>
+		  		  <if test="bodyShapeJudgment != null and bodyShapeJudgment != ''">
+		  		  	AND body_shape_judgment LIKE '%${ bodyShapeJudgment}%'  
+		  		  </if>
+		  		  <if test="metabolicAge != null and metabolicAge != ''">
+		  		  	AND metabolic_age LIKE '%${ metabolicAge}%'  
+		  		  </if>
+		  		  <if test="boneContent != null and boneContent != ''">
+		  		  	AND bone_content = #{boneContent}   
+		  		  </if>
+		  		  <if test="lactoneContent != null and lactoneContent != ''">
+		  		  	AND lactone_content = #{lactoneContent}   
+		  		  </if>
+		  		  <if test="somatometricComparison != null and somatometricComparison != ''">
+		  		  	AND somatometric_comparison LIKE '%${ somatometricComparison}%'  
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY id DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_somatometric_record
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="memberId != null and memberId != ''">
+		  		  	AND member_id = #{memberId}   
+		  		  </if>
+		  		  <if test=" measureTime != null and measureTime != ''">
+		  		  	AND  measure_time LIKE '%${  measureTime}%'  
+		  		  </if>
+		  		  <if test="weight != null and weight != ''">
+		  		  	AND weight = #{weight}   
+		  		  </if>
+		  		  <if test="bodyFatRate != null and bodyFatRate != ''">
+		  		  	AND body_fat_rate = #{bodyFatRate}   
+		  		  </if>
+		  		  <if test="moistureDatio != null and moistureDatio != ''">
+		  		  	AND moisture_datio = #{moistureDatio}   
+		  		  </if>
+		  		  <if test="muscleRate != null and muscleRate != ''">
+		  		  	AND muscle_rate = #{muscleRate}   
+		  		  </if>
+		  		  <if test="bodyShapeJudgment != null and bodyShapeJudgment != ''">
+		  		  	AND body_shape_judgment LIKE '%${ bodyShapeJudgment}%'  
+		  		  </if>
+		  		  <if test="metabolicAge != null and metabolicAge != ''">
+		  		  	AND metabolic_age LIKE '%${ metabolicAge}%'  
+		  		  </if>
+		  		  <if test="boneContent != null and boneContent != ''">
+		  		  	AND bone_content = #{boneContent}   
+		  		  </if>
+		  		  <if test="lactoneContent != null and lactoneContent != ''">
+		  		  	AND lactone_content = #{lactoneContent}   
+		  		  </if>
+		  		  <if test="somatometricComparison != null and somatometricComparison != ''">
+		  		  	AND somatometric_comparison LIKE '%${ somatometricComparison}%'  
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.crm.domain.SomatometricRecordDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_somatometric_record') 
+    	</selectKey> -->
+    	    	
+		insert into t_somatometric_record 
+		(
+		
+			id, 
+			member_id, 
+			 measure_time, 
+			weight, 
+			body_fat_rate, 
+			moisture_datio, 
+			muscle_rate, 
+			body_shape_judgment, 
+			metabolic_age, 
+			bone_content, 
+			lactone_content, 
+			somatometric_comparison
+		)
+		values
+		(
+		
+		    sys_seq('t_somatometric_record')  , 		    
+			#{memberId, jdbcType=VARCHAR}, 			
+			#{ measureTime, jdbcType=VARCHAR}, 			
+			#{weight, jdbcType=VARCHAR}, 			
+			#{bodyFatRate, jdbcType=VARCHAR}, 			
+			#{moistureDatio, jdbcType=VARCHAR}, 			
+			#{muscleRate, jdbcType=VARCHAR}, 			
+			#{bodyShapeJudgment, jdbcType=VARCHAR}, 			
+			#{metabolicAge, jdbcType=VARCHAR}, 			
+			#{boneContent, jdbcType=VARCHAR}, 			
+			#{lactoneContent, jdbcType=VARCHAR}, 			
+			#{somatometricComparison, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.crm.domain.SomatometricRecordDO">
+		update t_somatometric_record 
+		<set>
+			<if test="memberId != null">member_id = #{memberId}, </if>
+			<if test=" measureTime != null"> measure_time = #{ measureTime}, </if>
+			<if test="weight != null">weight = #{weight}, </if>
+			<if test="bodyFatRate != null">body_fat_rate = #{bodyFatRate}, </if>
+			<if test="moistureDatio != null">moisture_datio = #{moistureDatio}, </if>
+			<if test="muscleRate != null">muscle_rate = #{muscleRate}, </if>
+			<if test="bodyShapeJudgment != null">body_shape_judgment = #{bodyShapeJudgment}, </if>
+			<if test="metabolicAge != null">metabolic_age = #{metabolicAge}, </if>
+			<if test="boneContent != null">bone_content = #{boneContent}, </if>
+			<if test="lactoneContent != null">lactone_content = #{lactoneContent}, </if>
+			<if test="somatometricComparison != null">somatometric_comparison = #{somatometricComparison}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_somatometric_record where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_somatometric_record where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
