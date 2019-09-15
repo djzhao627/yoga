@@ -187,3 +187,101 @@ INSERT INTO `t_member_baseinfo` VALUES ('2', '水电费', '2', '都是', '123123
 INSERT INTO `t_member_baseinfo` VALUES ('3', '会员基本信息', '1', '都是', '123', null, '1232121', '', '', '2019-08-21', '', '', '', '', '', '', '2019-08-21 21:17:04', null, null, null);
 INSERT INTO `t_member_baseinfo` VALUES ('4', '坎坎坷坷', '2', '鹿晗', '2342478w', null, '123213', '2', '0', '2019-08-14', '江苏南京', '吴亦凡', '12312321421', '1', '', '123第三方', '2019-08-24 22:17:05', null, null, null);
 INSERT INTO `t_member_baseinfo` VALUES ('5', '快快快', '2', '李彦宏', '123', null, '1232121', '2,1', '0', '2019-08-30', '', '郭德纲', '', '1', null, '', '2019-08-29 21:25:19', null, null, null);
+
+-- ----------------------------
+-- Records of t_stock
+-- ----------------------------
+INSERT INTO `t_stock` VALUES ('7', '12');
+INSERT INTO `t_stock` VALUES ('9', '2');
+INSERT INTO `t_stock` VALUES ('1', '12');
+
+-- ----------------------------
+-- Records of t_goods
+-- ----------------------------
+INSERT INTO `t_goods` VALUES ('7', '6', '请问', '问额问问', '123', '发多少多少', '');
+INSERT INTO `t_goods` VALUES ('9', '6', '请问', '问额问问', '123', '发多少多少', '');
+INSERT INTO `t_goods` VALUES ('10', '6', '请问', '问额问问', '123', '发多少多少', '');
+
+
+INSERT INTO `sys_menu` VALUES ('107', '0', '会员管理', '', '', '0', 'fa fa-address-book-o', '0', null, null);
+INSERT INTO `sys_menu` VALUES ('108', '107', '客户基本信息', '/business/memberBaseInfo', 'business:memberBaseInfo:memberBaseInfo', '1', 'fa fa-address-card-o', '0', null, null);
+INSERT INTO `sys_menu` VALUES ('109', '108', '新增', '', 'business:memberBaseInfo:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('110', '108', '编辑', '', 'business:memberBaseInfo:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('111', '108', '删除', '', 'business:memberBaseInfo:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('112', '108', '批量删除', '', 'business:memberBaseInfo:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('114', '113', '新增', '', 'business:fcCustomFollowPlan:add', '2', '', '0', null, null);
+INSERT INTO `sys_menu` VALUES ('115', '113', '修改', null, 'business:fcCustomFollowPlan:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('116', '113', '删除', null, 'business:fcCustomFollowPlan:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('117', '113', '批量删除', null, 'business:fcCustomFollowPlan:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('119', '107', '订单信息', '/crm/order', 'crm:order:order', '1', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('120', '119', '新增', null, 'crm:order:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('121', '119', '修改', null, 'crm:order:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('122', '119', '删除', null, 'crm:order:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('123', '119', '批量删除', null, 'crm:order:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('124', '107', '新增', '/business/customFollowPlan', 'business:customFollowPlan:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('125', '107', '修改', '/business/customFollowPlan', 'business:customFollowPlan:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('126', '107', '删除', '/business/customFollowPlan', 'business:customFollowPlan:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('127', '107', '批量删除', '/business/customFollowPlan', 'business:customFollowPlan:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('128', '107', '商品管理', '/crm/goods', 'crm:goods:goods', '1', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('129', '128', '新增', null, 'crm:goods:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('130', '128', '修改', null, 'crm:goods:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('131', '128', '删除', null, 'crm:goods:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('132', '128', '批量删除', null, 'crm:goods:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('133', '107', '营销活动', '/crm/campaign', 'crm:campaign:campaign', '1', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('134', '133', '新增', null, 'crm:campaign:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('135', '133', '修改', null, 'crm:campaign:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('136', '133', '删除', null, 'crm:campaign:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('137', '133', '批量删除', null, 'crm:campaign:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('138', '107', '课程管理', '/crm/course', 'crm:course:course', '1', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('139', '138', '新增', null, 'crm:course:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('140', '138', '修改', null, 'crm:course:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('141', '138', '删除', null, 'crm:course:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('142', '138', '批量删除', null, 'crm:course:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('144', '107', '套餐管理', '/crm/coursePackages', 'crm:coursePackages:coursePackages', '1', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('145', '144', '新增', null, 'crm:coursePackages:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('146', '144', '修改', null, 'crm:coursePackages:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('147', '144', '删除', null, 'crm:coursePackages:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('148', '144', '批量删除', null, 'crm:coursePackages:batchRemove', '2', '', null, null, null);
+
+
+
+INSERT INTO `sys_role_menu` VALUES ('4500', '1', '144');
+INSERT INTO `sys_role_menu` VALUES ('4501', '1', '148');
+INSERT INTO `sys_role_menu` VALUES ('4502', '1', '147');
+INSERT INTO `sys_role_menu` VALUES ('4503', '1', '146');
+INSERT INTO `sys_role_menu` VALUES ('4504', '1', '145');
+INSERT INTO `sys_role_menu` VALUES ('4505', '1', '138');
+INSERT INTO `sys_role_menu` VALUES ('4506', '1', '142');
+INSERT INTO `sys_role_menu` VALUES ('4507', '1', '141');
+INSERT INTO `sys_role_menu` VALUES ('4508', '1', '140');
+INSERT INTO `sys_role_menu` VALUES ('4509', '1', '139');
+INSERT INTO `sys_role_menu` VALUES ('4510', '1', '107');
+INSERT INTO `sys_role_menu` VALUES ('4476', '1', '133');
+INSERT INTO `sys_role_menu` VALUES ('4477', '1', '128');
+INSERT INTO `sys_role_menu` VALUES ('4478', '1', '119');
+INSERT INTO `sys_role_menu` VALUES ('4479', '1', '108');
+INSERT INTO `sys_role_menu` VALUES ('4410', '1', '137');
+INSERT INTO `sys_role_menu` VALUES ('4411', '1', '136');
+INSERT INTO `sys_role_menu` VALUES ('4412', '1', '135');
+INSERT INTO `sys_role_menu` VALUES ('4413', '1', '134');
+INSERT INTO `sys_role_menu` VALUES ('4414', '1', '132');
+INSERT INTO `sys_role_menu` VALUES ('4415', '1', '131');
+INSERT INTO `sys_role_menu` VALUES ('4416', '1', '130');
+INSERT INTO `sys_role_menu` VALUES ('4417', '1', '129');
+INSERT INTO `sys_role_menu` VALUES ('4418', '1', '127');
+INSERT INTO `sys_role_menu` VALUES ('4419', '1', '126');
+INSERT INTO `sys_role_menu` VALUES ('4420', '1', '125');
+INSERT INTO `sys_role_menu` VALUES ('4421', '1', '124');
+INSERT INTO `sys_role_menu` VALUES ('4422', '1', '123');
+INSERT INTO `sys_role_menu` VALUES ('4423', '1', '122');
+INSERT INTO `sys_role_menu` VALUES ('4424', '1', '121');
+INSERT INTO `sys_role_menu` VALUES ('4425', '1', '120');
+INSERT INTO `sys_role_menu` VALUES ('4426', '1', '112');
+INSERT INTO `sys_role_menu` VALUES ('4427', '1', '111');
+INSERT INTO `sys_role_menu` VALUES ('4428', '1', '110');
+INSERT INTO `sys_role_menu` VALUES ('4429', '1', '109');
+
+-- ----------------------------
+-- Records of t_campaign
+-- ----------------------------
+INSERT INTO `t_campaign` VALUES ('0', '中秋促销', '是大V是的啊', '十大', '2019-09-14 00:00:00', '都是');
