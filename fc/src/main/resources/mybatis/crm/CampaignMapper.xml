@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fc.crm.dao.CampaignDao">
+
+	<select id="get" resultType="com.fc.crm.domain.CampaignDO">
+		SELECT 
+			id,activity_name,activity_content,activity_addr,activity_date,activity_enrollees			 
+		FROM t_campaign 
+		where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.fc.crm.domain.CampaignDO">
+		SELECT 
+			id, activity_name, activity_content, activity_addr, activity_date, activity_enrollees 		
+		FROM t_campaign 
+        <where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="activityName != null and activityName != ''">
+		  		  	AND activity_name LIKE '%${ activityName}%'  
+		  		  </if>
+		  		  <if test="activityContent != null and activityContent != ''">
+		  		  	AND activity_content LIKE '%${ activityContent}%'  
+		  		  </if>
+		  		  <if test="activityAddr != null and activityAddr != ''">
+		  		  	AND activity_addr LIKE '%${ activityAddr}%'  
+		  		  </if>
+		  		  <if test="activityDate != null and activityDate != ''">
+		  		  	AND activity_date LIKE '%${ activityDate}%'  
+		  		  </if>
+		  		  <if test="activityEnrollees != null and activityEnrollees != ''">
+		  		  	AND activity_enrollees LIKE '%${ activityEnrollees}%'  
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY id DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_campaign
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="activityName != null and activityName != ''">
+		  		  	AND activity_name LIKE '%${ activityName}%'  
+		  		  </if>
+		  		  <if test="activityContent != null and activityContent != ''">
+		  		  	AND activity_content LIKE '%${ activityContent}%'  
+		  		  </if>
+		  		  <if test="activityAddr != null and activityAddr != ''">
+		  		  	AND activity_addr LIKE '%${ activityAddr}%'  
+		  		  </if>
+		  		  <if test="activityDate != null and activityDate != ''">
+		  		  	AND activity_date LIKE '%${ activityDate}%'  
+		  		  </if>
+		  		  <if test="activityEnrollees != null and activityEnrollees != ''">
+		  		  	AND activity_enrollees LIKE '%${ activityEnrollees}%'  
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.crm.domain.CampaignDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_campaign') 
+    	</selectKey> -->
+    	    	
+		insert into t_campaign 
+		(
+		
+			id, 
+			activity_name, 
+			activity_content, 
+			activity_addr, 
+			activity_date, 
+			activity_enrollees
+		)
+		values
+		(
+		
+		    sys_seq('t_campaign')  , 		    
+			#{activityName, jdbcType=VARCHAR}, 			
+			#{activityContent, jdbcType=VARCHAR}, 			
+			#{activityAddr, jdbcType=VARCHAR}, 			
+			#{activityDate, jdbcType=VARCHAR}, 			
+			#{activityEnrollees, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.crm.domain.CampaignDO">
+		update t_campaign 
+		<set>
+			<if test="activityName != null">activity_name = #{activityName}, </if>
+			<if test="activityContent != null">activity_content = #{activityContent}, </if>
+			<if test="activityAddr != null">activity_addr = #{activityAddr}, </if>
+			<if test="activityDate != null">activity_date = #{activityDate}, </if>
+			<if test="activityEnrollees != null">activity_enrollees = #{activityEnrollees}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_campaign where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_campaign where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
