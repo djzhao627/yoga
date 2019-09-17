@@ -2,8 +2,6 @@ package com.fc.crm.scheduled;
 
 import com.fc.crm.domain.WorkPlanDO;
 import com.fc.crm.service.WorkPlanService;
-import com.fc.oa.dao.NotifyRecordDao;
-import com.fc.oa.domain.NotifyRecordDO;
 import com.fc.oa.service.NotifyService;
 import com.fc.system.domain.UserDO;
 import com.fc.system.service.SessionService;
@@ -18,13 +16,11 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 @Component
 @Configuration      //1.主要用于标记配置类，兼备Component的效果。
@@ -62,7 +58,7 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
                         public void run() {
                             for (UserDO userDO : sessionService.listOnlineUser()) {
                                 for (WorkPlanDO workPlanDO : WorkPlanDOList) {
-                                    if (workPlanDO.getPersonLiable() != null && workPlanDO.getPersonLiable().equals(userDO.getUserId())) {
+                                    if (workPlanDO.getPersonLiableId() != null && workPlanDO.getPersonLiableId().equals(userDO.getUserId())) {
                                         template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（责任人）");
                                     }
                                     /*if (workPlanDO.getHelper() != null && workPlanDO.getHelper().equals(userDO.getUserId())) {
@@ -94,7 +90,7 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
     private void addRecordOfWorkPlan(List<WorkPlanDO> WorkPlanDOList) {
         List<Long> userList = new ArrayList<>();
         for (WorkPlanDO workPlanDO : WorkPlanDOList) {
-            userList.add(workPlanDO.getPersonLiable());
+            userList.add(workPlanDO.getPersonLiableId());
         }
         notifyService.saveNotify(userList, 1L);
     }

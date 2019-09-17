@@ -7,11 +7,12 @@
     #locale {
         width: 100%;
     }
+
     .like {
         margin-right: 10px;
     }
 
-    #exampleTable > tr  {
+    #exampleTable > tr {
         height: 30px;
         max-height: 30px;
     }
@@ -71,12 +72,19 @@
                                 onclick="addWorkPlan()">
                             <i class="fa fa-plus" aria-hidden="true"></i>添加
                         </button>
-                        <button id="btnDel" shiro:hasPermission="crm:workPlan:batchRemove" type="button" class="btn btn-danger"
+                        <button id="btnDel" shiro:hasPermission="crm:workPlan:batchRemove" type="button"
+                                class="btn btn-danger"
                                 onclick="batchRemove()">
                             <i class="fa fa-trash" aria-hidden="true"></i>删除
                         </button>
                     </div>
                     <div class="pull-right">
+                        <button id="btnPublic" shiro:hasPermission="crm:workPlan:batchPublic" class="btn btn-success"
+                                onclick="batchPublic()">发布
+                        </button>
+                        <button id="btnScrapped" shiro:hasPermission="crm:workPlan:batchScrapped"
+                                class="btn btn-success" onclick="batchScrapped()">作废
+                        </button>
                         <button id="btnSearch" class="btn btn-success" onclick="reLoad()">查询</button>
                         <button id="btnReset" class="btn btn-danger" onclick="reSet()">重置</button>
                     </div>
@@ -116,7 +124,7 @@
                 data-pagination="true"
                 data-id-field="id"
                 data-page-list="[1, 25, 50, 100, all]"
-                data-show-footer="true"
+                data-show-footer="false"
                 data-side-pagination="server"
                 data-url="/crm/workPlan/listPage">
         </table>
@@ -150,7 +158,7 @@
 <script type="text/javascript" th:src="@{/js/appjs/common/utils/ijstree.js}"></script>
 <script type="text/javascript" th:src="@{/js/appjs/crm/workPlan/workPlan_list.js}"></script>
 
-<script type="text/javascript"  src="@{/js/common/tableExport.min.js}"></script>
+<script type="text/javascript" src="@{/js/common/tableExport.min.js}"></script>
 <script type="text/javascript" src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
 
 </body>

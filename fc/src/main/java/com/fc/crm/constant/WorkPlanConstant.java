@@ -40,7 +40,7 @@ public class WorkPlanConstant {
     /**
      * 责任人ID
      */
-    public static final String personLiable = "personLiable";
+    public static final String personLiableId = "personLiableId";
     /**
      * 责任人名称
      */
@@ -48,7 +48,7 @@ public class WorkPlanConstant {
     /**
      * 协助人ID
      */
-    public static final String helper = "helper";
+    public static final String helperId = "helperId";
     /**
      * 协助人名称
      */
