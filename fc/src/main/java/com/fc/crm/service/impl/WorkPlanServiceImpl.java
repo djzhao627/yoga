@@ -3,9 +3,6 @@ package com.fc.crm.service.impl;
 import com.fc.common.utils.ShiroUtils;
 import com.fc.oa.domain.NotifyDO;
 import com.fc.oa.service.NotifyService;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +13,6 @@ import java.util.Map;
 import com.fc.crm.dao.WorkPlanDao;
 import com.fc.crm.domain.WorkPlanDO;
 import com.fc.crm.service.WorkPlanService;
-import com.github.pagehelper.PageHelper;
-import com.fc.common.utils.PageUtils;
 
 @Service
 public class WorkPlanServiceImpl implements WorkPlanService {
@@ -46,22 +41,7 @@ public class WorkPlanServiceImpl implements WorkPlanService {
 
     @Override
     public int save(WorkPlanDO workPlan) {
-        if (workPlan != null) {
-            NotifyDO notify = new NotifyDO();
-            notify.setType("1");
-            notify.setContent(workPlan.getContent());
-            notify.setTitle("工作计划");
-            List<Long> userIdList = new ArrayList<>();
-            if (workPlan.getPersonLiable() != null) {
-                userIdList.add(workPlan.getPersonLiable());
-            }
-            if (workPlan.getHelper()!= null) {
-                userIdList.add(workPlan.getHelper());
-            }
-            notify.setUserIds(userIdList);
-            notify.setCreateBy(ShiroUtils.getUserId());
-            notifyService.save(notify);
-        }
+        workPlan.setState("0");
         return workPlanDao.save(workPlan);
     }
 
@@ -72,12 +52,51 @@ public class WorkPlanServiceImpl implements WorkPlanService {
 
     @Override
     public int remove(String id) {
-        return workPlanDao.remove(id);
+        WorkPlanDO workPlan = workPlanDao.get(id);
+        if (workPlan != null && "0".equals(workPlan.getState())) {
+            return workPlanDao.remove(id);
+        } else {
+            // 不可以删除
+        }
+        return 0;
     }
 
     @Override
     public int batchRemove(String[] ids) {
         return workPlanDao.batchRemove(ids);
+    }
+
+    @Override
+    public int publicWorkPlan(String[] ids) {
+
+        int successSum = 0;
+        for (String id : ids) {
+            WorkPlanDO workPlanDO = new WorkPlanDO();
+            workPlanDO.setState("1");
+            workPlanDO.setId(id);
+            int success = workPlanDao.update(workPlanDO);
+            if (success > 0) {
+                WorkPlanDO workPlan = workPlanDao.get(id);
+                if (workPlan != null) {
+                    NotifyDO notify = new NotifyDO();
+                    notify.setType("1");
+                    notify.setContent(workPlan.getContent());
+                    notify.setTitle("工作计划");
+                    List<Long> userIdList = new ArrayList<>();
+                    if (workPlan.getPersonLiableId() != null) {
+                        userIdList.add(workPlan.getPersonLiableId());
+                    }
+                    if (workPlan.getHelperId() != null) {
+                        userIdList.add(workPlan.getHelperId());
+                    }
+                    notify.setUserIds(userIdList);
+                    notify.setCreateBy(ShiroUtils.getUserId());
+                    notifyService.save(notify);
+                }
+                successSum += success;
+            }
+        }
+        return successSum;
     }
 
 }

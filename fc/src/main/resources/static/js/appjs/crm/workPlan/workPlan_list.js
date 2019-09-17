@@ -1,6 +1,6 @@
 var prefix = ctx + "/crm/workPlan"
 
-$(function() {
+$(function () {
     getTreeData();
     var deptId = '';
     initTable(deptId);
@@ -31,13 +31,13 @@ function detailFormatter(index, row) {
         workPlanId: row.id
     };
     var html = [];
-    var str = "";
+    var str = "<div>";
     $.ajax({
         url: ctx + "/crm/workPlanFollowUp/listPage",
         method: 'post',                      //请求方式（*）
 //            contentType: 'application/json; charset=utf-8',
         dataType: "json",
-        async : false,
+        async: false,
         data: params,
         beforeSend: function () {
             close = layer.load(2);
@@ -46,10 +46,10 @@ function detailFormatter(index, row) {
             layer.close(close);
             var rowData = data.rows;
 
-            for (var i=0; i<rowData.length; i++) {
-                str += "<tr id=" + "'" + ondblclick + "'" + " class='detail-view'>";
-                str += "<td style='width: 50px' align='center'></td>";
-                str += "<td style='width: 50px' align='center'>" + (i+1) + "</td>";
+            for (var i = 0; i < rowData.length; i++) {
+                str += "<tr class='detail-view'>";
+                str += "<td style='width: 50px' align='center' id=''></td>";
+                str += "<td style='width: 50px' align='center'>" + (i + 1) + "</td>";
                 str += "<td class='colStyle' align='center'>" + rowData[i].followUp + "</td>";
                 str += "<td class='colStyle' align='center'>" + rowData[i].followUp + "</td>";
                 str += "</tr>";
@@ -57,7 +57,7 @@ function detailFormatter(index, row) {
 
         }
     })
-    return str;
+    return str + "</div>";
 }
 
 function operateFormatter(value, row, index) {
@@ -100,6 +100,16 @@ function totalPriceFormatter(data) {
     }, 0)
 }
 
+function formatTableUnit(value, row, index) {
+    return {
+        css: {
+            "white-space": 'nowrap',
+            "text-overflow": 'ellipsis',
+            "overflow": 'hidden'
+        }
+    }
+}
+
 function initTable(deptId) {
     $table.bootstrapTable('destroy').bootstrapTable({
 
@@ -126,7 +136,7 @@ function initTable(deptId) {
         showExport: true,                     //是否显示导出
         exportDataType: "all",              //basic', 'all', 'selected'.
         exportTypes: ['excel'],
-        height: $(window).height()-160,
+        height: $(window).height() - 160,
         rowHeight: "35px",
         exportOptions: {
             ignoreColumn: [0],  //忽略某一列的索引
@@ -149,67 +159,70 @@ function initTable(deptId) {
             formData.deptId = deptId;
             return formData;
         },
-
         columns: [
             {
-                checkbox : true,
+                checkbox: true,
                 height: "35px"
             }, {
-                field : 'id',
+                field: 'id',
                 visible: false,
-            },{
-                field : 'deptId',
+            }, {
+                field: 'deptId',
                 visible: false,
-            },{
-                field : 'deptName',
-                title : '部门名称',
-                width : 50,
+            }, {
+                field: 'deptName',
+                title: '部门名称',
+                width: 60,
                 height: "35px"
-            },{
-                field : 'content',
-                title : '交办事项',
-                width : 50
-            },{
-                field : 'startTime',
-                title : '开始时间',
-                width : 50
-            },{
-                field : 'endTime',
-                title : '结束时间',
-                width : 50
-            },{
-                field : 'personLiableName',
-                title : '责任人',
-                width : 50
-            },{
-                field : 'helperName',
-                title : '协助人',
-                width : 50
-            },{
-                field : 'remarks',
-                title : '跟进情况',
-                width : 50
-            },{
-                field : 'remindType',
-                title : '提醒方式',
-                width : 50
-            },{
-                field : 'operate',
-                title : '操作',
-                width : 50,
-                align : 'center',
-                formatter : function(value, row, index) {
+            }, {
+                field: 'content',
+                title: '交办事项',
+                width: 80,
+                cellStyle: formatTableUnit,
+                formatter: function (value, row, index) {
+
+                    var span = document.createElement('div');
+                    span.setAttribute('title', value);
+                    span.innerHTML = value.toString().substring(0, 20);
+                    return span.outerHTML;
+                }
+            }, {
+                field: 'startTime',
+                title: '开始时间',
+                width: 60
+            }, {
+                field: 'endTime',
+                title: '结束时间',
+                width: 60
+            }, {
+                field: 'personLiableName',
+                title: '责任人',
+                width: 60
+            }, {
+                field: 'helperName',
+                title: '协助人',
+                width: 60
+            }, {
+                field: 'state',
+                title: '状态',
+                width: 60
+            }, {
+                field: 'operate',
+                title: '操作',
+                width: 100,
+                align: 'center',
+                formatter: function (value, row, index) {
                     var e = '<a class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="编辑" onclick="edit(\''
                         + row.id
                         + '\')"><i class="fa fa-edit"></i></a> ';
                     var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
                         + row.id
                         + '\')"><i class="fa fa-remove"></i></a> ';
-                    return e + d;
+                    return '<span>' + e + d + '</span>';
                 }
             }
         ],
-        rowStyle:function(row,index) {
+        rowStyle: function (row, index) {
             return row.height = "35px";
         }
     })
@@ -234,39 +247,6 @@ function initTable(deptId) {
         $remove.prop('disabled', true)
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*格式化"操作"按钮列*/
@@ -364,6 +344,76 @@ function remove(id) {
                 }
             });
         })
+}
+
+/**
+ * 发布
+ * @param id
+ */
+function batchPublic() {
+    var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
+    if (rows.length == 0) {
+        alertMsg("请选择要发布的数据");
+        return;
+    }
+    alertConfirm("确认要发布选中的'" + rows.length + "'条数据吗?",
+        function () {
+            var ids = new Array();
+            // 遍历所有选择的行数据，取每条数据对应的ID
+            $.each(rows, function (i, row) {
+                ids[i] = row['id'];
+            });
+            $.ajax({
+                type: 'POST',
+                data: {
+                    "ids": ids
+                },
+                url: prefix + '/batchPublic',
+                success: function (r) {
+                    if (r.code == 0) {
+                        alertMsg(r.msg);
+                        reLoad();
+                    } else {
+                        alertMsg(r.msg);
+                    }
+                }
+            });
+        });
+}
+
+/**
+ * 作废
+ * @param id
+ */
+function batchScrapped() {
+    var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
+    if (rows.length == 0) {
+        alertMsg("请选择要作废的数据");
+        return;
+    }
+    alertConfirm("确认要作废选中的'" + rows.length + "'条数据吗?",
+        function () {
+            var ids = new Array();
+            // 遍历所有选择的行数据，取每条数据对应的ID
+            $.each(rows, function (i, row) {
+                ids[i] = row['id'];
+            });
+            $.ajax({
+                type: 'POST',
+                data: {
+                    "ids": ids
+                },
+                url: prefix + '/batchScrapped',
+                success: function (r) {
+                    if (r.code == 0) {
+                        alertMsg(r.msg);
+                        reLoad();
+                    } else {
+                        alertMsg(r.msg);
+                    }
+                }
+            });
+        });
 }
 
 //备用方法

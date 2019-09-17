@@ -27,4 +27,6 @@ public interface WorkPlanService {
     int remove(String id);
 
     int batchRemove(String[] ids);
+
+    int publicWorkPlan(String[] ids);
 }

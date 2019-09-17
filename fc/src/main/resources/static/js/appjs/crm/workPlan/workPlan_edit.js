@@ -45,6 +45,34 @@ function sbumitData() {
 
 }
 
+var openPersonLiableName = function () {
+    layer.open({
+        type: 2,
+        title: "选择人员",
+        area: ['300px', '450px'],
+        content: prefix + "/personLiable"
+    })
+}
+
+function loadPersonLiable(userIds, userNames) {
+    $("#personLiableId").val(userIds);
+    $("#personLiableName").val(userNames);
+}
+
+var openHelperName = function () {
+    layer.open({
+        type: 2,
+        title: "选择人员",
+        area: ['300px', '450px'],
+        content: prefix + "/helper"
+    })
+}
+
+function loadHelper(userIds, userNames) {
+    $("#helperId").val(userIds);
+    $("#helperName").val(userNames);
+}
+
 function validateRule() {
     var icon = "<i class='fa fa-times-circle'></i> ";
     $("#signupForm").validate({
@@ -76,11 +104,11 @@ function validateRule() {
             schedule: {
                 maxlength: 255
             },
-            personLiable: {
+            personLiableId: {
                 required: true,
                 maxlength: 100
             },
-            helper: {
+            helperId: {
                 maxlength: 100
             },
             remarks: {
@@ -138,11 +166,18 @@ function validateRule() {
             schedule: {
                 maxlength: icon + "最大长度不超过255"
             },
-            personLiable: {
+            personLiableId: {
                 required: icon + "责任人不能为空",
                 maxlength: icon + "最大长度不超过100"
             },
-            helper: {
+            personLiableName: {
+                required: icon + "责任人不能为空",
+                maxlength: icon + "最大长度不超过100"
+            },
+            helperId: {
+                maxlength: icon + "最大长度不超过100"
+            },
+            helperName: {
                 maxlength: icon + "最大长度不超过100"
             },
             remarks: {

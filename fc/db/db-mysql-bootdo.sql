@@ -1046,34 +1046,6 @@ CREATE TABLE `system_sequence`
   ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Table structure for t_work_plan
--- ----------------------------
-DROP TABLE IF EXISTS `t_work_plan`;
-CREATE TABLE `t_work_plan`
-(
-    `ID`                 varchar(10)   NOT NULL,
-    `content`            varchar(1000) NOT NULL COMMENT '交办事项',
-    `dept_Id`            varchar(100)  NOT NULL COMMENT '部门Id',
-    `dept_Name`          varchar(100)  NOT NULL COMMENT '部门名称',
-    `start_Time`         varchar(23)   NOT NULL,
-    `end_Time`           varchar(23)   NOT NULL COMMENT '结束时间',
-    `schedule`           varchar(255)  DEFAULT NULL COMMENT '完成进度',
-    `person_Liable_Name` varchar(100)  NOT NULL COMMENT '责任人名称',
-    `person_Liable`      varchar(100)  NOT NULL COMMENT '责任人ID',
-    `helper_name`        varchar(100)  DEFAULT NULL COMMENT '协助人名称',
-    `helper`             varchar(100)  DEFAULT NULL COMMENT '协助人ID',
-    `remarks`            varchar(1000) DEFAULT NULL COMMENT '备注',
-    `remind_Type`        varchar(20)   DEFAULT NULL COMMENT '提醒方式，任务开始后，每天提醒？还是如何提醒',
-    `state`              varchar(2)    DEFAULT '0' COMMENT '状态：0：草稿，1：发布，2：删除',
-    `Level`              varchar(2)    DEFAULT NULL COMMENT '级别，\r\n1：已完成绿底、\r\n2：紧急/重要红字、\r\n3：未完成/需修改黄底、\r\n4：蓝底为新增/更新',
-    `Task_Annex`         varchar(500)  DEFAULT NULL COMMENT '任务附件名，使用“??”（两个英文的问号）隔开',
-    `Task_Annex_path`    varchar(500)  DEFAULT NULL COMMENT '任务附件名，使用“??”（两个英文的问号）隔开,\r\n使用相对路径\r\n~~/a/b/c.txt',
-    `execute_Annex`      varchar(500)  DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开',
-    `execute_Annex_path` varchar(500)  DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开,'
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8 COMMENT ='工作计划';
-
--- ----------------------------
 -- Function structure for currval
 -- ----------------------------
 DROP FUNCTION IF EXISTS `currval`;
@@ -1182,6 +1154,34 @@ CREATE TABLE `t_custom_follow_plan`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+
+-- ----------------------------
+-- Table structure for t_work_plan
+-- ----------------------------
+DROP TABLE IF EXISTS `t_work_plan`;
+CREATE TABLE `t_work_plan`
+(
+    `ID`                 varchar(10)   NOT NULL,
+    `content`            varchar(1000) NOT NULL COMMENT '交办事项',
+    `dept_Id`            varchar(100)  NOT NULL COMMENT '部门Id',
+    `dept_Name`          varchar(100)  NOT NULL COMMENT '部门名称',
+    `start_Time`         varchar(23)   NOT NULL,
+    `end_Time`           varchar(23)   NOT NULL COMMENT '结束时间',
+    `schedule`           varchar(255)  DEFAULT NULL COMMENT '完成进度',
+    `person_Liable_Name` varchar(100)  NOT NULL COMMENT '责任人名称',
+    `person_Liable_id`      varchar(100)  NOT NULL COMMENT '责任人ID',
+    `helper_name`        varchar(100)  DEFAULT NULL COMMENT '协助人名称',
+    `helper_id`             varchar(100)  DEFAULT NULL COMMENT '协助人ID',
+    `remarks`            varchar(1000) DEFAULT NULL COMMENT '备注',
+    `remind_Type`        varchar(20)   DEFAULT NULL COMMENT '提醒方式，任务开始后，每天提醒？还是如何提醒',
+    `state`              varchar(2)    DEFAULT '0' COMMENT '状态：0：草稿，1：发布，2：撤销，3：作废',
+    `Level`              varchar(2)    DEFAULT NULL COMMENT '级别，\r\n1：已完成绿底、\r\n2：紧急/重要红字、\r\n3：未完成/需修改黄底、\r\n4：蓝底为新增/更新',
+    `Task_Annex`         varchar(500)  DEFAULT NULL COMMENT '任务附件名，使用“??”（两个英文的问号）隔开',
+    `Task_Annex_path`    varchar(500)  DEFAULT NULL COMMENT '任务附件名，使用“??”（两个英文的问号）隔开,\r\n使用相对路径\r\n~~/a/b/c.txt',
+    `execute_Annex`      varchar(500)  DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开',
+    `execute_Annex_path` varchar(500)  DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开,'
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8 COMMENT ='工作计划';
 
 -- ----------------------------
 -- Table structure for t_work_plan_follow_up

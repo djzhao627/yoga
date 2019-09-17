@@ -5,15 +5,16 @@
 
     <select id="get" resultType="com.fc.crm.domain.WorkPlanDO">
 		SELECT 
-			ID,content,dept_Id,dept_Name,start_Time,end_Time,schedule,person_Liable,person_Liable_Name,helper,helper_Name,remarks,remind_Type,state,Level,Task_Annex,Task_Annex_path,execute_Annex,execute_Annex_path
+			ID,content,dept_Id,dept_Name,start_Time,end_Time,schedule,person_Liable_id,person_Liable_Name,helper_id,helper_Name,remarks,remind_Type,
+			(select name from sys_dict WHERE type = 'WORK_PLAN_STATE' and value=state) as state,Level,Task_Annex,Task_Annex_path,execute_Annex,execute_Annex_path
 		FROM t_work_plan
 		where ID = #{value}
 	</select>
 
     <select id="list" resultType="com.fc.crm.domain.WorkPlanDO">
         SELECT
-        ID, content, dept_Id, dept_Name, start_Time, end_Time, schedule, person_Liable, person_Liable_Name, helper, helper_Name, remarks, remind_Type,
-        state, Level, Task_Annex, Task_Annex_path, execute_Annex, execute_Annex_path
+        ID, content, dept_Id, dept_Name, start_Time, end_Time, schedule, person_Liable_id, person_Liable_Name, helper_id, helper_Name, remarks, remind_Type,
+        (select name from sys_dict WHERE type = 'WORK_PLAN_STATE' and value=state) as state, Level, Task_Annex, Task_Annex_path, execute_Annex, execute_Annex_path
         FROM t_work_plan
         <where>
 
@@ -38,17 +39,17 @@
             <if test="schedule != null and schedule != ''">
                 AND schedule LIKE '%${ schedule}%'
             </if>
-            <if test="personLiable != null and personLiable != ''">
-                AND person_Liable LIKE '%${ personLiable}%'
+            <if test="personLiableId != null and personLiableId != ''">
+                AND person_Liable_id LIKE '%${ personLiableId}%'
             </if>
             <if test="personLiableName != null and personLiableName != ''">
-                AND personLiableName LIKE '%${ personLiableName}%'
+                AND person_Liable_Name LIKE '%${ personLiableName}%'
             </if>
-            <if test="helper != null and helper != ''">
-                AND helper LIKE '%${ helper}%'
+            <if test="helperId != null and helperId != ''">
+                AND helper_id LIKE '%${ helperId}%'
             </if>
             <if test="helperName != null and helperName != ''">
-                AND helperName LIKE '%${ helperName}%'
+                AND helper_Name LIKE '%${ helperName}%'
             </if>
             <if test="remarks != null and remarks != ''">
                 AND remarks LIKE '%${ remarks}%'
@@ -113,17 +114,17 @@
             <if test="schedule != null and schedule != ''">
                 AND schedule LIKE '%${ schedule}%'
             </if>
-            <if test="personLiable != null and personLiable != ''">
-                AND person_Liable LIKE '%${ personLiable}%'
+            <if test="personLiableId != null and personLiableId != ''">
+                AND person_Liable_id LIKE '%${ personLiableId}%'
             </if>
             <if test="personLiableName != null and personLiableName != ''">
-                AND person_LiableName LIKE '%${ personLiableName}%'
+                AND person_Liable_Name LIKE '%${ personLiableName}%'
             </if>
-            <if test="helper != null and helper != ''">
-                AND helper LIKE '%${ helper}%'
+            <if test="helperId != null and helperId != ''">
+                AND helper_id LIKE '%${ helperId}%'
             </if>
             <if test="helperName != null and helperName != ''">
-                AND helperName LIKE '%${ helperName}%'
+                AND helper_Name LIKE '%${ helperName}%'
             </if>
             <if test="remarks != null and remarks != ''">
                 AND remarks LIKE '%${ remarks}%'
@@ -169,9 +170,9 @@
         start_Time,
         end_Time,
         schedule,
-        person_Liable,
+        person_Liable_Id,
         person_Liable_Name,
-        helper,
+        helper_Id,
         helper_Name,
         remarks,
         remind_Type,
@@ -192,9 +193,9 @@
         #{startTime, jdbcType=VARCHAR},
         #{endTime, jdbcType=VARCHAR},
         #{schedule, jdbcType=VARCHAR},
-        #{personLiable, jdbcType=VARCHAR},
+        #{personLiableId, jdbcType=VARCHAR},
         #{personLiableName, jdbcType=VARCHAR},
-        #{helper, jdbcType=VARCHAR},
+        #{helperId, jdbcType=VARCHAR},
         #{helperName, jdbcType=VARCHAR},
         #{remarks, jdbcType=VARCHAR},
         #{remindType, jdbcType=VARCHAR},
@@ -216,10 +217,10 @@
             <if test="startTime != null">start_Time = #{startTime},</if>
             <if test="endTime != null">end_Time = #{endTime},</if>
             <if test="schedule != null">schedule = #{schedule},</if>
-            <if test="personLiable != null">person_Liable = #{personLiable},</if>
-            <if test="personLiableName != null">personLiableName = #{personLiableName},</if>
-            <if test="helper != null">helper = #{helper},</if>
-            <if test="helperName != null">helperName = #{helperName},</if>
+            <if test="personLiableId != null">person_Liable_Id = #{personLiableId},</if>
+            <if test="personLiableName != null">person_Liable_Name = #{personLiableName},</if>
+            <if test="helperId != null">helper_id = #{helperId},</if>
+            <if test="helperName != null">helper_Name = #{helperName},</if>
             <if test="remarks != null">remarks = #{remarks},</if>
             <if test="remindType != null">remind_Type = #{remindType},</if>
             <if test="state != null">state = #{state},</if>

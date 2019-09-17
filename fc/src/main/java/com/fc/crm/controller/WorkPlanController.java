@@ -43,6 +43,16 @@ public class WorkPlanController extends BaseController {
         return "crm/workPlan/workPlan_list";
     }
 
+    @GetMapping("/personLiable")
+    String personLiable(){
+        return "crm/workPlan/personLiable";
+    }
+
+    @GetMapping("/helper")
+    String helper(){
+        return "crm/workPlan/helper";
+    }
+
     /**
      * 分页列表查询
      */
@@ -137,4 +147,25 @@ public class WorkPlanController extends BaseController {
         return R.ok();
     }
 
+    /**
+     * 批量作废方法
+     */
+    @PostMapping("/batchScrapped")
+    @ResponseBody
+    @RequiresPermissions("crm:workPlan:batchScrapped")
+    public R batchScrapped(@RequestParam("ids[]") String[] ids) {
+        workPlanService.batchRemove(ids);
+        return R.ok();
+    }
+
+    /**
+     * 批量发布方法
+     */
+    @PostMapping("/batchPublic")
+    @ResponseBody
+    @RequiresPermissions("crm:workPlan:batchPublic")
+    public R publicWorkPlan(@RequestParam("ids[]") String[] ids) {
+        workPlanService.publicWorkPlan(ids);
+        return R.ok();
+    }
 }
