@@ -5,14 +5,14 @@
 
 	<select id="get" resultType="com.fc.crm.domain.CampaignDO">
 		SELECT 
-			id,activity_name,activity_content,activity_addr,activity_date,activity_enrollees			 
+			id,activity_name,activity_content,activity_addr,start_date,end_date,activity_enrollees,status			 
 		FROM t_campaign 
 		where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.fc.crm.domain.CampaignDO">
 		SELECT 
-			id, activity_name, activity_content, activity_addr, activity_date, activity_enrollees 		
+			id, activity_name, activity_content, activity_addr, start_date, end_date, activity_enrollees, status 		
 		FROM t_campaign 
         <where>
           
@@ -28,11 +28,17 @@
 		  		  <if test="activityAddr != null and activityAddr != ''">
 		  		  	AND activity_addr LIKE '%${ activityAddr}%'  
 		  		  </if>
-		  		  <if test="activityDate != null and activityDate != ''">
-		  		  	AND activity_date LIKE '%${ activityDate}%'  
+		  		  <if test="startDate != null and startDate != ''">
+		  		  	AND start_date LIKE '%${ startDate}%'  
+		  		  </if>
+		  		  <if test="endDate != null and endDate != ''">
+		  		  	AND end_date LIKE '%${ endDate}%'  
 		  		  </if>
 		  		  <if test="activityEnrollees != null and activityEnrollees != ''">
 		  		  	AND activity_enrollees LIKE '%${ activityEnrollees}%'  
+		  		  </if>
+		  		  <if test="status != null and status != ''">
+		  		  	AND status LIKE '%${ status}%'  
 		  		  </if>
 		  		  
 		</where>
@@ -64,11 +70,17 @@
 		  		  <if test="activityAddr != null and activityAddr != ''">
 		  		  	AND activity_addr LIKE '%${ activityAddr}%'  
 		  		  </if>
-		  		  <if test="activityDate != null and activityDate != ''">
-		  		  	AND activity_date LIKE '%${ activityDate}%'  
+		  		  <if test="startDate != null and startDate != ''">
+		  		  	AND start_date LIKE '%${ startDate}%'  
+		  		  </if>
+		  		  <if test="endDate != null and endDate != ''">
+		  		  	AND end_date LIKE '%${ endDate}%'  
 		  		  </if>
 		  		  <if test="activityEnrollees != null and activityEnrollees != ''">
 		  		  	AND activity_enrollees LIKE '%${ activityEnrollees}%'  
+		  		  </if>
+		  		  <if test="status != null and status != ''">
+		  		  	AND status LIKE '%${ status}%'  
 		  		  </if>
 		  		  
 		</where>
@@ -87,8 +99,10 @@
 			activity_name, 
 			activity_content, 
 			activity_addr, 
-			activity_date, 
-			activity_enrollees
+			start_date, 
+			end_date, 
+			activity_enrollees, 
+			status
 		)
 		values
 		(
@@ -97,8 +111,10 @@
 			#{activityName, jdbcType=VARCHAR}, 			
 			#{activityContent, jdbcType=VARCHAR}, 			
 			#{activityAddr, jdbcType=VARCHAR}, 			
-			#{activityDate, jdbcType=VARCHAR}, 			
-			#{activityEnrollees, jdbcType=VARCHAR}			
+			#{startDate, jdbcType=VARCHAR}, 			
+			#{endDate, jdbcType=VARCHAR}, 			
+			#{activityEnrollees, jdbcType=VARCHAR}, 			
+			#{status, jdbcType=VARCHAR}			
 		)
 	</insert>
 	 
@@ -108,8 +124,10 @@
 			<if test="activityName != null">activity_name = #{activityName}, </if>
 			<if test="activityContent != null">activity_content = #{activityContent}, </if>
 			<if test="activityAddr != null">activity_addr = #{activityAddr}, </if>
-			<if test="activityDate != null">activity_date = #{activityDate}, </if>
-			<if test="activityEnrollees != null">activity_enrollees = #{activityEnrollees}</if>
+			<if test="startDate != null">start_date = #{startDate}, </if>
+			<if test="endDate != null">end_date = #{endDate}, </if>
+			<if test="activityEnrollees != null">activity_enrollees = #{activityEnrollees}, </if>
+			<if test="status != null">status = #{status}</if>
 		</set>
 		where id = #{id}
 	</update>

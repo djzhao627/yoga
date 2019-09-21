@@ -5,7 +5,7 @@ package com.fc.crm.constant;
  * 
  * @author fengchi
  * @email 
- * @date 2019-09-14 15:03:03
+ * @date 2019-09-17 21:39:22
  */
 public class CampaignConstant {
 	
@@ -26,12 +26,20 @@ public class CampaignConstant {
 	 */
 	public static final String activityAddr = "activityAddr";
 	/**
-	 * 活动日期
+	 * 活动开始日期
 	 */
-	public static final String activityDate = "activityDate";
+	public static final String startDate = "startDate";
+	/**
+	 * 活动结束日期
+	 */
+	public static final String endDate = "endDate";
 	/**
 	 * 报名人员
 	 */
 	public static final String activityEnrollees = "activityEnrollees";
+	/**
+	 * 状态
+	 */
+	public static final String status = "status";
 
 }

@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  * @author fengchi
  * @email 
- * @date 2019-09-14 16:30:49
+ * @date 2019-09-17 21:39:23
  */
 public class CourseDO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,6 +25,12 @@ public class CourseDO implements Serializable {
 	private Integer price;
 	//课程描述
 	private String courseDetail;
+	//课程类型
+	private String courseType;
+	//课时
+	private Integer lessonPeriod;
+	//成本价
+	private Integer costPrice;
 
 	/**
 	 * 设置：
@@ -85,5 +91,41 @@ public class CourseDO implements Serializable {
 	 */
 	public String getCourseDetail() {
 		return courseDetail;
+	}
+	/**
+	 * 设置：课程类型
+	 */
+	public void setCourseType(String courseType) {
+		this.courseType = courseType;
+	}
+	/**
+	 * 获取：课程类型
+	 */
+	public String getCourseType() {
+		return courseType;
+	}
+	/**
+	 * 设置：课时
+	 */
+	public void setLessonPeriod(Integer lessonPeriod) {
+		this.lessonPeriod = lessonPeriod;
+	}
+	/**
+	 * 获取：课时
+	 */
+	public Integer getLessonPeriod() {
+		return lessonPeriod;
+	}
+	/**
+	 * 设置：成本价
+	 */
+	public void setCostPrice(Integer costPrice) {
+		this.costPrice = costPrice;
+	}
+	/**
+	 * 获取：成本价
+	 */
+	public Integer getCostPrice() {
+		return costPrice;
 	}
 }

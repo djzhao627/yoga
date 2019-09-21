@@ -68,7 +68,7 @@ public class CourseController extends BaseController {
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
 		mv.addObject("course", new CourseDO());
-		mv.setViewName("crm/course/course_edit");
+		mv.setViewName("crm/course/course_add");
 		return mv;
 	}
 	
