@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="phonenumber" name="phonenumber" th:value="${employeeInfo.phonenumber}"  type="hidden" />
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">手机号：</label>
+								<div class="col-sm-8">
+									<input id="phonenumber" name="phonenumber" th:value="${employeeInfo.phonenumber}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">身份证号码：</label>
+								<div class="col-sm-8">
+									<input id="idcard" name="idcard" th:value="${employeeInfo.idcard}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">民族：</label>
+								<div class="col-sm-8">
+									<input id="nation" name="nation" th:value="${employeeInfo.nation}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">户口类型：</label>
+								<div class="col-sm-8">
+									<input id="hukoutype" name="hukoutype" th:value="${employeeInfo.hukoutype}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">婚姻状况：</label>
+								<div class="col-sm-8">
+									<input id="maritalstatus" name="maritalstatus" th:value="${employeeInfo.maritalstatus}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">紧急联系人：</label>
+								<div class="col-sm-8">
+									<input id="emergencycontact" name="emergencycontact" th:value="${employeeInfo.emergencycontact}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">紧急联系人号码：</label>
+								<div class="col-sm-8">
+									<input id="emergencycontactphone" name="emergencycontactphone" th:value="${employeeInfo.emergencycontactphone}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">最高学历：</label>
+								<div class="col-sm-8">
+									<input id="highestdegree" name="highestdegree" th:value="${employeeInfo.highestdegree}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">毕业院校：</label>
+								<div class="col-sm-8">
+									<input id="graduateschool" name="graduateschool" th:value="${employeeInfo.graduateschool}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">专业：</label>
+								<div class="col-sm-8">
+									<input id="professional" name="professional" th:value="${employeeInfo.professional}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">毕业时间：</label>
+								<div class="col-sm-8">
+									<input id="graduatiotime" name="graduatiotime" th:value="${employeeInfo.graduatiotime}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">学历性质：</label>
+								<div class="col-sm-8">
+									<input id="natureacademicqualifications" name="natureacademicqualifications" th:value="${employeeInfo.natureacademicqualifications}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">参加工作时间：</label>
+								<div class="col-sm-8">
+									<input id="joinworktime" name="joinworktime" th:value="${employeeInfo.joinworktime}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">入司时间：</label>
+								<div class="col-sm-8">
+									<input id="entercompanytime" name="entercompanytime" th:value="${employeeInfo.entercompanytime}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">工作岗位：</label>
+								<div class="col-sm-8">
+									<input id="operatpost" name="operatpost" th:value="${employeeInfo.operatpost}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">职位：</label>
+								<div class="col-sm-8">
+									<input id="jobposition" name="jobposition" th:value="${employeeInfo.jobposition}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">任职时间：</label>
+								<div class="col-sm-8">
+									<input id="durationemptime" name="durationemptime" th:value="${employeeInfo.durationemptime}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">	
+								<label class="col-sm-3 control-label">政治面貌：</label>
+								<div class="col-sm-8">
+									<input id="politicallandscape" name="politicallandscape" th:value="${employeeInfo.politicallandscape}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" th:src="@{/js/appjs/crm/employeeInfo/employeeInfo_edit.js}">
+	</script>
+</body>
+</html>

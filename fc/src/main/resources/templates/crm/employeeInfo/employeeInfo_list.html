@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12" id="formSearch" name="formSearch">
+			<div class="ibox">
+				<div class="ibox-body">
+				
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">手机号</label>
+						<div class="col-sm-8">
+							<input id="phonenumber" type="text" class="form-control" placeholder="手机号">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">身份证号码</label>
+						<div class="col-sm-8">
+							<input id="idcard" type="text" class="form-control" placeholder="身份证号码">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">民族</label>
+						<div class="col-sm-8">
+							<input id="nation" type="text" class="form-control" placeholder="民族">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">户口类型</label>
+						<div class="col-sm-8">
+							<input id="hukoutype" type="text" class="form-control" placeholder="户口类型">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">婚姻状况</label>
+						<div class="col-sm-8">
+							<input id="maritalstatus" type="text" class="form-control" placeholder="婚姻状况">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">紧急联系人</label>
+						<div class="col-sm-8">
+							<input id="emergencycontact" type="text" class="form-control" placeholder="紧急联系人">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">紧急联系人号码</label>
+						<div class="col-sm-8">
+							<input id="emergencycontactphone" type="text" class="form-control" placeholder="紧急联系人号码">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">最高学历</label>
+						<div class="col-sm-8">
+							<input id="highestdegree" type="text" class="form-control" placeholder="最高学历">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">毕业院校</label>
+						<div class="col-sm-8">
+							<input id="graduateschool" type="text" class="form-control" placeholder="毕业院校">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">专业</label>
+						<div class="col-sm-8">
+							<input id="professional" type="text" class="form-control" placeholder="专业">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">毕业时间</label>
+						<div class="col-sm-8">
+							<input id="graduatiotime" type="text" class="form-control" placeholder="毕业时间">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">学历性质</label>
+						<div class="col-sm-8">
+							<input id="natureacademicqualifications" type="text" class="form-control" placeholder="学历性质">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">参加工作时间</label>
+						<div class="col-sm-8">
+							<input id="joinworktime" type="text" class="form-control" placeholder="参加工作时间">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">入司时间</label>
+						<div class="col-sm-8">
+							<input id="entercompanytime" type="text" class="form-control" placeholder="入司时间">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">工作岗位</label>
+						<div class="col-sm-8">
+							<input id="operatpost" type="text" class="form-control" placeholder="工作岗位">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">职位</label>
+						<div class="col-sm-8">
+							<input id="jobposition" type="text" class="form-control" placeholder="职位">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">任职时间</label>
+						<div class="col-sm-8">
+							<input id="durationemptime" type="text" class="form-control" placeholder="任职时间">
+						</div>
+					</div>
+										<div class="form-group col-sm-4">
+						<label class="col-sm-4 control-label" style="margin-top: 6px;">政治面貌</label>
+						<div class="col-sm-8">
+							<input id="politicallandscape" type="text" class="form-control" placeholder="政治面貌">
+						</div>
+					</div>
+										
+					<div class="form-group col-sm-4">
+						<button id="btnSearch" class="btn btn-success" onclick="reLoad()">查询</button>
+						<button id="btnReset" class="btn btn-danger" onclick="reSet()">重置</button>
+					</div>
+				</div>
+			</div>
+		</div>
+				
+		<div class="fixed-table-toolbar">
+			<div class="pull-left" id="exampleToolbar">
+				<button id="btnAdd" shiro:hasPermission="crm:employeeInfo:add" type="button" class="btn btn-primary" onclick="add()">
+					<i class="fa fa-plus" aria-hidden="true"></i>添加
+				</button>
+				<button id="btnDel" shiro:hasPermission="crm:employeeInfo:batchRemove" type="button" class="btn btn-danger"
+					onclick="batchRemove()">
+					<i class="fa fa-trash" aria-hidden="true"></i>删除
+				</button>
+			</div>
+			<!--<div class="columns pull-right">
+				<button id="btnSearch" class="btn btn-success" onclick="reLoad()">查询</button>
+				<button id="btnReset" class="btn btn-danger" onclick="reSet()">重置</button>
+			</div>
+			<div class="columns pull-right col-md-2 nopadding">
+				<input id="searchName" type="text" class="form-control"
+					placeholder="">
+			</div> -->
+		</div>
+		<table id="dataTable" data-mobile-responsive="true">
+			<thead>
+				<tr>
+					<th data-checkbox="true" ></th>
+								<th data-field="phonenumber" data-align='center' data-sortable="true">手机号</th>
+								<th data-field="idcard" data-align='center' data-sortable="true">身份证号码</th>
+								<th data-field="nation" data-align='center' data-sortable="true">民族</th>
+								<th data-field="hukoutype" data-align='center' data-sortable="true">户口类型</th>
+								<th data-field="maritalstatus" data-align='center' data-sortable="true">婚姻状况</th>
+								<th data-field="emergencycontact" data-align='center' data-sortable="true">紧急联系人</th>
+								<th data-field="emergencycontactphone" data-align='center' data-sortable="true">紧急联系人号码</th>
+								<th data-field="highestdegree" data-align='center' data-sortable="true">最高学历</th>
+								<th data-field="graduateschool" data-align='center' data-sortable="true">毕业院校</th>
+								<th data-field="professional" data-align='center' data-sortable="true">专业</th>
+								<th data-field="graduatiotime" data-align='center' data-sortable="true">毕业时间</th>
+								<th data-field="natureacademicqualifications" data-align='center' data-sortable="true">学历性质</th>
+								<th data-field="joinworktime" data-align='center' data-sortable="true">参加工作时间</th>
+								<th data-field="entercompanytime" data-align='center' data-sortable="true">入司时间</th>
+								<th data-field="operatpost" data-align='center' data-sortable="true">工作岗位</th>
+								<th data-field="jobposition" data-align='center' data-sortable="true">职位</th>
+								<th data-field="durationemptime" data-align='center' data-sortable="true">任职时间</th>
+								<th data-field="politicallandscape" data-align='center' data-sortable="true">政治面貌</th>
+									<th data-field="operate" data-align='center' data-formatter="operateFormatter" data-events="operateEvent">操作</th>
+		 		</tr>
+			</thead>
+		</table>
+					
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自fc的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="crm:employeeInfo:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="crm:employeeInfo:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="crm:employeeInfo:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" th:src="@{/js/appjs/crm/employeeInfo/employeeInfo_list.js}"></script>
+</body>
+</html>
