@@ -1,11 +1,11 @@
 
-var prefix = ctx+ "/crm/course"
+var prefix = ctx+ "/crm/classroom"
 $(function() {
 	load();
 });
 
 function load() {
-	$('#exampleTable')
+	$('#dataTable')
 			.bootstrapTable(
 					{
 						method : 'get', // 服务器数据的请求方式 get or post
@@ -62,7 +62,7 @@ function load() {
 function operateFormatter(value, row, index){
 	var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
 		+ row.id
-		+ '\' )"><i class="fa fa-edit"></i></a> ';
+		+ '\')"><i class="fa fa-edit"></i></a> ';
 	var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
 		+ row.id
 		+ '\')"><i class="fa fa-remove"></i></a> ';
@@ -80,7 +80,7 @@ var operateEvent={
                };
 
 function reLoad() {
-	$('#exampleTable').bootstrapTable('refresh');
+	$('#dataTable').bootstrapTable('refresh');
 }
 function add() {
 	layer.open({
@@ -93,7 +93,7 @@ function add() {
 	});
 }
 function edit(id) {
-	/*var row = $('#exampleTable').bootstrapTable('getData')[index];*/
+	/*var row = $('#dataTable').bootstrapTable('getData')[index];*/
 	if(id==null){
 		alertMsg("请选择一条记录!");
 		return;
@@ -132,7 +132,7 @@ function remove(id) {
 function resetPwd(id) {
 }
 function batchRemove() {
-	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
+	var rows = $('#dataTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
 	if (rows.length == 0) {
 		alertMsg("请选择要删除的数据");
 		return;

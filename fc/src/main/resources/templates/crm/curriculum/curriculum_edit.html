@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id" th:value="${curriculum.id}" type="hidden"/>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">课程id：</label>
+                            <div class="col-sm-8">
+                                <input id="courseId" name="courseId" th:value="${curriculum.courseId}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">教练id：</label>
+                            <div class="col-sm-8">
+                                <input id="memberId" name="memberId" th:value="${curriculum.memberId}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">教室id：</label>
+                            <div class="col-sm-8">
+                                <input id="classroomId" name="classroomId" th:value="${curriculum.classroomId}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">开始日期：</label>
+                            <div class="col-sm-8">
+                                <input id="startDate" name="startDate"
+                                       th:value="${curriculum.startDate}"
+                                       class="laydate-icon layer-date form-contro"
+                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                       style="background-color: #fff;" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">结束日期：</label>
+                            <div class="col-sm-8">
+                                <input id="endDate" name="endDate"
+                                       th:value="${curriculum.endDate}"
+                                       class="laydate-icon layer-date form-contro"
+                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                       style="background-color: #fff;" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">开始时间：</label>
+                            <div class="col-sm-8">
+                                <input id="startTime" name="startTime"
+                                       th:value="${curriculum.startTime}"
+                                       class="laydate-icon layer-date form-contro"
+                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                       style="background-color: #fff;" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">结束时间：</label>
+                            <div class="col-sm-8">
+                                <input id="endTime" name="endTime"
+                                       th:value="${curriculum.endTime}"
+                                       class="laydate-icon layer-date form-contro"
+                                       type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                       style="background-color: #fff;" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">最小开课人数：</label>
+                            <div class="col-sm-8">
+                                <input id="minNum" name="minNum" th:value="${curriculum.minNum}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">最大开课人数：</label>
+                            <div class="col-sm-8">
+                                <input id="maxMun" name="maxMun" th:value="${curriculum.maxMun}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">课程表状态：</label>
+                            <div class="col-sm-8">
+                                <input id="status" name="status" th:value="${curriculum.status}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="col-sm-3 control-label">学员名单：</label>
+                        <div class="col-sm-8">
+                            <input id="ids" name="ids" class="hidden">
+                            <textarea id="menbers" name="menbers" class="form-control"
+                                   onclick="openUser()" th:text="${curriculum.members}"
+                                      readonly="readonly" placeholder="学员名单"></textarea>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" th:src="@{/js/appjs/crm/curriculum/curriculum_edit.js}">
+</script>
+</body>
+</html>

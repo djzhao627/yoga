@@ -1,8 +1,7 @@
-var prefix = ctx+ "/crm/course"
+var prefix = ctx+ "/crm/classroom"
 $(function() {
 	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
-    loadConsultingCourse();
 });
 
 $.validator.setDefaults({
@@ -10,18 +9,10 @@ $.validator.setDefaults({
 		sbumitData();
 	}
 });
-$().ready(function() {
-    $('.summernote').summernote({
-        height:'220px',
-        lang : 'zh-CN'
-    });
-    validateRule();
-});
+
 function sbumitData() {
 	//var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
 	var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
-    var courseDetail=$("#courseDetail").val();
-    formData.courseDetail=courseDetail;
 	var url = "";
 	if($("#id").val()){//修改时
 		url = prefix+ "/update";
@@ -33,7 +24,7 @@ function sbumitData() {
 		cache : true,
 		type : "POST",
 		url : url,
-		data : formData,// 你的formid
+		data : $('#signupForm').serialize(),// 你的formid
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");
@@ -62,14 +53,13 @@ function validateRule() {
 						required : true,
 									},
 						deptId : { 
-												maxlength:255
-						},
-						courseName : { 
-												maxlength:255
-						},
-						price : { 
 												},
-						courseDetail : { 
+						roomName : { 
+												maxlength:255
+						},
+						maxNum : { 
+												},
+						status : { 
 												maxlength:255
 						},
 					},
@@ -78,43 +68,15 @@ function validateRule() {
 						required : icon  + "不能为空",
 									},
 						deptId : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						courseName : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						price : { 
 												},
-						courseDetail : { 
+						roomName : { 
+												maxlength: icon  + "最大长度不超过255"
+						},
+						maxNum : { 
+												},
+						status : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
 					}
 	})
-}
-
-function loadConsultingCourse() {
-    var html = "";
-    $.ajax({
-        url: ctx + '/common/dict/list/consultingCourse_type',
-        success: function (data) {
-            //加载数据
-            for (var i = 0; i < data.length; i++) {
-                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
-            }
-            $(".chosen-select").append(html);
-            $(".chosen-select").chosen({
-                maxHeight: 200
-            });
-            //点击事件
-            $('.chosen-select').on('change', function (e, params) {
-                console.log(params.selected);
-                var opt = {
-                    query: {
-                        type: params.selected,
-                    }
-                }
-                $('#exampleTable').bootstrapTable('refresh', opt);
-            });
-        }
-    });
 }

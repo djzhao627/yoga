@@ -1,8 +1,7 @@
-var prefix = ctx+ "/crm/course"
+var prefix = ctx+ "/crm/curriculum"
 $(function() {
 	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
-    loadConsultingCourse();
 });
 
 $.validator.setDefaults({
@@ -10,19 +9,11 @@ $.validator.setDefaults({
 		sbumitData();
 	}
 });
-$().ready(function() {
-    $('.summernote').summernote({
-        height:'220px',
-        lang : 'zh-CN'
-    });
-    validateRule();
-});
+
 function sbumitData() {
 	//var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
 	var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
-    var courseDetail=$("#courseDetail").val();
-    formData.courseDetail=courseDetail;
-	var url = "";
+    var url = "";
 	if($("#id").val()){//修改时
 		url = prefix+ "/update";
 	}else{
@@ -33,7 +24,8 @@ function sbumitData() {
 		cache : true,
 		type : "POST",
 		url : url,
-		data : formData,// 你的formid
+		// data : $('#signupForm').serialize(),// 你的formid
+		data:formData,
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");
@@ -61,15 +53,29 @@ function validateRule() {
 						id : { 
 						required : true,
 									},
-						deptId : { 
-												maxlength:255
-						},
-						courseName : { 
-												maxlength:255
-						},
-						price : { 
+						courseId : { 
 												},
-						courseDetail : { 
+						memberId : { 
+												},
+						classroomId : { 
+												},
+						startDate : { 
+												maxlength:255
+						},
+						endDate : { 
+												maxlength:255
+						},
+						startTime : { 
+												maxlength:40
+						},
+						endTime : { 
+												maxlength:40
+						},
+						minNum : { 
+												},
+						maxMun : { 
+												},
+						status : { 
 												maxlength:255
 						},
 					},
@@ -77,44 +83,44 @@ function validateRule() {
 		 				id : { 
 						required : icon  + "不能为空",
 									},
-						deptId : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						courseName : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						price : { 
+						courseId : { 
 												},
-						courseDetail : { 
+						memberId : { 
+												},
+						classroomId : { 
+												},
+						startDate : { 
+												maxlength: icon  + "最大长度不超过255"
+						},
+						endDate : { 
+												maxlength: icon  + "最大长度不超过255"
+						},
+						startTime : { 
+												maxlength: icon  + "最大长度不超过40"
+						},
+						endTime : { 
+												maxlength: icon  + "最大长度不超过40"
+						},
+						minNum : { 
+												},
+						maxMun : { 
+												},
+						status : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
 					}
 	})
 }
+var openUser = function () {
+    layer.open({
+        type: 2,
+        title: "选择人员",
+        area: ['300px', '450px'],
+        content: ctx + "/sys/user/member"
+    })
+}
 
-function loadConsultingCourse() {
-    var html = "";
-    $.ajax({
-        url: ctx + '/common/dict/list/consultingCourse_type',
-        success: function (data) {
-            //加载数据
-            for (var i = 0; i < data.length; i++) {
-                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
-            }
-            $(".chosen-select").append(html);
-            $(".chosen-select").chosen({
-                maxHeight: 200
-            });
-            //点击事件
-            $('.chosen-select').on('change', function (e, params) {
-                console.log(params.selected);
-                var opt = {
-                    query: {
-                        type: params.selected,
-                    }
-                }
-                $('#exampleTable').bootstrapTable('refresh', opt);
-            });
-        }
-    });
+function loadMember(userIds, userNames) {
+    $("#ids").val(userIds);
+    $("#menbers").val(userNames);
 }

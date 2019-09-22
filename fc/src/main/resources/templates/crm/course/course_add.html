@@ -28,8 +28,10 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">课程类型：</label>
                             <div class="col-sm-10">
-                                <input id="courseType" name="courseType" th:value="${course.courseType}"
-                                       class="form-control" type="text">
+                                <select data-placeholder="--选择类别--" name="courseType" id="courseType"
+                                        class="form-control chosen-select" tabindex="2"   required>
+                                    <option value="">--选择类别--</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

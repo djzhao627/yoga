@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fc.crm.dao.ClassroomDao">
+
+	<select id="get" resultType="com.fc.crm.domain.ClassroomDO">
+		SELECT 
+			id,dept_id,room_name,max_num,status			 
+		FROM t_classroom 
+		where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.fc.crm.domain.ClassroomDO">
+		SELECT 
+			id, dept_id, room_name, max_num, status 		
+		FROM t_classroom 
+        <where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="deptId != null and deptId != ''">
+		  		  	AND dept_id = #{deptId}   
+		  		  </if>
+		  		  <if test="roomName != null and roomName != ''">
+		  		  	AND room_name LIKE '%${ roomName}%'  
+		  		  </if>
+		  		  <if test="maxNum != null and maxNum != ''">
+		  		  	AND max_num = #{maxNum}   
+		  		  </if>
+		  		  <if test="status != null and status != ''">
+		  		  	AND status LIKE '%${ status}%'  
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY id DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_classroom
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="deptId != null and deptId != ''">
+		  		  	AND dept_id = #{deptId}   
+		  		  </if>
+		  		  <if test="roomName != null and roomName != ''">
+		  		  	AND room_name LIKE '%${ roomName}%'  
+		  		  </if>
+		  		  <if test="maxNum != null and maxNum != ''">
+		  		  	AND max_num = #{maxNum}   
+		  		  </if>
+		  		  <if test="status != null and status != ''">
+		  		  	AND status LIKE '%${ status}%'  
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.crm.domain.ClassroomDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_classroom') 
+    	</selectKey> -->
+    	    	
+		insert into t_classroom 
+		(
+		
+			id, 
+			dept_id, 
+			room_name, 
+			max_num, 
+			status
+		)
+		values
+		(
+		
+		    sys_seq('t_classroom')  , 		    
+			#{deptId, jdbcType=VARCHAR}, 			
+			#{roomName, jdbcType=VARCHAR}, 			
+			#{maxNum, jdbcType=VARCHAR}, 			
+			#{status, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.crm.domain.ClassroomDO">
+		update t_classroom 
+		<set>
+			<if test="deptId != null">dept_id = #{deptId}, </if>
+			<if test="roomName != null">room_name = #{roomName}, </if>
+			<if test="maxNum != null">max_num = #{maxNum}, </if>
+			<if test="status != null">status = #{status}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_classroom where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_classroom where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
