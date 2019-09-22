@@ -11,6 +11,7 @@ INSERT INTO `system_sequence` VALUES ('t_member_baseinfo', 5, 1);
 INSERT INTO `system_sequence` VALUES ('t_work_plan', 1, 1);
 INSERT INTO `system_sequence` VALUES ('t_order', '2', '1');
 INSERT INTO `system_sequence` VALUES ('t_work_plan_follow_up', '2', '1');
+INSERT INTO `system_sequence` VALUES ('t_employee_info', '1', '1');
 
 -- ----------------------------
 -- Records of sys_menu
@@ -94,6 +95,15 @@ INSERT INTO `sys_menu` VALUES ('129', '128', '新增', null, 'crm:workPlan:add',
 INSERT INTO `sys_menu` VALUES ('130', '128', '修改', null, 'crm:workPlan:edit', '2', '', null, null, null);
 INSERT INTO `sys_menu` VALUES ('131', '128', '删除', null, 'crm:workPlan:remove', '2', '', null, null, null);
 INSERT INTO `sys_menu` VALUES ('132', '128', '批量删除', null, 'crm:workPlan:batchRemove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('138', '128', '作废', null, 'crm:workPlan:batchScrapped', '2', 'fa fa-close', null, null, null);
+INSERT INTO `sys_menu` VALUES ('139', '128', '发布', null, 'crm:workPlan:batchPublic', '2', '', null, null, null);
+
+
+INSERT INTO `sys_menu` VALUES ('133', '84', '员工档案', 'crm/employeeInfo', 'crm:employeeInfo:employeeInfo', '1', 'fa fa-address-book', '3', null, null);
+INSERT INTO `sys_menu` VALUES ('134', '133', '新增', null, 'crm:employeeInfo:add', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('135', '133', '修改', null, 'crm:employeeInfo:edit', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('136', '133', '删除', null, 'crm:employeeInfo:remove', '2', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('137', '133', '批量删除', null, 'crm:employeeInfo:batchRemove', '2', '', null, null, null);
 
 
 -- ----------------------------
@@ -389,7 +399,11 @@ INSERT INTO `sys_role_menu` VALUES ('4203', '1', '127');
 INSERT INTO `sys_role_menu` VALUES ('4204', '1', '126');
 INSERT INTO `sys_role_menu` VALUES ('4205', '1', '125');
 INSERT INTO `sys_role_menu` VALUES ('4206', '1', '124');
-
+INSERT INTO `sys_role_menu` VALUES ('4343', '1', '133');
+INSERT INTO `sys_role_menu` VALUES ('4344', '1', '137');
+INSERT INTO `sys_role_menu` VALUES ('4345', '1', '136');
+INSERT INTO `sys_role_menu` VALUES ('4346', '1', '135');
+INSERT INTO `sys_role_menu` VALUES ('4347', '1', '134');
 
 -- ----------------------------
 -- Records of sys_user_role
@@ -557,6 +571,11 @@ INSERT INTO `sys_dict` VALUES (119, '交流', 'communication', 'blog_type', '博
 INSERT INTO `sys_dict` VALUES (120, '文章', 'article', 'blog_type', '博客类型', NULL, NULL, NULL, NULL, NULL, NULL, '', '');
 INSERT INTO `sys_dict` VALUES (121, '编码', 'code', 'hobby', '爱好', NULL, NULL, NULL, NULL, NULL, NULL, '', '');
 INSERT INTO `sys_dict` VALUES (122, '绘画', 'painting', 'hobby', '爱好', NULL, NULL, NULL, NULL, NULL, NULL, '', '');
+INSERT INTO `sys_dict` VALUES ('123', '草稿', '0', 'WORK_PLAN_STATE', '工作计划状态', null, null, null, null, null, null, '', null);
+INSERT INTO `sys_dict` VALUES ('124', '发布', '1', 'WORK_PLAN_STATE', '工作计划状态', null, null, null, null, null, null, '', null);
+INSERT INTO `sys_dict` VALUES ('125', '删除', '2', 'WORK_PLAN_STATE', '工作计划状态', null, null, null, null, null, null, '', null);
+INSERT INTO `sys_dict` VALUES ('126', '作废', '3', 'WORK_PLAN_STATE', '工作计划状态', null, null, null, null, null, null, '', null);
+
 
 -- ----------------------------
 -- Records of sys_dept

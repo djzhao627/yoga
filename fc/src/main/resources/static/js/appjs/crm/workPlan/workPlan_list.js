@@ -25,9 +25,9 @@ function responseHandler(res) {
     return res
 }
 
-function uploadFile() {
+function uploadFile(id) {
     var fordata = new FormData();
-    fordata.append('id', "5");
+    fordata.append('id', id);
     fordata.append('file', $('#taskAnnex')[0].files[0]);
     $.ajax({
         url: '/crm/workPlan/uploadFile',
@@ -43,12 +43,33 @@ function uploadFile() {
         }
     })
 }
+
+
+
+
+$(document).on('ready', function() {
+    $("#input-b5").fileinput({showCaption: false, dropZoneEnabled: false});
+});
+
 function detailFormatter(index, row) {
 
-    return '<label class="col-sm-3 control-label">任务附件：</label>' +
-        ' <div><input id="taskAnnex" name="file" value="'+ row.taskAnnex +'" class="form-control" type="file">' +
-        ' <button class="layui-btn" onclick="uploadFile()">保存</button></div>';
 
+   return  '<div class="form-group">\n' +
+    '                            <label class="col-sm-2 control-label">任务附件：</label>\n' +
+    '                            <div class="col-sm-9">\n' +
+    '                                <input id="taskAnnex" name="file" value=""\n' +
+    '                                       class="form-control" type="file">\n' +
+    '                            </div>\n' +
+    ' <button class="col-sm-1 layui-btn" onclick="uploadFile(\''+ row.id +'\')">保存</button>' +
+       '</div>';
+
+
+   /* return '<label class="col-sm-3 control-label">任务附件：</label>' +
+        ' <div>' +
+        '<input id="taskAnnex" name="file" type="file" class="file" data-browse-on-zone-click="true">'+
+      /!*  '<input id="taskAnnex" name="file" value="'+ row.taskAnnex +'" class="form-control" type="file">' +*!/
+        ' <button class="layui-btn" onclick="uploadFile('+row.taskAnnex+')">保存</button></div>';
+*/
     /*var params = {
         workPlanId: row.id
     };
