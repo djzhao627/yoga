@@ -11,12 +11,12 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  * @author fengchi
  * @email 
- * @date 2019-09-22 17:11:28
+ * @date 2019-09-22 23:08:50
  */
 @Mapper
 public interface EmployeeInfoDao {
 
-	EmployeeInfoDO get(String phonenumber);
+	EmployeeInfoDO get(String phoneNumber);
 	
 	List<EmployeeInfoDO> list(Map<String,Object> map);
 	
@@ -26,7 +26,7 @@ public interface EmployeeInfoDao {
 	
 	int update(EmployeeInfoDO employeeInfo);
 	
-	int remove(String phonenumber);
+	int remove(String phoneNumber);
 	
-	int batchRemove(String[] phonenumbers);
+	int batchRemove(String[] phoneNumbers);
 }

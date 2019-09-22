@@ -27,7 +27,7 @@ import com.fc.common.controller.IPageDefine;
 /**
  * 
  * @author fengchi
- * @date 2019-09-22 17:11:28
+ * @date 2019-09-22 23:08:50
  */
  
 @Controller
@@ -75,11 +75,11 @@ public class EmployeeInfoController extends BaseController {
 	/**
 	 * 跳转到修改页面
 	 */
-	@GetMapping("/edit/{phonenumber}")
+	@GetMapping("/edit/{phoneNumber}")
 	@RequiresPermissions("crm:employeeInfo:edit")
-	ModelAndView edit(@PathVariable("phonenumber") String phonenumber){
+	ModelAndView edit(@PathVariable("phoneNumber") String phoneNumber){
 	    ModelAndView mv = new ModelAndView();
-		EmployeeInfoDO employeeInfo = employeeInfoService.get(phonenumber);
+		EmployeeInfoDO employeeInfo = employeeInfoService.get(phoneNumber);
 		mv.addObject("employeeInfo", employeeInfo);
 		mv.setViewName("crm/employeeInfo/employeeInfo_edit");
 		return mv;
@@ -114,8 +114,8 @@ public class EmployeeInfoController extends BaseController {
 	@PostMapping( "/remove")
 	@ResponseBody
 	@RequiresPermissions("crm:employeeInfo:remove")
-	public R remove( String phonenumber){
-		if(employeeInfoService.remove(phonenumber)>0){
+	public R remove( String phoneNumber){
+		if(employeeInfoService.remove(phoneNumber)>0){
 		return R.ok();
 		}
 		return R.error();
@@ -127,8 +127,8 @@ public class EmployeeInfoController extends BaseController {
 	@PostMapping( "/batchRemove")
 	@ResponseBody
 	@RequiresPermissions("crm:employeeInfo:batchRemove")
-	public R remove(@RequestParam("ids[]") String[] phonenumbers){
-		employeeInfoService.batchRemove(phonenumbers);
+	public R remove(@RequestParam("ids[]") String[] phoneNumbers){
+		employeeInfoService.batchRemove(phoneNumbers);
 		return R.ok();
 	}
 	

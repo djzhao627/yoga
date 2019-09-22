@@ -17,6 +17,7 @@ import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -47,8 +48,7 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
         taskRegistrar.addTriggerTask(
                 //1.添加任务内容(Runnable)
                 () -> {
-
-                    List<WorkPlanDO> WorkPlanDOList = workPlanService.list(null);
+                    List<WorkPlanDO> WorkPlanDOList = workPlanService.list(new HashMap<>());
                     if (CollectionUtils.isNotEmpty(WorkPlanDOList)) {
                         addRecordOfWorkPlan(WorkPlanDOList);
                     }
@@ -56,16 +56,7 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
                     executor.execute(new Runnable() {
                         @Override
                         public void run() {
-                            for (UserDO userDO : sessionService.listOnlineUser()) {
-                                for (WorkPlanDO workPlanDO : WorkPlanDOList) {
-                                    if (workPlanDO.getPersonLiableId() != null && workPlanDO.getPersonLiableId().equals(userDO.getUserId())) {
-                                        template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（责任人）");
-                                    }
-                                    /*if (workPlanDO.getHelper() != null && workPlanDO.getHelper().equals(userDO.getUserId())) {
-                                        template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（协助人）");
-                                    }*/
-                                }
-                            }
+                            runWorPlanSendToUser(WorkPlanDOList);
                         }
                     });
                     executor.shutdown();
@@ -85,6 +76,19 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
                     return new CronTrigger(cron).nextExecutionTime(triggerContext);
                 }
         );
+    }
+
+    private void runWorPlanSendToUser(List<WorkPlanDO> workPlanDOList) {
+        for (UserDO userDO : sessionService.listOnlineUser()) {
+            for (WorkPlanDO workPlanDO : workPlanDOList) {
+                if (workPlanDO.getPersonLiableId() != null && workPlanDO.getPersonLiableId().equals(userDO.getUserId())) {
+                    template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（责任人）");
+                }
+                /*if (workPlanDO.getHelper() != null && workPlanDO.getHelper().equals(userDO.getUserId())) {
+                    template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（协助人）");
+                }*/
+            }
+        }
     }
 
     private void addRecordOfWorkPlan(List<WorkPlanDO> WorkPlanDOList) {

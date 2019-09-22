@@ -14,7 +14,7 @@ function sbumitData() {
 	//var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
 	var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
 	var url = "";
-	if($("#phonenumber").val()){//修改时
+	if($("#phoneNumber").val()){//修改时
 		url = prefix+ "/update";
 	}else{
 		url = prefix+ "/save";
@@ -49,118 +49,118 @@ function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({
 		rules : {
-						phonenumber : { 
+						phoneNumber : { 
 						required : true,
 									maxlength:50
 						},
-						idcard : { 
+						idCard : { 
 						required : true,
 									maxlength:18
 						},
 						nation : { 
 												maxlength:255
 						},
-						hukoutype : { 
+						huKouType : { 
 												maxlength:16
 						},
-						maritalstatus : { 
+						maritalStatus : { 
 												maxlength:5
 						},
-						emergencycontact : { 
+						emergencyContact : { 
 												maxlength:50
 						},
-						emergencycontactphone : { 
+						emergencyContactPhone : { 
 												maxlength:50
 						},
-						highestdegree : { 
+						highestDegree : { 
 												maxlength:255
 						},
-						graduateschool : { 
+						graduateSchool : { 
 												maxlength:255
 						},
 						professional : { 
 												maxlength:255
 						},
-						graduatiotime : { 
+						graduationTime : { 
 												maxlength:50
 						},
-						natureacademicqualifications : { 
+						natureAcademicQualifications : { 
 												maxlength:255
 						},
-						joinworktime : { 
+						joinWorkTime : { 
 												maxlength:50
 						},
-						entercompanytime : { 
+						enterCompanyTime : { 
 												maxlength:50
 						},
-						operatpost : { 
+						workPost : { 
 												maxlength:255
 						},
-						jobposition : { 
+						jobPosition : { 
 												maxlength:255
 						},
-						durationemptime : { 
+						durationEmpTime : { 
 												maxlength:50
 						},
-						politicallandscape : { 
+						politicalLandscape : { 
 												maxlength:50
 						},
 					},
 		messages : {
-		 				phonenumber : { 
+		 				phoneNumber : { 
 						required : icon  + "手机号不能为空",
 									maxlength: icon  + "最大长度不超过50"
 						},
-						idcard : { 
+						idCard : { 
 						required : icon  + "身份证号码不能为空",
 									maxlength: icon  + "最大长度不超过18"
 						},
 						nation : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
-						hukoutype : { 
+						huKouType : { 
 												maxlength: icon  + "最大长度不超过16"
 						},
-						maritalstatus : { 
+						maritalStatus : { 
 												maxlength: icon  + "最大长度不超过5"
 						},
-						emergencycontact : { 
+						emergencyContact : { 
 												maxlength: icon  + "最大长度不超过50"
 						},
-						emergencycontactphone : { 
+						emergencyContactPhone : { 
 												maxlength: icon  + "最大长度不超过50"
 						},
-						highestdegree : { 
+						highestDegree : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
-						graduateschool : { 
+						graduateSchool : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
 						professional : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
-						graduatiotime : { 
+						graduationTime : { 
 												maxlength: icon  + "最大长度不超过50"
 						},
-						natureacademicqualifications : { 
+						natureAcademicQualifications : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
-						joinworktime : { 
+						joinWorkTime : { 
 												maxlength: icon  + "最大长度不超过50"
 						},
-						entercompanytime : { 
+						enterCompanyTime : { 
 												maxlength: icon  + "最大长度不超过50"
 						},
-						operatpost : { 
+						workPost : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
-						jobposition : { 
+						jobPosition : { 
 												maxlength: icon  + "最大长度不超过255"
 						},
-						durationemptime : { 
+						durationEmpTime : { 
 												maxlength: icon  + "最大长度不超过50"
 						},
-						politicallandscape : { 
+						politicalLandscape : { 
 												maxlength: icon  + "最大长度不超过50"
 						},
 					}

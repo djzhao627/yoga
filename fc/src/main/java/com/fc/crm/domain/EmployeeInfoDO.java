@@ -10,71 +10,71 @@ import java.util.Date;
  * 
  * @author fengchi
  * @email 
- * @date 2019-09-22 17:11:28
+ * @date 2019-09-22 23:08:50
  */
 public class EmployeeInfoDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//手机号
-	private String phonenumber;
+	private String phoneNumber;
 	//身份证号码
-	private String idcard;
+	private String idCard;
 	//民族
 	private String nation;
 	//户口类型
-	private String hukoutype;
+	private String huKouType;
 	//婚姻状况
-	private String maritalstatus;
+	private String maritalStatus;
 	//紧急联系人
-	private String emergencycontact;
+	private String emergencyContact;
 	//紧急联系人号码
-	private String emergencycontactphone;
+	private String emergencyContactPhone;
 	//最高学历
-	private String highestdegree;
+	private String highestDegree;
 	//毕业院校
-	private String graduateschool;
+	private String graduateSchool;
 	//专业
 	private String professional;
 	//毕业时间
-	private String graduatiotime;
+	private String graduationTime;
 	//学历性质
-	private String natureacademicqualifications;
+	private String natureAcademicQualifications;
 	//参加工作时间
-	private String joinworktime;
+	private String joinWorkTime;
 	//入司时间
-	private String entercompanytime;
+	private String enterCompanyTime;
 	//工作岗位
-	private String operatpost;
+	private String workPost;
 	//职位
-	private String jobposition;
+	private String jobPosition;
 	//任职时间
-	private String durationemptime;
+	private String durationEmpTime;
 	//政治面貌
-	private String politicallandscape;
+	private String politicalLandscape;
 
 	/**
 	 * 设置：手机号
 	 */
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	/**
 	 * 获取：手机号
 	 */
-	public String getPhonenumber() {
-		return phonenumber;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 	/**
 	 * 设置：身份证号码
 	 */
-	public void setIdcard(String idcard) {
-		this.idcard = idcard;
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
 	}
 	/**
 	 * 获取：身份证号码
 	 */
-	public String getIdcard() {
-		return idcard;
+	public String getIdCard() {
+		return idCard;
 	}
 	/**
 	 * 设置：民族
@@ -91,74 +91,74 @@ public class EmployeeInfoDO implements Serializable {
 	/**
 	 * 设置：户口类型
 	 */
-	public void setHukoutype(String hukoutype) {
-		this.hukoutype = hukoutype;
+	public void setHuKouType(String huKouType) {
+		this.huKouType = huKouType;
 	}
 	/**
 	 * 获取：户口类型
 	 */
-	public String getHukoutype() {
-		return hukoutype;
+	public String getHuKouType() {
+		return huKouType;
 	}
 	/**
 	 * 设置：婚姻状况
 	 */
-	public void setMaritalstatus(String maritalstatus) {
-		this.maritalstatus = maritalstatus;
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
 	}
 	/**
 	 * 获取：婚姻状况
 	 */
-	public String getMaritalstatus() {
-		return maritalstatus;
+	public String getMaritalStatus() {
+		return maritalStatus;
 	}
 	/**
 	 * 设置：紧急联系人
 	 */
-	public void setEmergencycontact(String emergencycontact) {
-		this.emergencycontact = emergencycontact;
+	public void setEmergencyContact(String emergencyContact) {
+		this.emergencyContact = emergencyContact;
 	}
 	/**
 	 * 获取：紧急联系人
 	 */
-	public String getEmergencycontact() {
-		return emergencycontact;
+	public String getEmergencyContact() {
+		return emergencyContact;
 	}
 	/**
 	 * 设置：紧急联系人号码
 	 */
-	public void setEmergencycontactphone(String emergencycontactphone) {
-		this.emergencycontactphone = emergencycontactphone;
+	public void setEmergencyContactPhone(String emergencyContactPhone) {
+		this.emergencyContactPhone = emergencyContactPhone;
 	}
 	/**
 	 * 获取：紧急联系人号码
 	 */
-	public String getEmergencycontactphone() {
-		return emergencycontactphone;
+	public String getEmergencyContactPhone() {
+		return emergencyContactPhone;
 	}
 	/**
 	 * 设置：最高学历
 	 */
-	public void setHighestdegree(String highestdegree) {
-		this.highestdegree = highestdegree;
+	public void setHighestDegree(String highestDegree) {
+		this.highestDegree = highestDegree;
 	}
 	/**
 	 * 获取：最高学历
 	 */
-	public String getHighestdegree() {
-		return highestdegree;
+	public String getHighestDegree() {
+		return highestDegree;
 	}
 	/**
 	 * 设置：毕业院校
 	 */
-	public void setGraduateschool(String graduateschool) {
-		this.graduateschool = graduateschool;
+	public void setGraduateSchool(String graduateSchool) {
+		this.graduateSchool = graduateSchool;
 	}
 	/**
 	 * 获取：毕业院校
 	 */
-	public String getGraduateschool() {
-		return graduateschool;
+	public String getGraduateSchool() {
+		return graduateSchool;
 	}
 	/**
 	 * 设置：专业
@@ -175,97 +175,97 @@ public class EmployeeInfoDO implements Serializable {
 	/**
 	 * 设置：毕业时间
 	 */
-	public void setGraduatiotime(String graduatiotime) {
-		this.graduatiotime = graduatiotime;
+	public void setGraduationTime(String graduationTime) {
+		this.graduationTime = graduationTime;
 	}
 	/**
 	 * 获取：毕业时间
 	 */
-	public String getGraduatiotime() {
-		return graduatiotime;
+	public String getGraduationTime() {
+		return graduationTime;
 	}
 	/**
 	 * 设置：学历性质
 	 */
-	public void setNatureacademicqualifications(String natureacademicqualifications) {
-		this.natureacademicqualifications = natureacademicqualifications;
+	public void setNatureAcademicQualifications(String natureAcademicQualifications) {
+		this.natureAcademicQualifications = natureAcademicQualifications;
 	}
 	/**
 	 * 获取：学历性质
 	 */
-	public String getNatureacademicqualifications() {
-		return natureacademicqualifications;
+	public String getNatureAcademicQualifications() {
+		return natureAcademicQualifications;
 	}
 	/**
 	 * 设置：参加工作时间
 	 */
-	public void setJoinworktime(String joinworktime) {
-		this.joinworktime = joinworktime;
+	public void setJoinWorkTime(String joinWorkTime) {
+		this.joinWorkTime = joinWorkTime;
 	}
 	/**
 	 * 获取：参加工作时间
 	 */
-	public String getJoinworktime() {
-		return joinworktime;
+	public String getJoinWorkTime() {
+		return joinWorkTime;
 	}
 	/**
 	 * 设置：入司时间
 	 */
-	public void setEntercompanytime(String entercompanytime) {
-		this.entercompanytime = entercompanytime;
+	public void setEnterCompanyTime(String enterCompanyTime) {
+		this.enterCompanyTime = enterCompanyTime;
 	}
 	/**
 	 * 获取：入司时间
 	 */
-	public String getEntercompanytime() {
-		return entercompanytime;
+	public String getEnterCompanyTime() {
+		return enterCompanyTime;
 	}
 	/**
 	 * 设置：工作岗位
 	 */
-	public void setOperatpost(String operatpost) {
-		this.operatpost = operatpost;
+	public void setWorkPost(String workPost) {
+		this.workPost = workPost;
 	}
 	/**
 	 * 获取：工作岗位
 	 */
-	public String getOperatpost() {
-		return operatpost;
+	public String getWorkPost() {
+		return workPost;
 	}
 	/**
 	 * 设置：职位
 	 */
-	public void setJobposition(String jobposition) {
-		this.jobposition = jobposition;
+	public void setJobPosition(String jobPosition) {
+		this.jobPosition = jobPosition;
 	}
 	/**
 	 * 获取：职位
 	 */
-	public String getJobposition() {
-		return jobposition;
+	public String getJobPosition() {
+		return jobPosition;
 	}
 	/**
 	 * 设置：任职时间
 	 */
-	public void setDurationemptime(String durationemptime) {
-		this.durationemptime = durationemptime;
+	public void setDurationEmpTime(String durationEmpTime) {
+		this.durationEmpTime = durationEmpTime;
 	}
 	/**
 	 * 获取：任职时间
 	 */
-	public String getDurationemptime() {
-		return durationemptime;
+	public String getDurationEmpTime() {
+		return durationEmpTime;
 	}
 	/**
 	 * 设置：政治面貌
 	 */
-	public void setPoliticallandscape(String politicallandscape) {
-		this.politicallandscape = politicallandscape;
+	public void setPoliticalLandscape(String politicalLandscape) {
+		this.politicalLandscape = politicalLandscape;
 	}
 	/**
 	 * 获取：政治面貌
 	 */
-	public String getPoliticallandscape() {
-		return politicallandscape;
+	public String getPoliticalLandscape() {
+		return politicalLandscape;
 	}
 }

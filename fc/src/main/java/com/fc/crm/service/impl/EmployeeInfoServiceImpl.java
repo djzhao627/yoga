@@ -18,8 +18,8 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 	private EmployeeInfoDao employeeInfoDao;
 	
 	@Override
-	public EmployeeInfoDO get(String phonenumber){
-		return employeeInfoDao.get(phonenumber);
+	public EmployeeInfoDO get(String phoneNumber){
+		return employeeInfoDao.get(phoneNumber);
 	}
 	
 	@Override
@@ -44,13 +44,13 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 	}
 	
 	@Override
-	public int remove(String phonenumber){
-		return employeeInfoDao.remove(phonenumber);
+	public int remove(String phoneNumber){
+		return employeeInfoDao.remove(phoneNumber);
 	}
 	
 	@Override
-	public int batchRemove(String[] phonenumbers){
-		return employeeInfoDao.batchRemove(phonenumbers);
+	public int batchRemove(String[] phoneNumbers){
+		return employeeInfoDao.batchRemove(phoneNumbers);
 	}
 	
 }
