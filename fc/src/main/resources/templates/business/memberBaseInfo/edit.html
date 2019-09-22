@@ -59,9 +59,9 @@
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="consultingCourse" id="consultingCourse"
                                         class="form-control chosen-select2" tabindex="2" multiple="multiple" required>
-                                    <option th:each="consultingCourse : ${consultingCourseTypes}"
-                                            th:value="${consultingCourse.value}" th:text="${consultingCourse.name}"
-                                            th:if="${consultingCourse.remarks ==checked}" th:selected="selected">
+                                    <option th:each="consultCourse : ${consultingCourseTypes}"
+                                            th:value="${consultCourse.value}" th:text="${consultCourse.name}"
+                                            th:if="${consultCourse.remarks ==checked}" th:selected="selected">
                                 </select>
                             </div>
                         </div>
