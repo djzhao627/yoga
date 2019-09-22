@@ -1,5 +1,7 @@
 package com.fc.crm.domain;
 
+import com.fc.system.domain.UserDO;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,15 +12,17 @@ import java.util.Date;
  * 
  * @author fengchi
  * @email 
- * @date 2019-09-22 23:08:50
+ * @date 2019-09-23 00:35:29
  */
-public class EmployeeInfoDO implements Serializable {
+public class EmployeeInfoDO extends UserDO {
 	private static final long serialVersionUID = 1L;
 	
 	//手机号
 	private String phoneNumber;
 	//身份证号码
-	private String idCard;
+	private String cardId;
+	//员工类型
+	private String employeeType;
 	//民族
 	private String nation;
 	//户口类型
@@ -67,14 +71,26 @@ public class EmployeeInfoDO implements Serializable {
 	/**
 	 * 设置：身份证号码
 	 */
-	public void setIdCard(String idCard) {
-		this.idCard = idCard;
+	public void setCardId(String cardId) {
+		this.cardId = cardId;
 	}
 	/**
 	 * 获取：身份证号码
 	 */
-	public String getIdCard() {
-		return idCard;
+	public String getCardId() {
+		return cardId;
+	}
+	/**
+	 * 设置：员工类型
+	 */
+	public void setEmployeeType(String employeeType) {
+		this.employeeType = employeeType;
+	}
+	/**
+	 * 获取：员工类型
+	 */
+	public String getEmployeeType() {
+		return employeeType;
 	}
 	/**
 	 * 设置：民族

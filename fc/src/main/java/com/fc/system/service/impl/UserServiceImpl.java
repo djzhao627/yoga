@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 		int count = userMapper.save(user);
 		Long userId = user.getUserId();
 		List<Long> roles = user.getRoleIds();
-		userRoleMapper.removeByUserId(userId);
+		//userRoleMapper.removeByUserId(userId);
 		List<UserRoleDO> list = new ArrayList<>();
 		for (Long roleId : roles) {
 			UserRoleDO ur = new UserRoleDO();

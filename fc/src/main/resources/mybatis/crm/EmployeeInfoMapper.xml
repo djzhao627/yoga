@@ -5,22 +5,29 @@
 
 	<select id="get" resultType="com.fc.crm.domain.EmployeeInfoDO">
 		SELECT 
-			phone_Number,id_Card,nation,hu_Kou_Type,marital_Status,emergency_Contact,emergency_Contact_Phone,highest_Degree,graduate_School,professional,graduation_Time,nature_Academic_Qualifications,join_Work_Time,enter_Company_Time,work_Post,job_Position,duration_Emp_Time,political_Landscape			 
-		FROM t_employee_info 
-		where phone_Number = #{value}
+			phone_Number,card_Id,employee_Type,nation,hu_Kou_Type,marital_Status,emergency_Contact,emergency_Contact_Phone,highest_Degree,graduate_School,professional,graduation_Time,nature_Academic_Qualifications,join_Work_Time,enter_Company_Time,work_Post,job_Position,duration_Emp_Time,political_Landscape,
+		user_id,username,name,password,dept_id,email,mobile,status,user_id_create,gmt_create,gmt_modified,sex,birth,pic_id,live_address,hobby,province,city,district
+		FROM t_employee_info emp, sys_user u where emp.phone_Number = u.username
+		and phone_Number = #{value}
 	</select>
 
 	<select id="list" resultType="com.fc.crm.domain.EmployeeInfoDO">
 		SELECT 
-			phone_Number, id_Card, nation, hu_Kou_Type, marital_Status, emergency_Contact, emergency_Contact_Phone, highest_Degree, graduate_School, professional, graduation_Time, nature_Academic_Qualifications, join_Work_Time, enter_Company_Time, work_Post, job_Position, duration_Emp_Time, political_Landscape 		
-		FROM t_employee_info 
+			phone_Number, card_Id, employee_Type, nation, hu_Kou_Type, marital_Status, emergency_Contact, emergency_Contact_Phone, highest_Degree, graduate_School, professional, graduation_Time, nature_Academic_Qualifications, join_Work_Time, enter_Company_Time, work_Post, job_Position, duration_Emp_Time, political_Landscape,
+		user_id,username,name,password,dept_id,email,mobile,status,user_id_create,gmt_create,gmt_modified,sex,birth,pic_id,live_address,hobby,province,city,district
+		FROM t_employee_info emp, sys_user u
         <where>
-          
+				  <if test="true">
+					  and emp.phone_Number = u.username
+				  </if>
 		  		  <if test="phoneNumber != null and phoneNumber != ''">
 		  		  	AND phone_Number LIKE '%${ phoneNumber}%'  
 		  		  </if>
-		  		  <if test="idCard != null and idCard != ''">
-		  		  	AND id_Card LIKE '%${ idCard}%'  
+		  		  <if test="cardId != null and cardId != ''">
+		  		  	AND card_Id LIKE '%${ cardId}%'  
+		  		  </if>
+		  		  <if test="employeeType != null and employeeType != ''">
+		  		  	AND employee_Type LIKE '%${ employeeType}%'  
 		  		  </if>
 		  		  <if test="nation != null and nation != ''">
 		  		  	AND nation LIKE '%${ nation}%'  
@@ -82,7 +89,7 @@
         </choose>
 	</select>
 	
- 	<select id="findDatas" resultType="Map">
+ 	<select id="findDataList" resultType="Map">
 		select 
 			*  
 		from t_employee_info
@@ -91,8 +98,11 @@
 		   		  <if test="phoneNumber != null and phoneNumber != ''">
 		  		  	AND phone_Number LIKE '%${ phoneNumber}%'  
 		  		  </if>
-		  		  <if test="idCard != null and idCard != ''">
-		  		  	AND id_Card LIKE '%${ idCard}%'  
+		  		  <if test="cardId != null and cardId != ''">
+		  		  	AND card_Id LIKE '%${ cardId}%'  
+		  		  </if>
+		  		  <if test="employeeType != null and employeeType != ''">
+		  		  	AND employee_Type LIKE '%${ employeeType}%'  
 		  		  </if>
 		  		  <if test="nation != null and nation != ''">
 		  		  	AND nation LIKE '%${ nation}%'  
@@ -156,7 +166,8 @@
 		(
 		
 			phone_Number, 
-			id_Card, 
+			card_Id, 
+			employee_Type, 
 			nation, 
 			hu_Kou_Type, 
 			marital_Status, 
@@ -178,7 +189,8 @@
 		(
 		
 		    sys_seq('t_employee_info')  , 		    
-			#{idCard, jdbcType=VARCHAR}, 			
+			#{cardId, jdbcType=VARCHAR}, 			
+			#{employeeType, jdbcType=VARCHAR}, 			
 			#{nation, jdbcType=VARCHAR}, 			
 			#{huKouType, jdbcType=VARCHAR}, 			
 			#{maritalStatus, jdbcType=VARCHAR}, 			
@@ -201,7 +213,8 @@
 	<update id="update" parameterType="com.fc.crm.domain.EmployeeInfoDO">
 		update t_employee_info 
 		<set>
-			<if test="idCard != null">id_Card = #{idCard}, </if>
+			<if test="cardId != null">card_Id = #{cardId}, </if>
+			<if test="employeeType != null">employee_Type = #{employeeType}, </if>
 			<if test="nation != null">nation = #{nation}, </if>
 			<if test="huKouType != null">hu_Kou_Type = #{huKouType}, </if>
 			<if test="maritalStatus != null">marital_Status = #{maritalStatus}, </if>

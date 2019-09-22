@@ -10,11 +10,24 @@ $.validator.setDefaults({
 	}
 });
 
+function getCheckedRoles() {
+	var adIds = "";
+	$("input:checkbox[name=role]:checked").each(function(i) {
+		if (0 == i) {
+			adIds = $(this).val();
+		} else {
+			adIds += ("," + $(this).val());
+		}
+	});
+	return adIds;
+}
+
 function sbumitData() {
+	$("#roleIds").val(getCheckedRoles());
 	//var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
 	var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
 	var url = "";
-	if($("#phoneNumber").val()){//修改时
+	if($("#empId").val()){//修改时
 		url = prefix+ "/update";
 	}else{
 		url = prefix+ "/save";
@@ -53,9 +66,13 @@ function validateRule() {
 						required : true,
 									maxlength:50
 						},
-						idCard : { 
+						cardId : { 
 						required : true,
 									maxlength:18
+						},
+						employeeType : { 
+						required : true,
+									maxlength:5
 						},
 						nation : { 
 												maxlength:255
@@ -111,9 +128,13 @@ function validateRule() {
 						required : icon  + "手机号不能为空",
 									maxlength: icon  + "最大长度不超过50"
 						},
-						idCard : { 
+						cardId : { 
 						required : icon  + "身份证号码不能为空",
 									maxlength: icon  + "最大长度不超过18"
+						},
+						employeeType : { 
+						required : icon  + "员工类型不能为空",
+									maxlength: icon  + "最大长度不超过5"
 						},
 						nation : { 
 												maxlength: icon  + "最大长度不超过255"
