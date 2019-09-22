@@ -5,70 +5,70 @@
 
 	<select id="get" resultType="com.fc.crm.domain.EmployeeInfoDO">
 		SELECT 
-			phoneNumber,idCard,nation,huKouType,maritalStatus,emergencyContact,emergencyContactPhone,highestDegree,graduateSchool,professional,graduatioTime,natureAcademicQualifications,joinWorkTime,enterCompanyTime,operatPost,jobPosition,durationEmpTime,politicalLandscape			 
+			phone_Number,id_Card,nation,hu_Kou_Type,marital_Status,emergency_Contact,emergency_Contact_Phone,highest_Degree,graduate_School,professional,graduation_Time,nature_Academic_Qualifications,join_Work_Time,enter_Company_Time,work_Post,job_Position,duration_Emp_Time,political_Landscape			 
 		FROM t_employee_info 
-		where phoneNumber = #{value}
+		where phone_Number = #{value}
 	</select>
 
 	<select id="list" resultType="com.fc.crm.domain.EmployeeInfoDO">
 		SELECT 
-			phoneNumber, idCard, nation, huKouType, maritalStatus, emergencyContact, emergencyContactPhone, highestDegree, graduateSchool, professional, graduatioTime, natureAcademicQualifications, joinWorkTime, enterCompanyTime, operatPost, jobPosition, durationEmpTime, politicalLandscape 		
+			phone_Number, id_Card, nation, hu_Kou_Type, marital_Status, emergency_Contact, emergency_Contact_Phone, highest_Degree, graduate_School, professional, graduation_Time, nature_Academic_Qualifications, join_Work_Time, enter_Company_Time, work_Post, job_Position, duration_Emp_Time, political_Landscape 		
 		FROM t_employee_info 
         <where>
           
-		  		  <if test="phonenumber != null and phonenumber != ''">
-		  		  	AND phoneNumber LIKE '%${ phonenumber}%'  
+		  		  <if test="phoneNumber != null and phoneNumber != ''">
+		  		  	AND phone_Number LIKE '%${ phoneNumber}%'  
 		  		  </if>
-		  		  <if test="idcard != null and idcard != ''">
-		  		  	AND idCard LIKE '%${ idcard}%'  
+		  		  <if test="idCard != null and idCard != ''">
+		  		  	AND id_Card LIKE '%${ idCard}%'  
 		  		  </if>
 		  		  <if test="nation != null and nation != ''">
 		  		  	AND nation LIKE '%${ nation}%'  
 		  		  </if>
-		  		  <if test="hukoutype != null and hukoutype != ''">
-		  		  	AND huKouType LIKE '%${ hukoutype}%'  
+		  		  <if test="huKouType != null and huKouType != ''">
+		  		  	AND hu_Kou_Type LIKE '%${ huKouType}%'  
 		  		  </if>
-		  		  <if test="maritalstatus != null and maritalstatus != ''">
-		  		  	AND maritalStatus LIKE '%${ maritalstatus}%'  
+		  		  <if test="maritalStatus != null and maritalStatus != ''">
+		  		  	AND marital_Status LIKE '%${ maritalStatus}%'  
 		  		  </if>
-		  		  <if test="emergencycontact != null and emergencycontact != ''">
-		  		  	AND emergencyContact LIKE '%${ emergencycontact}%'  
+		  		  <if test="emergencyContact != null and emergencyContact != ''">
+		  		  	AND emergency_Contact LIKE '%${ emergencyContact}%'  
 		  		  </if>
-		  		  <if test="emergencycontactphone != null and emergencycontactphone != ''">
-		  		  	AND emergencyContactPhone LIKE '%${ emergencycontactphone}%'  
+		  		  <if test="emergencyContactPhone != null and emergencyContactPhone != ''">
+		  		  	AND emergency_Contact_Phone LIKE '%${ emergencyContactPhone}%'  
 		  		  </if>
-		  		  <if test="highestdegree != null and highestdegree != ''">
-		  		  	AND highestDegree LIKE '%${ highestdegree}%'  
+		  		  <if test="highestDegree != null and highestDegree != ''">
+		  		  	AND highest_Degree LIKE '%${ highestDegree}%'  
 		  		  </if>
-		  		  <if test="graduateschool != null and graduateschool != ''">
-		  		  	AND graduateSchool LIKE '%${ graduateschool}%'  
+		  		  <if test="graduateSchool != null and graduateSchool != ''">
+		  		  	AND graduate_School LIKE '%${ graduateSchool}%'  
 		  		  </if>
 		  		  <if test="professional != null and professional != ''">
 		  		  	AND professional LIKE '%${ professional}%'  
 		  		  </if>
-		  		  <if test="graduatiotime != null and graduatiotime != ''">
-		  		  	AND graduatioTime LIKE '%${ graduatiotime}%'  
+		  		  <if test="graduationTime != null and graduationTime != ''">
+		  		  	AND graduation_Time LIKE '%${ graduationTime}%'  
 		  		  </if>
-		  		  <if test="natureacademicqualifications != null and natureacademicqualifications != ''">
-		  		  	AND natureAcademicQualifications LIKE '%${ natureacademicqualifications}%'  
+		  		  <if test="natureAcademicQualifications != null and natureAcademicQualifications != ''">
+		  		  	AND nature_Academic_Qualifications LIKE '%${ natureAcademicQualifications}%'  
 		  		  </if>
-		  		  <if test="joinworktime != null and joinworktime != ''">
-		  		  	AND joinWorkTime LIKE '%${ joinworktime}%'  
+		  		  <if test="joinWorkTime != null and joinWorkTime != ''">
+		  		  	AND join_Work_Time LIKE '%${ joinWorkTime}%'  
 		  		  </if>
-		  		  <if test="entercompanytime != null and entercompanytime != ''">
-		  		  	AND enterCompanyTime LIKE '%${ entercompanytime}%'  
+		  		  <if test="enterCompanyTime != null and enterCompanyTime != ''">
+		  		  	AND enter_Company_Time LIKE '%${ enterCompanyTime}%'  
 		  		  </if>
-		  		  <if test="operatpost != null and operatpost != ''">
-		  		  	AND operatPost LIKE '%${ operatpost}%'  
+		  		  <if test="workPost != null and workPost != ''">
+		  		  	AND work_Post LIKE '%${ workPost}%'  
 		  		  </if>
-		  		  <if test="jobposition != null and jobposition != ''">
-		  		  	AND jobPosition LIKE '%${ jobposition}%'  
+		  		  <if test="jobPosition != null and jobPosition != ''">
+		  		  	AND job_Position LIKE '%${ jobPosition}%'  
 		  		  </if>
-		  		  <if test="durationemptime != null and durationemptime != ''">
-		  		  	AND durationEmpTime LIKE '%${ durationemptime}%'  
+		  		  <if test="durationEmpTime != null and durationEmpTime != ''">
+		  		  	AND duration_Emp_Time LIKE '%${ durationEmpTime}%'  
 		  		  </if>
-		  		  <if test="politicallandscape != null and politicallandscape != ''">
-		  		  	AND politicalLandscape LIKE '%${ politicallandscape}%'  
+		  		  <if test="politicalLandscape != null and politicalLandscape != ''">
+		  		  	AND political_Landscape LIKE '%${ politicalLandscape}%'  
 		  		  </if>
 		  		  
 		</where>
@@ -77,7 +77,7 @@
                 ORDER BY ${sort} ${order}
             </when>
 			<otherwise>
-                ORDER BY phoneNumber DESC
+                ORDER BY phone_Number DESC
 			</otherwise>
         </choose>
 	</select>
@@ -88,59 +88,59 @@
 		from t_employee_info
 		 <where>  
 		 
-		   		  <if test="phonenumber != null and phonenumber != ''">
-		  		  	AND phoneNumber LIKE '%${ phonenumber}%'  
+		   		  <if test="phoneNumber != null and phoneNumber != ''">
+		  		  	AND phone_Number LIKE '%${ phoneNumber}%'  
 		  		  </if>
-		  		  <if test="idcard != null and idcard != ''">
-		  		  	AND idCard LIKE '%${ idcard}%'  
+		  		  <if test="idCard != null and idCard != ''">
+		  		  	AND id_Card LIKE '%${ idCard}%'  
 		  		  </if>
 		  		  <if test="nation != null and nation != ''">
 		  		  	AND nation LIKE '%${ nation}%'  
 		  		  </if>
-		  		  <if test="hukoutype != null and hukoutype != ''">
-		  		  	AND huKouType LIKE '%${ hukoutype}%'  
+		  		  <if test="huKouType != null and huKouType != ''">
+		  		  	AND hu_Kou_Type LIKE '%${ huKouType}%'  
 		  		  </if>
-		  		  <if test="maritalstatus != null and maritalstatus != ''">
-		  		  	AND maritalStatus LIKE '%${ maritalstatus}%'  
+		  		  <if test="maritalStatus != null and maritalStatus != ''">
+		  		  	AND marital_Status LIKE '%${ maritalStatus}%'  
 		  		  </if>
-		  		  <if test="emergencycontact != null and emergencycontact != ''">
-		  		  	AND emergencyContact LIKE '%${ emergencycontact}%'  
+		  		  <if test="emergencyContact != null and emergencyContact != ''">
+		  		  	AND emergency_Contact LIKE '%${ emergencyContact}%'  
 		  		  </if>
-		  		  <if test="emergencycontactphone != null and emergencycontactphone != ''">
-		  		  	AND emergencyContactPhone LIKE '%${ emergencycontactphone}%'  
+		  		  <if test="emergencyContactPhone != null and emergencyContactPhone != ''">
+		  		  	AND emergency_Contact_Phone LIKE '%${ emergencyContactPhone}%'  
 		  		  </if>
-		  		  <if test="highestdegree != null and highestdegree != ''">
-		  		  	AND highestDegree LIKE '%${ highestdegree}%'  
+		  		  <if test="highestDegree != null and highestDegree != ''">
+		  		  	AND highest_Degree LIKE '%${ highestDegree}%'  
 		  		  </if>
-		  		  <if test="graduateschool != null and graduateschool != ''">
-		  		  	AND graduateSchool LIKE '%${ graduateschool}%'  
+		  		  <if test="graduateSchool != null and graduateSchool != ''">
+		  		  	AND graduate_School LIKE '%${ graduateSchool}%'  
 		  		  </if>
 		  		  <if test="professional != null and professional != ''">
 		  		  	AND professional LIKE '%${ professional}%'  
 		  		  </if>
-		  		  <if test="graduatiotime != null and graduatiotime != ''">
-		  		  	AND graduatioTime LIKE '%${ graduatiotime}%'  
+		  		  <if test="graduationTime != null and graduationTime != ''">
+		  		  	AND graduation_Time LIKE '%${ graduationTime}%'  
 		  		  </if>
-		  		  <if test="natureacademicqualifications != null and natureacademicqualifications != ''">
-		  		  	AND natureAcademicQualifications LIKE '%${ natureacademicqualifications}%'  
+		  		  <if test="natureAcademicQualifications != null and natureAcademicQualifications != ''">
+		  		  	AND nature_Academic_Qualifications LIKE '%${ natureAcademicQualifications}%'  
 		  		  </if>
-		  		  <if test="joinworktime != null and joinworktime != ''">
-		  		  	AND joinWorkTime LIKE '%${ joinworktime}%'  
+		  		  <if test="joinWorkTime != null and joinWorkTime != ''">
+		  		  	AND join_Work_Time LIKE '%${ joinWorkTime}%'  
 		  		  </if>
-		  		  <if test="entercompanytime != null and entercompanytime != ''">
-		  		  	AND enterCompanyTime LIKE '%${ entercompanytime}%'  
+		  		  <if test="enterCompanyTime != null and enterCompanyTime != ''">
+		  		  	AND enter_Company_Time LIKE '%${ enterCompanyTime}%'  
 		  		  </if>
-		  		  <if test="operatpost != null and operatpost != ''">
-		  		  	AND operatPost LIKE '%${ operatpost}%'  
+		  		  <if test="workPost != null and workPost != ''">
+		  		  	AND work_Post LIKE '%${ workPost}%'  
 		  		  </if>
-		  		  <if test="jobposition != null and jobposition != ''">
-		  		  	AND jobPosition LIKE '%${ jobposition}%'  
+		  		  <if test="jobPosition != null and jobPosition != ''">
+		  		  	AND job_Position LIKE '%${ jobPosition}%'  
 		  		  </if>
-		  		  <if test="durationemptime != null and durationemptime != ''">
-		  		  	AND durationEmpTime LIKE '%${ durationemptime}%'  
+		  		  <if test="durationEmpTime != null and durationEmpTime != ''">
+		  		  	AND duration_Emp_Time LIKE '%${ durationEmpTime}%'  
 		  		  </if>
-		  		  <if test="politicallandscape != null and politicallandscape != ''">
-		  		  	AND politicalLandscape LIKE '%${ politicallandscape}%'  
+		  		  <if test="politicalLandscape != null and politicalLandscape != ''">
+		  		  	AND political_Landscape LIKE '%${ politicalLandscape}%'  
 		  		  </if>
 		  		  
 		</where>
@@ -148,88 +148,88 @@
 	 
 	<insert id="save" parameterType="com.fc.crm.domain.EmployeeInfoDO">
 				<!-- 
-		<selectKey keyProperty="phonenumber" resultType="Integer" order="BEFORE"> 
+		<selectKey keyProperty="phoneNumber" resultType="Integer" order="BEFORE"> 
             SELECT sys_seq('t_employee_info') 
     	</selectKey> -->
     	    	
 		insert into t_employee_info 
 		(
 		
-			phoneNumber, 
-			idCard, 
+			phone_Number, 
+			id_Card, 
 			nation, 
-			huKouType, 
-			maritalStatus, 
-			emergencyContact, 
-			emergencyContactPhone, 
-			highestDegree, 
-			graduateSchool, 
+			hu_Kou_Type, 
+			marital_Status, 
+			emergency_Contact, 
+			emergency_Contact_Phone, 
+			highest_Degree, 
+			graduate_School, 
 			professional, 
-			graduatioTime, 
-			natureAcademicQualifications, 
-			joinWorkTime, 
-			enterCompanyTime, 
-			operatPost, 
-			jobPosition, 
-			durationEmpTime, 
-			politicalLandscape
+			graduation_Time, 
+			nature_Academic_Qualifications, 
+			join_Work_Time, 
+			enter_Company_Time, 
+			work_Post, 
+			job_Position, 
+			duration_Emp_Time, 
+			political_Landscape
 		)
 		values
 		(
 		
 		    sys_seq('t_employee_info')  , 		    
-			#{idcard, jdbcType=VARCHAR}, 			
+			#{idCard, jdbcType=VARCHAR}, 			
 			#{nation, jdbcType=VARCHAR}, 			
-			#{hukoutype, jdbcType=VARCHAR}, 			
-			#{maritalstatus, jdbcType=VARCHAR}, 			
-			#{emergencycontact, jdbcType=VARCHAR}, 			
-			#{emergencycontactphone, jdbcType=VARCHAR}, 			
-			#{highestdegree, jdbcType=VARCHAR}, 			
-			#{graduateschool, jdbcType=VARCHAR}, 			
+			#{huKouType, jdbcType=VARCHAR}, 			
+			#{maritalStatus, jdbcType=VARCHAR}, 			
+			#{emergencyContact, jdbcType=VARCHAR}, 			
+			#{emergencyContactPhone, jdbcType=VARCHAR}, 			
+			#{highestDegree, jdbcType=VARCHAR}, 			
+			#{graduateSchool, jdbcType=VARCHAR}, 			
 			#{professional, jdbcType=VARCHAR}, 			
-			#{graduatiotime, jdbcType=VARCHAR}, 			
-			#{natureacademicqualifications, jdbcType=VARCHAR}, 			
-			#{joinworktime, jdbcType=VARCHAR}, 			
-			#{entercompanytime, jdbcType=VARCHAR}, 			
-			#{operatpost, jdbcType=VARCHAR}, 			
-			#{jobposition, jdbcType=VARCHAR}, 			
-			#{durationemptime, jdbcType=VARCHAR}, 			
-			#{politicallandscape, jdbcType=VARCHAR}			
+			#{graduationTime, jdbcType=VARCHAR}, 			
+			#{natureAcademicQualifications, jdbcType=VARCHAR}, 			
+			#{joinWorkTime, jdbcType=VARCHAR}, 			
+			#{enterCompanyTime, jdbcType=VARCHAR}, 			
+			#{workPost, jdbcType=VARCHAR}, 			
+			#{jobPosition, jdbcType=VARCHAR}, 			
+			#{durationEmpTime, jdbcType=VARCHAR}, 			
+			#{politicalLandscape, jdbcType=VARCHAR}			
 		)
 	</insert>
 	 
 	<update id="update" parameterType="com.fc.crm.domain.EmployeeInfoDO">
 		update t_employee_info 
 		<set>
-			<if test="idcard != null">idCard = #{idcard}, </if>
+			<if test="idCard != null">id_Card = #{idCard}, </if>
 			<if test="nation != null">nation = #{nation}, </if>
-			<if test="hukoutype != null">huKouType = #{hukoutype}, </if>
-			<if test="maritalstatus != null">maritalStatus = #{maritalstatus}, </if>
-			<if test="emergencycontact != null">emergencyContact = #{emergencycontact}, </if>
-			<if test="emergencycontactphone != null">emergencyContactPhone = #{emergencycontactphone}, </if>
-			<if test="highestdegree != null">highestDegree = #{highestdegree}, </if>
-			<if test="graduateschool != null">graduateSchool = #{graduateschool}, </if>
+			<if test="huKouType != null">hu_Kou_Type = #{huKouType}, </if>
+			<if test="maritalStatus != null">marital_Status = #{maritalStatus}, </if>
+			<if test="emergencyContact != null">emergency_Contact = #{emergencyContact}, </if>
+			<if test="emergencyContactPhone != null">emergency_Contact_Phone = #{emergencyContactPhone}, </if>
+			<if test="highestDegree != null">highest_Degree = #{highestDegree}, </if>
+			<if test="graduateSchool != null">graduate_School = #{graduateSchool}, </if>
 			<if test="professional != null">professional = #{professional}, </if>
-			<if test="graduatiotime != null">graduatioTime = #{graduatiotime}, </if>
-			<if test="natureacademicqualifications != null">natureAcademicQualifications = #{natureacademicqualifications}, </if>
-			<if test="joinworktime != null">joinWorkTime = #{joinworktime}, </if>
-			<if test="entercompanytime != null">enterCompanyTime = #{entercompanytime}, </if>
-			<if test="operatpost != null">operatPost = #{operatpost}, </if>
-			<if test="jobposition != null">jobPosition = #{jobposition}, </if>
-			<if test="durationemptime != null">durationEmpTime = #{durationemptime}, </if>
-			<if test="politicallandscape != null">politicalLandscape = #{politicallandscape}</if>
+			<if test="graduationTime != null">graduation_Time = #{graduationTime}, </if>
+			<if test="natureAcademicQualifications != null">nature_Academic_Qualifications = #{natureAcademicQualifications}, </if>
+			<if test="joinWorkTime != null">join_Work_Time = #{joinWorkTime}, </if>
+			<if test="enterCompanyTime != null">enter_Company_Time = #{enterCompanyTime}, </if>
+			<if test="workPost != null">work_Post = #{workPost}, </if>
+			<if test="jobPosition != null">job_Position = #{jobPosition}, </if>
+			<if test="durationEmpTime != null">duration_Emp_Time = #{durationEmpTime}, </if>
+			<if test="politicalLandscape != null">political_Landscape = #{politicalLandscape}</if>
 		</set>
-		where phoneNumber = #{phonenumber}
+		where phone_Number = #{phoneNumber}
 	</update>
 	
 	<delete id="remove">
-		delete from t_employee_info where phoneNumber = #{value}
+		delete from t_employee_info where phone_Number = #{value}
 	</delete>
 	
 	<delete id="batchRemove">
-		delete from t_employee_info where phoneNumber in 
-		<foreach item="phonenumber" collection="array" open="(" separator="," close=")">
-			#{phonenumber}
+		delete from t_employee_info where phone_Number in 
+		<foreach item="phoneNumber" collection="array" open="(" separator="," close=")">
+			#{phoneNumber}
 		</foreach>
 	</delete>
 

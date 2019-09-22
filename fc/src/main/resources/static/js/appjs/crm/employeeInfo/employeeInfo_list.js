@@ -73,13 +73,13 @@ function load() {
 /*格式化"操作"按钮列*/
 function operateFormatter(value, row, index){
 	/**var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
-		+ row.phonenumber
+		+ row.phoneNumber
 		+ '\' , '+ index +')"><i class="fa fa-edit"></i></a> ';
 	var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
-		+ row.phonenumber
+		+ row.phoneNumber
 		+ '\')"><i class="fa fa-remove"></i></a> ';
 	var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-		+ row.phonenumber
+		+ row.phoneNumber
 		+ '\')"><i class="fa fa-key"></i></a> ';*/
 	var e = "";
 	if(s_edit_h !="hidden"){
@@ -101,7 +101,7 @@ var operateEvent={
             		   edit(row, 'edit');
                    },
                    'click .remove': function (e, value, row, index) {
-                	   remove(row.phonenumber);
+                	   remove(row.phoneNumber);
                    }
                };
 
@@ -120,7 +120,7 @@ function add() {
 }
 function edit(row, type) {
 	/*var row = $('#dataTable').bootstrapTable('getData')[index];*/
-	if(!row || !row.phonenumber){
+	if(!row || !row.phoneNumber){
 		alertMsg("请选择一条记录!");
 		return;
 	}
@@ -132,17 +132,17 @@ function edit(row, type) {
 		maxmin : true,
 		shadeClose : false, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/edit/' + row.phonenumber // iframe的url
+		content : prefix + '/edit/' + row.phoneNumber // iframe的url
 	});
 }
-function remove(phonenumber) {
+function remove(phoneNumber) {
 	alertConfirm('确定要删除选中的记录？', 
 	  function() {
 		$.ajax({
 			url : prefix+"/remove",
 			type : "post",
 			data : {
-				'phonenumber' : phonenumber
+				'phoneNumber' : phoneNumber
 			},
 			success : function(r) {
 				if (r.code==0) {
@@ -156,7 +156,7 @@ function remove(phonenumber) {
 	})
 }
 //备用方法
-function resetPwd(phonenumber) {
+function resetPwd(phoneNumber) {
 }
 function batchRemove() {
 	var rows = $('#dataTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
@@ -169,7 +169,7 @@ function batchRemove() {
 		var ids = new Array();
 		// 遍历所有选择的行数据，取每条数据对应的ID
 		$.each(rows, function(i, row) {
-			ids[i] = row['phonenumber'];
+			ids[i] = row['phoneNumber'];
 		});
 		$.ajax({
 			type : 'POST',
