@@ -1169,9 +1169,9 @@ CREATE TABLE `t_work_plan`
     `end_Time`           varchar(23)   NOT NULL COMMENT '结束时间',
     `schedule`           varchar(255)  DEFAULT NULL COMMENT '完成进度',
     `person_Liable_Name` varchar(100)  NOT NULL COMMENT '责任人名称',
-    `person_Liable_id`      varchar(100)  NOT NULL COMMENT '责任人ID',
+    `person_Liable_id`   varchar(100)  NOT NULL COMMENT '责任人ID',
     `helper_name`        varchar(100)  DEFAULT NULL COMMENT '协助人名称',
-    `helper_id`             varchar(100)  DEFAULT NULL COMMENT '协助人ID',
+    `helper_id`          varchar(100)  DEFAULT NULL COMMENT '协助人ID',
     `remarks`            varchar(1000) DEFAULT NULL COMMENT '备注',
     `remind_Type`        varchar(20)   DEFAULT NULL COMMENT '提醒方式，任务开始后，每天提醒？还是如何提醒',
     `state`              varchar(2)    DEFAULT '0' COMMENT '状态：0：草稿，1：发布，2：撤销，3：作废',
@@ -1179,7 +1179,11 @@ CREATE TABLE `t_work_plan`
     `Task_Annex`         varchar(500)  DEFAULT NULL COMMENT '任务附件名，使用“??”（两个英文的问号）隔开',
     `Task_Annex_path`    varchar(500)  DEFAULT NULL COMMENT '任务附件名，使用“??”（两个英文的问号）隔开,\r\n使用相对路径\r\n~~/a/b/c.txt',
     `execute_Annex`      varchar(500)  DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开',
-    `execute_Annex_path` varchar(500)  DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开,'
+    `execute_Annex_path` varchar(500)  DEFAULT NULL COMMENT '执行情况附件名，使用“??”（两个英文的问号）隔开,',
+    `createTime`         varchar(50)   DEFAULT NULL,
+    `createAuthor`       int(50)       DEFAULT NULL,
+    `lastModifyTime`     varchar(50)   DEFAULT NULL,
+    `lastModifyAuthor`   int(50)       DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8 COMMENT ='工作计划';
 
@@ -1208,82 +1212,94 @@ CREATE TABLE `t_work_plan_follow_up`
 -- Table structure for t_stock
 -- ----------------------------
 DROP TABLE IF EXISTS `t_stock`;
-CREATE TABLE `t_stock` (
-                           `goods_id` int(11) DEFAULT NULL COMMENT '商品id',
-                           `stock` int(11) DEFAULT NULL COMMENT '库存量'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `t_stock`
+(
+    `goods_id` int(11) DEFAULT NULL COMMENT '商品id',
+    `stock`    int(11) DEFAULT NULL COMMENT '库存量'
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 DROP TABLE IF EXISTS `t_goods`;
-CREATE TABLE `t_goods` (
-                           `id` int(11) NOT NULL,
-                           `dept_id` varchar(255) DEFAULT NULL COMMENT '门店id',
-                           `title` varchar(255) DEFAULT NULL COMMENT '标题',
-                           `sub_title` varchar(255) DEFAULT NULL COMMENT '副标题',
-                           `price` int(11) DEFAULT NULL COMMENT '价格，存入时x100',
-                           `detail` text COMMENT '商品详情',
-                           `image` varchar(255) DEFAULT NULL COMMENT '图片url',
-                           PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `t_goods`
+(
+    `id`        int(11) NOT NULL,
+    `dept_id`   varchar(255) DEFAULT NULL COMMENT '门店id',
+    `title`     varchar(255) DEFAULT NULL COMMENT '标题',
+    `sub_title` varchar(255) DEFAULT NULL COMMENT '副标题',
+    `price`     int(11)      DEFAULT NULL COMMENT '价格，存入时x100',
+    `detail`    text COMMENT '商品详情',
+    `image`     varchar(255) DEFAULT NULL COMMENT '图片url',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Table structure for t_campaign
 -- ----------------------------
 DROP TABLE IF EXISTS `t_campaign`;
-CREATE TABLE `t_campaign` (
-                              `id` int(11) NOT NULL,
-                              `activity_name` varchar(255) DEFAULT NULL COMMENT '活动名称',
-                              `activity_content` varchar(255) DEFAULT NULL COMMENT '活动内容',
-                              `activity_addr` varchar(255) DEFAULT NULL COMMENT '活动场地',
-                              `activity_date` varchar(40) DEFAULT NULL COMMENT '活动日期',
-                              `activity_enrollees` varchar(255) DEFAULT NULL COMMENT '报名人员',
-                              PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `t_campaign`
+(
+    `id`                 int(11) NOT NULL,
+    `activity_name`      varchar(255) DEFAULT NULL COMMENT '活动名称',
+    `activity_content`   varchar(255) DEFAULT NULL COMMENT '活动内容',
+    `activity_addr`      varchar(255) DEFAULT NULL COMMENT '活动场地',
+    `activity_date`      varchar(40)  DEFAULT NULL COMMENT '活动日期',
+    `activity_enrollees` varchar(255) DEFAULT NULL COMMENT '报名人员',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Table structure for t_course
 -- ----------------------------
 DROP TABLE IF EXISTS `t_course`;
-CREATE TABLE `t_course` (
-                            `id` int(11) NOT NULL,
-                            `dept_id` varchar(255) DEFAULT NULL COMMENT '门店id',
-                            `course_name` varchar(255) DEFAULT NULL COMMENT '课程名称',
-                            `price` int(11) DEFAULT NULL COMMENT '单价',
-                            `course_detail` varchar(255) DEFAULT NULL COMMENT '课程描述',
-                            PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `t_course`
+(
+    `id`            int(11) NOT NULL,
+    `dept_id`       varchar(255) DEFAULT NULL COMMENT '门店id',
+    `course_name`   varchar(255) DEFAULT NULL COMMENT '课程名称',
+    `price`         int(11)      DEFAULT NULL COMMENT '单价',
+    `course_detail` varchar(255) DEFAULT NULL COMMENT '课程描述',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Table structure for t_course_packages
 -- ----------------------------
 DROP TABLE IF EXISTS `t_course_packages`;
-CREATE TABLE `t_course_packages` (
-                                     `id` int(11) NOT NULL,
-                                     `dept_id` int(11) DEFAULT NULL COMMENT '门店id',
-                                     `package_name` varchar(255) DEFAULT NULL COMMENT '套餐名称',
-                                     `subTitle` varchar(255) DEFAULT NULL COMMENT '副标题',
-                                     `course_ids` varchar(255) DEFAULT NULL COMMENT '课程Ids',
-                                     `goods_ids` varchar(255) DEFAULT NULL COMMENT '商品Ids',
-                                     `total_price` float(10,2) DEFAULT NULL COMMENT '套餐价格',
+CREATE TABLE `t_course_packages`
+(
+    `id`           int(11) NOT NULL,
+    `dept_id`      int(11)      DEFAULT NULL COMMENT '门店id',
+    `package_name` varchar(255) DEFAULT NULL COMMENT '套餐名称',
+    `subTitle`     varchar(255) DEFAULT NULL COMMENT '副标题',
+    `course_ids`   varchar(255) DEFAULT NULL COMMENT '课程Ids',
+    `goods_ids`    varchar(255) DEFAULT NULL COMMENT '商品Ids',
+    `total_price`  float(10, 2) DEFAULT NULL COMMENT '套餐价格',
     PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 
 -- ----------------------------
 -- Table structure for t_somatometric_record
 -- ----------------------------
 DROP TABLE IF EXISTS `t_somatometric_record`;
-CREATE TABLE `t_somatometric_record` (
-                                         `id` int(11) NOT NULL,
-                                         `member_id` int(11) DEFAULT NULL COMMENT '会员id',
-                                         ` measure_time` varchar(40) DEFAULT NULL COMMENT '测量时间',
-                                         `weight` float(3,2) DEFAULT NULL COMMENT '体重',
-    `body_fat_rate` float(6,2) DEFAULT NULL COMMENT '体脂率',
-    `moisture_datio` float(6,2) DEFAULT NULL COMMENT '水分率',
-    `muscle_rate` float(6,2) DEFAULT NULL COMMENT '肌肉率',
-    `body_shape_judgment` varchar(255) DEFAULT NULL COMMENT '体型判断',
-    `metabolic_age` varchar(255) DEFAULT NULL COMMENT '代谢年龄',
-    `bone_content` float(6,2) DEFAULT NULL COMMENT '骨含量',
-    `lactone_content` float(6,2) DEFAULT NULL COMMENT '内脂含量',
+CREATE TABLE `t_somatometric_record`
+(
+    `id`                      int(11) NOT NULL,
+    `member_id`               int(11)      DEFAULT NULL COMMENT '会员id',
+    ` measure_time`           varchar(40)  DEFAULT NULL COMMENT '测量时间',
+    `weight`                  float(3, 2)  DEFAULT NULL COMMENT '体重',
+    `body_fat_rate`           float(6, 2)  DEFAULT NULL COMMENT '体脂率',
+    `moisture_datio`          float(6, 2)  DEFAULT NULL COMMENT '水分率',
+    `muscle_rate`             float(6, 2)  DEFAULT NULL COMMENT '肌肉率',
+    `body_shape_judgment`     varchar(255) DEFAULT NULL COMMENT '体型判断',
+    `metabolic_age`           varchar(255) DEFAULT NULL COMMENT '代谢年龄',
+    `bone_content`            float(6, 2)  DEFAULT NULL COMMENT '骨含量',
+    `lactone_content`         float(6, 2)  DEFAULT NULL COMMENT '内脂含量',
     `somatometric_comparison` varchar(255) DEFAULT NULL COMMENT '体测对比',
     PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
