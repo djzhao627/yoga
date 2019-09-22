@@ -80,6 +80,14 @@ public class WorkPlanDO extends BaseDao implements Serializable {
     //任务附件名，使用“??”（两个英文的问号）隔开,
     private String executeAnnexPath;
 
+    public WorkPlanDO() {
+        super();
+    }
+
+    public WorkPlanDO(String id) {
+        this.id = id;
+    }
+
     /**
      * 设置：
      */

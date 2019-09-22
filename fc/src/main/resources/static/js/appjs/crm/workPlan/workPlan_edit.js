@@ -10,6 +10,28 @@ $.validator.setDefaults({
     }
 });
 
+layui.use('upload', function () {
+    var upload = layui.upload;
+    var formData = {};
+    formData.id = $("#id").val();
+    //执行实例
+    var uploadInst = upload.render({
+        elem: '#taskAnnex', //绑定元素
+        url: '/crm/workPlan/uploadFile', //上传接口
+        size: 1000,
+        accept: 'file',
+        data: formData,
+        done: function (r) {
+            layer.msg(r.msg);
+
+        },
+        error: function (r) {
+            layer.msg(r.msg);
+        }
+    });
+});
+
+
 function sbumitData() {
     //var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
     var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
@@ -24,7 +46,7 @@ function sbumitData() {
         cache: true,
         type: "POST",
         url: url,
-        data: $('#signupForm').serialize(),// 你的formid
+        data: formData,// 你的formid
         async: false,
         error: function (request) {
             parent.layer.alert("Connection error");

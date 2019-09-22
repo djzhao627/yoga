@@ -25,9 +25,31 @@ function responseHandler(res) {
     return res
 }
 
+function uploadFile() {
+    var fordata = new FormData();
+    fordata.append('id', "5");
+    fordata.append('file', $('#taskAnnex')[0].files[0]);
+    $.ajax({
+        url: '/crm/workPlan/uploadFile',
+        type: 'post',
+        processData: false,
+        contentType: false,
+        data: fordata,
+        success: function (data) {
+            layer.msg("保存成功！");
+        },
+        error : function (data) {
+            layer.msg("保存失败！");
+        }
+    })
+}
 function detailFormatter(index, row) {
 
-    var params = {
+    return '<label class="col-sm-3 control-label">任务附件：</label>' +
+        ' <div><input id="taskAnnex" name="file" value="'+ row.taskAnnex +'" class="form-control" type="file">' +
+        ' <button class="layui-btn" onclick="uploadFile()">保存</button></div>';
+
+    /*var params = {
         workPlanId: row.id
     };
     var html = [];
@@ -57,7 +79,7 @@ function detailFormatter(index, row) {
 
         }
     })
-    return str + "</div>";
+    return str + "</div>";*/
 }
 
 function operateFormatter(value, row, index) {
