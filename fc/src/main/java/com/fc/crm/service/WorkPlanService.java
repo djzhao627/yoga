@@ -18,7 +18,7 @@ public interface WorkPlanService {
 
     List<WorkPlanDO> list(Map<String, Object> map);
 
-    List<Map<String, Object>> findDatas(Map<String, Object> map);
+    List<Map<String, Object>> findDataList(Map<String, Object> map);
 
     int save(WorkPlanDO workPlan);
 

@@ -1207,6 +1207,32 @@ CREATE TABLE `t_work_plan_follow_up`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+-- ----------------------------
+-- Table structure for t_employee_info
+-- ----------------------------
+DROP TABLE IF EXISTS `t_employee_info`;
+CREATE TABLE `t_employee_info`
+(
+    `phoneNumber`                  varchar(50) NOT NULL COMMENT '手机号',
+    `idCard`                       varchar(18) NOT NULL COMMENT '身份证号码',
+    `nation`                       varchar(255) DEFAULT NULL COMMENT '民族',
+    `huKouType`                    varchar(16)  DEFAULT NULL COMMENT '户口类型',
+    `maritalStatus`                varchar(5)   DEFAULT NULL COMMENT '婚姻状况',
+    `emergencyContact`             varchar(50)  DEFAULT NULL COMMENT '紧急联系人',
+    `emergencyContactPhone`        varchar(50)  DEFAULT NULL COMMENT '紧急联系人号码',
+    `highestDegree`                varchar(255) DEFAULT NULL COMMENT '最高学历',
+    `graduateSchool`               varchar(255) DEFAULT NULL COMMENT '毕业院校',
+    `professional`                 varchar(255) DEFAULT NULL COMMENT '专业',
+    `graduationTime`                varchar(50)  DEFAULT NULL COMMENT '毕业时间',
+    `natureAcademicQualifications` varchar(255) DEFAULT NULL COMMENT '学历性质',
+    `joinWorkTime`                 varchar(50)  DEFAULT NULL COMMENT '参加工作时间',
+    `enterCompanyTime`             varchar(50)  DEFAULT NULL COMMENT '入司时间',
+    `workPost`                   varchar(255) DEFAULT NULL COMMENT '工作岗位',
+    `jobPosition`                  varchar(255) DEFAULT NULL COMMENT '职位',
+    `durationEmpTime`              varchar(50)  DEFAULT NULL COMMENT '任职时间',
+    `politicalLandscape`           varchar(50)  DEFAULT NULL COMMENT '政治面貌'
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Table structure for t_stock
