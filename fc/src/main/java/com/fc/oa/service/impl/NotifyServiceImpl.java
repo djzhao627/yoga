@@ -87,7 +87,7 @@ public class NotifyServiceImpl implements NotifyService {
                 for (UserDO userDO : sessionService.listOnlineUser()) {
                     for (Long userId : userIds) {
                         if (userId.equals(userDO.getUserId())) {
-                            template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：" + notify.getTitle());
+                            template.convertAndSendToUser(userDO.toString(), com.fc.crm.constant.Constant.QUEUE_NOTIFICATIONS, "新消息：" + notify.getTitle());
                         }
                     }
                 }

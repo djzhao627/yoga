@@ -1,6 +1,7 @@
 package com.fc.crm.service.impl;
 
 import com.fc.common.utils.ShiroUtils;
+import com.fc.crm.constant.Constant;
 import com.fc.oa.domain.NotifyDO;
 import com.fc.oa.service.NotifyService;
 import com.fc.system.domain.UserDO;
@@ -120,13 +121,14 @@ public class WorkPlanServiceImpl implements WorkPlanService {
     }
 
     private void runWorPlanSendToUser(List<WorkPlanDO> workPlanDOList) {
-        for (UserDO userDO : sessionService.listOnlineUser()) {
+        List<UserDO> userDOList = sessionService.listOnlineUser();
+        for (UserDO userDO : userDOList) {
             for (WorkPlanDO workPlanDO : workPlanDOList) {
                 if (workPlanDO.getPersonLiableId() != null && workPlanDO.getPersonLiableId().equals(userDO.getUserId())) {
-                    template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（责任人）");
+                    template.convertAndSendToUser(userDO.toString(), Constant.QUEUE_NOTIFICATIONS, "新消息：工作计划（责任人）");
                 }
                 if (workPlanDO.getHelperId() != null && workPlanDO.getHelperId().equals(userDO.getUserId())) {
-                    template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（协助人）");
+                    template.convertAndSendToUser(userDO.toString(), Constant.QUEUE_NOTIFICATIONS, "新消息：工作计划（协助人）");
                 }
             }
         }
