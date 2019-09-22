@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.*;
 
+import com.fc.business.dao.MemberBaseInfoDao;
+import com.fc.business.domain.MemberBaseInfoDO;
 import com.fc.common.config.FcConfig;
 import com.fc.common.domain.FileDO;
 import com.fc.common.service.FileService;
@@ -37,6 +39,8 @@ public class UserServiceImpl implements UserService {
 	UserRoleDao userRoleMapper;
 	@Autowired
 	DeptDao deptMapper;
+	@Autowired
+	MemberBaseInfoDao memberMapper;
 	@Autowired
 	private FileService sysFileService;
 	@Autowired
@@ -238,5 +242,55 @@ public class UserServiceImpl implements UserService {
 		}
 		return result;
     }
+
+	@Override
+	public Tree<DeptDO> getTreeMember() {
+		List<Tree<DeptDO>> trees = new ArrayList<Tree<DeptDO>>();
+		List<DeptDO> depts = deptMapper.list(new HashMap<String, Object>(16));
+		Long[] pDepts = deptMapper.listParentDept();
+		Long[] uDepts = userMapper.listAllDept();
+		Long[] allDepts = (Long[]) ArrayUtils.addAll(pDepts, uDepts);
+		for (DeptDO dept : depts) {
+			if (!ArrayUtils.contains(allDepts, dept.getDeptId())) {
+				continue;
+			}
+			Tree<DeptDO> tree = new Tree<DeptDO>();
+			tree.setId(dept.getDeptId().toString());
+			tree.setParentId(dept.getParentId().toString());
+			tree.setText(dept.getName());
+			Map<String, Object> state = new HashMap<>(16);
+			state.put("opened", true);
+			state.put("mType", "dept");
+			tree.setState(state);
+			trees.add(tree);
+		}
+		List<UserDO> users = userMapper.list(new HashMap<String, Object>(16));
+		List<MemberBaseInfoDO> members = memberMapper.list(new HashMap<String, Object>(16));
+		for (MemberBaseInfoDO member : members) {
+			Tree<DeptDO> tree = new Tree<DeptDO>();
+			tree.setId(member.getId().toString());
+			tree.setParentId(member.getDeptId().toString());
+			tree.setText(member.getName());
+			Map<String, Object> state = new HashMap<>(16);
+			state.put("opened", true);
+			state.put("mType", "user");
+			tree.setState(state);
+			trees.add(tree);
+		}
+//		for (UserDO user : users) {
+//			Tree<DeptDO> tree = new Tree<DeptDO>();
+//			tree.setId(user.getUserId().toString());
+//			tree.setParentId(user.getDeptId().toString());
+//			tree.setText(user.getName());
+//			Map<String, Object> state = new HashMap<>(16);
+//			state.put("opened", true);
+//			state.put("mType", "user");
+//			tree.setState(state);
+//			trees.add(tree);
+//		}
+		// 默认顶级菜单为０，根据数据库实际情况调整
+		Tree<DeptDO> t = BuildTree.build(trees);
+		return t;
+	}
 
 }

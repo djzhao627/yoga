@@ -22,16 +22,16 @@ public class MemberBaseInfoServiceImpl implements MemberBaseInfoService {
 	@Override
 	public MemberBaseInfoDO get(Integer id){
 		MemberBaseInfoDO memberBaseInfoDO = memberBaseInfoDao.get(id);
-		String type = memberBaseInfoDO.getType();
-		Map<String,String> mapCode=queryNameByCode("custom_type");
-		if (type.contains(",")) {
-			String[] types = type.split(",");
-			String temp="";
-			for (int i = 0; i < types.length; i++) {
-				temp+=mapCode.get(types[i])+",";
-			}
-			memberBaseInfoDO.setType(temp.substring(0,temp.lastIndexOf(",")));
-		}
+//		String type = memberBaseInfoDO.getType();
+//		Map<String,String> mapCode=queryNameByCode("custom_type");
+//		if (type.contains(",")) {
+//			String[] types = type.split(",");
+//			String temp="";
+//			for (int i = 0; i < types.length; i++) {
+//				temp+=mapCode.get(types[i])+",";
+//			}
+//			memberBaseInfoDO.setType(temp.substring(0,temp.lastIndexOf(",")));
+//		}
 		return memberBaseInfoDO;
 	}
 	
