@@ -5,14 +5,14 @@
 
 	<select id="get" resultType="com.fc.crm.domain.CourseDO">
 		SELECT 
-			id,dept_id,course_name,price,course_detail			 
+			id,dept_id,course_name,price,course_detail,course_type,lesson_period,cost_price			 
 		FROM t_course 
 		where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.fc.crm.domain.CourseDO">
 		SELECT 
-			id, dept_id, course_name, price, course_detail 		
+			id, dept_id, course_name, price, course_detail, course_type, lesson_period, cost_price 		
 		FROM t_course 
         <where>
           
@@ -30,6 +30,15 @@
 		  		  </if>
 		  		  <if test="courseDetail != null and courseDetail != ''">
 		  		  	AND course_detail LIKE '%${ courseDetail}%'  
+		  		  </if>
+		  		  <if test="courseType != null and courseType != ''">
+		  		  	AND course_type LIKE '%${ courseType}%'  
+		  		  </if>
+		  		  <if test="lessonPeriod != null and lessonPeriod != ''">
+		  		  	AND lesson_period = #{lessonPeriod}   
+		  		  </if>
+		  		  <if test="costPrice != null and costPrice != ''">
+		  		  	AND cost_price = #{costPrice}   
 		  		  </if>
 		  		  
 		</where>
@@ -64,6 +73,15 @@
 		  		  <if test="courseDetail != null and courseDetail != ''">
 		  		  	AND course_detail LIKE '%${ courseDetail}%'  
 		  		  </if>
+		  		  <if test="courseType != null and courseType != ''">
+		  		  	AND course_type LIKE '%${ courseType}%'  
+		  		  </if>
+		  		  <if test="lessonPeriod != null and lessonPeriod != ''">
+		  		  	AND lesson_period = #{lessonPeriod}   
+		  		  </if>
+		  		  <if test="costPrice != null and costPrice != ''">
+		  		  	AND cost_price = #{costPrice}   
+		  		  </if>
 		  		  
 		</where>
 	</select>
@@ -81,7 +99,10 @@
 			dept_id, 
 			course_name, 
 			price, 
-			course_detail
+			course_detail, 
+			course_type, 
+			lesson_period, 
+			cost_price
 		)
 		values
 		(
@@ -90,7 +111,10 @@
 			#{deptId, jdbcType=VARCHAR}, 			
 			#{courseName, jdbcType=VARCHAR}, 			
 			#{price, jdbcType=VARCHAR}, 			
-			#{courseDetail, jdbcType=VARCHAR}			
+			#{courseDetail, jdbcType=VARCHAR}, 			
+			#{courseType, jdbcType=VARCHAR}, 			
+			#{lessonPeriod, jdbcType=VARCHAR}, 			
+			#{costPrice, jdbcType=VARCHAR}			
 		)
 	</insert>
 	 
@@ -100,7 +124,10 @@
 			<if test="deptId != null">dept_id = #{deptId}, </if>
 			<if test="courseName != null">course_name = #{courseName}, </if>
 			<if test="price != null">price = #{price}, </if>
-			<if test="courseDetail != null">course_detail = #{courseDetail}</if>
+			<if test="courseDetail != null">course_detail = #{courseDetail}, </if>
+			<if test="courseType != null">course_type = #{courseType}, </if>
+			<if test="lessonPeriod != null">lesson_period = #{lessonPeriod}, </if>
+			<if test="costPrice != null">cost_price = #{costPrice}</if>
 		</set>
 		where id = #{id}
 	</update>

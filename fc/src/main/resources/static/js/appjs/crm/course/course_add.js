@@ -3,30 +3,24 @@ $(function() {
 	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
 });
-$().ready(function() {
-    $('.summernote').summernote({
-        height : '220px',
-        lang : 'zh-CN',
-        callbacks: {
-            onImageUpload: function(files, editor, $editable) {
-                console.log("onImageUpload");
-                sendFile(files);
-            }
-        }
-    });
-    var content = $("#courseDetail").val();
 
-    $('#content_sn').summernote('code', content);
-    validateRule();
-});
 $.validator.setDefaults({
 	submitHandler : function() {
 		sbumitData();
 	}
 });
+$().ready(function() {
+    $('.summernote').summernote({
+        height:'220px',
+        lang : 'zh-CN'
+    });
+    validateRule();
+});
 function sbumitData() {
 	//var formData = $('#signupForm').serializeObject();//将指定容器中的控件值，序列化为json对象
 	var formData = $('#signupForm').serialize();//将指定容器中的控件值，序列化为&相连的字符串
+    var courseDetail=$("#courseDetail").val();
+    formData.courseDetail=courseDetail;
 	var url = "";
 	if($("#id").val()){//修改时
 		url = prefix+ "/update";
@@ -38,7 +32,7 @@ function sbumitData() {
 		cache : true,
 		type : "POST",
 		url : url,
-		data : $('#signupForm').serialize(),// 你的formid
+		data : formData,// 你的formid
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");
