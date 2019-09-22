@@ -1214,7 +1214,8 @@ DROP TABLE IF EXISTS `t_employee_info`;
 CREATE TABLE `t_employee_info`
 (
     `phone_Number`                  varchar(50) NOT NULL COMMENT '手机号',
-    `id_Card`                       varchar(18) NOT NULL COMMENT '身份证号码',
+    `card_Id`                       varchar(18) NOT NULL COMMENT '身份证号码',
+    `employee_Type`                 varchar(5) NOT NULL COMMENT '员工类型',
     `nation`                       varchar(255) DEFAULT NULL COMMENT '民族',
     `hu_Kou_Type`                    varchar(16)  DEFAULT NULL COMMENT '户口类型',
     `marital_Status`                varchar(5)   DEFAULT NULL COMMENT '婚姻状况',

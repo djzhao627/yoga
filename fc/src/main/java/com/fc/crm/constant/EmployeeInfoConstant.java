@@ -5,7 +5,7 @@ package com.fc.crm.constant;
  * 
  * @author fengchi
  * @email 
- * @date 2019-09-22 23:08:50
+ * @date 2019-09-23 00:35:29
  */
 public class EmployeeInfoConstant {
 	
@@ -16,7 +16,11 @@ public class EmployeeInfoConstant {
 	/**
 	 * 身份证号码
 	 */
-	public static final String idCard = "idCard";
+	public static final String cardId = "cardId";
+	/**
+	 * 员工类型
+	 */
+	public static final String employeeType = "employeeType";
 	/**
 	 * 民族
 	 */

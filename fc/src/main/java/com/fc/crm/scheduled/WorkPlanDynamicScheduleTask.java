@@ -1,5 +1,6 @@
 package com.fc.crm.scheduled;
 
+import com.fc.crm.constant.Constant;
 import com.fc.crm.domain.WorkPlanDO;
 import com.fc.crm.service.WorkPlanService;
 import com.fc.oa.service.NotifyService;
@@ -82,10 +83,10 @@ public class WorkPlanDynamicScheduleTask implements SchedulingConfigurer {
         for (UserDO userDO : sessionService.listOnlineUser()) {
             for (WorkPlanDO workPlanDO : workPlanDOList) {
                 if (workPlanDO.getPersonLiableId() != null && workPlanDO.getPersonLiableId().equals(userDO.getUserId())) {
-                    template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（责任人）");
+                    template.convertAndSendToUser(userDO.toString(), Constant.QUEUE_NOTIFICATIONS, "新消息：工作计划（责任人）");
                 }
                 /*if (workPlanDO.getHelper() != null && workPlanDO.getHelper().equals(userDO.getUserId())) {
-                    template.convertAndSendToUser(userDO.toString(), "/queue/notifications", "新消息：工作计划（协助人）");
+                    template.convertAndSendToUser(userDO.toString(), Constant.QUEUE_NOTIFICATIONS, "新消息：工作计划（协助人）");
                 }*/
             }
         }

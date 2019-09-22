@@ -54,7 +54,7 @@ public class WebSocketController {
 //    @ResponseBody
 //    @GetMapping("/chat")
 //    public String  handleChat(Principal principal, String msg) {
-//        template.convertAndSendToUser(sessionService.listPrincipal().get(0).toString(), "/queue/notifications", principal.getName() + "给您发来了消息：" + msg);
+//        template.convertAndSendToUser(sessionService.listPrincipal().get(0).toString(), Constant.QUEUE_NOTIFICATIONS, principal.getName() + "给您发来了消息：" + msg);
 //        return sessionService.listPrincipal().get(0).toString();
 //    }
 }

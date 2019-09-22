@@ -12,6 +12,8 @@ INSERT INTO `system_sequence` VALUES ('t_work_plan', 1, 1);
 INSERT INTO `system_sequence` VALUES ('t_order', '2', '1');
 INSERT INTO `system_sequence` VALUES ('t_work_plan_follow_up', '2', '1');
 INSERT INTO `system_sequence` VALUES ('t_employee_info', '1', '1');
+INSERT INTO `system_sequence` VALUES ('SYS_USER_ROLE', '200', '1');
+INSERT INTO `system_sequence` VALUES ('SYS_USER_ROLE', '600', '1');
 
 -- ----------------------------
 -- Records of sys_menu

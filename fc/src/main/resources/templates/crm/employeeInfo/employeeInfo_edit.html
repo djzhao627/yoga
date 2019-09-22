@@ -3,134 +3,224 @@
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="gray-bg">
-	<div class="wrapper wrapper-content ">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="ibox float-e-margins">
-					<div class="ibox-content">
-						<form class="form-horizontal m-t" id="signupForm">
-						<input id="phoneNumber" name="phoneNumber" th:value="${employeeInfo.phoneNumber}"  type="hidden" />
-							<div class="form-group">	
-								<label class="col-sm-3 control-label">手机号：</label>
-								<div class="col-sm-8">
-									<input id="phoneNumber" name="phoneNumber" th:value="${employeeInfo.phoneNumber}" class="form-control" type="text">
-								</div>
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">手机号：</label>
+                            <div class="col-sm-8">
+                                <input id="phoneNumber" name="phoneNumber" th:value="${employeeInfo.phoneNumber}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">身份证号码：</label>
+                            <div class="col-sm-8">
+                                <input id="cardId" name="cardId" th:value="${employeeInfo.cardId}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">员工类型：</label>
+                            <div class="col-sm-8">
+                                <input id="employeeType" name="employeeType" th:value="${employeeInfo.employeeType}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">民族：</label>
+                            <div class="col-sm-8">
+                                <input id="nation" name="nation" th:value="${employeeInfo.nation}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">户口类型：</label>
+                            <div class="col-sm-8">
+                                <input id="huKouType" name="huKouType" th:value="${employeeInfo.huKouType}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">婚姻状况：</label>
+                            <div class="col-sm-8">
+                                <input id="maritalStatus" name="maritalStatus" th:value="${employeeInfo.maritalStatus}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">紧急联系人：</label>
+                            <div class="col-sm-8">
+                                <input id="emergencyContact" name="emergencyContact"
+                                       th:value="${employeeInfo.emergencyContact}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">紧急联系人号码：</label>
+                            <div class="col-sm-8">
+                                <input id="emergencyContactPhone" name="emergencyContactPhone"
+                                       th:value="${employeeInfo.emergencyContactPhone}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">最高学历：</label>
+                            <div class="col-sm-8">
+                                <input id="highestDegree" name="highestDegree" th:value="${employeeInfo.highestDegree}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">毕业院校：</label>
+                            <div class="col-sm-8">
+                                <input id="graduateSchool" name="graduateSchool"
+                                       th:value="${employeeInfo.graduateSchool}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专业：</label>
+                            <div class="col-sm-8">
+                                <input id="professional" name="professional" th:value="${employeeInfo.professional}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">毕业时间：</label>
+                            <div class="col-sm-8">
+                                <input id="graduationTime" name="graduationTime"
+                                       th:value="${employeeInfo.graduationTime}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学历性质：</label>
+                            <div class="col-sm-8">
+                                <input id="natureAcademicQualifications" name="natureAcademicQualifications"
+                                       th:value="${employeeInfo.natureAcademicQualifications}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">参加工作时间：</label>
+                            <div class="col-sm-8">
+                                <input id="joinWorkTime" name="joinWorkTime" th:value="${employeeInfo.joinWorkTime}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">入司时间：</label>
+                            <div class="col-sm-8">
+                                <input id="enterCompanyTime" name="enterCompanyTime"
+                                       th:value="${employeeInfo.enterCompanyTime}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作岗位：</label>
+                            <div class="col-sm-8">
+                                <input id="workPost" name="workPost" th:value="${employeeInfo.workPost}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">职位：</label>
+                            <div class="col-sm-8">
+                                <input id="jobPosition" name="jobPosition" th:value="${employeeInfo.jobPosition}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">任职时间：</label>
+                            <div class="col-sm-8">
+                                <input id="durationEmpTime" name="durationEmpTime"
+                                       th:value="${employeeInfo.durationEmpTime}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">政治面貌：</label>
+                            <div class="col-sm-8">
+                                <input id="politicalLandscape" name="politicalLandscape"
+                                       th:value="${employeeInfo.politicalLandscape}" class="form-control" type="text">
+                            </div>
+                        </div>
+
+
+
+
+
+						<!--<input id="empId" name="empId" th:value="${employeeInfo.empId}" type="hidden">-->
+						<input id="userId" name="userId" type="hidden">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">姓名：</label>
+							<div class="col-sm-8">
+								<input id="name" name="name" class="form-control" type="text">
 							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">身份证号码：</label>
-								<div class="col-sm-8">
-									<input id="idCard" name="idCard" th:value="${employeeInfo.idCard}" class="form-control" type="text">
-								</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">用户名：</label>
+							<div class="col-sm-8">
+								<input id="username" name="username" class="form-control"
+									   type="text">
 							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">民族：</label>
-								<div class="col-sm-8">
-									<input id="nation" name="nation" th:value="${employeeInfo.nation}" class="form-control" type="text">
-								</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">密码：</label>
+							<div class="col-sm-8">
+								<input id="password" name="password" class="form-control"
+									   type="password">
 							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">户口类型：</label>
-								<div class="col-sm-8">
-									<input id="huKouType" name="huKouType" th:value="${employeeInfo.huKouType}" class="form-control" type="text">
-								</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">部门：</label>
+							<div class="col-sm-8">
+								<input id="deptId" name="deptId" class="hidden"> <input
+									id="deptName" name="deptName" class="form-control" type="text"
+									style="cursor: pointer;" onclick="openDept()"
+									readonly="readonly" placeholder="所属部门">
 							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">婚姻状况：</label>
-								<div class="col-sm-8">
-									<input id="maritalStatus" name="maritalStatus" th:value="${employeeInfo.maritalStatus}" class="form-control" type="text">
-								</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">E-mail：</label>
+							<div class="col-sm-8">
+								<input id="email" name="email" class="form-control"
+									   type="email">
 							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">紧急联系人：</label>
-								<div class="col-sm-8">
-									<input id="emergencyContact" name="emergencyContact" th:value="${employeeInfo.emergencyContact}" class="form-control" type="text">
-								</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">状态:</label>
+							<div class="col-sm-8">
+								<label class="radio-inline"> <input type="radio"
+																	name="status" value="1" /> 正常
+								</label> <label class="radio-inline"> <input type="radio"
+																			 name="status" value="0" /> 禁用
+							</label>
 							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">紧急联系人号码：</label>
-								<div class="col-sm-8">
-									<input id="emergencyContactPhone" name="emergencyContactPhone" th:value="${employeeInfo.emergencyContactPhone}" class="form-control" type="text">
-								</div>
+						</div>
+						<input type="hidden" name="roleIds" id="roleIds">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">角色</label>
+							<div class="col-sm-8">
+								<label th:each="role:${roles}" class="checkbox-inline">
+									<input name="role" type="checkbox" th:value="${role.roleId}"
+										   th:text="${role.roleName}">
+								</label>
 							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">最高学历：</label>
-								<div class="col-sm-8">
-									<input id="highestDegree" name="highestDegree" th:value="${employeeInfo.highestDegree}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">毕业院校：</label>
-								<div class="col-sm-8">
-									<input id="graduateSchool" name="graduateSchool" th:value="${employeeInfo.graduateSchool}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">专业：</label>
-								<div class="col-sm-8">
-									<input id="professional" name="professional" th:value="${employeeInfo.professional}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">毕业时间：</label>
-								<div class="col-sm-8">
-									<input id="graduationTime" name="graduationTime" th:value="${employeeInfo.graduationTime}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">学历性质：</label>
-								<div class="col-sm-8">
-									<input id="natureAcademicQualifications" name="natureAcademicQualifications" th:value="${employeeInfo.natureAcademicQualifications}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">参加工作时间：</label>
-								<div class="col-sm-8">
-									<input id="joinWorkTime" name="joinWorkTime" th:value="${employeeInfo.joinWorkTime}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">入司时间：</label>
-								<div class="col-sm-8">
-									<input id="enterCompanyTime" name="enterCompanyTime" th:value="${employeeInfo.enterCompanyTime}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">工作岗位：</label>
-								<div class="col-sm-8">
-									<input id="workPost" name="workPost" th:value="${employeeInfo.workPost}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">职位：</label>
-								<div class="col-sm-8">
-									<input id="jobPosition" name="jobPosition" th:value="${employeeInfo.jobPosition}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">任职时间：</label>
-								<div class="col-sm-8">
-									<input id="durationEmpTime" name="durationEmpTime" th:value="${employeeInfo.durationEmpTime}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">	
-								<label class="col-sm-3 control-label">政治面貌：</label>
-								<div class="col-sm-8">
-									<input id="politicalLandscape" name="politicalLandscape" th:value="${employeeInfo.politicalLandscape}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">
-								<div class="col-sm-8 col-sm-offset-3">
-									<button type="submit" class="btn btn-primary">提交</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-	</div>
-	</div>
-	<div th:include="include::footer"></div>
-	<script type="text/javascript" th:src="@{/js/appjs/crm/employeeInfo/employeeInfo_edit.js}">
-	</script>
+						</div>
+
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" th:src="@{/js/appjs/crm/employeeInfo/employeeInfo_edit.js}">
+</script>
 </body>
 </html>
