@@ -311,12 +311,14 @@ public class UserServiceImpl implements UserService {
 			tree.setState(state);
 			trees.add(tree);
 		}
-		List<EmployeeInfoDO> lists = employeeInfoMapper.list(new HashMap<String, Object>(16));
+		HashMap<String, Object> hashMap = new HashMap<>(16);
+		hashMap.put("employeeType","1");
+		List<EmployeeInfoDO> lists = employeeInfoMapper.list(hashMap);
 		for (EmployeeInfoDO list : lists) {
 			Tree<DeptDO> tree = new Tree<DeptDO>();
-			tree.setId(list.getIdcard());
-//			tree.setParentId(list.g);
-//			tree.setText(list.g);
+			tree.setId(list.getUserId().toString());
+			tree.setParentId(list.getDeptId().toString());
+			tree.setText(list.getUsername());
 			Map<String, Object> state = new HashMap<>(16);
 			state.put("opened", true);
 			state.put("mType", "user");
