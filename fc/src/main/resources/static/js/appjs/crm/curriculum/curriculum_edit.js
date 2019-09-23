@@ -111,6 +111,36 @@ function validateRule() {
 					}
 	})
 }
+
+var openTrain = function () {
+    layer.open({
+        type: 2,
+        title: "选择人员",
+        area: ['300px', '450px'],
+        content: ctx + "/sys/user/train"
+    })
+}
+
+function loadTrain(userIds, userNames) {
+    $("#trainId").val(userIds);
+    $("#memberId").val(userNames);
+}
+
+
+var openRoom = function () {
+    layer.open({
+        type: 2,
+        title: "选择教室",
+        area: ['300px', '450px'],
+        content: ctx + "/sys/user/room"
+    })
+}
+
+function loadRoom(userIds, userNames) {
+    $("#roomId").val(userIds);
+    $("#classroomId").val(userNames);
+}
+
 var openUser = function () {
     layer.open({
         type: 2,
