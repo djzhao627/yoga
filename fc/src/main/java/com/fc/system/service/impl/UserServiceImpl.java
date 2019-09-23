@@ -10,6 +10,10 @@ import com.fc.common.config.FcConfig;
 import com.fc.common.domain.FileDO;
 import com.fc.common.service.FileService;
 import com.fc.common.utils.*;
+import com.fc.crm.dao.ClassroomDao;
+import com.fc.crm.dao.EmployeeInfoDao;
+import com.fc.crm.domain.ClassroomDO;
+import com.fc.crm.domain.EmployeeInfoDO;
 import com.fc.system.vo.UserVO;
 import org.apache.commons.lang.ArrayUtils;
 import org.slf4j.Logger;
@@ -41,6 +45,10 @@ public class UserServiceImpl implements UserService {
 	DeptDao deptMapper;
 	@Autowired
 	MemberBaseInfoDao memberMapper;
+	@Autowired
+	ClassroomDao classroomMapper;
+	@Autowired
+	EmployeeInfoDao employeeInfoMapper;
 	@Autowired
 	private FileService sysFileService;
 	@Autowired
@@ -277,17 +285,82 @@ public class UserServiceImpl implements UserService {
 			tree.setState(state);
 			trees.add(tree);
 		}
-//		for (UserDO user : users) {
-//			Tree<DeptDO> tree = new Tree<DeptDO>();
-//			tree.setId(user.getUserId().toString());
-//			tree.setParentId(user.getDeptId().toString());
-//			tree.setText(user.getName());
-//			Map<String, Object> state = new HashMap<>(16);
-//			state.put("opened", true);
-//			state.put("mType", "user");
-//			tree.setState(state);
-//			trees.add(tree);
-//		}
+		// 默认顶级菜单为０，根据数据库实际情况调整
+		Tree<DeptDO> t = BuildTree.build(trees);
+		return t;
+	}
+
+	@Override
+	public Tree<DeptDO> getTreeTrain() {
+		List<Tree<DeptDO>> trees = new ArrayList<Tree<DeptDO>>();
+		List<DeptDO> depts = deptMapper.list(new HashMap<String, Object>(16));
+		Long[] pDepts = deptMapper.listParentDept();
+		Long[] uDepts = userMapper.listAllDept();
+		Long[] allDepts = (Long[]) ArrayUtils.addAll(pDepts, uDepts);
+		for (DeptDO dept : depts) {
+			if (!ArrayUtils.contains(allDepts, dept.getDeptId())) {
+				continue;
+			}
+			Tree<DeptDO> tree = new Tree<DeptDO>();
+			tree.setId(dept.getDeptId().toString());
+			tree.setParentId(dept.getParentId().toString());
+			tree.setText(dept.getName());
+			Map<String, Object> state = new HashMap<>(16);
+			state.put("opened", true);
+			state.put("mType", "dept");
+			tree.setState(state);
+			trees.add(tree);
+		}
+		List<EmployeeInfoDO> lists = employeeInfoMapper.list(new HashMap<String, Object>(16));
+		for (EmployeeInfoDO list : lists) {
+			Tree<DeptDO> tree = new Tree<DeptDO>();
+			tree.setId(list.getIdcard());
+//			tree.setParentId(list.g);
+//			tree.setText(list.g);
+			Map<String, Object> state = new HashMap<>(16);
+			state.put("opened", true);
+			state.put("mType", "user");
+			tree.setState(state);
+			trees.add(tree);
+		}
+		// 默认顶级菜单为０，根据数据库实际情况调整
+		Tree<DeptDO> t = BuildTree.build(trees);
+		return t;
+	}
+
+	@Override
+	public Tree<DeptDO> getTreeRoom() {
+		List<Tree<DeptDO>> trees = new ArrayList<Tree<DeptDO>>();
+		List<DeptDO> depts = deptMapper.list(new HashMap<String, Object>(16));
+		Long[] pDepts = deptMapper.listParentDept();
+		Long[] uDepts = userMapper.listAllDept();
+		Long[] allDepts = (Long[]) ArrayUtils.addAll(pDepts, uDepts);
+		for (DeptDO dept : depts) {
+			if (!ArrayUtils.contains(allDepts, dept.getDeptId())) {
+				continue;
+			}
+			Tree<DeptDO> tree = new Tree<DeptDO>();
+			tree.setId(dept.getDeptId().toString());
+			tree.setParentId(dept.getParentId().toString());
+			tree.setText(dept.getName());
+			Map<String, Object> state = new HashMap<>(16);
+			state.put("opened", true);
+			state.put("mType", "dept");
+			tree.setState(state);
+			trees.add(tree);
+		}
+		List<ClassroomDO> lists = classroomMapper.list(new HashMap<String, Object>(16));
+		for (ClassroomDO list : lists) {
+			Tree<DeptDO> tree = new Tree<DeptDO>();
+			tree.setId(list.getId().toString());
+			tree.setParentId(list.getDeptId().toString());
+			tree.setText(list.getRoomName());
+			Map<String, Object> state = new HashMap<>(16);
+			state.put("opened", true);
+			state.put("mType", "user");
+			tree.setState(state);
+			trees.add(tree);
+		}
 		// 默认顶级菜单为０，根据数据库实际情况调整
 		Tree<DeptDO> t = BuildTree.build(trees);
 		return t;

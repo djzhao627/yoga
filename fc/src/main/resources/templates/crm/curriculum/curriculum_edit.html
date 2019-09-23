@@ -14,21 +14,25 @@
                             <label class="col-sm-3 control-label">课程id：</label>
                             <div class="col-sm-8">
                                 <input id="courseId" name="courseId" th:value="${curriculum.courseId}"
-                                       class="form-control" type="text">
+                                       class="form-control" type="text" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">教练id：</label>
+                            <label class="col-sm-3 control-label">教练：</label>
                             <div class="col-sm-8">
+                                <input id="trainId" name="trainId" class="hidden">
                                 <input id="memberId" name="memberId" th:value="${curriculum.memberId}"
-                                       class="form-control" type="text">
+                                       class="form-control" type="text" onclick="openTrain()" th:text="${curriculum.members}"
+                                       readonly="readonly" placeholder="选择教练">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">教室id：</label>
+                            <label class="col-sm-3 control-label">教室：</label>
                             <div class="col-sm-8">
+                                <input id="roomId" name="roomId" class="hidden">
                                 <input id="classroomId" name="classroomId" th:value="${curriculum.classroomId}"
-                                       class="form-control" type="text">
+                                       class="form-control" type="text" onclick="openRoom()" th:text="${curriculum.members}"
+                                       readonly="readonly" placeholder="选择教室">
                             </div>
                         </div>
                         <div class="form-group">

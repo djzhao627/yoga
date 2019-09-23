@@ -217,6 +217,32 @@ public class UserController extends BaseController {
 		tree = userService.getTreeMember();
 		return tree;
 	}
+
+	@GetMapping("/treeTrain")
+	@ResponseBody
+	public Tree<DeptDO> treeTrain() {
+		Tree<DeptDO> tree = new Tree<DeptDO>();
+		tree = userService.getTreeTrain();
+		return tree;
+	}
+
+	@GetMapping("/treeRoom")
+	@ResponseBody
+	public Tree<DeptDO> treeRoom() {
+		Tree<DeptDO> tree = new Tree<DeptDO>();
+		tree = userService.getTreeRoom();
+		return tree;
+	}
+	@GetMapping("/train")
+	String treeTrains() {
+		return  prefix + "/trainTree";
+	}
+
+	@GetMapping("/room")
+	String treeRooms() {
+		return  prefix + "/roomTree";
+	}
+
 	@GetMapping("/member")
 	String treeMembers() {
 		return  prefix + "/memberTree";

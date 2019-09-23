@@ -53,4 +53,8 @@ public interface UserService {
     Map<String, Object> updatePersonalImg(MultipartFile file, String avatar_data, Long userId) throws Exception;
 
     Tree<DeptDO> getTreeMember();
+
+    Tree<DeptDO> getTreeTrain();
+
+	Tree<DeptDO> getTreeRoom();
 }
