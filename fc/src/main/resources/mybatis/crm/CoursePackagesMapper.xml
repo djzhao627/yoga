@@ -5,14 +5,14 @@
 
 	<select id="get" resultType="com.fc.crm.domain.CoursePackagesDO">
 		SELECT 
-			id,dept_id,package_name,subTitle,course_ids,goods_ids,total_price			 
+			id,dept_id,package_name,subTitle,course_ids,course_names,goods_ids,goods_names,total_price
 		FROM t_course_packages 
 		where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.fc.crm.domain.CoursePackagesDO">
 		SELECT 
-			id, dept_id, package_name, subTitle, course_ids, goods_ids, total_price 		
+			id, dept_id, package_name, subTitle, course_ids,course_names,goods_ids,goods_names, total_price
 		FROM t_course_packages 
         <where>
           
@@ -81,20 +81,18 @@
 	</select>
 	 
 	<insert id="save" parameterType="com.fc.crm.domain.CoursePackagesDO">
-				<!-- 
-		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
-            SELECT sys_seq('t_course_packages') 
-    	</selectKey> -->
-    	    	
+
 		insert into t_course_packages 
 		(
 		
 			id, 
 			dept_id, 
 			package_name, 
-			subTitle, 
-			course_ids, 
-			goods_ids, 
+			subTitle,
+			course_ids,
+			 course_names,
+			 goods_ids,
+			 goods_names,
 			total_price
 		)
 		values
@@ -104,8 +102,10 @@
 			#{deptId, jdbcType=VARCHAR}, 			
 			#{packageName, jdbcType=VARCHAR}, 			
 			#{subtitle, jdbcType=VARCHAR}, 			
-			#{courseIds, jdbcType=VARCHAR}, 			
-			#{goodsIds, jdbcType=VARCHAR}, 			
+			#{courseIds, jdbcType=VARCHAR},
+			#{courseNames, jdbcType=VARCHAR},
+			#{goodsIds, jdbcType=VARCHAR},
+			#{goodsNames, jdbcType=VARCHAR},
 			#{totalPrice, jdbcType=VARCHAR}			
 		)
 	</insert>
@@ -117,7 +117,9 @@
 			<if test="packageName != null">package_name = #{packageName}, </if>
 			<if test="subtitle != null">subTitle = #{subtitle}, </if>
 			<if test="courseIds != null">course_ids = #{courseIds}, </if>
+			<if test="courseNames != null">course_names = #{courseNames}, </if>
 			<if test="goodsIds != null">goods_ids = #{goodsIds}, </if>
+			<if test="goodsNames != null">goods_names = #{goodsNames}, </if>
 			<if test="totalPrice != null">total_price = #{totalPrice}</if>
 		</set>
 		where id = #{id}

@@ -7,23 +7,10 @@
     <div class="col-sm-12" id="formSearch" name="formSearch">
         <div class="ibox">
             <div class="ibox-body">
-
                 <div class="form-group col-sm-4">
-                    <label class="col-sm-4 control-label" style="margin-top: 6px;">套餐名称</label>
+                    <label class="col-sm-4 control-label" style="margin-top: 6px;">会员id</label>
                     <div class="col-sm-8">
-                        <input id="packageName" type="text" class="form-control" placeholder="套餐名称">
-                    </div>
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="col-sm-4 control-label" style="margin-top: 6px;">副标题</label>
-                    <div class="col-sm-8">
-                        <input id="subtitle" type="text" class="form-control" placeholder="副标题">
-                    </div>
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="col-sm-4 control-label" style="margin-top: 6px;">套餐价格</label>
-                    <div class="col-sm-8">
-                        <input id="totalPrice" type="text" class="form-control" placeholder="套餐价格">
+                        <input id="memberId" type="text" class="form-control" placeholder="会员id">
                     </div>
                 </div>
 
@@ -37,12 +24,11 @@
 
     <div class="fixed-table-toolbar">
         <div class="pull-left" id="exampleToolbar">
-            <button id="btnAdd" shiro:hasPermission="crm:coursePackages:add" type="button" class="btn btn-primary"
+            <button id="btnAdd" shiro:hasPermission="crm:cards:add" type="button" class="btn btn-primary"
                     onclick="add()">
                 <i class="fa fa-plus" aria-hidden="true"></i>添加
             </button>
-            <button id="btnDel" shiro:hasPermission="crm:coursePackages:batchRemove" type="button"
-                    class="btn btn-danger"
+            <button id="btnDel" shiro:hasPermission="crm:cards:batchRemove" type="button" class="btn btn-danger"
                     onclick="batchRemove()">
                 <i class="fa fa-trash" aria-hidden="true"></i>删除
             </button>
@@ -53,12 +39,12 @@
         <tr>
             <th data-checkbox="true"></th>
             <th data-field="id" data-align='center' data-sortable="true">序号</th>
-            <th data-field="deptId" data-align='center' data-sortable="true">门店id</th>
-            <th data-field="packageName" data-align='center' data-sortable="true">套餐名称</th>
-            <th data-field="subtitle" data-align='center' data-sortable="true">副标题</th>
-            <th data-field="courseNames" data-align='center' data-sortable="true">课程Ids</th>
-            <th data-field="goodsNames" data-align='center' data-sortable="true">商品Ids</th>
-            <th data-field="totalPrice" data-align='center' data-sortable="true">套餐价格</th>
+            <th data-field="memberId" data-align='center' data-sortable="true">会员id</th>
+            <th data-field="cardType" data-align='center' data-sortable="true">卡类型</th>
+            <th data-field="courseType" data-align='center' data-sortable="true">适用课程类型</th>
+            <th data-field="startTime" data-align='center' data-sortable="true">开始时间</th>
+            <th data-field="endTime" data-align='center' data-sortable="true">截止时间</th>
+            <th data-field="status" data-align='center' data-sortable="true">状态</th>
             <th data-field="operate" data-align='center' data-formatter="operateFormatter" data-events="operateEvent">
                 操作
             </th>
@@ -75,23 +61,23 @@
         var s_resetPwd_h = 'hidden';
     </script>
 </div>
-<div shiro:hasPermission="crm:coursePackages:edit">
+<div shiro:hasPermission="crm:cards:edit">
     <script type="text/javascript">
         s_edit_h = '';
     </script>
 </div>
-<div shiro:hasPermission="crm:coursePackages:remove">
+<div shiro:hasPermission="crm:cards:remove">
     <script type="text/javascript">
         var s_remove_h = '';
     </script>
 </div>
-<div shiro:hasPermission="crm:coursePackages:resetPwd">
+<div shiro:hasPermission="crm:cards:resetPwd">
     <script type="text/javascript">
         var s_resetPwd_h = '';
     </script>
 </div>
 </div>
 <div th:include="include :: footer"></div>
-<script type="text/javascript" th:src="@{/js/appjs/crm/coursePackages/coursePackages_list.js}"></script>
+<script type="text/javascript" th:src="@{/js/appjs/crm/cards/cards_list.js}"></script>
 </body>
 </html>

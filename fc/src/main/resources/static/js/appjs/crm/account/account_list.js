@@ -1,5 +1,5 @@
 
-var prefix = ctx+ "/crm/coursePackages"
+var prefix = ctx+ "/crm/account"
 $(function() {
 	load();
 });
@@ -62,7 +62,7 @@ function load() {
 function operateFormatter(value, row, index){
 	var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
 		+ row.id
-		+ '\' , '+ index +')"><i class="fa fa-edit"></i></a> ';
+		+ '\')"><i class="fa fa-edit"></i></a> ';
 	var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
 		+ row.id
 		+ '\')"><i class="fa fa-remove"></i></a> ';
