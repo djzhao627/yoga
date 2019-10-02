@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+   <!-- <div class="form-group ">
+    <div class="col-sm-12 col-sm-offset-12">
+        <button type="submit" onclick="loadCourse()" class="btn btn-primary">提交</button>
+    </div>
+</div>-->
+    <div class="fixed-table-toolbar">
+        <div class="pull-left" id="exampleToolbar">
+            <button id="btnSubmit"  type="button" class="btn btn-primary"
+                    onclick="loadCourse()">提交
+            </button>
+        </div>
+    </div>
+    <table id="exampleTable" data-mobile-responsive="true">
+        <thead>
+        <tr>
+            <th data-checkbox="true"></th>
+            <th data-field="id" data-align='center' data-sortable="true">序号</th>
+            <th data-field="deptId" data-align='center' data-sortable="true">门店id</th>
+            <th data-field="courseName" data-align='center' data-sortable="true">课程名称</th>
+            <th data-field="price" data-align='center' data-sortable="true">单价</th>
+            <th data-field="courseType" data-align='center' data-sortable="true">课程类型</th>
+            <th data-field="lessonPeriod" data-align='center' data-sortable="true">课时</th>
+            <th data-field="costPrice" data-align='center' data-sortable="true">成本价</th>
+            <th data-field="courseDetail" data-align='center' data-sortable="true">课程描述</th>
+        </tr>
+        </thead>
+    </table>
+
+</div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" th:src="@{/js/appjs/crm/commonList/courseList.js}"></script>
+</body>
+</html>

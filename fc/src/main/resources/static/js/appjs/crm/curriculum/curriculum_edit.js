@@ -140,17 +140,3 @@ function loadRoom(userIds, userNames) {
     $("#roomId").val(userIds);
     $("#classroomId").val(userNames);
 }
-
-var openUser = function () {
-    layer.open({
-        type: 2,
-        title: "选择人员",
-        area: ['300px', '450px'],
-        content: ctx + "/sys/user/member"
-    })
-}
-
-function loadMember(userIds, userNames) {
-    $("#ids").val(userIds);
-    $("#menbers").val(userNames);
-}

@@ -30,9 +30,17 @@ public class CoursePackagesConstant {
 	 */
 	public static final String courseIds = "courseIds";
 	/**
+	 * 课程名称
+	 */
+	public static final String courseNames = "courseNames";
+	/**
 	 * 商品Ids
 	 */
 	public static final String goodsIds = "goodsIds";
+	/**
+	 * 商品名称
+	 */
+	public static final String goodsNams = "goodsNams";
 	/**
 	 * 套餐价格
 	 */

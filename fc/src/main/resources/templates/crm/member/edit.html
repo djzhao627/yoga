@@ -9,28 +9,20 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
-                        <input id="deptId" name="deptId" type="hidden" th:value="${deptId}">
+                        <input id="deptId" name="deptId" th:value="${memberBaseInfo.deptId}" type="hidden"/>
+                        <input id="id" name="id" th:value="${memberBaseInfo.id}" type="hidden"/>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">姓名：</label>
                             <div class="col-sm-8">
-                                <input id="name" name="name"
+                                <input id="name" name="name" th:value="${memberBaseInfo.name}"
                                        class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">客户类型：</label>
-                            <div class="col-sm-8">
-                                <select data-placeholder="--选择类别--" name="type" id="type"
-                                        class="form-control chosen-select" tabindex="2" required>
-                                    <option value="">--选择类别--</option>
-                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">所属顾问：</label>
                             <div class="col-sm-8">
                                 <input id="consultantsIds" name="consultantsIds" class="hidden">
-                                <input id="consultants" name="consultants" class="form-control"
+                                <input id="consultants" name="consultants" th:value="${memberBaseInfo.consultants}" class="form-control"
                                        type="text" onclick="openUser()"
                                        readonly="readonly" placeholder="所属顾问">
                             </div>
@@ -38,32 +30,27 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">微信号：</label>
                             <div class="col-sm-8">
-                                <input id="wechat" name="wechat"
+                                <input id="wechat" name="wechat" th:value="${memberBaseInfo.wechat}"
                                        class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">联系电话：</label>
                             <div class="col-sm-8">
-                                <input id="phone" name="phone"
+                                <input id="phone" name="phone" th:value="${memberBaseInfo.phone}"
                                        class="form-control" type="text">
                             </div>
                         </div>
+                        <input id="Ctype" name="Ctype" th:value="${memberBaseInfo.consultingCourse}"
+                               type="hidden">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">咨询课程：</label>
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="consultingCourse" id="consultingCourse"
                                         class="form-control chosen-select2" tabindex="2"  required>
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">是否住宿：</label>
-                            <div class="col-sm-8">
-                                <select data-placeholder="--选择类别--" name="accommodation" id="accommodation"
-                                        class="form-control chosen-select3" tabindex="2" required>
-                                    <option value="">--选择类别--</option>
+                                    <option th:each="consultCourse : ${consultingCourseTypes}"
+                                            th:value="${consultCourse.value}" th:text="${consultCourse.name}"
+                                            th:if="${consultCourse.remarks ==checked}" th:selected="selected">
                                 </select>
                             </div>
                         </div>
@@ -71,6 +58,7 @@
                             <label class="col-sm-3 control-label">咨询日期：</label>
                             <div class="col-sm-8">
                                 <input id="advisoryDate" name="advisoryDate"
+                                       th:value="${memberBaseInfo.advisoryDate}"
                                        class="laydate-icon layer-date form-contro"
                                        type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
                                        style="background-color: #fff;" readonly="readonly">
@@ -79,7 +67,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">所在省市：</label>
                             <div class="col-sm-8">
-                                <input id="address" name="address"
+                                <input id="address" name="address" th:value="${memberBaseInfo.address}"
                                        class="form-control" type="text">
                             </div>
                         </div>
@@ -87,7 +75,7 @@
                             <label class="col-sm-3 control-label">所属客服：</label>
                             <div class="col-sm-8">
                                 <input id="customerServicIds" name="customerServicIds" class="hidden">
-                                <input id="customerServic" name="customerServic" class="form-control"
+                                <input id="customerServic" name="customerServic" th:value="${memberBaseInfo.customerServic}"class="form-control"
                                        type="text" onclick="openCustomer()"
                                        readonly="readonly" placeholder="所属客服">
                             </div>
@@ -95,23 +83,28 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">身份证号码：</label>
                             <div class="col-sm-8">
-                                <input id="sfzh" name="sfzh"
+                                <input id="sfzh" name="sfzh" th:value="${memberBaseInfo.sfzh}"
                                        class="form-control" type="text">
                             </div>
                         </div>
+                        <input id="Dtype" name="Dtype" th:value="${memberBaseInfo.dataSource}"
+                               type="hidden">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">数据来源：</label>
                             <div class="col-sm-8">
                                 <select data-placeholder="--选择类别--" name="dataSource" id="dataSource"
                                         class="form-control chosen-select4" tabindex="2" required>
                                     <option value="">--选择类别--</option>
+                                    <option th:each="dataSource : ${dataSourceTypes}" th:value="${dataSource.value}"
+                                            th:text="${dataSource.name}" th:if="${dataSource.remarks ==checked}"
+                                            th:selected="selected">
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">备注：</label>
                             <div class="col-sm-8">
-                                <input id="bz" name="bz"
+                                <input id="bz" name="bz" th:value="${memberBaseInfo.bz}"
                                        class="form-control" type="text">
                             </div>
                         </div>
@@ -128,7 +121,7 @@
 </div>
 <div th:include="include::footer"></div>
 <script type="text/javascript"
-        th:src="@{/js/appjs/business/memberBaseInfo/add.js}">
+        th:src="@{/js/appjs/crm/member/edit.js}">
 </script>
 </body>
 </html>

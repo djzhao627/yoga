@@ -3,7 +3,8 @@ package com.fc.crm.controller;
 import java.util.List;
 import java.util.Map;
 
-import com.fc.crm.domain.GoodsDO;
+import com.fc.crm.domain.CoursePackagesDO;
+import com.fc.crm.vo.CourseMemberVO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,13 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fc.crm.domain.CoursePackagesDO;
-import com.fc.crm.service.CoursePackagesService;
+import com.fc.crm.domain.CourseMemberDO;
+import com.fc.crm.service.CourseMemberService;
 import com.fc.common.utils.PageUtils;
+import com.github.pagehelper.PageInfo;
 import com.fc.common.utils.Query;
 import com.fc.common.utils.R;
 import com.fc.common.controller.BaseController;
@@ -26,19 +29,19 @@ import com.fc.common.controller.IPageDefine;
 /**
  * 
  * @author fengchi
- * @date 2019-09-14 16:30:50
+ * @date 2019-10-02 15:20:41
  */
  
 @Controller
-@RequestMapping("/crm/coursePackages")
-public class CoursePackagesController extends BaseController {
+@RequestMapping("/crm/courseMember")
+public class CourseMemberController extends BaseController {
 	@Autowired
-	private CoursePackagesService coursePackagesService;
+	private CourseMemberService courseMemberService;
 	
 	@GetMapping()
-	@RequiresPermissions("crm:coursePackages:coursePackages")
-	String CoursePackages(){
-	    return "crm/coursePackages/coursePackages_list";
+	@RequiresPermissions("crm:courseMember:courseMember")
+	String CourseMember(){
+	    return "crm/courseMember/courseMember_list";
 	}
 	
 	/**
@@ -46,7 +49,7 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@ResponseBody
 	@GetMapping("/listPage")
-	@RequiresPermissions("crm:coursePackages:coursePackages")
+	@RequiresPermissions("crm:courseMember:courseMember")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 
 		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
@@ -54,7 +57,7 @@ public class CoursePackagesController extends BaseController {
 			
 			@Override
 			public List<?> getPageRows(Query query){
-				return  coursePackagesService.list(query);
+				return  courseMemberService.list(query);
 			}
         });
 	}
@@ -64,29 +67,29 @@ public class CoursePackagesController extends BaseController {
 	@GetMapping("/courseList")
 	ModelAndView courseList(){
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("coursePackages", new CoursePackagesDO());
+		mv.addObject("courseMember", new CourseMemberDO());
 		mv.setViewName("crm/commonList/courseList");
 		return mv;
 	}
 	/**
-	 * 跳转到商品列表页面
+	 * 跳转到会员列表页面
 	 */
-	@GetMapping("/goodsList")
-	ModelAndView goodsList(){
+	@GetMapping("/memberList")
+	ModelAndView memberList(){
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("goods", new GoodsDO());
-		mv.setViewName("crm/commonList/goodsList");
+		mv.addObject("courseMember", new CourseMemberDO());
+		mv.setViewName("crm/commonList/memberList");
 		return mv;
 	}
 	/**
 	 * 跳转到新增页面
 	 */
 	@GetMapping("/add")
-	@RequiresPermissions("crm:coursePackages:add")
+	@RequiresPermissions("crm:courseMember:add")
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
-		mv.addObject("coursePackages", new CoursePackagesDO());
-		mv.setViewName("crm/coursePackages/coursePackages_edit");
+		mv.addObject("courseMember", new CourseMemberDO());
+		mv.setViewName("crm/courseMember/courseMember_edit");
 		return mv;
 	}
 	
@@ -94,12 +97,12 @@ public class CoursePackagesController extends BaseController {
 	 * 跳转到修改页面
 	 */
 	@GetMapping("/edit/{id}")
-	@RequiresPermissions("crm:coursePackages:edit")
+	@RequiresPermissions("crm:courseMember:edit")
 	ModelAndView edit(@PathVariable("id") Integer id){
 	    ModelAndView mv = new ModelAndView();
-		CoursePackagesDO coursePackages = coursePackagesService.get(id);
-		mv.addObject("coursePackages", coursePackages);
-		mv.setViewName("crm/coursePackages/coursePackages_edit");
+		CourseMemberDO courseMember = courseMemberService.get(id);
+		mv.addObject("courseMember", courseMember);
+		mv.setViewName("crm/courseMember/courseMember_edit");
 		return mv;
 	}
 	
@@ -108,9 +111,9 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@ResponseBody
 	@PostMapping("/save")
-	@RequiresPermissions("crm:coursePackages:add")
-	public R save( CoursePackagesDO coursePackages){
-		if(coursePackagesService.save(coursePackages)>0){
+	@RequiresPermissions("crm:courseMember:add")
+	public R save( CourseMemberVO courseMember){
+		if(courseMemberService.save(courseMember)>0){
 			return R.ok();
 		}
 		return R.error();
@@ -120,9 +123,9 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/update")
-	@RequiresPermissions("crm:coursePackages:edit")
-	public R update( CoursePackagesDO coursePackages){
-		coursePackagesService.update(coursePackages);
+	@RequiresPermissions("crm:courseMember:edit")
+	public R update( CourseMemberDO courseMember){
+		courseMemberService.update(courseMember);
 		return R.ok();
 	}
 	
@@ -131,9 +134,9 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@PostMapping( "/remove")
 	@ResponseBody
-	@RequiresPermissions("crm:coursePackages:remove")
+	@RequiresPermissions("crm:courseMember:remove")
 	public R remove( Integer id){
-		if(coursePackagesService.remove(id)>0){
+		if(courseMemberService.remove(id)>0){
 		return R.ok();
 		}
 		return R.error();
@@ -144,9 +147,9 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@PostMapping( "/batchRemove")
 	@ResponseBody
-	@RequiresPermissions("crm:coursePackages:batchRemove")
+	@RequiresPermissions("crm:courseMember:batchRemove")
 	public R remove(@RequestParam("ids[]") Integer[] ids){
-		coursePackagesService.batchRemove(ids);
+		courseMemberService.batchRemove(ids);
 		return R.ok();
 	}
 	

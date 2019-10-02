@@ -25,8 +25,12 @@ public class CoursePackagesDO implements Serializable {
 	private String subtitle;
 	//课程Ids
 	private String courseIds;
+	//课程名称
+	private String courseNames;
 	//商品Ids
 	private String goodsIds;
+	//商品名称
+	private String goodsNames;
 	//套餐价格
 	private Float totalPrice;
 
@@ -84,6 +88,23 @@ public class CoursePackagesDO implements Serializable {
 	public void setCourseIds(String courseIds) {
 		this.courseIds = courseIds;
 	}
+
+	public String getCourseNames() {
+		return courseNames;
+	}
+
+	public void setCourseNames(String courseNames) {
+		this.courseNames = courseNames;
+	}
+
+	public String getGoodsNames() {
+		return goodsNames;
+	}
+
+	public void setGoodsNames(String goodsNames) {
+		this.goodsNames = goodsNames;
+	}
+
 	/**
 	 * 获取：课程Ids
 	 */

@@ -3,7 +3,6 @@ package com.fc.crm.controller;
 import java.util.List;
 import java.util.Map;
 
-import com.fc.crm.domain.GoodsDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,13 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fc.crm.domain.CoursePackagesDO;
-import com.fc.crm.service.CoursePackagesService;
+import com.fc.crm.domain.CardsDO;
+import com.fc.crm.service.CardsService;
 import com.fc.common.utils.PageUtils;
+import com.github.pagehelper.PageInfo;
 import com.fc.common.utils.Query;
 import com.fc.common.utils.R;
 import com.fc.common.controller.BaseController;
@@ -26,19 +27,19 @@ import com.fc.common.controller.IPageDefine;
 /**
  * 
  * @author fengchi
- * @date 2019-09-14 16:30:50
+ * @date 2019-09-28 21:47:46
  */
  
 @Controller
-@RequestMapping("/crm/coursePackages")
-public class CoursePackagesController extends BaseController {
+@RequestMapping("/crm/cards")
+public class CardsController extends BaseController {
 	@Autowired
-	private CoursePackagesService coursePackagesService;
+	private CardsService cardsService;
 	
 	@GetMapping()
-	@RequiresPermissions("crm:coursePackages:coursePackages")
-	String CoursePackages(){
-	    return "crm/coursePackages/coursePackages_list";
+	@RequiresPermissions("crm:cards:cards")
+	String Cards(){
+	    return "crm/cards/cards_list";
 	}
 	
 	/**
@@ -46,7 +47,7 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@ResponseBody
 	@GetMapping("/listPage")
-	@RequiresPermissions("crm:coursePackages:coursePackages")
+	@RequiresPermissions("crm:cards:cards")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 
 		//根据分页参数(格式：{limit=10, offset=0} )，然后进行分页查询
@@ -54,39 +55,20 @@ public class CoursePackagesController extends BaseController {
 			
 			@Override
 			public List<?> getPageRows(Query query){
-				return  coursePackagesService.list(query);
+				return  cardsService.list(query);
 			}
         });
 	}
-	/**
-	 * 跳转到课程列表页面
-	 */
-	@GetMapping("/courseList")
-	ModelAndView courseList(){
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("coursePackages", new CoursePackagesDO());
-		mv.setViewName("crm/commonList/courseList");
-		return mv;
-	}
-	/**
-	 * 跳转到商品列表页面
-	 */
-	@GetMapping("/goodsList")
-	ModelAndView goodsList(){
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("goods", new GoodsDO());
-		mv.setViewName("crm/commonList/goodsList");
-		return mv;
-	}
+	
 	/**
 	 * 跳转到新增页面
 	 */
 	@GetMapping("/add")
-	@RequiresPermissions("crm:coursePackages:add")
+	@RequiresPermissions("crm:cards:add")
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
-		mv.addObject("coursePackages", new CoursePackagesDO());
-		mv.setViewName("crm/coursePackages/coursePackages_edit");
+		mv.addObject("cards", new CardsDO());
+		mv.setViewName("crm/cards/cards_edit");
 		return mv;
 	}
 	
@@ -94,12 +76,12 @@ public class CoursePackagesController extends BaseController {
 	 * 跳转到修改页面
 	 */
 	@GetMapping("/edit/{id}")
-	@RequiresPermissions("crm:coursePackages:edit")
+	@RequiresPermissions("crm:cards:edit")
 	ModelAndView edit(@PathVariable("id") Integer id){
 	    ModelAndView mv = new ModelAndView();
-		CoursePackagesDO coursePackages = coursePackagesService.get(id);
-		mv.addObject("coursePackages", coursePackages);
-		mv.setViewName("crm/coursePackages/coursePackages_edit");
+		CardsDO cards = cardsService.get(id);
+		mv.addObject("cards", cards);
+		mv.setViewName("crm/cards/cards_edit");
 		return mv;
 	}
 	
@@ -108,9 +90,9 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@ResponseBody
 	@PostMapping("/save")
-	@RequiresPermissions("crm:coursePackages:add")
-	public R save( CoursePackagesDO coursePackages){
-		if(coursePackagesService.save(coursePackages)>0){
+	@RequiresPermissions("crm:cards:add")
+	public R save( CardsDO cards){
+		if(cardsService.save(cards)>0){
 			return R.ok();
 		}
 		return R.error();
@@ -120,9 +102,9 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/update")
-	@RequiresPermissions("crm:coursePackages:edit")
-	public R update( CoursePackagesDO coursePackages){
-		coursePackagesService.update(coursePackages);
+	@RequiresPermissions("crm:cards:edit")
+	public R update( CardsDO cards){
+		cardsService.update(cards);
 		return R.ok();
 	}
 	
@@ -131,9 +113,9 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@PostMapping( "/remove")
 	@ResponseBody
-	@RequiresPermissions("crm:coursePackages:remove")
+	@RequiresPermissions("crm:cards:remove")
 	public R remove( Integer id){
-		if(coursePackagesService.remove(id)>0){
+		if(cardsService.remove(id)>0){
 		return R.ok();
 		}
 		return R.error();
@@ -144,9 +126,9 @@ public class CoursePackagesController extends BaseController {
 	 */
 	@PostMapping( "/batchRemove")
 	@ResponseBody
-	@RequiresPermissions("crm:coursePackages:batchRemove")
+	@RequiresPermissions("crm:cards:batchRemove")
 	public R remove(@RequestParam("ids[]") Integer[] ids){
-		coursePackagesService.batchRemove(ids);
+		cardsService.batchRemove(ids);
 		return R.ok();
 	}
 	

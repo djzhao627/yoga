@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="col-sm-12" id="formSearch" name="formSearch">
+        <div class="ibox">
+            <div class="ibox-body">
+                <div class="form-group col-sm-4">
+                    <label class="col-sm-2 control-label" style="margin-top: 6px;">标题：</label>
+                    <div class="col-sm-4">
+                        <input id="title" type="text" class="form-control" placeholder="标题">
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <button id="btnSearch" class="btn btn-success" onclick="reLoad()">查询</button>
+                    <button id="btnReset" class="btn btn-danger" onclick="reSet()">重置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-table-toolbar">
+        <div class="pull-left" id="exampleToolbar">
+            <button id="btnSubmit"  type="button" class="btn btn-primary"
+                    onclick="loadGoods()">添加
+            </button>
+        </div>
+    </div>
+    <table id="exampleTable" data-mobile-responsive="true">
+        <thead>
+        <tr>
+            <th data-checkbox="true"></th>
+            <th data-field="id" data-align='center' data-sortable="true">序号</th>
+            <th data-field="title" data-align='center' data-sortable="true">标题</th>
+            <th data-field="subTitle" data-align='center' data-sortable="true">副标题</th>
+            <th data-field="price" data-align='center' data-sortable="true">价格</th>
+            <th data-field="stock" data-align='center' data-sortable="true">库存量</th>
+            <th data-field="detail" data-align='center' data-sortable="true">商品详情</th>
+            <th data-field="image" data-align='center' data-sortable="true">图片url</th>
+        </tr>
+        </thead>
+    </table>
+
+</div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" th:src="@{/js/appjs/crm/commonList/goodsList.js}"></script>
+</body>
+</html>

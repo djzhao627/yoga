@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fc.crm.dao.CardsDao">
+
+	<select id="get" resultType="com.fc.crm.domain.CardsDO">
+		SELECT 
+			id,member_id,card_type,course_type,start_time,end_time,status			 
+		FROM t_cards 
+		where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.fc.crm.domain.CardsDO">
+		SELECT 
+			id, member_id, card_type, course_type, start_time, end_time, status 		
+		FROM t_cards 
+        <where>
+          
+		  		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="memberId != null and memberId != ''">
+		  		  	AND member_id = #{memberId}   
+		  		  </if>
+		  		  <if test="cardType != null and cardType != ''">
+		  		  	AND card_type LIKE '%${ cardType}%'  
+		  		  </if>
+		  		  <if test="courseType != null and courseType != ''">
+		  		  	AND course_type LIKE '%${ courseType}%'  
+		  		  </if>
+		  		  <if test="startTime != null and startTime != ''">
+		  		  	AND start_time LIKE '%${ startTime}%'  
+		  		  </if>
+		  		  <if test="endTime != null and endTime != ''">
+		  		  	AND end_time LIKE '%${ endTime}%'  
+		  		  </if>
+		  		  <if test="status != null and status != ''">
+		  		  	AND status LIKE '%${ status}%'  
+		  		  </if>
+		  		  
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                ORDER BY ${sort} ${order}
+            </when>
+			<otherwise>
+                ORDER BY id DESC
+			</otherwise>
+        </choose>
+	</select>
+	
+ 	<select id="findDatas" resultType="Map">
+		select 
+			*  
+		from t_cards
+		 <where>  
+		 
+		   		  <if test="id != null and id != ''">
+		  		  	AND id = #{id}   
+		  		  </if>
+		  		  <if test="memberId != null and memberId != ''">
+		  		  	AND member_id = #{memberId}   
+		  		  </if>
+		  		  <if test="cardType != null and cardType != ''">
+		  		  	AND card_type LIKE '%${ cardType}%'  
+		  		  </if>
+		  		  <if test="courseType != null and courseType != ''">
+		  		  	AND course_type LIKE '%${ courseType}%'  
+		  		  </if>
+		  		  <if test="startTime != null and startTime != ''">
+		  		  	AND start_time LIKE '%${ startTime}%'  
+		  		  </if>
+		  		  <if test="endTime != null and endTime != ''">
+		  		  	AND end_time LIKE '%${ endTime}%'  
+		  		  </if>
+		  		  <if test="status != null and status != ''">
+		  		  	AND status LIKE '%${ status}%'  
+		  		  </if>
+		  		  
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fc.crm.domain.CardsDO">
+				<!-- 
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE"> 
+            SELECT sys_seq('t_cards') 
+    	</selectKey> -->
+    	    	
+		insert into t_cards 
+		(
+		
+			id, 
+			member_id, 
+			card_type, 
+			course_type, 
+			start_time, 
+			end_time, 
+			status
+		)
+		values
+		(
+		
+		    sys_seq('t_cards')  , 		    
+			#{memberId, jdbcType=VARCHAR}, 			
+			#{cardType, jdbcType=VARCHAR}, 			
+			#{courseType, jdbcType=VARCHAR}, 			
+			#{startTime, jdbcType=VARCHAR}, 			
+			#{endTime, jdbcType=VARCHAR}, 			
+			#{status, jdbcType=VARCHAR}			
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fc.crm.domain.CardsDO">
+		update t_cards 
+		<set>
+			<if test="memberId != null">member_id = #{memberId}, </if>
+			<if test="cardType != null">card_type = #{cardType}, </if>
+			<if test="courseType != null">course_type = #{courseType}, </if>
+			<if test="startTime != null">start_time = #{startTime}, </if>
+			<if test="endTime != null">end_time = #{endTime}, </if>
+			<if test="status != null">status = #{status}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_cards where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_cards where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

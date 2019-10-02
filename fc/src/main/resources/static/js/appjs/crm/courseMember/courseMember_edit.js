@@ -1,4 +1,4 @@
-var prefix = ctx+ "/crm/coursePackages"
+var prefix = ctx+ "/crm/courseMember"
 $(function() {
 	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
@@ -52,42 +52,18 @@ function validateRule() {
 						id : { 
 						required : true,
 									},
-						deptId : { 
+						courseId : { 
 												},
-						packageName : { 
-												maxlength:255
-						},
-						subtitle : { 
-												maxlength:255
-						},
-						courseIds : { 
-												maxlength:255
-						},
-						goodsIds : { 
-												maxlength:255
-						},
-						totalPrice : { 
+						memberId : { 
 												},
 					},
 		messages : {
 		 				id : { 
 						required : icon  + "不能为空",
 									},
-						deptId : { 
+						courseId : { 
 												},
-						packageName : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						subtitle : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						courseIds : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						goodsIds : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						totalPrice : { 
+						memberId : { 
 												},
 					}
 	})
@@ -101,18 +77,22 @@ var openCourse = function () {
     })
 }
 function loadCourse(ids, names) {
-    $("#courseIds").val(ids);
-    $("#courseNames").val(names);
+    if (ids.indexOf(",")!=-1){
+        alertMsg("请选择一个课程！");
+        return;
+    }
+    $("#courseId").val(ids);
+    $("#courseName").val(names);
 }
-var openGoods = function () {
+var openMember = function () {
     layer.open({
         type: 2,
-        title: "选择商品",
+        title: "选择会员",
         area: ['600px', '450px'],
-        content: prefix + "/goodsList"
+        content: prefix + "/memberList"
     })
 }
-function loadGoods(ids, names) {
-    $("#goodsIds").val(ids);
-    $("#goodsNames").val(names);
+function loadMember(ids, names) {
+    $("#memberId").val(ids);
+    $("#memberName").val(names);
 }

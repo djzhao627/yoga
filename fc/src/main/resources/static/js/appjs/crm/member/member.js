@@ -1,9 +1,12 @@
-var prefix = ctx + "/crm/order"
+var prefix = ctx + "/crm/member"
 $(function () {
+    var dept = '';
+    getTreeData();
     load();
+    loadType();
 });
 
-function load() {
+function load(dept) {
     $('#exampleTable')
         .bootstrapTable(
             {
@@ -51,6 +54,7 @@ function load() {
                     formData.offset = params.offset;
                     formData.sort = this.sortName;
                     formData.order = this.sortOrder;
+                    formData.dept = dept;
                     return formData;
                 },
                 columns: [
@@ -63,52 +67,52 @@ function load() {
                     },
 
                     {
+                        field: 'name',
+                        title: '客户名称'
+                    },
+                    {
+                        field: 'type',
+                        title: '客户类型'
+                    },
+                    {
+                        field: 'consultants',
+                        title: '所属顾问'
+                    },
+                    {
+                        field: 'wechat',
+                        title: '微信号'
+                    },
+                    {
+                        field: 'phone',
+                        title: '联系电话'
+                    },
+                    {
+                        field: 'consultingCourse',
+                        title: '咨询课程'
+                    },
+                    {
+                        field: 'advisoryDate',
+                        title: '咨询日期'
+                    },
+                    {
+                        field: 'address',
+                        title: '所在省市'
+                    },
+                    {
+                        field: 'customerServic',
+                        title: '所属客服'
+                    },
+                    {
                         field: 'sfzh',
-                        title: '手机号码'
+                        title: '身份证号码'
                     },
                     {
-                        field: 'initialTraining',
-                        title: '初训/复训'
+                        field: 'dataSource',
+                        title: '数据来源'
                     },
                     {
-                        field: 'paymentDate',
-                        title: '付款日期'
-                    },
-                    {
-                        field: 'paymentType',
-                        title: '付款类型'
-                    },
-                    {
-                        field: 'paymentMode',
-                        title: '付款方式'
-                    },
-                    {
-                        field: 'paymentAccount',
-                        title: '付款金额'
-                    },
-                    {
-                        field: 'book',
-                        title: '书'
-                    },
-                    {
-                        field: 'clothes',
-                        title: '衣服'
-                    },
-                    {
-                        field: 'scheduleDate',
-                        title: '排课日期'
-                    },
-                    {
-                        field: 'scheduleCampus',
-                        title: '排课校区'
-                    },
-                    {
-                        field: 'otherFees',
-                        title: '住宿水电费'
-                    },
-                    {
-                        field: 'enrollmentCourse',
-                        title: '报名课程'
+                        field: 'bz',
+                        title: '备注'
                     },
                     {
                         title: '操作',
@@ -131,11 +135,19 @@ function load() {
             });
 }
 
+
 function reLoad() {
     $('#exampleTable').bootstrapTable('refresh');
 }
 
 function add() {
+    var selected = $('#jstree').jstree(true).get_selected(true)[0];
+    if (!selected) {
+        alertMsg("请选择部门!");
+        return;
+    }
+    var deptId = selected.id;
+    var deptName = selected.text;
     layer.open({
         type: 2,
         title: '增加',
@@ -147,11 +159,12 @@ function add() {
 }
 
 function edit(id) {
-    /*var row = $('#dataTable').bootstrapTable('getData')[index];*/
+    /*var row = $('#exampleTable').bootstrapTable('getData')[index];*/
     if (!id) {
         alertMsg("请选择一条记录!");
         return;
     }
+    // setPageValue(JSON.stringify(row));
 
     layer.open({
         type: 2,
@@ -223,4 +236,38 @@ function batchRemove() {
 function reSet() {
     cleardata("formSearch");
     reLoad();
+}
+
+var openCustom = function (id) {
+    layer.open({
+        type: 2,
+        title: "沟通计划",
+        area: ['800px', '500px'],
+        scrollbar: true,
+        maxmin: true,
+        shadeClose: false, // 点击遮罩关闭层
+        content: ctx + "/business/customFollowPlan/customerList/" + id
+    });
+}
+
+function loadType() {
+    var html = "";
+    $.ajax({
+        url: ctx + '/common/dict/list/custom_type',
+        success: function (data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $(".chosen-select").append(html);
+            $(".chosen-select").chosen({
+                maxHeight: 200
+            });
+            $(".chosen-select").val($("#Ttype").val());
+            $(".chosen-select").trigger("chosen:updated");
+            //点击事件
+            $('.chosen-select').on('change', function (e, params) {
+            });
+        }
+    });
 }

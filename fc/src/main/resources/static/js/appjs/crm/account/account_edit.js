@@ -1,4 +1,4 @@
-var prefix = ctx+ "/crm/coursePackages"
+var prefix = ctx+ "/crm/account"
 $(function() {
 	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
@@ -52,67 +52,49 @@ function validateRule() {
 						id : { 
 						required : true,
 									},
-						deptId : { 
+						memberId : { 
 												},
-						packageName : { 
-												maxlength:255
-						},
-						subtitle : { 
-												maxlength:255
-						},
-						courseIds : { 
-												maxlength:255
-						},
-						goodsIds : { 
-												maxlength:255
-						},
-						totalPrice : { 
+						account : { 
 												},
+						accountType : { 
+												maxlength:255
+						},
+						points : { 
+												maxlength:255
+						},
+						startTime : { 
+												maxlength:40
+						},
+						endTime : { 
+												maxlength:40
+						},
+						status : { 
+												maxlength:3
+						},
 					},
 		messages : {
 		 				id : { 
 						required : icon  + "不能为空",
 									},
-						deptId : { 
+						memberId : { 
 												},
-						packageName : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						subtitle : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						courseIds : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						goodsIds : { 
-												maxlength: icon  + "最大长度不超过255"
-						},
-						totalPrice : { 
+						account : { 
 												},
+						accountType : { 
+												maxlength: icon  + "最大长度不超过255"
+						},
+						points : { 
+												maxlength: icon  + "最大长度不超过255"
+						},
+						startTime : { 
+												maxlength: icon  + "最大长度不超过40"
+						},
+						endTime : { 
+												maxlength: icon  + "最大长度不超过40"
+						},
+						status : { 
+												maxlength: icon  + "最大长度不超过3"
+						},
 					}
 	})
-}
-var openCourse = function () {
-    layer.open({
-        type: 2,
-        title: "选择课程",
-        area: ['600px', '450px'],
-        content: prefix + "/courseList"
-    })
-}
-function loadCourse(ids, names) {
-    $("#courseIds").val(ids);
-    $("#courseNames").val(names);
-}
-var openGoods = function () {
-    layer.open({
-        type: 2,
-        title: "选择商品",
-        area: ['600px', '450px'],
-        content: prefix + "/goodsList"
-    })
-}
-function loadGoods(ids, names) {
-    $("#goodsIds").val(ids);
-    $("#goodsNames").val(names);
 }
