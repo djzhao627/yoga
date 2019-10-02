@@ -11,10 +11,12 @@
                     <form class="form-horizontal m-t" id="signupForm">
                         <input id="id" name="id" th:value="${curriculum.id}" type="hidden"/>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">课程id：</label>
+                            <label class="col-sm-3 control-label">课程名称：</label>
                             <div class="col-sm-8">
-                                <input id="courseId" name="courseId" th:value="${curriculum.courseId}"
-                                       class="form-control" type="text" >
+                                <input id="courseId" name="courseId" th:value="${curriculum.courseId}" class="hidden">
+                                <input id="courseName" name="courseName" th:value="${curriculum.courseName}"class="form-control"
+                                       type="text" onclick="openCourse()"
+                                       readonly="readonly" placeholder="课程">
                             </div>
                         </div>
                         <div class="form-group">
@@ -22,16 +24,16 @@
                             <div class="col-sm-8">
                                 <input id="trainId" name="trainId" class="hidden">
                                 <input id="memberId" name="memberId" th:value="${curriculum.memberId}"
-                                       class="form-control" type="text" onclick="openTrain()" th:text="${curriculum.members}"
+                                       class="form-control" type="text" onclick="openTrain()" th:text="${curriculum.memberName}"
                                        readonly="readonly" placeholder="选择教练">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">教室：</label>
                             <div class="col-sm-8">
-                                <input id="roomId" name="roomId" th:value="${curriculum.classroomId}"class="hidden">
-                                <input id="classroomId" name="classroomId"
-                                       class="form-control" type="text" onclick="openRoom()" th:text="${curriculum.members}"
+                                <input id="classroomId" name="classroomId" th:value="${curriculum.classroomId}"class="hidden">
+                                <input id="classroomName" name="classroomName"
+                                       class="form-control" type="text" onclick="openRoom()" th:text="${curriculum.classroomName}"
                                        readonly="readonly" placeholder="选择教室">
                             </div>
                         </div>

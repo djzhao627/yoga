@@ -3,6 +3,8 @@ package com.fc.crm.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.fc.crm.domain.CourseMemberDO;
+import com.fc.crm.vo.CardsVO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,7 +61,16 @@ public class CardsController extends BaseController {
 			}
         });
 	}
-	
+	/**
+	 * 跳转到会员列表页面
+	 */
+	@GetMapping("/memberList")
+	ModelAndView memberList(){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("cards", new CardsDO());
+		mv.setViewName("crm/commonList/memberList");
+		return mv;
+	}
 	/**
 	 * 跳转到新增页面
 	 */
@@ -67,7 +78,7 @@ public class CardsController extends BaseController {
 	@RequiresPermissions("crm:cards:add")
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
-		mv.addObject("cards", new CardsDO());
+		mv.addObject("cards", new CardsVO());
 		mv.setViewName("crm/cards/cards_edit");
 		return mv;
 	}
@@ -79,7 +90,7 @@ public class CardsController extends BaseController {
 	@RequiresPermissions("crm:cards:edit")
 	ModelAndView edit(@PathVariable("id") Integer id){
 	    ModelAndView mv = new ModelAndView();
-		CardsDO cards = cardsService.get(id);
+		CardsVO cards = cardsService.get(id);
 		mv.addObject("cards", cards);
 		mv.setViewName("crm/cards/cards_edit");
 		return mv;

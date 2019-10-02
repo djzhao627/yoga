@@ -1,7 +1,8 @@
 package com.fc.crm.service.impl;
 
-import com.fc.crm.dao.CurrMemberDao;
-import com.fc.crm.domain.CurrMemberDO;
+import com.fc.business.dao.MemberBaseInfoDao;
+import com.fc.crm.dao.*;
+import com.fc.crm.domain.*;
 import com.fc.crm.vo.CurriculumVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
-import com.fc.crm.dao.CurriculumDao;
-import com.fc.crm.domain.CurriculumDO;
 import com.fc.crm.service.CurriculumService;
 import com.github.pagehelper.PageHelper;
 import com.fc.common.utils.PageUtils;
@@ -22,10 +21,25 @@ public class CurriculumServiceImpl implements CurriculumService {
 	private CurriculumDao curriculumDao;
 	@Autowired
 	private CurrMemberDao currMemberDao;
+	@Autowired
+	private CourseDao courseDao;
+	@Autowired
+	private MemberDao memberDao;
+	@Autowired
+	private ClassroomDao classroomDao;
 	
 	@Override
-	public CurriculumDO get(Integer id){
-		return curriculumDao.get(id);
+	public CurriculumVO get(Integer id){
+		CurriculumVO curriculumVO = new CurriculumVO();
+		CurriculumDO curriculumDO = curriculumDao.get(id);
+		BeanUtils.copyProperties(curriculumDO,curriculumVO);
+		CourseDO courseDO = courseDao.get(curriculumDO.getCourseId());
+		curriculumVO.setCourseName(courseDO.getCourseName());
+		MemberDO memberDO = memberDao.get(curriculumDO.getMemberId());
+		curriculumVO.setMemberName(memberDO.getName());
+		ClassroomDO classroomDO = classroomDao.get(curriculumDO.getClassroomId());
+		curriculumVO.setClassroomName(classroomDO.getRoomName());
+		return curriculumVO;
 	}
 	
 	@Override
@@ -47,16 +61,6 @@ public class CurriculumServiceImpl implements CurriculumService {
 		//查询教练在此时间段是否已经排课
 		//查询教室在此时间段是否已经排课
 		int i = curriculumDao.save(curriculumDO);
-		CurrMemberDO currMemberDO = new CurrMemberDO();
-		String ids = curriculum.getIds();
-		if (ids != null) {
-			String[] arr = ids.split(",");
-			for (int h = 0; h < arr.length; h++) {
-				currMemberDO.setCurriculumId(curriculum.getId());
-				currMemberDO.setMemberId(Integer.parseInt(arr[h]));
-				currMemberDao.save(currMemberDO);
-			}
-		}
 		return i;
 	}
 	
@@ -65,17 +69,6 @@ public class CurriculumServiceImpl implements CurriculumService {
 		CurriculumDO curriculumDO = new CurriculumDO();
 		BeanUtils.copyProperties(curriculum,curriculumDO);
 		int i = curriculumDao.update(curriculumDO);
-		CurrMemberDO currMemberDO = new CurrMemberDO();
-		String ids = curriculum.getIds();
-		if (ids != null) {
-			String[] arr = ids.split(",");
-			currMemberDao.deleteAll(curriculum.getId(),arr);
-			for (int h = 0; h < arr.length; h++) {
-				currMemberDO.setCurriculumId(curriculum.getId());
-				currMemberDO.setMemberId(Integer.parseInt(arr[h]));
-				currMemberDao.save(currMemberDO);
-			}
-		}
 		return i;
 	}
 	

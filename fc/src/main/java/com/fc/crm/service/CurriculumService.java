@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public interface CurriculumService {
 	
-	CurriculumDO get(Integer id);
+	CurriculumVO get(Integer id);
 	
 	List<CurriculumDO> list(Map<String, Object> map);
 	
