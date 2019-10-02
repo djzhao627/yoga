@@ -137,6 +137,22 @@ var openRoom = function () {
 }
 
 function loadRoom(userIds, userNames) {
-    $("#roomId").val(userIds);
-    $("#classroomId").val(userNames);
+    $("#classroomId").val(userIds);
+    $("#classroomName").val(userNames);
+}
+var openCourse = function () {
+    layer.open({
+        type: 2,
+        title: "选择课程",
+        area: ['600px', '450px'],
+        content: prefix + "/courseList"
+    })
+}
+function loadCourse(ids, names) {
+    if (ids.indexOf(",")!=-1){
+        alertMsg("请选择一个课程！");
+        return;
+    }
+    $("#courseId").val(ids);
+    $("#courseName").val(names);
 }

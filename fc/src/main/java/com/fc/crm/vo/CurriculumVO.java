@@ -5,10 +5,16 @@ public class CurriculumVO {
     private Integer id;
     //课程id
     private Integer courseId;
+    //课程名称
+    private String courseName;
     //教练id
     private Integer memberId;
+    //教练名称
+    private String memberName;
     //教室id
     private Integer classroomId;
+    //教室名称
+    private String classroomName;
     //开始日期
     private String startDate;
     //结束日期
@@ -23,18 +29,6 @@ public class CurriculumVO {
     private Integer maxMun;
     //课程表状态
     private String status;
-    //学员ids
-    private String ids;
-    //学员names
-    private String members;
-
-    public String getMembers() {
-        return members;
-    }
-
-    public void setMembers(String members) {
-        this.members = members;
-    }
 
     public Integer getId() {
         return id;
@@ -124,11 +118,27 @@ public class CurriculumVO {
         this.status = status;
     }
 
-    public String getIds() {
-        return ids;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setIds(String ids) {
-        this.ids = ids;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getMemberName() {
+        return memberName;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public String getClassroomName() {
+        return classroomName;
+    }
+
+    public void setClassroomName(String classroomName) {
+        this.classroomName = classroomName;
     }
 }

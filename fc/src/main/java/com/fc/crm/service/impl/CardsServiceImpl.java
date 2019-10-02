@@ -1,5 +1,9 @@
 package com.fc.crm.service.impl;
 
+import com.fc.crm.dao.MemberDao;
+import com.fc.crm.domain.MemberDO;
+import com.fc.crm.vo.CardsVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +20,17 @@ import com.fc.common.utils.PageUtils;
 public class CardsServiceImpl implements CardsService {
 	@Autowired
 	private CardsDao cardsDao;
+	@Autowired
+	private MemberDao memberDao;
 	
 	@Override
-	public CardsDO get(Integer id){
-		return cardsDao.get(id);
+	public CardsVO get(Integer id){
+		CardsDO cardsDO = cardsDao.get(id);
+		CardsVO cardsVO = new CardsVO();
+		BeanUtils.copyProperties(cardsDO,cardsVO);
+		MemberDO memberDO = memberDao.get(cardsDO.getMemberId());
+		cardsVO.setMemberName(memberDO.getName());
+		return cardsVO;
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package com.fc.crm.service;
 
 import com.fc.crm.domain.CardsDO;
+import com.fc.crm.vo.CardsVO;
 
 import java.util.List;
 import java.util.Map;
@@ -13,8 +14,8 @@ import java.util.Map;
  * @date 2019-09-28 21:47:46
  */
 public interface CardsService {
-	
-	CardsDO get(Integer id);
+
+	CardsVO get(Integer id);
 	
 	List<CardsDO> list(Map<String, Object> map);
 	

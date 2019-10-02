@@ -3,6 +3,8 @@ package com.fc.crm.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.fc.crm.domain.CourseMemberDO;
+import com.fc.crm.vo.AccountVO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,7 +61,16 @@ public class AccountController extends BaseController {
 			}
         });
 	}
-	
+	/**
+	 * 跳转到会员列表页面
+	 */
+	@GetMapping("/memberList")
+	ModelAndView memberList(){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("account", new AccountDO());
+		mv.setViewName("crm/commonList/memberList");
+		return mv;
+	}
 	/**
 	 * 跳转到新增页面
 	 */
@@ -67,7 +78,7 @@ public class AccountController extends BaseController {
 	@RequiresPermissions("crm:account:add")
 	ModelAndView add(){
 	    ModelAndView mv = new ModelAndView();
-		mv.addObject("account", new AccountDO());
+		mv.addObject("account", new AccountVO());
 		mv.setViewName("crm/account/account_edit");
 		return mv;
 	}
@@ -78,8 +89,8 @@ public class AccountController extends BaseController {
 	@GetMapping("/edit/{id}")
 	@RequiresPermissions("crm:account:edit")
 	ModelAndView edit(@PathVariable("id") Integer id){
-	    ModelAndView mv = new ModelAndView();
-		AccountDO account = accountService.get(id);
+	    ModelAndView mv= new ModelAndView();
+		AccountVO account = accountService.get(id);
 		mv.addObject("account", account);
 		mv.setViewName("crm/account/account_edit");
 		return mv;

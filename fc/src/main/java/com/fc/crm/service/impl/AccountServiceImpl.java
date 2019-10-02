@@ -1,5 +1,9 @@
 package com.fc.crm.service.impl;
 
+import com.fc.crm.dao.MemberDao;
+import com.fc.crm.domain.MemberDO;
+import com.fc.crm.vo.AccountVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +20,17 @@ import com.fc.common.utils.PageUtils;
 public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountDao accountDao;
+	@Autowired
+	private MemberDao memberDao;
 	
 	@Override
-	public AccountDO get(Integer id){
-		return accountDao.get(id);
+	public AccountVO get(Integer id){
+		AccountDO accountDO = accountDao.get(id);
+		AccountVO accountVO = new AccountVO();
+		BeanUtils.copyProperties(accountDO,accountVO);
+		MemberDO memberDO = memberDao.get(accountDO.getMemberId());
+		accountVO.setMemberName(memberDO.getName());
+		return accountVO;
 	}
 	
 	@Override

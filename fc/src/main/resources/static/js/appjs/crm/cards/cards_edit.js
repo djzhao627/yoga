@@ -94,3 +94,15 @@ function validateRule() {
 					}
 	})
 }
+var openMember = function () {
+    layer.open({
+        type: 2,
+        title: "选择会员",
+        area: ['600px', '450px'],
+        content: prefix + "/memberList"
+    })
+}
+function loadMember(ids, names) {
+    $("#memberId").val(ids);
+    $("#memberName").val(names);
+}

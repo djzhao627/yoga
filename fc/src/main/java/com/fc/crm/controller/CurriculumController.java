@@ -3,6 +3,7 @@ package com.fc.crm.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.fc.crm.domain.CourseMemberDO;
 import com.fc.crm.vo.CurriculumVO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,16 @@ public class CurriculumController extends BaseController {
 			}
         });
 	}
-	
+	/**
+	 * 跳转到课程列表页面
+	 */
+	@GetMapping("/courseList")
+	ModelAndView courseList(){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("curriculum", new CurriculumVO());
+		mv.setViewName("crm/commonList/courseList");
+		return mv;
+	}
 	/**
 	 * 跳转到新增页面
 	 */
@@ -80,7 +90,7 @@ public class CurriculumController extends BaseController {
 	@RequiresPermissions("crm:curriculum:edit")
 	ModelAndView edit(@PathVariable("id") Integer id){
 	    ModelAndView mv = new ModelAndView();
-		CurriculumDO curriculum = curriculumService.get(id);
+		CurriculumVO curriculum = curriculumService.get(id);
 		mv.addObject("curriculum", curriculum);
 		mv.setViewName("crm/curriculum/curriculum_edit");
 		return mv;
