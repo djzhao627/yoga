@@ -1,5 +1,6 @@
 package com.fc.crm.service;
 
+import com.fc.crm.domain.CurriculumBO;
 import com.fc.crm.domain.CurriculumDO;
 import com.fc.crm.vo.CurriculumVO;
 
@@ -17,7 +18,7 @@ public interface CurriculumService {
 	
 	CurriculumVO get(Integer id);
 	
-	List<CurriculumDO> list(Map<String, Object> map);
+	List<CurriculumBO> list(Map<String, Object> map);
 	
 	List<Map<String, Object>> findDataList(Map<String, Object> map);
 	
