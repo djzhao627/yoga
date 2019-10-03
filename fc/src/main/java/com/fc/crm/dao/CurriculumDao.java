@@ -1,5 +1,6 @@
 package com.fc.crm.dao;
 
+import com.fc.crm.domain.CurriculumBO;
 import com.fc.crm.domain.CurriculumDO;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public interface CurriculumDao {
 
 	CurriculumDO get(Integer id);
 	
-	List<CurriculumDO> list(Map<String, Object> map);
+	List<CurriculumBO> list(Map<String, Object> map);
 	
 	List<Map<String, Object>> findDataList(Map<String, Object> map);
 	

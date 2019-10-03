@@ -122,8 +122,8 @@ var openTrain = function () {
 }
 
 function loadTrain(userIds, userNames) {
-    $("#trainId").val(userIds);
-    $("#memberId").val(userNames);
+    $("#memberId").val(userIds);
+    $("#memberName").val(userNames);
 }
 
 

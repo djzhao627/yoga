@@ -10,44 +10,25 @@
 		where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.fc.crm.domain.CurriculumDO">
-		SELECT 
-			id, course_id, member_id, classroom_id, start_date, end_date, start_time, end_time, min_num, max_mun, status 		
-		FROM t_curriculum 
+	<select id="list" resultType="com.fc.crm.domain.CurriculumBO">
+		SELECT
+		t.id, t.course_id,c.course_name,m.username memberName,r.room_name classroomName, t.member_id, t.classroom_id,
+		t.start_date, t.end_date, t.start_time, t.end_time, t.min_num, t.max_mun, t.status
+		FROM t_curriculum t left join t_course c on t.course_id=c.id left join sys_user m on t.member_id=m.user_id
+		left join t_classroom  r on t.classroom_id=r.id
         <where>
           
 		  		  <if test="id != null and id != ''">
-		  		  	AND id = #{id}   
+		  		  	AND t.id = #{id}
 		  		  </if>
-		  		  <if test="courseId != null and courseId != ''">
-		  		  	AND course_id = #{courseId}   
+		  		  <if test="courseName != null and courseName != ''">
+		  		  	AND c.course_name  LIKE '%${ courseName}%'
 		  		  </if>
-		  		  <if test="memberId != null and memberId != ''">
-		  		  	AND member_id = #{memberId}   
-		  		  </if>
-		  		  <if test="classroomId != null and classroomId != ''">
-		  		  	AND classroom_id = #{classroomId}   
-		  		  </if>
-		  		  <if test="startDate != null and startDate != ''">
-		  		  	AND start_date LIKE '%${ startDate}%'  
-		  		  </if>
-		  		  <if test="endDate != null and endDate != ''">
-		  		  	AND end_date LIKE '%${ endDate}%'  
-		  		  </if>
-		  		  <if test="startTime != null and startTime != ''">
-		  		  	AND start_time LIKE '%${ startTime}%'  
-		  		  </if>
-		  		  <if test="endTime != null and endTime != ''">
-		  		  	AND end_time LIKE '%${ endTime}%'  
-		  		  </if>
-		  		  <if test="minNum != null and minNum != ''">
-		  		  	AND min_num = #{minNum}   
-		  		  </if>
-		  		  <if test="maxMun != null and maxMun != ''">
-		  		  	AND max_mun = #{maxMun}   
+		  		  <if test="memberName != null and memberName != ''">
+		  		  	AND m.username LIKE '%${ memberName}%'
 		  		  </if>
 		  		  <if test="status != null and status != ''">
-		  		  	AND status LIKE '%${ status}%'  
+		  		  	AND t.status LIKE '%${ status}%'
 		  		  </if>
 		  		  
 		</where>

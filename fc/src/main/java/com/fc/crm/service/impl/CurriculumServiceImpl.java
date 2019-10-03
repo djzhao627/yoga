@@ -4,6 +4,8 @@ import com.fc.business.dao.MemberBaseInfoDao;
 import com.fc.crm.dao.*;
 import com.fc.crm.domain.*;
 import com.fc.crm.vo.CurriculumVO;
+import com.fc.system.dao.UserDao;
+import com.fc.system.domain.UserDO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,8 @@ public class CurriculumServiceImpl implements CurriculumService {
 	private MemberDao memberDao;
 	@Autowired
 	private ClassroomDao classroomDao;
+	@Autowired
+	private UserDao userDao;
 	
 	@Override
 	public CurriculumVO get(Integer id){
@@ -35,15 +39,15 @@ public class CurriculumServiceImpl implements CurriculumService {
 		BeanUtils.copyProperties(curriculumDO,curriculumVO);
 		CourseDO courseDO = courseDao.get(curriculumDO.getCourseId());
 		curriculumVO.setCourseName(courseDO.getCourseName());
-		MemberDO memberDO = memberDao.get(curriculumDO.getMemberId());
-		curriculumVO.setMemberName(memberDO.getName());
+		UserDO userDO = userDao.get(Long.parseLong(curriculumDO.getMemberId().toString()));
+		curriculumVO.setMemberName(userDO.getUsername());
 		ClassroomDO classroomDO = classroomDao.get(curriculumDO.getClassroomId());
 		curriculumVO.setClassroomName(classroomDO.getRoomName());
 		return curriculumVO;
 	}
 	
 	@Override
-	public List<CurriculumDO> list(Map<String, Object> map){
+	public List<CurriculumBO> list(Map<String, Object> map){
 		return curriculumDao.list(map);
 	}
 	
