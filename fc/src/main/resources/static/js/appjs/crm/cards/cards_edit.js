@@ -2,6 +2,8 @@ var prefix = ctx+ "/crm/cards"
 $(function() {
 	var editROW = getPageValue();//列表页面传值(row)
 	validateRule();
+    loadType();
+    loadCType();
 });
 
 $.validator.setDefaults({
@@ -105,4 +107,46 @@ var openMember = function () {
 function loadMember(ids, names) {
     $("#memberId").val(ids);
     $("#memberName").val(names);
+}
+function loadType() {
+    var html = "";
+    $.ajax({
+        url: ctx + '/common/dict/list/card_type',
+        success: function (data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $(".chosen-select").append(html);
+            $(".chosen-select").chosen({
+                maxHeight: 200
+            });
+            $(".chosen-select").val($("#Ttype").val());
+            $(".chosen-select").trigger("chosen:updated");
+            //点击事件
+            $('.chosen-select').on('change', function (e, params) {
+            });
+        }
+    });
+}
+function loadCType() {
+    var html = "";
+    $.ajax({
+        url: ctx + '/common/dict/list/course_type',
+        success: function (data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $(".chosen-select1").append(html);
+            $(".chosen-select1").chosen({
+                maxHeight: 200
+            });
+            $(".chosen-select1").val($("#Ctype").val());
+            $(".chosen-select1").trigger("chosen:updated");
+            //点击事件
+            $('.chosen-select1').on('change', function (e, params) {
+            });
+        }
+    });
 }
