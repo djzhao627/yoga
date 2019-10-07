@@ -48,3 +48,10 @@ mybatis:
  
 #[弃用]调整至 spring cache type【shiro.用户，权限，session，spring.cache通用】
 #cacheType: ehcache
+
+##########################小程序相关配置#############################
+wxapp:
+  appId: wxcd7895bfb18c1de5
+  secret: 6b60bae7d2c09aad8ecc1678490d81b6
+  grantType: authorization_code
+  sessionHost: https://api.weixin.qq.com/sns/jscode2session
